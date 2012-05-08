@@ -14,45 +14,58 @@ Your users can then share those video gameplays via YouTube, Facebook, Twitter, 
 
 Remove libcocos2d.a from your project. This framework includes all cocos features and functionalities.
 
-1. Clone this repository to your local development machine.
-2. Drag and drop `cocos2d-kamcord.framework` into your project.
-3. Drag and drop `Resources` and `External-headers` to your project.
-4. Ensure you have following frameworks under `Build Phases` ==> `Link Binary With Libraries`:
+<ol>
+<li>Clone this repository to your local development machine.</li>
+<li>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
+<li>Drag and drop <code>Resources</code> and <code>External-headers</code> to your project.</li>
+<li>Ensure you have following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:</li>
+	<p>
+	<ul>
+        <li>AssetsLibrary</li>
+        <li>AVFoundation</li>
+        <li>cocos2d-kamcord</li>
+        <li>CoreGraphics</li>
+        <li>CoreMedia</li>
+        <li>CoreVideo</li>
+        <li>Foundation</li>
+        <li>MediaPlayer</li>
+        <li>MessageUI</li>
+        <li>OpenGLES</li>
+        <li>QuartzCore</li>
+        <li>Security</li>
+        <li>SystemConfiguration</li>
+        <li>Twitter</li>
+        <li>UIKit</li>
+        <li>libz.dylib</li>
+    </ul>
+    </p>
 
-    * AssetsLibrary
-    * AVFoundation
-    * cocos2d-kamcord
-    * CoreGraphics
-    * CoreMedia
-    * CoreVideo
-    * Foundation
-    * MediaPlayer
-    * MessageUI
-    * OpenGLES
-    * QuartzCore
-    * Security
-    * SystemConfiguration
-    * Twitter
-    * UIKit
-    * libz.dylib
+<p>
+To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <code>[+]</code> button at the bottom of the <code>Link Binary With Libraries</code> section. Instead, drag <code>cocos2d-kamcord.framework</code> from your project to this list.
+<p>
 
-To add `cocos2d-kamcord.framework` to this list, you cannot use the `[+]` button at the bottom of the `Link Binary With Libraries` section. Instead, drag `cocos2d-kamcord.framework` from your project to this list.
+<li>Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>: </li>
 
-5. Add the following to `Build Settings` ==> `Other Linker Flags`:
+    <p>
+    <ul>
+        <li>-lxml2</li>
+        <li>-ObjC</li>
+        <li>-all_load</li>
+    </ul>
+    </p>
 
-    * -lxml2
-    * -ObjC
-    * -all_load
+<li>Add <code>/usr/include/libxml2</code> to <code>Build Settings</code> ==> <code>Header Search Paths</code>.</li>
 
-6. Add `/usr/include/libxml2` to `Build Settings` ==> `Header Search Paths`.
+<li>In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure you have a rootViewController set and set the view of that ViewController to your <code>EAGLView</code>.</li>
 
-7. In your application delegate (or wherever you create the UIWindow and EAGLView), make sure you have a rootViewController set and set the view of that ViewController to your EAGLView.  
-
-    window.rootViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    window.rootViewController.view = glView;
-    [[KCManager sharedManager] setParentViewController:window.rootViewController];
+<p>
+<pre><code>window.rootViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+window.rootViewController.view = glView;
+[[KCManager sharedManager] setParentViewController:window.rootViewController];</code></pre>
+<p>
 
 If you already have a UIViewController, use that instead. Kamcord assumes that your window's rootViewController is the only active UIViewController in the view hierarchy.
+</ol>
 
 Your project should build successfully at this point.
 
@@ -103,12 +116,12 @@ Now that that the user has finished his gameplay and you have successfully recor
 
 This presents a modal dialog with the following options:
 
-* Replay Video
-* Save Video to Photos
-* Email Video
-* Upload to YouTube
-* Share to Facebook
-* Share to Twitter
+    * Replay Video
+    * Save Video to Photos
+    * Email Video
+    * Upload to YouTube
+    * Share to Facebook
+    * Share to Twitter
 
 The options are pretty self-explanatory. `Replay Video` will show the video of the gameplay that just happened (the result of the last `endVideo` call). `Save Video to Photos` will save a copy of the video to the device's Photo Album.
 
