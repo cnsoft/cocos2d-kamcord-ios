@@ -44,11 +44,13 @@ To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <
 
 </li>
 <li style="margin: 0;">Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>:
+	<p>
     <ul style="margin-bottom: 15px;">
         <li style="margin: 0;">-lxml2</li>
         <li style="margin: 0;">-ObjC</li>
         <li style="margin: 0;">-all_load</li>
     </ul>
+    </p>
 </li>
 <li style="margin: 0;">Add <code>/usr/include/libxml2</code> to <code>Build Settings</code> ==> <code>Header Search Paths</code>.</li>
 
