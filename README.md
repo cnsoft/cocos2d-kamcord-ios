@@ -52,8 +52,7 @@ We've tried to keep the Kamcord API as simple as possible. The only class you wi
 
 KCManager's public API is broken down by different functionalities.
 
-Video Recording
----------------
+### Video Recording
 
 The recording interface is built around the concept of one video, which has one or more clips. Most videos will just have one clip, but if your game is interrupted for some reason, you'll have several clips that need to be stitched together into one seamless video. Kamcord handles all of that behind the scenes as long as you start and stop recording your clips at the appropriate places in the app lifecycle.
 
@@ -84,8 +83,7 @@ In this example, the developer recorded two clips that will be contiguously stit
 You can then present the end user with more options, which are described in the next section.
 
 
-Presenting User Options
------------------------
+### Presenting User Options
 
 Now that that the user has finished his gameplay and you have successfully recorded a video of it, you can present several options to the user with the following API call:
 
