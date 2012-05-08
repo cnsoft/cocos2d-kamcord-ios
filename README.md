@@ -13,10 +13,10 @@ Your users can then share those video gameplays via YouTube, Facebook, Twitter, 
 Remove libcocos2d.a from your project. This framework includes all cocos features and functionalities.
 
 <ol>
-<li>Clone this repository to your local development machine.</li>
-<li>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
-<li>Drag and drop <code>Resources</code> and <code>External-headers</code> to your project.</li>
-<li>Ensure you have following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
+<li style="margin: 0";>Clone this repository to your local development machine.</li>
+<li style="margin: 0";>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
+<li style="margin: 0";">Drag and drop <code>Resources</code> and <code>External-headers</code> to your project.</li>
+<li style="margin: 0";>Ensure you have following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 	<ul>
         <li style="margin: 0;">AssetsLibrary</li>
@@ -43,7 +43,7 @@ To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <
 <p>
 
 </li>
-<li>Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>:
+<li style="margin: 0;">Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>:
     <p>
     <ul>
         <li style="margin: 0;">-lxml2</li>
@@ -52,9 +52,9 @@ To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <
     </ul>
     </p>
 </li>
-<li>Add <code>/usr/include/libxml2</code> to <code>Build Settings</code> ==> <code>Header Search Paths</code>.</li>
+<li style="margin: 0;">Add <code>/usr/include/libxml2</code> to <code>Build Settings</code> ==> <code>Header Search Paths</code>.</li>
 
-<li>In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure you have a rootViewController set and set the view of that ViewController to your <code>EAGLView</code>.
+<li style="margin: 0;">In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure you have a rootViewController set and set the view of that ViewController to your <code>EAGLView</code>.
 
 <p>
 <pre><code>window.rootViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
