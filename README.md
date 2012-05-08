@@ -19,22 +19,22 @@ Remove libcocos2d.a from your project. This framework includes all cocos feature
 <li>Ensure you have following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 	<ul>
-        <li>AssetsLibrary</li>
-        <li>AVFoundation</li>
-        <li>cocos2d-kamcord</li>
-        <li>CoreGraphics</li>
-        <li>CoreMedia</li>
-        <li>CoreVideo</li>
-        <li>Foundation</li>
-        <li>MediaPlayer</li>
-        <li>MessageUI</li>
-        <li>OpenGLES</li>
-        <li>QuartzCore</li>
-        <li>Security</li>
-        <li>SystemConfiguration</li>
-        <li>Twitter</li>
-        <li>UIKit</li>
-        <li>libz.dylib</li>
+        <li style="margin: 0;">AssetsLibrary</li>
+        <li style="margin: 0;">AVFoundation</li>
+        <li style="margin: 0;">cocos2d-kamcord</li>
+        <li style="margin: 0;">CoreGraphics</li>
+        <li style="margin: 0;">CoreMedia</li>
+        <li style="margin: 0;">CoreVideo</li>
+        <li style="margin: 0;">Foundation</li>
+        <li style="margin: 0;">MediaPlayer</li>
+        <li style="margin: 0;">MessageUI</li>
+        <li style="margin: 0;">OpenGLES</li>
+        <li style="margin: 0;">QuartzCore</li>
+        <li style="margin: 0;">Security</li>
+        <li style="margin: 0;">SystemConfiguration</li>
+        <li style="margin: 0;">Twitter</li>
+        <li style="margin: 0;">UIKit</li>
+        <li style="margin: 0;">libz.dylib</li>
     </ul>
     </p>
 
@@ -44,12 +44,11 @@ To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <
 
 </li>
 <li>Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>:
-
     <p>
     <ul>
-        <li>-lxml2</li>
-        <li>-ObjC</li>
-        <li>-all_load</li>
+        <li style="margin: 0;">-lxml2</li>
+        <li style="margin: 0;">-ObjC</li>
+        <li style="margin: 0;">-all_load</li>
     </ul>
     </p>
 </li>
@@ -115,12 +114,16 @@ Now that that the user has finished his gameplay and you have successfully recor
 
 This presents a modal dialog with the following options:
 
-    * Replay Video
-    * Save Video to Photos
-    * Email Video
-    * Upload to YouTube
-    * Share to Facebook
-    * Share to Twitter
+<p>
+<ul>
+    <li style="margin: 0;">Replay Video</li>
+    <li style="margin: 0;">Save Video to Photos</li>
+    <li style="margin: 0;">Email Video</li>
+    <li style="margin: 0;">Upload to YouTube</li>
+    <li style="margin: 0;">Share to Facebook</li>
+    <li style="margin: 0;">Share to Twitter</li>
+</ul>
+</p>
 
 The options are pretty self-explanatory. `Replay Video` will show the video of the gameplay that just happened (the result of the last `endVideo` call). `Save Video to Photos` will save a copy of the video to the device's Photo Album.
 
