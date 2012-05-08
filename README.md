@@ -204,35 +204,76 @@ Here are all of the code integration points. We bold the lines we added to make 
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
 	// You can change anytime.
-	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];		
+	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
 	
 	CCScene *scene = [CCScene node];
 	[scene addChild: [nextAction() node]];
-    <b>
-    [[KCManager sharedManager] beginVideo];
-    [[KCManager sharedManager] startRecordingClip];
-	
-	// We use a timer for simplicity. You probably want to integrate with your game flow.
-    [self performSelector:@selector(stopVideoRecording) withObject:nil afterDelay:15.0];
-    </b>
+
 	[director runWithScene: scene];
-}
-<b>
-- (void) stopVideoRecording
+}</code></pre>
+
+This code sets up the window's root view controller and gives it ownership of the `EAGLView`. It then begins a new video and starts recording the scene. To add recording and replay functionality, we have two buttons on the top right of the first screen that controls reocrding. When pressed, they call into these two functions:
+
+<pre><code>@implementation KamcordRecording
+-(id) init
 {
-    [[KCManager sharedManager] stopRecordingClip];
+	if( (self = [super init]) ) {
+		
+		CGSize s = [[CCDirector sharedDirector] winSize];	
+		
+		// create a render texture, this is what we're going to draw into
+		target = [[CCRenderTexture renderTextureWithWidth:s.width height:s.height] retain];
+		[target setPosition:ccp(s.width/2, s.height/2)];
+		
+		
+		// It's possible to modify the RenderTexture blending function by
+//		[[target sprite] setBlendFunc:(ccBlendFunc) {GL_ONE, GL_ONE_MINUS_SRC_ALPHA}];
+		
+		// note that the render texture is a CCNode, and contains a sprite of its texture for convience,
+		// so we can just parent it to the scene like any other CCNode
+		[self addChild:target z:-1];
+		
+		// create a brush image to draw into the texture with
+		brush = [[CCSprite spriteWithFile:@"fire.png"] retain];
+		[brush setOpacity:20];
+#ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
+		self.isTouchEnabled = YES;
+#elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
+		self.isMouseEnabled = YES;
+		lastLocation = CGPointMake( s.width/2, s.height/2);
+#endif
+		
+		[CCMenuItemFont setFontSize:16];
+		<b>CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Start Recording" target:self selector:@selector(startRecording:)];
+		CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Stop Recording" target:self selector:@selector(stopRecordingAndShowDialog:)];</b>
+		CCMenu *menu = [CCMenu menuWithItems:item1, item2, nil];
+		[self addChild:menu];
+		[menu alignItemsVertically];
+		[menu setPosition:ccp(s.width-80, s.height-30)];
+	}
+	return self;
+}
+
+<b>-(void) startRecording:(id)sender
+{
+	[[KCManager sharedManager] beginVideo];
+    [[KCManager sharedManager] startRecordingClip];
+}
+
+-(void) stopRecordingAndShowDialog:(id)sender
+{
+	[[KCManager sharedManager] stopRecordingClip];
     [[KCManager sharedManager] endVideo];
     [[KCManager sharedManager] showKamcordDialog];
-}
-</b></code></pre>
-
-This code sets up the window's root view controller and gives it ownership of the `EAGLView`. It then begins a new video and starts recording the scene. It also sets a timer for 15 seconds, at which point `stopRecordingVideo` is called. This methods stops recording the current clips, marks the end of the video, and then displays the Kamcord dialog.
+}</b></code></pre>
 
 For most games, you'll want to defer the calls to `beginVideo` and `startRecordingClip` until appropriate (your user begins the actual round, etc.).
 
-To highlight the handling of the application lifecycle, we've also made minor additions to the following functions:
+To highlight the handling of the application lifecycle, we've made additions to the following functions:
 
-<pre><code>-(void) applicationDidBecomeActive:(UIApplication *)application
+<pre><code>
+
+-(void) applicationDidBecomeActive:(UIApplication *)application
 {
     <b>[[KCManager sharedManager] startRecordingClip];</b>
 	[[CCDirector sharedDirector] resume];
@@ -246,4 +287,4 @@ To highlight the handling of the application lifecycle, we've also made minor ad
 
 That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `beginVideo` has not been called), the calls to `startRecordingClip` and `stopRecordingClip` do nothing.
 
-To test this functionality, start the app, do some stuff, then close it by pressing the home button. Re-open the app and continue doing actions. Once the 15 seconds is up, you should get the Kamcord dialog again. Try pressing `Replay Video`. It should show one seamless video of everything that's happened.
+To test this functionality, press `Start Recording`, do some stuff, then close it by pressing the home button. Re-open the app, do some more actions, then press `Stop Recording`. When the Kamcord dialog appears, select `Replay Video`. It should show one seamless video of everything that's happened.
