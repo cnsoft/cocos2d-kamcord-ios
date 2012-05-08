@@ -146,6 +146,11 @@
 #import "Support/CCArray.h"
 #import "Support/ccUtils.h"
 
+//
+// Kamcord
+//
+#import "KCManager.h"
+
 #if CC_ENABLE_PROFILERS
 #import "Support/CCProfiling.h"
 #endif // CC_ENABLE_PROFILERS

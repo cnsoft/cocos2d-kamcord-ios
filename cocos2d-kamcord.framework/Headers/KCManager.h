@@ -22,9 +22,8 @@
 // For composing email
 #import <MessageUI/MFMailComposeViewController.h>
 
-// For sharing to Faccebook
-// TODO: Fix this relative path crap?
-#import "../external/facebook-ios-sdk-kamcord/src/FBConnect.h"
+// For sharing to Facebook
+#import "FBConnect.h"
 
 // Kamcord dialog state
 enum KamcordDialogState {
@@ -43,7 +42,7 @@ enum LastVideoStatus
     VIDEO_IS_ON_YOUTUBE,
 };
 
-@interface KCManager : NSObject <KCVideoWriterDelegate, YouTubeUploaderDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
+@interface KCManager : NSObject <KCVideoWriterDelegate, KCYouTubeUploaderDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
 {    
     // Where to display our dialog
     UIViewController * parentViewController_;
@@ -68,7 +67,7 @@ enum LastVideoStatus
     
     // YouTube uploading
     KCYouTubeUploader * youtubeUploader_;
-    id <YouTubeUploaderDelegate> youtubeDelegate_;
+    id <KCYouTubeUploaderDelegate> youtubeDelegate_;
     UIProgressView * uploadProgressView_;
     NSString * defaultTitle_;
     NSString * defaultDescription_;
