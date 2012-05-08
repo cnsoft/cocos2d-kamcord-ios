@@ -148,3 +148,109 @@ the actual tweeted message will be
 
 `Check out my gameplay! http://www.youtube.com/watch?v=abcfoobar123`
 
+
+## Examples
+
+The `Examples` directory has a fully functional example of how to use Kamcord in your application. It is a slightly modified version of the RenderTextureTest from the cocos2d test suite. When the app launches, it begins a video and starts recording a clip. You can draw on the first screen or switch to two of the other tests. A few seconds later, it stops recording the clip, ends the video, and shows the Kamcord dialog.
+
+Here are all of the code integration points. We bold the lines we added to make Kamcord work. First, we do some initialization:
+
+<pre><code>- (void) applicationDidFinishLaunching:(UIApplication*)application
+{
+	// Init the window
+	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	
+	// must be called before any othe call to the director
+	[CCDirector setDirectorType:kCCDirectorTypeDisplayLink];
+	
+	// before creating any layer, set the landscape mode
+	CCDirector *director = [CCDirector sharedDirector];
+	
+	// landscape orientation
+	[director setDeviceOrientation:kCCDeviceOrientationLandscapeRight];
+	
+	// set FPS at 60
+	[director setAnimationInterval:1.0/60];
+	
+	// Display FPS: yes
+	[director setDisplayFPS:YES];
+	
+	// Create an EAGLView with a RGB8 color buffer, and a depth buffer of 24-bits
+	EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
+								   pixelFormat:kEAGLColorFormatRGB565
+								   depthFormat:0];
+	
+	// attach the openglView to the director
+	[director setOpenGLView:glView];
+	
+	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
+	if( ! [director enableRetinaDisplay:YES] )
+		CCLOG(@"Retina Display Not supported");
+    
+    <b>
+    // Create the window's root view controller
+    window.rootViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    window.rootViewController.view = glView;
+    [[KCManager sharedManager] setParentViewController:window.rootViewController];
+    [[KCManager sharedManager] setYouTubeUploadDefaultTitle:@"RenderTexture Test"
+                                         defaultDescription:@"Testing Kamcord 0.1"
+                                            defaultKeywords:@"cocos2d"];
+    </b>
+	
+	// make the OpenGLView a child of the main window
+	[window addSubview:glView];
+	
+	// make main window visible
+	[window makeKeyAndVisible];	
+	
+	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
+	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
+	// You can change anytime.
+	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];		
+	
+	CCScene *scene = [CCScene node];
+	[scene addChild: [nextAction() node]];
+    
+    <b>
+    [[KCManager sharedManager] beginVideo];
+    [[KCManager sharedManager] startRecordingClip];
+	
+	// We use a timer for simplicity. You probably want to integrate with your game flow.
+    [self performSelector:@selector(stopVideoRecording) withObject:nil afterDelay:5.0];
+    </b>
+	
+	[director runWithScene: scene];
+}
+
+<b>
+- (void) stopVideoRecording
+{
+    [[KCManager sharedManager] stopRecordingClip];
+    [[KCManager sharedManager] endVideo];
+    [[KCManager sharedManager] showKamcordDialog];
+}
+</b>
+
+</code></pre>
+
+This code sets up the window's root view controller and gives it ownership of the EAGLView. It then begins a new video and starts recording the scene. It also sets a timer for 15 seconds, at which point `stopRecordingVideo` is called. This methods stops recording the current clips, marks the end of the video, and then displays the Kamcord dialog.
+
+For most games, you'll want to defer the call to `startRecordingClip` until appropriate (your user begins the actual round, etc.).
+
+To highlight the handling of the application lifecycle, we've also made minor additions to the following functions:
+
+<pre><code>-(void) applicationDidBecomeActive:(UIApplication *)application
+{
+    <b>[[KCManager sharedManager] startRecordingClip];</b>
+	[[CCDirector sharedDirector] resume];
+}
+
+-(void) applicationDidEnterBackground:(UIApplication*)application
+{
+	[[CCDirector sharedDirector] stopAnimation];
+    <b>[[KCManager sharedManager] stopRecordingClip];</b>
+}</code></pre>
+
+That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `beginVideo` has not been called), the calls to `startRecordingClip` and `stopRecordingClip` do nothing.
+
+To test this functionality, start up the app, do some stuff, then close it by pressing the home button. Re-open the app and continue doing actions. Once the 15 seconds is up, you should get the Kamcord dialog again. Try pressing `Replay Video`. It should show one seamless video of everything that's happened.
