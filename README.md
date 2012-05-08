@@ -221,7 +221,6 @@ Here are all of the code integration points. We bold the lines we added to make 
 	
 	[director runWithScene: scene];
 }
-
 <b>
 - (void) stopVideoRecording
 {
@@ -229,13 +228,11 @@ Here are all of the code integration points. We bold the lines we added to make 
     [[KCManager sharedManager] endVideo];
     [[KCManager sharedManager] showKamcordDialog];
 }
-</b>
+</b></code></pre>
 
-</code></pre>
+This code sets up the window's root view controller and gives it ownership of the `EAGLView`. It then begins a new video and starts recording the scene. It also sets a timer for 15 seconds, at which point `stopRecordingVideo` is called. This methods stops recording the current clips, marks the end of the video, and then displays the Kamcord dialog.
 
-This code sets up the window's root view controller and gives it ownership of the EAGLView. It then begins a new video and starts recording the scene. It also sets a timer for 15 seconds, at which point `stopRecordingVideo` is called. This methods stops recording the current clips, marks the end of the video, and then displays the Kamcord dialog.
-
-For most games, you'll want to defer the call to `startRecordingClip` until appropriate (your user begins the actual round, etc.).
+For most games, you'll want to defer the calls to `beginVideo` and `startRecordingClip` until appropriate (your user begins the actual round, etc.).
 
 To highlight the handling of the application lifecycle, we've also made minor additions to the following functions:
 
@@ -253,4 +250,4 @@ To highlight the handling of the application lifecycle, we've also made minor ad
 
 That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `beginVideo` has not been called), the calls to `startRecordingClip` and `stopRecordingClip` do nothing.
 
-To test this functionality, start up the app, do some stuff, then close it by pressing the home button. Re-open the app and continue doing actions. Once the 15 seconds is up, you should get the Kamcord dialog again. Try pressing `Replay Video`. It should show one seamless video of everything that's happened.
+To test this functionality, start the app, do some stuff, then close it by pressing the home button. Re-open the app and continue doing actions. Once the 15 seconds is up, you should get the Kamcord dialog again. Try pressing `Replay Video`. It should show one seamless video of everything that's happened.
