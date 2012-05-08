@@ -2,7 +2,6 @@
 
 
 ## Introduction
-----
 
 This is a custom build of cocos2d-1.0.1 with built-in gameplay recording technology.
 It allows you, the game developer, to capture gameplay videos with a very simple API.
@@ -10,7 +9,6 @@ Your users can then share those video gameplays via YouTube, Facebook, Twitter, 
 
 
 ## Installation
-----
 
 Remove libcocos2d.a from your project. This framework includes all cocos features and functionalities.
 
@@ -18,7 +16,7 @@ Remove libcocos2d.a from your project. This framework includes all cocos feature
 <li>Clone this repository to your local development machine.</li>
 <li>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
 <li>Drag and drop <code>Resources</code> and <code>External-headers</code> to your project.</li>
-<li>Ensure you have following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:</li>
+<li>Ensure you have following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 	<ul>
         <li>AssetsLibrary</li>
@@ -44,7 +42,8 @@ Remove libcocos2d.a from your project. This framework includes all cocos feature
 To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <code>[+]</code> button at the bottom of the <code>Link Binary With Libraries</code> section. Instead, drag <code>cocos2d-kamcord.framework</code> from your project to this list.
 <p>
 
-<li>Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>: </li>
+</li>
+<li>Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>:
 
     <p>
     <ul>
@@ -53,10 +52,10 @@ To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <
         <li>-all_load</li>
     </ul>
     </p>
-
+</li>
 <li>Add <code>/usr/include/libxml2</code> to <code>Build Settings</code> ==> <code>Header Search Paths</code>.</li>
 
-<li>In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure you have a rootViewController set and set the view of that ViewController to your <code>EAGLView</code>.</li>
+<li>In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure you have a rootViewController set and set the view of that ViewController to your <code>EAGLView</code>.
 
 <p>
 <pre><code>window.rootViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
@@ -65,12 +64,12 @@ window.rootViewController.view = glView;
 <p>
 
 If you already have a UIViewController, use that instead. Kamcord assumes that your window's rootViewController is the only active UIViewController in the view hierarchy.
+</li>
 </ol>
 
 Your project should build successfully at this point.
 
 ## How to use Kamcord
-----
 
 We've tried to keep the Kamcord API as simple as possible. The only class you will need to interface with is `KCManager`, which is included by `cocos2d.h`. To get an instance, call `[KCManager sharedManager]`.
 
