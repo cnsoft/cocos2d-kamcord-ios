@@ -186,7 +186,6 @@ Here are all of the code integration points. We bold the lines we added to make 
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
 	if( ! [director enableRetinaDisplay:YES] )
 		CCLOG(@"Retina Display Not supported");
-    
     <b>
     // Create the window's root view controller
     window.rootViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
@@ -196,7 +195,6 @@ Here are all of the code integration points. We bold the lines we added to make 
                                          defaultDescription:@"Testing Kamcord 0.1"
                                             defaultKeywords:@"cocos2d"];
     </b>
-	
 	// make the OpenGLView a child of the main window
 	[window addSubview:glView];
 	
@@ -210,7 +208,6 @@ Here are all of the code integration points. We bold the lines we added to make 
 	
 	CCScene *scene = [CCScene node];
 	[scene addChild: [nextAction() node]];
-    
     <b>
     [[KCManager sharedManager] beginVideo];
     [[KCManager sharedManager] startRecordingClip];
@@ -218,7 +215,6 @@ Here are all of the code integration points. We bold the lines we added to make 
 	// We use a timer for simplicity. You probably want to integrate with your game flow.
     [self performSelector:@selector(stopVideoRecording) withObject:nil afterDelay:5.0];
     </b>
-	
 	[director runWithScene: scene];
 }
 <b>
