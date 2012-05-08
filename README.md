@@ -119,8 +119,8 @@ This presents a modal dialog with the following options:
     <li style="margin: 0;">Save Video to Photos</li>
     <li style="margin: 0;">Email Video</li>
     <li style="margin: 0;">Upload to YouTube</li>
-    <li style="margin: 0;">Share to Facebook</li>
-    <li style="margin: 0;">Share to Twitter</li>
+    <li style="margin: 0;">Share on Facebook</li>
+    <li style="margin: 0;">Share on Twitter</li>
 </ul>
 </p>
 
@@ -130,7 +130,7 @@ The options are pretty self-explanatory. `Replay Video` will show the video of t
 
 `Upload to YouTube` lets the user upload the video to YouTube with a title and description.
 
-Lastly, `Share to Facebook` and `Share to Twitter` allow the user to share a link of the uploaded YouTube video on their social networks. If the video has not been uploaded to YouTube yet, it will do that first and then present the user the Facebook/Twitter sharing dialogs.
+Lastly, `Share on Facebook` and `Share on Twitter` allow the user to share a link of the uploaded YouTube video on their social networks. If the video has not been uploaded to YouTube yet, it will do that first and then present the user the Facebook/Twitter sharing dialogs.
 
 You as the developer can set default YouTube titles, descriptions, and keywords, and default Tweet messages via the following API calls:
 
