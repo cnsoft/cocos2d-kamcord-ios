@@ -213,7 +213,7 @@ Here are all of the code integration points. We bold the lines we added to make 
     [[KCManager sharedManager] startRecordingClip];
 	
 	// We use a timer for simplicity. You probably want to integrate with your game flow.
-    [self performSelector:@selector(stopVideoRecording) withObject:nil afterDelay:5.0];
+    [self performSelector:@selector(stopVideoRecording) withObject:nil afterDelay:15.0];
     </b>
 	[director runWithScene: scene];
 }
