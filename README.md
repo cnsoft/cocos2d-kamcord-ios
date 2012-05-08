@@ -151,9 +151,9 @@ the actual tweeted message will be
 
 ## Examples
 
-The `Examples` directory has a fully functional example of how to use Kamcord in your application. It is a slightly modified version of the RenderTextureTest from the cocos2d test suite. When the app launches, it begins a video and starts recording a clip. You can draw on the first screen or switch to two of the other tests. A few seconds later, it stops recording the clip, ends the video, and shows the Kamcord dialog.
+The `Examples` directory has a fully functional example of how to use Kamcord in your application. It is a slightly modified version of the RenderTextureTest from the cocos2d test suite. When the app launches, there are two buttons on the top right of the screen you can press to start and stop video recording.
 
-Here are all of the code integration points. We bold the lines we added to make Kamcord work. First, we do some initialization:
+Be;pw all of the code integration points. We bold the lines we added to make Kamcord work. First, we do some initialization:
 
 <pre><code>- (void) applicationDidFinishLaunching:(UIApplication*)application
 {
@@ -212,7 +212,7 @@ Here are all of the code integration points. We bold the lines we added to make 
 	[director runWithScene: scene];
 }</code></pre>
 
-This code sets up the window's root view controller and gives it ownership of the `EAGLView`. It then begins a new video and starts recording the scene. To add recording and replay functionality, we have two buttons on the top right of the first screen that controls reocrding. When pressed, they call into these two functions:
+This code sets up the window's root view controller and gives it ownership of the `EAGLView`. It then begins a new video and starts recording the scene. The `Start Recording` and `Stop Recording` buttons in the app are hooked in as follows:
 
 <pre><code>@implementation KamcordRecording
 -(id) init
