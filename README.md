@@ -5,14 +5,13 @@
 
 This is a custom build of cocos2d-1.0.1 with built-in gameplay recording technology.
 It allows you, the game developer, to capture gameplay videos with a very simple API.
-Your users can then share those video gameplays via YouTube, Facebook, Twitter, and email.
+Your users can then share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
 
 ## Installation
 
-Remove libcocos2d.a from your project. This framework includes all cocos features and functionalities.
-
 <ol>
+<li style="margin: 0";>Remove libcocos2d.a from your project. The framework you are about to install includes all cocos2d features and functionalities.</li>
 <li style="margin: 0";>Clone this repository to your local development machine.</li>
 <li style="margin: 0";>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
 <li style="margin: 0";">Drag and drop <code>Resources</code> and <code>External-headers</code> to your project.</li>
