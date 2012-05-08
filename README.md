@@ -227,7 +227,7 @@ This code sets up the window's root view controller and gives it ownership of th
 		
 		
 		// It's possible to modify the RenderTexture blending function by
-//		[[target sprite] setBlendFunc:(ccBlendFunc) {GL_ONE, GL_ONE_MINUS_SRC_ALPHA}];
+		// [[target sprite] setBlendFunc:(ccBlendFunc) {GL_ONE, GL_ONE_MINUS_SRC_ALPHA}];
 		
 		// note that the render texture is a CCNode, and contains a sprite of its texture for convience,
 		// so we can just parent it to the scene like any other CCNode
@@ -271,9 +271,7 @@ For most games, you'll want to defer the calls to `beginVideo` and `startRecordi
 
 To highlight the handling of the application lifecycle, we've made additions to the following functions:
 
-<pre><code>
-
--(void) applicationDidBecomeActive:(UIApplication *)application
+<pre><code>-(void) applicationDidBecomeActive:(UIApplication *)application
 {
     <b>[[KCManager sharedManager] startRecordingClip];</b>
 	[[CCDirector sharedDirector] resume];
