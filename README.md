@@ -157,7 +157,7 @@ You as the developer can set defaults for when the user uploads to YouTube and s
                          
     -(void) setDefaultTweet:(NSString *)tweet;
 
-Note that for `setDefaultTweet:`, the video URL will be appended to the message with a space. So for instance, if you set the default Tweet to
+When the user is asked to fill the fields of the YouTube/Facebook/Twitter upload/share dialogs, these strings will be used to pre-populate the corresponding fields. Note that for `setDefaultTweet:`, the video URL will be appended to the message with a space. So for instance, if you set the default Tweet to
 
 `Check out my XYZ gameplay!`
 
@@ -165,13 +165,11 @@ the actual tweeted message will be
 
 `Check out my XYZ gameplay! http://www.youtube.com/watch?v=abcfoobar123`
 
-Keep in mind that Twitter has a 140 character limit, so it's best to keep default tweets short.
-
-Lastly, you can set a default "developer message" to append to YouTube and Facebook descriptions:
+Keep in mind that Twitter has a 140 character limit, so it's best to keep default tweets short. Lastly, you can set a default "developer message" to append to YouTube and Facebook descriptions:
 
 	-(void) setDeveloperMessage:(NSString *)message;
 
-This will show up at the bottom of every YouTube and Facebook description that your gamers upload or share. It's a great way for you to advertise your game with something like "Get MyCoolGame at http://www.mycoolgame.com/".
+This will show up at the end of every YouTube and Facebook description that your gamers upload or share. It's a great way for you to advertise your game with something like "Get MyCoolGame at http://www.mycoolgame.com/".
 
 ### Flurry analytics
 
