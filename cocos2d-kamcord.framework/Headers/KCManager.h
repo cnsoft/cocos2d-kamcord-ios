@@ -44,6 +44,9 @@ enum LastVideoStatus
 
 @interface KCManager : NSObject <KCVideoWriterDelegate, KCYouTubeUploaderDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
 {    
+    // The developer key
+    NSString * developerKey_;
+    
     // Where to display our dialog
     UIViewController * parentViewController_;
     
@@ -69,16 +72,22 @@ enum LastVideoStatus
     KCYouTubeUploader * youtubeUploader_;
     id <KCYouTubeUploaderDelegate> youtubeDelegate_;
     UIProgressView * uploadProgressView_;
-    NSString * defaultTitle_;
-    NSString * defaultDescription_;
-    NSString * defaultKeywords_;
+    NSString * defaultYouTubeTitle_;
+    NSString * defaultYouTubeDescription_;
+    NSString * defaultYouTubeKeywords_;
     NSURL * uploadedYouTubeVideoURL_;   // The online YouTube URL of the video
     
     // Facebook sharing
     Facebook * facebook_;
+    NSString * defaultFacebookTitle_;
+    NSString * defaultFacebookCaption_;
+    NSString * defaultFacebookDescription_;
     
     // Twitter
     NSString * defaultTweet_;
+    
+    // The custom developer message to add to all YouTube/Facebook descriptions
+    NSString * developerMessage_;
 }
 
 ////////////////////////////////////////////////
@@ -91,20 +100,32 @@ enum LastVideoStatus
 
 + (KCManager *)sharedManager;
 
+- (void) setDeveloperKey:(NSString *)developerKey;
+
 - (BOOL) beginVideo;
 - (BOOL) endVideo;
 - (BOOL) startRecordingClip;
 - (BOOL) stopRecordingClip;
 
+// Set defaults for YouTube/Facebook/Twitter user dialogs
 - (void) setYouTubeUploadDefaultTitle:(NSString *)title
                    defaultDescription:(NSString *)description
                       defaultKeywords:(NSString *)keywords;
+
+- (void) setFacebookShareDefaultTitle:(NSString *)title
+                       defaultCaption:(NSString *)caption
+                   defaultDescription:(NSString *)description;
+
 
 // The tweeted message will be: tweet + " videoURL" where videoURL is the
 // YouTube URL of the uploaded video.
 - (void) setDefaultTweet:(NSString *)tweet;
 
-// Displays the Kamcord options inside the previously set parentViewController;
+// This string is appended to every YouTube and Facebook description.
+// Use it to advertise your game (for example: "Get this game at http://www.mycoolgame.com/").
+- (void) setDeveloperMessage:(NSString *)message;
+
+// Displays the Kamcord view inside the previously set parentViewController;
 - (void) showKamcordView;
 
 

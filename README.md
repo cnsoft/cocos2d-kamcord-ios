@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Kamcord is a built-in gameplay recording technology for iOS. The repository contains a custom build of cocos2d-1.0.1 modified to include Kamcord technology. It allows you, the game developer, to capture gameplay videos with a very simple API.
+Kamcord is a built-in gameplay recording technology for iOS. This repository contains a custom build of cocos2d-1.0.1 modified to include Kamcord technology. It allows you, the game developer, to capture gameplay videos with a very simple API.
 Your users can then replay, save, and share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
 In order to use Kamcord, you need an API key. To get one, please email Kevin at <a mailto="kevin@kamcord.com">kevin@kamcord.com</a>.
@@ -143,11 +143,18 @@ This presents a modal view with the following options:
 
 Lastly, `Share on Facebook` and `Share on Twitter` allow the user to share a link of the uploaded YouTube video on their social networks. If the video has not been uploaded to YouTube yet, it will do that first and then present the Facebook/Twitter sharing dialogs to the user.
 
-You as the developer can set default YouTube titles, descriptions, and keywords, and default Tweet messages via the following API calls:
+### Developer Goodies
+
+You as the developer can set defaults for when the user uploads to YouTube and shares to Facebook and Twitter. Specifically, you have the following API calls available to you:
 
     -(void) setYouTubeUploadDefaultTitle:(NSString *)title
                       defaultDescription:(NSString *)description
                          defaultKeywords:(NSString *)keywords;
+                         
+    -(void) setFacebookShareDefaultTitle:(NSString *)title
+	                      defaultCaption:(NSString *)caption
+	                  defaultDescription:(NSString *)description;
+                         
     -(void) setDefaultTweet:(NSString *)tweet;
 
 Note that for `setDefaultTweet:`, the video URL will be appended to the message with a space. So for instance, if you set the default Tweet to
@@ -156,9 +163,15 @@ Note that for `setDefaultTweet:`, the video URL will be appended to the message 
 
 the actual tweeted message will be
 
-`Check out my gameplay! http://www.youtube.com/watch?v=abcfoobar123`
+`Check out my XYZ gameplay! http://www.youtube.com/watch?v=abcfoobar123`
 
 Keep in mind that Twitter has a 140 character limit, so it's best to keep default tweets short.
+
+Lastly, you can set a default "developer message" to append to YouTube and Facebook descriptions:
+
+	-(void) setDeveloperMessage:(NSString *)message;
+
+This will show up at the bottom of every YouTube and Facebook description that your gamers upload or share. It's a great way for you to advertise your game with something like "Get MyCoolGame at http://www.mycoolgame.com/".
 
 ### Flurry analytics
 
