@@ -84,7 +84,7 @@ The API is
     -(void) startRecordingClip;
     -(void) endRecordingClip;
 
-`beginVideo` is first called to indicate the beginning of a new video. *It does not begin actual video recording*. After that, `startRecordingClip` and `stopRecordingClip` start and stop the video recording. When the entire gameplay is finished (for example, after the user dies and the round ends), call `endVideo`. An example flow is as follows:
+`beginVideo` is first called to indicate the beginning of a new video. *It does not begin actual video recording*. After that, `startRecordingClip` and `stopRecordingClip` start and stop the video recording. If you call `startRecording` without calling `beginVideo` first, nothing will happen. When the entire gameplay is finished (for example, after the user dies and the round ends), call `endVideo`. An example flow is as follows:
 
     [[KCManager sharedManager] beginVideo];
     [[KCManager sharedManager] startRecordingClip];
@@ -130,7 +130,7 @@ The options are pretty self-explanatory. `Replay Video` will show the video of t
 
 `Upload to YouTube` lets the user upload the video to YouTube with a title and description.
 
-Lastly, `Share on Facebook` and `Share on Twitter` allow the user to share a link of the uploaded YouTube video on their social networks. If the video has not been uploaded to YouTube yet, it will do that first and then present the user the Facebook/Twitter sharing dialogs.
+Lastly, `Share on Facebook` and `Share on Twitter` allow the user to share a link of the uploaded YouTube video on their social networks. If the video has not been uploaded to YouTube yet, it will do that first and then present the Facebook/Twitter sharing dialogs to the user.
 
 You as the developer can set default YouTube titles, descriptions, and keywords, and default Tweet messages via the following API calls:
 
@@ -141,7 +141,7 @@ You as the developer can set default YouTube titles, descriptions, and keywords,
 
 Note that for `setDefaultTweet:`, the video URL will be appended to the message with a space. So for instance, if you set the default Tweet to
 
-`Check out my gameplay!`
+`Check out my XYZ gameplay!`
 
 the actual tweeted message will be
 
@@ -150,9 +150,9 @@ the actual tweeted message will be
 
 ## Examples
 
-The `Examples` directory has a fully functional example of how to use Kamcord in your application. It is a slightly modified version of the RenderTextureTest from the cocos2d test suite. When the app launches, there are two buttons on the top right of the screen you can press to start and stop video recording.
+The `Examples` directory has a fully functional example of how to use Kamcord in your application. It is a slightly modified version of the `RenderTextureTest` from the cocos2d test suite. When the app launches, there are two buttons on the top right of the screen you can press to start and stop video recording.
 
-Be;pw all of the code integration points. We bold the lines we added to make Kamcord work. First, we do some initialization:
+Below are all of the code integration points. We bold the lines we added to make Kamcord work. First, we do some initialization:
 
 <pre><code>- (void) applicationDidFinishLaunching:(UIApplication*)application
 {
