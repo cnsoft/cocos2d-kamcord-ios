@@ -188,7 +188,7 @@ Class restartAction()
 {
 	[[KCManager sharedManager] stopRecordingClip];
     [[KCManager sharedManager] endVideo];
-    [[KCManager sharedManager] showKamcordDialog];
+    [[KCManager sharedManager] showKamcordView];
 }
 
 -(void) dealloc

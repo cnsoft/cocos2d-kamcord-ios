@@ -1,11 +1,14 @@
-# cocos2d-kamcord
+# cocos2d-kamcord (alpha V0.1)
 
 
 ## Introduction
 
-This is a custom build of cocos2d-1.0.1 with built-in gameplay recording technology.
-It allows you, the game developer, to capture gameplay videos with a very simple API.
-Your users can then share these gameplay videos via YouTube, Facebook, Twitter, and email.
+Kamcord is a built-in gameplay recording technology for iOS. The repository contains a custom build of cocos2d-1.0.1 modified to include Kamcord technology. It allows you, the game developer, to capture gameplay videos with a very simple API.
+Your users can then replay, save, and share these gameplay videos via YouTube, Facebook, Twitter, and email.
+
+In order to use Kamcord, you need an API key. To get one, please email Kevin at <a mailto="kevin@kamcord.com">kevin@kamcord.com</a>.
+
+This is currently an alpha V0.1 build. We will be making lots of improvements over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to email Kevin.
 
 
 ## Installation
@@ -15,7 +18,7 @@ Your users can then share these gameplay videos via YouTube, Facebook, Twitter, 
 <li style="margin: 0";>Clone this repository to your local development machine.</li>
 <li style="margin: 0";>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
 <li style="margin: 0";">Drag and drop <code>Resources</code> and <code>External-headers</code> to your project.</li>
-<li style="margin: 0";>Ensure you have following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
+<li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 	<ul>
         <li style="margin: 0;">AssetsLibrary</li>
@@ -77,28 +80,36 @@ KCManager's public API is broken down by different functionalities.
 
 The recording interface is built around the concept of one video, which has one or more clips. Most videos will just have one clip, but if your game is interrupted for some reason, you'll have several clips that need to be stitched together into one seamless video. Kamcord handles all of that behind the scenes as long as you start and stop recording your clips at the appropriate places in the app lifecycle.
 
-The API is
+The API is:
 
     -(void) beginVideo;
     -(void) endVideo;
     -(void) startRecordingClip;
-    -(void) endRecordingClip;
+    -(void) stopRecordingClip;
 
-`beginVideo` is first called to indicate the beginning of a new video. *It does not begin actual video recording*. After that, `startRecordingClip` and `stopRecordingClip` start and stop the video recording. If you call `startRecording` without calling `beginVideo` first, nothing will happen. When the entire gameplay is finished (for example, after the user dies and the round ends), call `endVideo`. An example flow is as follows:
+`beginVideo` is first called to indicate the beginning of a new video. *<b>It does not begin the actual video recording</b>*. After that, `startRecordingClip` and `stopRecordingClip` start and stop the video recording. If you call `startRecording` without calling `beginVideo` first, nothing will happen. When the entire gameplay is over, for example after the user finishes a level, call `endVideo`. An example flow is as follows:
 
     [[KCManager sharedManager] beginVideo];
     [[KCManager sharedManager] startRecordingClip];
+    
     //
     // Gameplay happens
     //
+    
     [[KCManager sharedManager] stopRecordingClip];
+    
+    ///
     // Application interrupted
-    // …
+    // ...
     // Application regains foreground and user resumes gameplay    
+    //
+    
     [[KCManager sharedManager] startRecordingClip];
+    
     // 
     // More gamplay happens until round ends
     //  
+    
     [[KCManager sharedManager] stopRecordingClip];
     [[KCManager sharedManager] endVideo];
 
@@ -109,26 +120,26 @@ In this example, the developer recorded two clips that will be contiguously stit
 
 Now that that the user has finished his gameplay and you have successfully recorded a video of it, you can present several options to the user with the following API call:
 
-	-(void) showKamcordDialog;
+	-(void) showKamcordView;
 
-This presents a modal dialog with the following options:
+This presents a modal view with the following options:
 
 <p>
 <ul>
-    <li style="margin: 0;">Replay Video</li>
-    <li style="margin: 0;">Save Video to Photos</li>
-    <li style="margin: 0;">Email Video</li>
+    <li style="margin: 0;">Replay video</li>
+    <li style="margin: 0;">Save video to Photos</li>
+    <li style="margin: 0;">Email video</li>
     <li style="margin: 0;">Upload to YouTube</li>
     <li style="margin: 0;">Share on Facebook</li>
     <li style="margin: 0;">Share on Twitter</li>
 </ul>
 </p>
 
-The options are pretty self-explanatory. `Replay Video` will show the video of the gameplay that just happened (the result of the last `endVideo` call). `Save Video to Photos` will save a copy of the video to the device's Photo Album.
+`Replay video` will show the video of the gameplay that just happened (the result of the last `endVideo` call). `Save video to Photos` will save a copy of the video to the device's photo album.
 
-`Email Video` will upload the video to YouTube and then present the user with an email dialog that has the video link in the email body.
+`Email video` will upload the video to the Kamcord channel YouTube and then present the user with an email dialog that has the video link in the email body.
 
-`Upload to YouTube` lets the user upload the video to YouTube with a title and description.
+`Upload to YouTube` lets the user upload the video to the Kamcord YouTube channel with a title and description.
 
 Lastly, `Share on Facebook` and `Share on Twitter` allow the user to share a link of the uploaded YouTube video on their social networks. If the video has not been uploaded to YouTube yet, it will do that first and then present the Facebook/Twitter sharing dialogs to the user.
 
@@ -146,6 +157,12 @@ Note that for `setDefaultTweet:`, the video URL will be appended to the message 
 the actual tweeted message will be
 
 `Check out my gameplay! http://www.youtube.com/watch?v=abcfoobar123`
+
+Keep in mind that Twitter has a 140 character limit, so it's best to keep default tweets short.
+
+### Flurry analytics
+
+TODO
 
 
 ## Examples
@@ -263,7 +280,7 @@ This code sets up the window's root view controller and gives it ownership of th
 {
 	[[KCManager sharedManager] stopRecordingClip];
     [[KCManager sharedManager] endVideo];
-    [[KCManager sharedManager] showKamcordDialog];
+    [[KCManager sharedManager] showKamcordView];
 }</b></code></pre>
 
 For most games, you'll want to defer the calls to `beginVideo` and `startRecordingClip` until appropriate (your user begins the actual round, etc.).
@@ -284,4 +301,4 @@ To highlight the handling of the application lifecycle, we've made additions to 
 
 That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `beginVideo` has not been called), the calls to `startRecordingClip` and `stopRecordingClip` do nothing.
 
-To test this functionality, press `Start Recording`, do some stuff, then close it by pressing the home button. Re-open the app, do some more actions, then press `Stop Recording`. When the Kamcord dialog appears, select `Replay Video`. It should show one seamless video of everything that's happened.
+To test this functionality, press `Start Recording`, play with the app, then close it by pressing the home button. Re-open the app, do some more actions, then press `Stop Recording`. When the Kamcord dialog appears, select `Replay Video`. It should show one seamless video of everything that's happened.

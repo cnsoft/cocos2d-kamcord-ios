@@ -105,7 +105,7 @@ enum LastVideoStatus
 - (void) setDefaultTweet:(NSString *)tweet;
 
 // Displays the Kamcord options inside the previously set parentViewController;
-- (void) showKamcordDialog;
+- (void) showKamcordView;
 
 
 @end
