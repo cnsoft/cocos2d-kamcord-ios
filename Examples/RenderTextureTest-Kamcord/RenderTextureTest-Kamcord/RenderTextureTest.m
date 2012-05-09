@@ -560,6 +560,13 @@ Class restartAction()
     [[KCManager sharedManager] setYouTubeUploadDefaultTitle:@"RenderTexture Test"
                                          defaultDescription:@"Testing Kamcord 0.1"
                                             defaultKeywords:@"cocos2d"];
+    
+    [[KCManager sharedManager] setFacebookShareDefaultTitle:@"RenderTexture Test"
+                                             defaultCaption:@"Testing Kamcord"
+                                         defaultDescription:@"It's a test!"];
+    
+    [[KCManager sharedManager] setDeveloperKey:@"Key123"];
+    [[KCManager sharedManager] setDeveloperMessage:@"Brought to you by Kamcord."];
 	
 	// make the OpenGLView a child of the main window
 	[window addSubview:glView];
