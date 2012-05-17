@@ -1,9 +1,9 @@
-# cocos2d-kamcord (alpha V0.1)
+# cocos2d-kamcord 0.1.0 alpha
 
 
 ## Introduction
 
-Kamcord is a built-in gameplay recording technology for iOS. This repository contains a custom build of cocos2d-1.0.1 modified to include Kamcord technology. It allows you, the game developer, to capture gameplay videos with a very simple API.
+Kamcord is a built-in gameplay recording technology for iOS. This repository contains a custom build of <b>Cocos2d-1.0.1</b> modified to include Kamcord technology. It allows you, the game developer, to capture gameplay videos with a very simple API.
 Your users can then replay, save, and share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
 In order to use Kamcord, you need an API key. To get one, please email Kevin at <a mailto="kevin@kamcord.com">kevin@kamcord.com</a>.
@@ -14,15 +14,15 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
 ## Installation
 
 <ol>
-<li style="margin: 0";>Remove libcocos2d.a from your project. The framework you are about to install includes all cocos2d features and functionalities.</li>
+<li style="margin: 0";>Remove libcocos2d.a from your project. The framework you are about to install includes all Cocos2D-1.0.1 features and functionalities.</li>
 <li style="margin: 0";>Clone this repository to your local development machine.</li>
 <li style="margin: 0";>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
-<li style="margin: 0";">Drag and drop <code>Resources</code> and <code>External-headers</code> to your project.</li>
+<li style="margin: 0";">Drag and drop <code>Resources</code> and <code>External-headers</code> to your project. <b>When you do, make sure to check the box next to the target application you want to link this library to (your game, presumably).</b></li>
 <li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 	<ul>
-        <li style="margin: 0;">AssetsLibrary</li>
         <li style="margin: 0;">AVFoundation</li>
+        <li style="margin: 0;">AWSiOSSDK</li>
         <li style="margin: 0;">cocos2d-kamcord</li>
         <li style="margin: 0;">CoreGraphics</li>
         <li style="margin: 0;">CoreMedia</li>
@@ -42,29 +42,49 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
 
 <p>
 To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <code>[+]</code> button at the bottom of the <code>Link Binary With Libraries</code> section. Instead, drag <code>cocos2d-kamcord.framework</code> from your project to this list.
+</p>
+
 <p>
+<img src="http://dl.dropbox.com/u/6122/Kamcord/xcode%20cocos2d-kamcord.framework.png"/>
+</p>
 
 </li>
 <li style="margin: 0;">Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>:
 	<p>
     <ul style="margin-bottom: 15px;">
-        <li style="margin: 0;">-lxml2</li>
         <li style="margin: 0;">-ObjC</li>
         <li style="margin: 0;">-all_load</li>
     </ul>
     </p>
+    <p>
+    <img src="http://dl.dropbox.com/u/6122/Kamcord/other_linker_flags.png"/>
+    </p>
 </li>
-<li style="margin: 0;">Add <code>/usr/include/libxml2</code> to <code>Build Settings</code> ==> <code>Header Search Paths</code>.</li>
-
-<li style="margin: 0;">In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure you have a rootViewController set and set the view of that ViewController to your <code>EAGLView</code>.
+<li>We will provide you guys with a Kamcord developer key and developer secret. Please be sure to set them when your app initializes or recording won't work:
 
 <p>
-<pre><code>window.rootViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-window.rootViewController.view = glView;
+<pre><code>[[KCManager sharedManager] setDeveloperKey:@"My_Developer_Key"
+							setDeveloperSecret:@"My_Developer_Secret"];</code></pre>
+</p>
+</li>
+<li style="margin: 0;">In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure `window.rootViewController` is set to an instance of `KCViewController`. Also set the view of that ViewController to your <code>EAGLView</code>.
+
+<p>
+<pre><code>window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
+window.rootViewController.view = glView; // Assuming glView is your EAGLView
 [[KCManager sharedManager] setParentViewController:window.rootViewController];</code></pre>
 <p>
 
-If you already have a UIViewController, use that instead. Kamcord assumes that your window's rootViewController is the only active UIViewController in the view hierarchy.
+<p>Kamcord uses UIKit autorotation. For all practical purposes in your game, this doesn't affect anything. Set your game orientation as you do normally with <code>[[CCDirector sharedDirector] setDeviceOrientation:…]</code>.<b>You just need to make sure your </b><code>window.rootViewController</code><b> is an instance of </b><code>KCViewController</code><b> or its subclass.</b> If you cannot do this, get in touch with Kevin at <a href="mailto:kevin@kamcord.com"">kevin@kamcord.com</a> or call him at (631) 252-3176 any time of day and we'll help you with a simple workaround.</p>
+
+<p>
+This must all be done before:
+
+<pre><code>[window addSubview:glView];
+[window makeKeyAndVisible];</code></pre>
+	
+The full example further below lays this out very clearly.
+</p>
 </li>
 </ol>
 
@@ -72,7 +92,7 @@ Your project should build successfully at this point.
 
 ## How to use Kamcord
 
-We've tried to keep the Kamcord API as simple as possible. The only class you will need to interface with is `KCManager`, which is included by `cocos2d.h`. To get an instance, call `[KCManager sharedManager]`.
+We've tried to keep the Kamcord API as simple as possible. The only class you will need to interface with is `KCManager`, which is automatically included for you in `cocos2d.h`. To get an instance, call `[KCManager sharedManager]`.
 
 KCManager's public API is broken down by different functionalities.
 
@@ -127,58 +147,62 @@ This presents a modal view with the following options:
 <p>
 <ul>
     <li style="margin: 0;">Replay video</li>
-    <li style="margin: 0;">Save video to Photos</li>
-    <li style="margin: 0;">Email video</li>
-    <li style="margin: 0;">Upload to YouTube</li>
-    <li style="margin: 0;">Share on Facebook</li>
-    <li style="margin: 0;">Share on Twitter</li>
+    <li style="margin: 0;">Share</li>
 </ul>
 </p>
 
-`Replay video` will show the video of the gameplay that just happened (the result of the last `endVideo` call). `Save video to Photos` will save a copy of the video to the device's photo album.
+`Replay video` will show the video of the gameplay that just happened (the result of the last `endVideo` call). 
 
-`Email video` will upload the video to the Kamcord channel YouTube and then present the user with an email dialog that has the video link in the email body.
+`Share` will bring the user to a new view that lets them enter a message and select Facebook, Twitter, and/or email. When the user taps the `Share` button on this second view, we upload the video to YouTube and share their message to their selected social networks or email. The first time the user selects Facebook or Twitter, he will be prompted for the relevant credentials and permissions. 
 
-`Upload to YouTube` lets the user upload the video to the Kamcord YouTube channel with a title and description.
-
-Lastly, `Share on Facebook` and `Share on Twitter` allow the user to share a link of the uploaded YouTube video on their social networks. If the video has not been uploaded to YouTube yet, it will do that first and then present the Facebook/Twitter sharing dialogs to the user.
-
-### Developer Goodies
-
-You as the developer can set defaults for when the user uploads to YouTube and shares to Facebook and Twitter. Specifically, you have the following API calls available to you:
-
-    -(void) setYouTubeUploadDefaultTitle:(NSString *)title
-                      defaultDescription:(NSString *)description
-                         defaultKeywords:(NSString *)keywords;
-                         
-    -(void) setFacebookShareDefaultTitle:(NSString *)title
-	                      defaultCaption:(NSString *)caption
-	                  defaultDescription:(NSString *)description;
-                         
-    -(void) setDefaultTweet:(NSString *)tweet;
-
-When the user is asked to fill the fields of the YouTube/Facebook/Twitter upload/share dialogs, these strings will be used to pre-populate the corresponding fields. Note that for `setDefaultTweet:`, the video URL will be appended to the message with a space. So for instance, if you set the default Tweet to
+On Facebook, we will share the URL of the video with their typed message. A thumbnail from the video will be automatically generated and shown. On Twitter, if the user types the following message:
 
 `Check out my XYZ gameplay!`
 
 the actual tweeted message will be
 
-`Check out my XYZ gameplay! http://www.youtube.com/watch?v=abcfoobar123`
+`Check out my XYZ gameplay! | http://www.kamcord.com/watch/abcfoobar123`
 
-Keep in mind that Twitter has a 140 character limit, so it's best to keep default tweets short. Lastly, you can set a default "developer message" to append to YouTube and Facebook descriptions:
+where the kamcord.com URL will instantly <a href="http://en.wikipedia.org/wiki/HTTP_302">HTTP 302</a> redirect to the corresponding YouTube video.
 
-	-(void) setDeveloperMessage:(NSString *)message;
+### Differences from Cocos2D
 
-This will show up at the end of every YouTube and Facebook description that your gamers upload or share. It's a great way for you to advertise your game with something like "Get MyCoolGame at http://www.mycoolgame.com/".
+If your application's setup code calls `CC_DIRECTOR_INIT()` right now, you'll need to replace it with `CC_DIRECTOR_INIT_KAMCORD_SAFE()` and add the following two lines later in your app delegate's `applicationDidFinishLaunching`:
 
-### Flurry analytics
+	[window addSubview:[[CCDirector sharedDirector] openGLView]];
+	[window makeKeyAndVisible];
 
-TODO
+A simple example illustrating this is in `Examples/SceneTest.m:applicationDidFinishLaunching`.
+
+### Developer Goodies
+
+You as the developer can set defaults for when the user uploads to YouTube and shares to Facebook. A YouTube video looks like this:
+
+<img src="http://dl.dropbox.com/u/6122/Kamcord/youtube_video2.png"/>
+
+You can set the title, description, and tags (highlighted in the orange boxes) with the following API call:
+
+	-(void) setYouTubeUploadDefaultTitle:(NSString *)title
+	                  defaultDescription:(NSString *)description
+	                            keywords:(NSString *)keywords;
+
+A Facebook wall post looks like the following:
+
+<img src="http://dl.dropbox.com/u/6122/Kamcord/facebook_share.png"/>
+
+The `Message` is the text the user will enter. You can set the title, caption, and description with the following API call:
+
+	-(void) setFacebookShareTitle:(NSString *)title
+	                      caption:(NSString *)caption
+	                  description:(NSString *)description;
+
+
+When the user shares to Facebook, their video is first uploaded to YouTube. These strings will be used to pre-populate the corresponding fields on YouTube and Facebook. Needless to say, this is a great way to advertise your game by putting links to your website or your game's page on the Apple app store.
 
 
 ## Examples
 
-The `Examples` directory has a fully functional example of how to use Kamcord in your application. It is a slightly modified version of the `RenderTextureTest` from the cocos2d test suite. When the app launches, there are two buttons on the top right of the screen you can press to start and stop video recording.
+The `Examples` directory has a fully functional example of how to use Kamcord in your application. It is a slightly modified version of `RenderTextureTest` from the cocos2d test suite. When the app launches, there are two buttons on the top right of the screen you can press to start and stop video recording.
 
 Below are all of the code integration points. We bold the lines we added to make Kamcord work. First, we do some initialization:
 
@@ -193,8 +217,9 @@ Below are all of the code integration points. We bold the lines we added to make
 	// before creating any layer, set the landscape mode
 	CCDirector *director = [CCDirector sharedDirector];
 	
-	// landscape orientation
-	[director setDeviceOrientation:kCCDeviceOrientationLandscapeRight];
+	// Landscape orientation
+	<b>// Set as you normally do</b>
+	[director setDeviceOrientation:CCDeviceOrientationLandscapeRight];
 	
 	// set FPS at 60
 	[director setAnimationInterval:1.0/60];
@@ -214,19 +239,26 @@ Below are all of the code integration points. We bold the lines we added to make
 	if( ! [director enableRetinaDisplay:YES] )
 		CCLOG(@"Retina Display Not supported");
     <b>
-    // Create the window's root view controller
-    window.rootViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    // Set the window's root view controller to an instance or subclass
+    // of KCViewController
+    window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
     window.rootViewController.view = glView;
     [[KCManager sharedManager] setParentViewController:window.rootViewController];
     [[KCManager sharedManager] setYouTubeUploadDefaultTitle:@"RenderTexture Test"
                                          defaultDescription:@"Testing Kamcord 0.1"
-                                            defaultKeywords:@"cocos2d"];
+                                                   keywords:@"cocos2d"];
+    
+    [[KCManager sharedManager] setFacebookShareTitle:@"RenderTexture Test"
+                                             caption:@"Testing Kamcord"
+                                         description:@"It's a test!"];
+    
+    [[KCManager sharedManager] setDeveloperKey:@"Key123"
+                               developerSecret:@"Secret123"];
     </b>
-	// make the OpenGLView a child of the main window
+	// Make the OpenGLView a child of the main window and make the main window visible.
+	<b>// Must do this AFTER setting the window's rootViewController.</b>
 	[window addSubview:glView];
-	
-	// make main window visible
-	[window makeKeyAndVisible];	
+	[window makeKeyAndVisible];		
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
