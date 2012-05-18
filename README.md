@@ -60,11 +60,11 @@ To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <
     <img src="http://dl.dropbox.com/u/6122/Kamcord/other_linker_flags.png"/>
     </p>
 </li>
-<li>We will provide you guys with a Kamcord developer key and developer secret. Please be sure to set them when your app initializes or recording won't work:
+<li>We will provide you with a Kamcord developer key and developer secret. Please be sure to set them when your app initializes or recording won't work:
 
 <p>
-<pre><code>[[KCManager sharedManager] setDeveloperKey:@"My_Developer_Key"
-							setDeveloperSecret:@"My_Developer_Secret"];</code></pre>
+<pre><code>[[KCManager sharedManager] setDeveloperKey:@"My_Developer_Key"];
+[[KCManager sharedManager] setDeveloperSecret:@"My_Developer_Secret"];</code></pre>
 </p>
 </li>
 <li style="margin: 0;">In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure `window.rootViewController` is set to an instance of `KCViewController`. Also set the view of that ViewController to your <code>EAGLView</code>.
@@ -75,7 +75,7 @@ window.rootViewController.view = glView; // Assuming glView is your EAGLView
 [[KCManager sharedManager] setParentViewController:window.rootViewController];</code></pre>
 <p>
 
-<p>Kamcord uses UIKit autorotation. For all practical purposes in your game, this doesn't affect anything. Set your game orientation as you do normally with <code>[[CCDirector sharedDirector] setDeviceOrientation:…]</code>.<b>You just need to make sure your </b><code>window.rootViewController</code><b> is an instance of </b><code>KCViewController</code><b> or its subclass.</b> If you cannot do this, get in touch with Kevin at <a href="mailto:kevin@kamcord.com"">kevin@kamcord.com</a> or call him at (631) 252-3176 any time of day and we'll help you with a simple workaround.</p>
+<p>Kamcord uses UIKit for autorotation. For all practical purposes in your game, this doesn't affect anything. Set your game orientation as you do normally with <code>[[CCDirector sharedDirector] setDeviceOrientation:...]</code>.<b>You just need to make sure your </b><code>window.rootViewController</code><b> is an instance of </b><code>KCViewController</code><b> or its subclass.</b> If you can't do this, get in touch with Kevin at <a href="mailto:kevin@kamcord.com"">kevin@kamcord.com</a> or call him at (631) 252-3176 any time of day and we'll help you with a simple workaround (a short chunk of code you can copy and paste into your own custom <code>UIViewController</code>).</p>
 
 <p>
 This must all be done before:
@@ -180,25 +180,32 @@ You as the developer can set defaults for when the user uploads to YouTube and s
 
 <img src="http://dl.dropbox.com/u/6122/Kamcord/youtube_video2.png"/>
 
-You can set the title, description, and tags (highlighted in the orange boxes) with the following API call:
+You can set the title, description, and tags (highlighted in the orange boxes) with the following properties:
 
-	-(void) setYouTubeUploadDefaultTitle:(NSString *)title
-	                  defaultDescription:(NSString *)description
-	                            keywords:(NSString *)keywords;
+	@property (nonatomic, retain) NSString * youtubeTitle;
+	@property (nonatomic, retain) NSString * youtubeDescription;
+	@property (nonatomic, retain) NSString * youtubeKeywords;
 
 A Facebook wall post looks like the following:
 
 <img src="http://dl.dropbox.com/u/6122/Kamcord/facebook_share.png"/>
 
-The `Message` is the text the user will enter. You can set the title, caption, and description with the following API call:
+The `Message` is the text the user will enter. You can set the title, caption, and description with the following properties:
 
-	-(void) setFacebookShareTitle:(NSString *)title
-	                      caption:(NSString *)caption
-	                  description:(NSString *)description;
-
+	@property (nonatomic, retain) NSString * facebookTitle;
+	@property (nonatomic, retain) NSString * facebookCaption;
+	@property (nonatomic, retain) NSString * facebookDescription;
 
 When the user shares to Facebook, their video is first uploaded to YouTube. These strings will be used to pre-populate the corresponding fields on YouTube and Facebook. Needless to say, this is a great way to advertise your game by putting links to your website or your game's page on the Apple app store.
 
+### Developer API Key and Secret
+
+As we mentioned before in the installation section, don't forget to set your Kamcord developer key and secret using this function:
+
+	-(void) setDeveloperKey:(NSString *)key
+         	developerSecret:(NSString *)secret;
+
+We will give you a key and secret per game you build. We'll give you as many key/secret pairs you need, just don't tell them to anyone else.
 
 ## Examples
 
@@ -217,7 +224,7 @@ Below are all of the code integration points. We bold the lines we added to make
 	// before creating any layer, set the landscape mode
 	CCDirector *director = [CCDirector sharedDirector];
 	
-	// Landscape orientation
+	// landscape orientation
 	<b>// Set as you normally do</b>
 	[director setDeviceOrientation:CCDeviceOrientationLandscapeRight];
 	
@@ -235,39 +242,48 @@ Below are all of the code integration points. We bold the lines we added to make
 	// attach the openglView to the director
 	[director setOpenGLView:glView];
 	
+	// 2D projection
+//	[director setProjection:kCCDirectorProjection2D];
+	
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
 	if( ! [director enableRetinaDisplay:YES] )
 		CCLOG(@"Retina Display Not supported");
+    
     <b>
     // Set the window's root view controller to an instance or subclass
     // of KCViewController
     window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
     window.rootViewController.view = glView;
-    [[KCManager sharedManager] setParentViewController:window.rootViewController];
-    [[KCManager sharedManager] setYouTubeUploadDefaultTitle:@"RenderTexture Test"
-                                         defaultDescription:@"Testing Kamcord 0.1"
-                                                   keywords:@"cocos2d"];
     
-    [[KCManager sharedManager] setFacebookShareTitle:@"RenderTexture Test"
-                                             caption:@"Testing Kamcord"
-                                         description:@"It's a test!"];
+    KCManager * kcmanager = [KCManager sharedManager];
+    kcmanager.parentViewController = window.rootViewController;
+    kcmanager.developerKey = @"386441044729315";
+    kcmanager.developerSecret = @"My_Developer_Secret";
+
+    kcmanager.youtubeTitle = @"RenderTextureTest + Kamcord";
+    kcmanager.youtubeKeywords = @"cocos2d RenderTextureTest";
+    kcmanager.youtubeDescription = @"It's a test!";
     
-    [[KCManager sharedManager] setDeveloperKey:@"Key123"
-                               developerSecret:@"Secret123"];
+    kcmanager.facebookTitle = @"RenderTextureTest";
+    kcmanager.facebookCaption = @"Facbook caption ...";
+    kcmanager.facebookDescription = @"Facebook desc ...";
+    
+    kcmanager.gameName = @"Oompa Loompa";
     </b>
-	// Make the OpenGLView a child of the main window and make the main window visible.
-	<b>// Must do this AFTER setting the window's rootViewController.</b>
+	
+	// make the OpenGLView a child of the main window and make the main window visible
+	<b>// Must do this AFTER setting the window's rootViewController</b>
 	[window addSubview:glView];
-	[window makeKeyAndVisible];		
+	[window makeKeyAndVisible];	
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
 	// You can change anytime.
-	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
+	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];		
 	
 	CCScene *scene = [CCScene node];
 	[scene addChild: [nextAction() node]];
-
+    
 	[director runWithScene: scene];
 }</code></pre>
 
