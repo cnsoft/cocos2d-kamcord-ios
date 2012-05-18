@@ -202,8 +202,8 @@ When the user shares to Facebook, their video is first uploaded to YouTube. Thes
 
 As we mentioned before in the installation section, don't forget to set your Kamcord developer key and secret using this function:
 
-	-(void) setDeveloperKey:(NSString *)key
-         	developerSecret:(NSString *)secret;
+	@property (nonatomic, retain) NSString * developerKey;
+	@property (nonatomic, retain) NSString * developerSecret;
 
 We will give you a key and secret per game you build. We'll give you as many key/secret pairs you need, just don't tell them to anyone else.
 
@@ -265,7 +265,7 @@ Below are all of the code integration points. We bold the lines we added to make
     kcmanager.youtubeDescription = @"It's a test!";
     
     kcmanager.facebookTitle = @"RenderTextureTest";
-    kcmanager.facebookCaption = @"Facbook caption ...";
+    kcmanager.facebookCaption = @"Facebook caption ...";
     kcmanager.facebookDescription = @"Facebook desc ...";
     
     kcmanager.gameName = @"Oompa Loompa";
