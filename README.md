@@ -82,7 +82,8 @@ window.rootViewController.view = glView; // Assuming glView is your EAGLView
 This must all be done before:
 
 <pre><code>[window addSubview:glView];
-[window makeKeyAndVisible];</code></pre>
+[window makeKeyAndVisible];
+</code></pre>
 	
 The full example further below lays this out very clearly.
 </p>
@@ -375,5 +376,5 @@ To test this functionality, press `Start Recording`, play with the app, then clo
 
 ## Contact Us
 
-If you have any questions or comments, don't hesitate to get in touch at <a href="mailto:hello@kamcord.com">hello@kamcord.com</a>. We reply to every email usually within a couple of hours, if not sooner.
+If you have any questions or comments, don't hesitate to email Kevin at <a href="mailto:kevin@kamcord.com">kevin@kamcord.com</a>. We reply to every email usually within a couple of hours, if not sooner.
 
