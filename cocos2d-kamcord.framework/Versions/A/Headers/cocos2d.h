@@ -151,6 +151,8 @@
 //
 #import "KCManager.h"
 
+#import "KCViewController.h"
+
 #if CC_ENABLE_PROFILERS
 #import "Support/CCProfiling.h"
 #endif // CC_ENABLE_PROFILERS

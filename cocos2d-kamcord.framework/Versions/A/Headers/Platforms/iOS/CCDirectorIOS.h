@@ -122,6 +122,8 @@ typedef enum {
 /** returns the device orientation */
 -(ccDeviceOrientation) deviceOrientation;
 
+-(ccDeviceOrientation) trueDeviceOrientation;
+
 /** The size in pixels of the surface. It could be different than the screen size.
  High-res devices might have a higher surface size than the screen size.
  In non High-res device the contentScale will be emulated.
@@ -176,6 +178,7 @@ typedef enum {
 {
 	/* orientation */
 	ccDeviceOrientation	deviceOrientation_;
+    ccDeviceOrientation	trueDeviceOrientation_;
 	
 	/* contentScaleFactor could be simulated */
 	BOOL	isContentScaleSupported_;

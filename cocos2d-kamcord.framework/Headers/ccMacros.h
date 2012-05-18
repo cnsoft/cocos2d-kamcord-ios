@@ -153,13 +153,33 @@ default gl blend src function. Compatible with premultiplied alpha images.
 
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 
+#define CC_DIRECTOR_INIT_KAMCORD_SAFE()															\
+do	{																							\
+    window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];					\
+    if( ! [CCDirector setDirectorType:kCCDirectorTypeDisplayLink] )								\
+        [CCDirector setDirectorType:kCCDirectorTypeNSTimer];									\
+    CCDirector *__director = [CCDirector sharedDirector];										\
+    [__director setDeviceOrientation:kCCDeviceOrientationPortrait];                             \
+    [__director setDisplayFPS:NO];																\
+    [__director setAnimationInterval:1.0/60];													\
+    EAGLView *__glView = [EAGLView viewWithFrame:[window bounds]								\
+                                     pixelFormat:kEAGLColorFormatRGB565							\
+                                     depthFormat:0 /* GL_DEPTH_COMPONENT24_OES */				\
+                              preserveBackbuffer:NO												\
+                                      sharegroup:nil											\
+                                   multiSampling:NO                                             \
+                                 numberOfSamples:0												\
+                                                    ];                                          \
+    [__director setOpenGLView:__glView];														\
+} while(0)
+
 #define CC_DIRECTOR_INIT()																		\
 do	{																							\
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];					\
 	if( ! [CCDirector setDirectorType:kCCDirectorTypeDisplayLink] )								\
 		[CCDirector setDirectorType:kCCDirectorTypeNSTimer];									\
 	CCDirector *__director = [CCDirector sharedDirector];										\
-	[__director setDeviceOrientation:kCCDeviceOrientationPortrait];								\
+    [__director setDeviceOrientation:kCCDeviceOrientationPortrait];                             \
 	[__director setDisplayFPS:NO];																\
 	[__director setAnimationInterval:1.0/60];													\
 	EAGLView *__glView = [EAGLView viewWithFrame:[window bounds]								\
