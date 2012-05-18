@@ -492,7 +492,6 @@
 		0A7B4B3A155899C70098BD0D = {
 			isa = PBXGroup;
 			children = (
-				0A8D2E9115662A8900EEC778 /* Accounts.framework */,
 				0A7B4B4F155899C70098BD0D /* RenderTextureTest-Kamcord */,
 				0A7B4B48155899C70098BD0D /* Frameworks */,
 				0A7B4E761558E5D50098BD0D /* libz.dylib */,
@@ -511,6 +510,7 @@
 		0A7B4B48155899C70098BD0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A8D2E9115662A8900EEC778 /* Accounts.framework */,
 				0A8D2E8F15662A7000EEC778 /* AWSiOSSDK.framework */,
 				0A0B6DA5155A529100FE6264 /* cocos2d-kamcord.framework */,
 				0A7B4E621558E4CC0098BD0D /* AVFoundation.framework */,
