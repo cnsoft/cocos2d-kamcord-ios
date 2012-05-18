@@ -156,7 +156,7 @@ Class restartAction()
 		lastLocation = CGPointMake( s.width/2, s.height/2);
 #endif
 		
-		// Kamcord menu
+		// Save Image menu
 		[CCMenuItemFont setFontSize:16];
 		CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Start Recording" target:self selector:@selector(startRecording:)];
 		CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Stop Recording" target:self selector:@selector(stopRecordingAndShowDialog:)];
@@ -170,7 +170,7 @@ Class restartAction()
 
 -(NSString*) title
 {
-	return @"Touch the screen to draw";
+	return @"Touch the screen";
 }
 
 -(NSString*) subtitle
@@ -190,6 +190,7 @@ Class restartAction()
     [[KCManager sharedManager] endVideo];
     [[KCManager sharedManager] showKamcordView];
 }
+
 
 -(void) dealloc
 {
@@ -530,7 +531,8 @@ Class restartAction()
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	// landscape orientation
-	[director setDeviceOrientation:kCCDeviceOrientationLandscapeRight];
+    // Set as you normally do
+	[director setDeviceOrientation:CCDeviceOrientationLandscapeRight];
 	
 	// set FPS at 60
 	[director setAnimationInterval:1.0/60];
@@ -553,25 +555,29 @@ Class restartAction()
 	if( ! [director enableRetinaDisplay:YES] )
 		CCLOG(@"Retina Display Not supported");
     
-    // Create the window's root view controller
-    window.rootViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    // Set the window's root view controller to an instance or subclass
+    // of KCViewController
+    window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
     window.rootViewController.view = glView;
-    [[KCManager sharedManager] setParentViewController:window.rootViewController];
-    [[KCManager sharedManager] setYouTubeUploadDefaultTitle:@"RenderTexture Test"
-                                         defaultDescription:@"Testing Kamcord 0.1"
-                                            defaultKeywords:@"cocos2d"];
     
-    [[KCManager sharedManager] setFacebookShareDefaultTitle:@"RenderTexture Test"
-                                             defaultCaption:@"Testing Kamcord"
-                                         defaultDescription:@"It's a test!"];
+    KCManager * kcmanager = [KCManager sharedManager];
+    kcmanager.parentViewController = window.rootViewController;
+    kcmanager.developerKey = @"386441044729315";
+    kcmanager.developerSecret = @"My_Developer_Secret";
+
+    kcmanager.youtubeTitle = @"RenderTextureTest + Kamcord";
+    kcmanager.youtubeKeywords = @"cocos2d RenderTextureTest";
+    kcmanager.youtubeDescription = @"It's a test!";
     
-    [[KCManager sharedManager] setDeveloperKey:@"Key123"];
-    [[KCManager sharedManager] setDeveloperMessage:@"Brought to you by Kamcord."];
+    kcmanager.facebookTitle = @"RenderTextureTest";
+    kcmanager.facebookCaption = @"Facebook caption ...";
+    kcmanager.facebookDescription = @"Facebook desc ...";
+    
+    kcmanager.gameName = @"Oompa Loompa";
 	
-	// make the OpenGLView a child of the main window
+	// make the OpenGLView a child of the main window and make the main window visible
+    // Must do this AFTER setting the window's rootViewController
 	[window addSubview:glView];
-	
-	// make main window visible
 	[window makeKeyAndVisible];	
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
@@ -584,6 +590,7 @@ Class restartAction()
     
 	[director runWithScene: scene];
 }
+
 
 // getting a call, pause the game
 -(void) applicationWillResignActive:(UIApplication *)application

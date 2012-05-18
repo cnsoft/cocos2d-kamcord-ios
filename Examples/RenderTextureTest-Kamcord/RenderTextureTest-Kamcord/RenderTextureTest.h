@@ -1,8 +1,8 @@
-#import <cocos2d-kamcord/cocos2d.h>
+#import "Cocos2d.h"
 
 @class Sprite;
 
-// CLASS INTERFACE
+//CLASS INTERFACE
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 @interface AppController : NSObject <UIApplicationDelegate>
 {
