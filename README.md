@@ -358,17 +358,18 @@ For most games, you'll want to defer the calls to `beginVideo` and `startRecordi
 
 To highlight the handling of the application lifecycle, we've made additions to the following functions:
 
-<pre><code>-(void) applicationDidBecomeActive:(UIApplication *)application
+<pre><code>-(void) applicationWillResignActive:(UIApplication *)application
+{
+	[[CCDirector sharedDirector] pause];
+    <b>[[KCManager sharedManager] stopRecordingClip];</b>
+}
+
+-(void) applicationDidBecomeActive:(UIApplication *)application
 {
     <b>[[KCManager sharedManager] startRecordingClip];</b>
 	[[CCDirector sharedDirector] resume];
 }
-
--(void) applicationDidEnterBackground:(UIApplication*)application
-{
-	[[CCDirector sharedDirector] stopAnimation];
-    <b>[[KCManager sharedManager] stopRecordingClip];</b>
-}</code></pre>
+</code></pre>
 
 That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `beginVideo` has not been called), the calls to `startRecordingClip` and `stopRecordingClip` do nothing.
 
