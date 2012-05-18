@@ -4,9 +4,9 @@
 ## Introduction
 
 Kamcord is a built-in gameplay recording technology for iOS. This repository contains a custom build of <b>Cocos2d-1.0.1</b> modified to include Kamcord technology. It allows you, the game developer, to capture gameplay videos with a very simple API.
-Your users can then replay, save, and share these gameplay videos via YouTube, Facebook, Twitter, and email.
+Your users can then replay and share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
-In order to use Kamcord, you need an API key. To get one, please email Kevin at <a mailto="kevin@kamcord.com">kevin@kamcord.com</a>.
+In order to use Kamcord, you need a developer key and developer secret. To get a pair, please email Kevin at <a mailto="kevin@kamcord.com">kevin@kamcord.com</a>.
 
 This is currently an alpha V0.1 build. We will be making lots of improvements over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to email Kevin.
 
@@ -17,13 +17,14 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
 <li style="margin: 0";>Remove libcocos2d.a from your project. The framework you are about to install includes all Cocos2D-1.0.1 features and functionalities.</li>
 <li style="margin: 0";>Clone this repository to your local development machine.</li>
 <li style="margin: 0";>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
-<li style="margin: 0";">Drag and drop <code>Resources</code> and <code>External-headers</code> to your project. <b>When you do, make sure to check the box next to the target application you want to link this library to (your game, presumably).</b></li>
+<li style="margin: 0";>Under <code>Other Frameworks</code>, drag and drop <code>AWSiOSSDK.framework</code> into your project.</li>
+<li style="margin: 0";">Drag and drop <code>Resources</code> to your project. <b>When you do, make sure to check the box next to the target application you want to link this library to (your game, presumably).</b></li>
 <li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 	<ul>
         <li style="margin: 0;">AVFoundation</li>
-        <li style="margin: 0;">AWSiOSSDK</li>
-        <li style="margin: 0;">cocos2d-kamcord</li>
+        <li style="margin: 0;"><b>AWSiOSSDK</b></li>
+        <li style="margin: 0;"><b>cocos2d-kamcord</b></li>
         <li style="margin: 0;">CoreGraphics</li>
         <li style="margin: 0;">CoreMedia</li>
         <li style="margin: 0;">CoreVideo</li>
@@ -41,7 +42,7 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
     </p>
 
 <p>
-To add <code>cocos2d-kamcord.framework</code> to this list, you cannot use the <code>[+]</code> button at the bottom of the <code>Link Binary With Libraries</code> section. Instead, drag <code>cocos2d-kamcord.framework</code> from your project to this list.
+To add <code>cocos2d-kamcord.framework</code> and <code>AWSiOSSDK.framework</code> to this list, you cannot use the <code>[+]</code> button at the bottom of the <code>Link Binary With Libraries</code> section. Instead, drag <code>cocos2d-kamcord.framework</code> from your project to this list.
 </p>
 
 <p>
@@ -75,7 +76,7 @@ window.rootViewController.view = glView; // Assuming glView is your EAGLView
 [[KCManager sharedManager] setParentViewController:window.rootViewController];</code></pre>
 <p>
 
-<p>Kamcord uses UIKit for autorotation. For all practical purposes in your game, this doesn't affect anything. Set your game orientation as you do normally with <code>[[CCDirector sharedDirector] setDeviceOrientation:...]</code>.<b>You just need to make sure your </b><code>window.rootViewController</code><b> is an instance of </b><code>KCViewController</code><b> or its subclass.</b> If you can't do this, get in touch with Kevin at <a href="mailto:kevin@kamcord.com"">kevin@kamcord.com</a> or call him at (631) 252-3176 any time of day and we'll help you with a simple workaround (a short chunk of code you can copy and paste into your own custom <code>UIViewController</code>).</p>
+<p>Kamcord uses UIKit for autorotation. For all practical purposes in your game, this doesn't affect anything. Set your game orientation as you do normally with <code>[[CCDirector sharedDirector] setDeviceOrientation:...]</code>.<b>You just need to make sure your </b><code>window.rootViewController</code><b> is an instance of </b><code>KCViewController</code><b> or its subclass.</b> If you can't do this, get in touch with Kevin at <a href="mailto:kevin@kamcord.com"">kevin@kamcord.com</a> and we'll help you with a simple workaround (a short chunk of code you can copy and paste into your own custom <code>UIViewController</code>).</p>
 
 <p>
 This must all be done before:
@@ -153,15 +154,15 @@ This presents a modal view with the following options:
 
 `Replay video` will show the video of the gameplay that just happened (the result of the last `endVideo` call). 
 
-`Share` will bring the user to a new view that lets them enter a message and select Facebook, Twitter, and/or email. When the user taps the `Share` button on this second view, we upload the video to YouTube and share their message to their selected social networks or email. The first time the user selects Facebook or Twitter, he will be prompted for the relevant credentials and permissions. 
+`Share` will bring the user to a new view that lets them enter a message and select Facebook, Twitter, and/or email. When the user taps the `Share` button on this second view, we upload the video to our (Kamcord's) YouTube channel and share their message to their selected social networks or via email. The first time the user selects Facebook or Twitter, he will be prompted for the relevant credentials and permissions. 
 
 On Facebook, we will share the URL of the video with their typed message. A thumbnail from the video will be automatically generated and shown. On Twitter, if the user types the following message:
 
-`Check out my XYZ gameplay!`
+`Check out my gameplay!`
 
 the actual tweeted message will be
 
-`Check out my XYZ gameplay! | http://www.kamcord.com/watch/abcfoobar123`
+`Check out my gameplay! | http://www.kamcord.com/watch/abcfoobar123`
 
 where the kamcord.com URL will instantly <a href="http://en.wikipedia.org/wiki/HTTP_302">HTTP 302</a> redirect to the corresponding YouTube video.
 
@@ -186,7 +187,7 @@ You can set the title, description, and tags (highlighted in the orange boxes) w
 	@property (nonatomic, retain) NSString * youtubeDescription;
 	@property (nonatomic, retain) NSString * youtubeKeywords;
 
-A Facebook wall post looks like the following:
+The keywords is one string of word tokens delimited by spaces. A Facebook wall post looks like the following:
 
 <img src="http://dl.dropbox.com/u/6122/Kamcord/facebook_share.png"/>
 
@@ -196,9 +197,19 @@ The `Message` is the text the user will enter. You can set the title, caption, a
 	@property (nonatomic, retain) NSString * facebookCaption;
 	@property (nonatomic, retain) NSString * facebookDescription;
 
-When the user shares to Facebook, their video is first uploaded to YouTube. These strings will be used to pre-populate the corresponding fields on YouTube and Facebook. Needless to say, this is a great way to advertise your game by putting links to your website or your game's page on the Apple app store.
+When the user shares to Facebook, their video is first uploaded to YouTube. We will then use your settings to populate the corresponding fields on YouTube and Facebook. Needless to say, this is a great way to advertise your game by putting links to your website or your game's page on the Apple App Store.
 
-### Developer API Key and Secret
+It's worth noting that every time we upload a video to YouTube and post to Facebook, we use the currently set values of these properties. Therefore, you may want to change the title, caption, and or description to match the results of the most recent gameplay (to add the score, for instance).
+
+Lastly, we also offer three other properties that you should set after you call `endVideo`:
+
+	@property (nonatomic, retain) NSString * gameName;
+	@property (nonatomic, retain) NSString * level;
+	@property (nonatomic, retain) NSNumber * score;
+	
+`gameName` only needs to be set once, but `level` and `score` should be set per video. This metadata will be uploaded along with the video and in the future, we will offer a way to access this data to provide a better quality video viewing experience for your users.
+
+### Developer Key and Secret
 
 As we mentioned before in the installation section, don't forget to set your Kamcord developer key and secret using this function:
 
@@ -361,3 +372,8 @@ To highlight the handling of the application lifecycle, we've made additions to 
 That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `beginVideo` has not been called), the calls to `startRecordingClip` and `stopRecordingClip` do nothing.
 
 To test this functionality, press `Start Recording`, play with the app, then close it by pressing the home button. Re-open the app, do some more actions, then press `Stop Recording`. When the Kamcord dialog appears, select `Replay Video`. It should show one seamless video of everything that's happened.
+
+## Contact Us
+
+If you have any questions or comments, don't hesitate to get in touch at <a href="mailto:hello@kamcord.com">hello@kamcord.com</a>. We reply to every email usually within a couple of hours, if not sooner.
+
