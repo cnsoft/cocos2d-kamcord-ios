@@ -558,7 +558,7 @@ Class restartAction()
     // Set the window's root view controller to an instance or subclass
     // of KCViewController
     window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
-    window.rootViewController.view = glView;
+    window.rootViewController.view = [[CCDirector sharedDirector] openGLView];
     
     KCManager * kcmanager = [KCManager sharedManager];
     kcmanager.parentViewController = window.rootViewController;
@@ -596,6 +596,7 @@ Class restartAction()
 -(void) applicationWillResignActive:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] pause];
+    [[KCManager sharedManager] stopRecordingClip];
 }
 
 // call got rejected
@@ -608,7 +609,6 @@ Class restartAction()
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
 	[[CCDirector sharedDirector] stopAnimation];
-    [[KCManager sharedManager] stopRecordingClip];
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application

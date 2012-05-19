@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:RenderTextureTest-Kamcord.xcodeproj">
+      location = "group:cocos2d-kamcord-ios/cocos2d-kamcord-ios.xcodeproj">
    </FileRef>
 </Workspace>

@@ -61,6 +61,19 @@ To add <code>cocos2d-kamcord.framework</code> and <code>AWSiOSSDK.framework</cod
     <img src="http://dl.dropbox.com/u/6122/Kamcord/other_linker_flags.png"/>
     </p>
 </li>
+<li>
+<p>
+If you have any other library dependencies inside Cocos2D (for instance, <code>Box2DTestBed</code> depends on <code>box2d</code> a.k.a. <code>libbox2d.a</code>), then find where that library is output, drag it into your project, and add it as a link target:
+</p>
+<img src="http://dl.dropbox.com/u/6122/Kamcord/Cocos2D%20dependencies%20%28before%29.png" />
+</p>
+<p>
+<img src="http://dl.dropbox.com/u/6122/Kamcord/libbox2d%20show%20in%20finder.png" />
+</p>
+<p>
+<img src="http://dl.dropbox.com/u/6122/Kamcord/Cocos2D%20dependencies%20%28after%29.png" />
+</p>
+</li>
 <li>We will provide you with a Kamcord developer key and developer secret. Please be sure to set them when your app initializes or recording won't work:
 
 <p>
