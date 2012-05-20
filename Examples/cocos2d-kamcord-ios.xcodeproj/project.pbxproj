@@ -177,9 +177,9 @@
 		0A5A2B921568760A00D9C8BA /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A5263F715678B9400B08AD0 /* KamcordStoryboard_iPad.storyboardc */; };
 		0A5A2B931568760A00D9C8BA /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A5263F815678B9400B08AD0 /* KamcordStoryboard_iPhone.storyboardc */; };
 		0A5A2B941568760A00D9C8BA /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A5263F915678B9400B08AD0 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A9D56FC156898740030ECBD /* cocos2d-kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9D56FB156898740030ECBD /* cocos2d-kamcord.framework */; };
-		0A9D56FD156898740030ECBD /* cocos2d-kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9D56FB156898740030ECBD /* cocos2d-kamcord.framework */; };
-		0A9D56FE156898740030ECBD /* cocos2d-kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9D56FB156898740030ECBD /* cocos2d-kamcord.framework */; };
+		0A9D57431568A2B00030ECBD /* cocos2d-kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9D57421568A2B00030ECBD /* cocos2d-kamcord.framework */; };
+		0A9D57441568A2B00030ECBD /* cocos2d-kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9D57421568A2B00030ECBD /* cocos2d-kamcord.framework */; };
+		0A9D57451568A2B00030ECBD /* cocos2d-kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9D57421568A2B00030ECBD /* cocos2d-kamcord.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -641,7 +641,7 @@
 		0A5A29341568700800D9C8BA /* texture4096x4096.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture4096x4096.png; sourceTree = "<group>"; };
 		0A5A29351568700800D9C8BA /* texture512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture512x512.png; sourceTree = "<group>"; };
 		0A5A29361568700800D9C8BA /* texture512x512_rgba4444.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = texture512x512_rgba4444.pvr; sourceTree = "<group>"; };
-		0A9D56FB156898740030ECBD /* cocos2d-kamcord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "cocos2d-kamcord.framework"; path = "../cocos2d-kamcord.framework"; sourceTree = "<group>"; };
+		0A9D57421568A2B00030ECBD /* cocos2d-kamcord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "cocos2d-kamcord.framework"; path = "../cocos2d-kamcord.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -664,7 +664,7 @@
 				0A5A249815679D3700D9C8BA /* SystemConfiguration.framework in Frameworks */,
 				0A5A249915679D3700D9C8BA /* Twitter.framework in Frameworks */,
 				0A5A249A15679D3700D9C8BA /* UIKit.framework in Frameworks */,
-				0A9D56FC156898740030ECBD /* cocos2d-kamcord.framework in Frameworks */,
+				0A9D57431568A2B00030ECBD /* cocos2d-kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,7 +687,7 @@
 				0A5A267F1567A82600D9C8BA /* SystemConfiguration.framework in Frameworks */,
 				0A5A26801567A82600D9C8BA /* Twitter.framework in Frameworks */,
 				0A5A26811567A82600D9C8BA /* UIKit.framework in Frameworks */,
-				0A9D56FD156898740030ECBD /* cocos2d-kamcord.framework in Frameworks */,
+				0A9D57441568A2B00030ECBD /* cocos2d-kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,7 +710,7 @@
 				0A5A285F156867D000D9C8BA /* SystemConfiguration.framework in Frameworks */,
 				0A5A2860156867D000D9C8BA /* Twitter.framework in Frameworks */,
 				0A5A2861156867D000D9C8BA /* UIKit.framework in Frameworks */,
-				0A9D56FE156898740030ECBD /* cocos2d-kamcord.framework in Frameworks */,
+				0A9D57451568A2B00030ECBD /* cocos2d-kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,7 +741,7 @@
 		0A5263661567879100B08AD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A9D56FB156898740030ECBD /* cocos2d-kamcord.framework */,
+				0A9D57421568A2B00030ECBD /* cocos2d-kamcord.framework */,
 				0A52660C1567905B00B08AD0 /* Accounts.framework */,
 				0A5263FE15678BAE00B08AD0 /* AWSiOSSDK.framework */,
 				0A52644315678E5700B08AD0 /* AudioToolbox.framework */,
