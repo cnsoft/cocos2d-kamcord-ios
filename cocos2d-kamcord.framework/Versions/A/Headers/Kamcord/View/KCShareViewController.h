@@ -18,7 +18,7 @@
 // For composing email
 #import <MessageUI/MFMailComposeViewController.h>
 
-@interface KCShareViewController : UIViewController <UITextViewDelegate, SHKSharerDelegate, KCVideoStatusUpdateReceiver, AmazonServiceRequestDelegate, MFMailComposeViewControllerDelegate, NSURLConnectionDelegate>
+@interface KCShareViewController : UIViewController <UITextViewDelegate, SHKSharerDelegate, KCVideoStatusUpdateReceiver, AmazonServiceRequestDelegate, MFMailComposeViewControllerDelegate, NSURLConnectionDelegate, UITableViewDataSource, UITableViewDelegate>
 {    
 
 }

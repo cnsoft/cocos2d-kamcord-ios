@@ -24,7 +24,7 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
 	<ul>
         <li style="margin: 0;">AVFoundation</li>
         <li style="margin: 0;"><b>AWSiOSSDK</b></li>
-        <li style="margin: 0;"><b>cocos2d-kamcord</b></li>
+        <li style="margin: 0;"><b><i>cocos2d-kamcord</i></b></li>
         <li style="margin: 0;">CoreGraphics</li>
         <li style="margin: 0;">CoreMedia</li>
         <li style="margin: 0;">CoreVideo</li>
@@ -37,7 +37,6 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
         <li style="margin: 0;">SystemConfiguration</li>
         <li style="margin: 0;">Twitter</li>
         <li style="margin: 0;">UIKit</li>
-        <li style="margin: 0;">libz.dylib</li>
     </ul>
     </p>
 
@@ -81,7 +80,7 @@ If you have any other library dependencies inside Cocos2D (for instance, <code>B
 [[KCManager sharedManager] setDeveloperSecret:@"My_Developer_Secret"];</code></pre>
 </p>
 </li>
-<li style="margin: 0;">In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure `window.rootViewController` is set to an instance of `KCViewController`. Also set the view of that ViewController to your <code>EAGLView</code>.
+<li style="margin: 0;">In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure <code>window.rootViewController</code> is set to an instance of <code>KCViewController</code>. Also set the view of that ViewController to your <code>EAGLView</code>.
 
 <p>
 <pre><code>window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
@@ -187,7 +186,9 @@ If your application's setup code calls `CC_DIRECTOR_INIT()` right now, you'll ne
 	[window addSubview:[[CCDirector sharedDirector] openGLView]];
 	[window makeKeyAndVisible];
 
-A simple example illustrating this is in `Examples/SceneTest.m:applicationDidFinishLaunching`.
+<b>Don't forget to add these two functions if you use</b> `CC_DIRECTOR_INIT_KAMCORD_SAFE()`. Failing to do so will cause your app to show a black screen while throwing OpenGL errors.
+
+A simple example illustrating this method can be found in `Examples/SceneTest.m:applicationDidFinishLaunching`.
 
 ### Developer Goodies
 
@@ -195,13 +196,13 @@ You as the developer can set defaults for when the user uploads to YouTube and s
 
 <img src="http://dl.dropbox.com/u/6122/Kamcord/youtube_video2.png"/>
 
-You can set the title, description, and tags (highlighted in the orange boxes) with the following properties:
+You can set the title, description, and keywords (highlighted in the orange boxes) with the following properties:
 
 	@property (nonatomic, retain) NSString * youtubeTitle;
 	@property (nonatomic, retain) NSString * youtubeDescription;
 	@property (nonatomic, retain) NSString * youtubeKeywords;
 
-The keywords is one string of word tokens delimited by spaces. A Facebook wall post looks like the following:
+`youtubeKeywords` is one string of word tokens delimited by spaces. A Facebook wall post looks like the following:
 
 <img src="http://dl.dropbox.com/u/6122/Kamcord/facebook_share.png"/>
 
@@ -215,17 +216,16 @@ When the user shares to Facebook, their video is first uploaded to YouTube. We w
 
 It's worth noting that every time we upload a video to YouTube and post to Facebook, we use the currently set values of these properties. Therefore, you may want to change the title, caption, and or description to match the results of the most recent gameplay (to add the score, for instance).
 
-Lastly, we also offer three other properties that you should set after you call `endVideo`:
+Lastly, we offer two other properties that you should set after you call `endVideo`:
 
-	@property (nonatomic, retain) NSString * gameName;
 	@property (nonatomic, retain) NSString * level;
 	@property (nonatomic, retain) NSNumber * score;
 	
-`gameName` only needs to be set once, but `level` and `score` should be set per video. This metadata will be uploaded along with the video and in the future, we will offer a way to access this data to provide a better quality video viewing experience for your users.
+These should be set per video. This metadata will be uploaded along with the video and in the future, we will offer a way to access this data to provide a better quality video viewing experience for your users.
 
 ### Developer Key and Secret
 
-As we mentioned before in the installation section, don't forget to set your Kamcord developer key and secret using this function:
+As we've mentioned before in the installation section, don't forget to set your Kamcord developer key and secret using this function:
 
 	@property (nonatomic, retain) NSString * developerKey;
 	@property (nonatomic, retain) NSString * developerSecret;
@@ -234,7 +234,16 @@ We will give you a key and secret per game you build. We'll give you as many key
 
 ## Examples
 
-The `Examples` directory has a fully functional example of how to use Kamcord in your application. It is a slightly modified version of `RenderTextureTest` from the cocos2d test suite. When the app launches, there are two buttons on the top right of the screen you can press to start and stop video recording.
+The `Examples` directory has some fully functional examples of how to use Kamcord in your application. You will recognize these as test apps that come bundled with Cocos2D. Right now, there are four tests that have been ported over to `cocos2d-kamcord`:
+
+- ParticlesTest
+- RenderTextureTest
+- RotateWorldTest
+- SceneTest
+
+### RenderTextureTest
+
+When this app launches, there are two buttons on the top right of the screen you can press to start and stop video recording. Play around by pressing `Start Recording`, doing some drawing or flipping between different tests, and then press `Stop Recording`. The Kamcord dialog should pop up and you'll be able to replay your previous actions as well as share it online.
 
 Below are all of the code integration points. We bold the lines we added to make Kamcord work. First, we do some initialization:
 
@@ -280,20 +289,18 @@ Below are all of the code integration points. We bold the lines we added to make
     window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
     window.rootViewController.view = glView;
     
-    KCManager * kcmanager = [KCManager sharedManager];
-    kcmanager.parentViewController = window.rootViewController;
-    kcmanager.developerKey = @"386441044729315";
-    kcmanager.developerSecret = @"My_Developer_Secret";
+    KCManager * kcmanager 			= [KCManager sharedManager];
+    kcmanager.parentViewController 	= window.rootViewController;
+    kcmanager.developerKey 			= @"My_Developer_Key";
+    kcmanager.developerSecret 		= @"My_Developer_Secret";
 
-    kcmanager.youtubeTitle = @"RenderTextureTest + Kamcord";
-    kcmanager.youtubeKeywords = @"cocos2d RenderTextureTest";
-    kcmanager.youtubeDescription = @"It's a test!";
+    kcmanager.youtubeTitle 			= @"RenderTextureTest + Kamcord";
+    kcmanager.youtubeKeywords 		= @"cocos2d RenderTextureTest";
+    kcmanager.youtubeDescription 	= @"It's a test!";
     
-    kcmanager.facebookTitle = @"RenderTextureTest";
-    kcmanager.facebookCaption = @"Facebook caption ...";
-    kcmanager.facebookDescription = @"Facebook desc ...";
-    
-    kcmanager.gameName = @"Oompa Loompa";
+    kcmanager.facebookTitle 		= @"RenderTextureTest";
+    kcmanager.facebookCaption 		= @"Facebook caption ...";
+    kcmanager.facebookDescription 	= @"Facebook desc …";
     </b>
 	
 	// make the OpenGLView a child of the main window and make the main window visible

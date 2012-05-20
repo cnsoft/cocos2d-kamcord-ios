@@ -1478,18 +1478,16 @@ Class restartAction()
     
     KCManager * kcmanager = [KCManager sharedManager];
     kcmanager.parentViewController = window.rootViewController;
-    kcmanager.developerKey = @"386441044729315";
-    kcmanager.developerSecret = @"My_Developer_Secret";
+    kcmanager.developerKey = @"kamcord-test";
+    kcmanager.developerSecret = @"kamcord-test";
     
-    kcmanager.youtubeTitle = @"ParticleTest + Kamcord";
+    kcmanager.youtubeTitle = @"ParticleTest Kamcord";
     kcmanager.youtubeKeywords = @"cocos2d ParticleTest";
     kcmanager.youtubeDescription = @"It's a test!";
     
     kcmanager.facebookTitle = @"ParticleTest";
     kcmanager.facebookCaption = @"It's a caption";
     kcmanager.facebookDescription = @"It's a description";
-    
-    kcmanager.gameName = @"Mr. Goodbar";
 	
 	// Obtain the shared director in order to...
 	CCDirector *director = [CCDirector sharedDirector];

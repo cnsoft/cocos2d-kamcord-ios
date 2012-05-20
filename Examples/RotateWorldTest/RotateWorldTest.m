@@ -171,8 +171,8 @@
     
     KCManager * kcmanager = [KCManager sharedManager];
     kcmanager.parentViewController = window.rootViewController;
-    kcmanager.developerKey = @"386441044729315";
-    kcmanager.developerSecret = @"My_Developer_Secret";
+    kcmanager.developerKey = @"kamcord-test";
+    kcmanager.developerSecret = @"kamcord-test";
     
     kcmanager.youtubeTitle = @"RotateWorldtest + Kamcord";
     kcmanager.youtubeKeywords = @"cocos2d RotateWorldTest";
@@ -181,8 +181,6 @@
     kcmanager.facebookTitle = @"RotateWorldTest";
     kcmanager.facebookCaption = @"It's a caption";
     kcmanager.facebookDescription = @"It's a description";
-    
-    kcmanager.gameName = @"Umbrella-ella-ella";
 
     // Obtain the shared director in order to...
 	CCDirector *director = [CCDirector sharedDirector];

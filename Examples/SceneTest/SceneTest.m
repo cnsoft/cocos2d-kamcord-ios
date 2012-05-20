@@ -240,8 +240,8 @@
     
     KCManager * kcmanager = [KCManager sharedManager];
     kcmanager.parentViewController = window.rootViewController;
-    kcmanager.developerKey = @"386441044729315";
-    kcmanager.developerSecret = @"My_Developer_Secret";
+    kcmanager.developerKey = @"kamcord-test";
+    kcmanager.developerSecret = @"kamcord-test";
     
     kcmanager.youtubeTitle = @"SceneTest + Kamcord";
     kcmanager.youtubeKeywords = @"cocos2d SceneTest";
@@ -250,8 +250,6 @@
     kcmanager.facebookTitle = @"SceneTest";
     kcmanager.facebookCaption = @"It's a caption";
     kcmanager.facebookDescription = @"It's a description";
-    
-    kcmanager.gameName = @"Donkey Kong";
 	
 	// Obtain the shared director in order to...
 	CCDirector *director = [CCDirector sharedDirector];

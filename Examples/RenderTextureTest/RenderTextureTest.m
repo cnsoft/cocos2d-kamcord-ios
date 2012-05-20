@@ -562,8 +562,8 @@ Class restartAction()
     
     KCManager * kcmanager = [KCManager sharedManager];
     kcmanager.parentViewController = window.rootViewController;
-    kcmanager.developerKey = @"386441044729315";
-    kcmanager.developerSecret = @"My_Developer_Secret";
+    kcmanager.developerKey = @"kamcord-test";
+    kcmanager.developerSecret = @"kamcord-test";
 
     kcmanager.youtubeTitle = @"RenderTextureTest + Kamcord";
     kcmanager.youtubeKeywords = @"cocos2d RenderTextureTest";
@@ -573,8 +573,6 @@ Class restartAction()
     kcmanager.facebookCaption = @"Facebook caption ...";
     kcmanager.facebookDescription = @"Facebook desc ...";
     
-    kcmanager.gameName = @"Oompa Loompa";
-	
 	// make the OpenGLView a child of the main window and make the main window visible
     // Must do this AFTER setting the window's rootViewController
 	[window addSubview:glView];

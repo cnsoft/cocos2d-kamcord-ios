@@ -32,7 +32,6 @@ enum LastVideoStatus
 @property (nonatomic, retain) NSString * developerSecret;
 
 // Game properties
-@property (nonatomic, retain) NSString * gameName;
 @property (nonatomic, retain) NSString * level;
 @property (nonatomic, retain) NSNumber * score;
 
