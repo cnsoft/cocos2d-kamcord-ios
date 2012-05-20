@@ -36,7 +36,4 @@
 
 @interface Constants : NSObject
 
-+ (NSString *)kamcordVideosS3BucketName;
-+ (NSString *)kamcordThumbnailsS3BucketName;
-
 @end

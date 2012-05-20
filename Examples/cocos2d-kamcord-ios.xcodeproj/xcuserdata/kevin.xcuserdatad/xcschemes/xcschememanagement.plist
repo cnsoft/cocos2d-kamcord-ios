@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>SceneTest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -63,6 +68,11 @@
 			<true/>
 		</dict>
 		<key>0A5A251A1567A6C400D9C8BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0A5A26CF156866ED00D9C8BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
