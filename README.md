@@ -14,11 +14,11 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
 ## Installation
 
 <ol>
-<li style="margin: 0";>Remove libcocos2d.a from your project. The framework you are about to install includes all Cocos2D-1.0.1 features and functionalities.</li>
+<li style="margin: 0";>Remove <code>libcocos2d.a</code> from your project. The framework you are about to install includes all Cocos2D-1.0.1 features and functionalities.</li>
 <li style="margin: 0";>Clone this repository to your local development machine.</li>
 <li style="margin: 0";>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
 <li style="margin: 0";>Under <code>Other Frameworks</code>, drag and drop <code>AWSiOSSDK.framework</code> into your project.</li>
-<li style="margin: 0";">Drag and drop <code>Resources</code> to your project. <b>When you do, make sure to check the box next to the target application you want to link this library to (your game, presumably).</b></li>
+<li style="margin: 0";">Drag and drop <code>Resources</code> to your project. <b>For steps 3-5, make sure to check the box next to the target application you want to link this library to (your game, presumably).</b></li>
 <li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 	<ul>
@@ -73,7 +73,7 @@ If you have any other library dependencies inside Cocos2D (for instance, <code>B
 <img src="http://dl.dropbox.com/u/6122/Kamcord/Cocos2D%20dependencies%20%28after%29.png" />
 </p>
 </li>
-<li>We will provide you with a Kamcord developer key and developer secret. Please be sure to set them when your app initializes or recording won't work:
+<li>We will provide you with a per-game Kamcord developer key and developer secret. Please be sure to set them when your app initializes or recording won't work:
 
 <p>
 <pre><code>[[KCManager sharedManager] setDeveloperKey:@"My_Developer_Key"];
@@ -88,7 +88,7 @@ window.rootViewController.view = glView; // Assuming glView is your EAGLView
 [[KCManager sharedManager] setParentViewController:window.rootViewController];</code></pre>
 <p>
 
-<p>Kamcord uses UIKit for autorotation. For all practical purposes in your game, this doesn't affect anything. Set your game orientation as you do normally with <code>[[CCDirector sharedDirector] setDeviceOrientation:...]</code>.<b>You just need to make sure your </b><code>window.rootViewController</code><b> is an instance of </b><code>KCViewController</code><b> or its subclass.</b> If you can't do this, get in touch with Kevin at <a href="mailto:kevin@kamcord.com"">kevin@kamcord.com</a> and we'll help you with a simple workaround (a short chunk of code you can copy and paste into your own custom <code>UIViewController</code>).</p>
+<p>Kamcord uses UIKit for autorotation. For all practical purposes in your game, this doesn't affect anything. Set your game orientation as you do normally with <code>[[CCDirector sharedDirector] setDeviceOrientation:...]</code>. <b>You just need to make sure your </b><code>window.rootViewController</code><b> is an instance of </b><code>KCViewController</code><b> or its subclass.</b> If you can't do this, get in touch with Kevin at <a href="mailto:kevin@kamcord.com"">kevin@kamcord.com</a> and we'll help you with a simple workaround (a short chunk of code you can copy and paste into your own custom <code>UIViewController</code>).</p>
 
 <p>
 This must all be done before:
@@ -96,7 +96,8 @@ This must all be done before:
 <pre><code>[window addSubview:glView];
 [window makeKeyAndVisible];
 </code></pre>
-	
+</p>
+<p>
 The full example further below lays this out very clearly.
 </p>
 </li>
@@ -128,19 +129,23 @@ The API is:
     
     //
     // Gameplay happens
+    // …
+    // Application interrupted
     //
     
     [[KCManager sharedManager] stopRecordingClip];
     
-    ///
-    // Application interrupted
+    //
+    // Application loses foreground
     // ...
-    // Application regains foreground and user resumes gameplay    
+    // Application regains foreground
     //
     
     [[KCManager sharedManager] startRecordingClip];
     
-    // 
+    //
+    // User resumes gameplay    
+    // ...
     // More gamplay happens until round ends
     //  
     
@@ -236,14 +241,16 @@ We will give you a key and secret per game you build. We'll give you as many key
 
 The `Examples` directory has some fully functional examples of how to use Kamcord in your application. You will recognize these as test apps that come bundled with Cocos2D. Right now, there are four tests that have been ported over to `cocos2d-kamcord`:
 
-- ParticlesTest
-- RenderTextureTest
-- RotateWorldTest
-- SceneTest
+<ul>
+    <li style="margin: 0;">ParticleTest</li>
+    <li style="margin: 0;">RenderTextureTest</li>
+    <li style="margin: 0;">RotateWorldTest</li>
+    <li style="margin: 0;">SceneTest</li>
+</ul>
 
 ### RenderTextureTest
 
-When this app launches, there are two buttons on the top right of the screen you can press to start and stop video recording. Play around by pressing `Start Recording`, doing some drawing or flipping between different tests, and then press `Stop Recording`. The Kamcord dialog should pop up and you'll be able to replay your previous actions as well as share it online.
+When this app launches, there are two buttons on the top right of the screen you can press to start and stop video recording. Play around by pressing `Start Recording`, doing some drawing or flipping between different tests, and then pressing `Stop Recording`. The Kamcord dialog should pop up and you'll be able to replay your previous actions as well as share it online.
 
 Below are all of the code integration points. We bold the lines we added to make Kamcord work. First, we do some initialization:
 
@@ -284,16 +291,20 @@ Below are all of the code integration points. We bold the lines we added to make
 		CCLOG(@"Retina Display Not supported");
     
     <b>
-    // Set the window's root view controller to an instance or subclass
-    // of KCViewController
+    // Set the window's root view controller to an instance of KCViewController
+    // or its subclass.
     window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
     window.rootViewController.view = glView;
     
+    // Tell Kamcord the parent view controller
     KCManager * kcmanager 			= [KCManager sharedManager];
     kcmanager.parentViewController 	= window.rootViewController;
+    
+    // Set developer key and secret
     kcmanager.developerKey 			= @"My_Developer_Key";
     kcmanager.developerSecret 		= @"My_Developer_Secret";
 
+	// Set fields for YouTube and Facebook
     kcmanager.youtubeTitle 			= @"RenderTextureTest + Kamcord";
     kcmanager.youtubeKeywords 		= @"cocos2d RenderTextureTest";
     kcmanager.youtubeDescription 	= @"It's a test!";
@@ -374,7 +385,7 @@ This code sets up the window's root view controller and gives it ownership of th
     [[KCManager sharedManager] showKamcordView];
 }</b></code></pre>
 
-For most games, you'll want to defer the calls to `beginVideo` and `startRecordingClip` until appropriate (your user begins the actual round, etc.).
+For most games, you'll want to defer the calls to `beginVideo` and `startRecordingClip` until appropriate (your user begins the actual level, etc.).
 
 To highlight the handling of the application lifecycle, we've made additions to the following functions:
 
