@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Kamcord is a built-in gameplay recording technology for iOS. This repository contains a custom build of <b>Cocos2d-1.0.1</b> modified to include Kamcord technology. It allows you, the game developer, to capture gameplay videos with a very simple API.
+Kamcord is a built-in gameplay recording technology for iOS. This repository contains an SDK that works with Cocos2D-1.0.1. It allows you, the game developer, to capture gameplay videos with a very simple API.
 Your users can then replay and share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
 In order to use Kamcord, you need a developer key and developer secret. To get a pair, please email Kevin at <a mailto="kevin@kamcord.com">kevin@kamcord.com</a>.
@@ -14,7 +14,6 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
 ## Installation
 
 <ol>
-<li style="margin: 0";>Remove <code>libcocos2d.a</code> from your project. The framework you are about to install includes all Cocos2D-1.0.1 features and functionalities.</li>
 <li style="margin: 0";>Clone this repository to your local development machine.</li>
 <li style="margin: 0";>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
 <li style="margin: 0";>Under <code>Other Frameworks</code>, drag and drop <code>AWSiOSSDK.framework</code> into your project.</li>
@@ -60,24 +59,11 @@ To add <code>cocos2d-kamcord.framework</code> and <code>AWSiOSSDK.framework</cod
     <img src="http://dl.dropbox.com/u/6122/Kamcord/other_linker_flags.png"/>
     </p>
 </li>
-<li>
-<p>
-If you have any other library dependencies inside Cocos2D (for instance, <code>Box2DTestBed</code> depends on <code>box2d</code> a.k.a. <code>libbox2d.a</code>), then find where that library is output, drag it into your project, and add it as a link target:
-</p>
-<img src="http://dl.dropbox.com/u/6122/Kamcord/Cocos2D%20dependencies%20%28before%29.png" />
-</p>
-<p>
-<img src="http://dl.dropbox.com/u/6122/Kamcord/libbox2d%20show%20in%20finder.png" />
-</p>
-<p>
-<img src="http://dl.dropbox.com/u/6122/Kamcord/Cocos2D%20dependencies%20%28after%29.png" />
-</p>
-</li>
 <li>We will provide you with a per-game Kamcord developer key and developer secret. Please be sure to set them when your app initializes or recording won't work:
 
 <p>
-<pre><code>[[KCManager sharedManager] setDeveloperKey:@"My_Developer_Key"];
-[[KCManager sharedManager] setDeveloperSecret:@"My_Developer_Secret"];</code></pre>
+<pre><code>[Kamcord setDeveloperKey:@"My_Developer_Key"];
+[Kamcord setDeveloperSecret:@"My_Developer_Secret"];</code></pre>
 </p>
 </li>
 <li style="margin: 0;">In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure <code>window.rootViewController</code> is set to an instance of <code>KCViewController</code>. Also set the view of that ViewController to your <code>EAGLView</code>.
@@ -85,10 +71,10 @@ If you have any other library dependencies inside Cocos2D (for instance, <code>B
 <p>
 <pre><code>window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
 window.rootViewController.view = glView; // Assuming glView is your EAGLView
-[[KCManager sharedManager] setParentViewController:window.rootViewController];</code></pre>
+[Kamcord setParentViewController:window.rootViewController];</code></pre>
 <p>
 
-<p>Kamcord uses UIKit for autorotation. For all practical purposes in your game, this doesn't affect anything. Set your game orientation as you do normally with <code>[[CCDirector sharedDirector] setDeviceOrientation:...]</code>. <b>You just need to make sure your </b><code>window.rootViewController</code><b> is an instance of </b><code>KCViewController</code><b> or its subclass.</b> If you can't do this, get in touch with Kevin at <a href="mailto:kevin@kamcord.com"">kevin@kamcord.com</a> and we'll help you with a simple workaround (a short chunk of code you can copy and paste into your own custom <code>UIViewController</code>).</p>
+<p>Kamcord uses UIKit for autorotation. For all practical purposes in your game, this doesn't affect anything. The one minor setup difference is, instead of using <code>[[CCDirector sharedDirector] setDeviceOrientation:...]</code> to set your device orientation, call <code>[Kamcord setDeviceOrientation:...]</code>. <b>Please make sure your </b><code>window.rootViewController</code><b> is an instance of </b><code>KCViewController</code><b> or its subclass.</b> If you can't do this, get in touch with Kevin at <a href="mailto:kevin@kamcord.com"">kevin@kamcord.com</a> and we'll help you with a simple workaround (a short chunk of code you can copy and paste into your own custom <code>UIViewController</code>).</p>
 
 <p>
 This must all be done before:
@@ -107,9 +93,9 @@ Your project should build successfully at this point.
 
 ## How to use Kamcord
 
-We've tried to keep the Kamcord API as simple as possible. The only class you will need to interface with is `KCManager`, which is automatically included for you in `cocos2d.h`. To get an instance, call `[KCManager sharedManager]`.
+We've tried to keep the Kamcord API as simple as possible. The only class you will need to interface with is `Kamcord`, which you can get by including `<cocos2d-1.0.1-kamcord/Kamcord.h>`.
 
-KCManager's public API is broken down by different functionalities.
+Kamcord's public API is broken down by different functionalities.
 
 ### Video Recording
 
@@ -117,49 +103,18 @@ The recording interface is built around the concept of one video, which has one 
 
 The API is:
 
-    -(void) beginVideo;
-    -(void) endVideo;
-    -(void) startRecordingClip;
-    -(void) stopRecordingClip;
+    +(void) beginVideo;
+    +(void) endVideo;
+    +(void) startRecording;
+    +(void) stopRecording;
 
-`beginVideo` is first called to indicate the beginning of a new video. *<b>It does not begin the actual video recording</b>*. After that, `startRecordingClip` and `stopRecordingClip` start and stop the video recording. If you call `startRecording` without calling `beginVideo` first, nothing will happen. When the entire gameplay is over, for example after the user finishes a level, call `endVideo`. An example flow is as follows:
-
-    [[KCManager sharedManager] beginVideo];
-    [[KCManager sharedManager] startRecordingClip];
-    
-    //
-    // Gameplay happens
-    // …
-    // Application interrupted
-    //
-    
-    [[KCManager sharedManager] stopRecordingClip];
-    
-    //
-    // Application loses foreground
-    // ...
-    // Application regains foreground
-    //
-    
-    [[KCManager sharedManager] startRecordingClip];
-    
-    //
-    // User resumes gameplay    
-    // ...
-    // More gamplay happens until round ends
-    //  
-    
-    [[KCManager sharedManager] stopRecordingClip];
-    [[KCManager sharedManager] endVideo];
-
-In this example, the developer recorded two clips that will be contiguously stitched together. He may have stopped the first clip to handle a phone call and started the second clip as soon as the user returned to the app and resumed gameplay. After `endVideo` is called, Kamcord understands that there were two clips and combines them into one video. You can then present the user with more options, which are described in the next section.
-
+`beginVideo` is first called to indicate the beginning of a new video. *<b>It does not begin the actual video recording</b>*. After that, `startRecording` and `stopRecording` start and stop the video recording. If you call `startRecording` without calling `beginVideo` first, nothing will happen. When the entire gameplay is over, for example after the user finishes a level, call `endVideo`.
 
 ### Presenting User Options
 
 Now that that the user has finished his gameplay and you have successfully recorded a video of it, you can present several options to the user with the following API call:
 
-	-(void) showKamcordView;
+	+(void) showView;
 
 This presents a modal view with the following options:
 
@@ -186,14 +141,7 @@ where the kamcord.com URL will instantly <a href="http://en.wikipedia.org/wiki/H
 
 ### Differences from Cocos2D
 
-If your application's setup code calls `CC_DIRECTOR_INIT()` right now, you'll need to replace it with `CC_DIRECTOR_INIT_KAMCORD_SAFE()` and add the following two lines later in your app delegate's `applicationDidFinishLaunching`:
-
-	[window addSubview:[[CCDirector sharedDirector] openGLView]];
-	[window makeKeyAndVisible];
-
-<b>Don't forget to add these two functions if you use</b> `CC_DIRECTOR_INIT_KAMCORD_SAFE()`. Failing to do so will cause your app to show a black screen while throwing OpenGL errors.
-
-A simple example illustrating this method can be found in `Examples/SceneTest.m:applicationDidFinishLaunching`.
+If your application's setup code calls `CC_DIRECTOR_INIT()` right now, replace it with `CC_DIRECTOR_INIT_KAMCORD()`.
 
 ### Developer Goodies
 
@@ -201,39 +149,39 @@ You as the developer can set defaults for when the user uploads to YouTube and s
 
 <img src="http://dl.dropbox.com/u/6122/Kamcord/youtube_video2.png"/>
 
-You can set the title, description, and keywords (highlighted in the orange boxes) with the following properties:
+You can set the title, description, and keywords (highlighted in the orange boxes) with the following fybctuib:
 
-	@property (nonatomic, retain) NSString * youtubeTitle;
-	@property (nonatomic, retain) NSString * youtubeDescription;
-	@property (nonatomic, retain) NSString * youtubeKeywords;
+	+(void) setYouTubeTitle:(NSString *)title
+     	        description:(NSString *)description 
+                   keywords:(NSString *)keywords;
 
 `youtubeKeywords` is one string of word tokens delimited by spaces. A Facebook wall post looks like the following:
 
 <img src="http://dl.dropbox.com/u/6122/Kamcord/facebook_share.png"/>
 
-The `Message` is the text the user will enter. You can set the title, caption, and description with the following properties:
+The `Message` is the text the user will enter. You can set the title, caption, and description with the following fybctuib:
 
-	@property (nonatomic, retain) NSString * facebookTitle;
-	@property (nonatomic, retain) NSString * facebookCaption;
-	@property (nonatomic, retain) NSString * facebookDescription;
+	+(void) setFacebookTitle:(NSString *)title
+   	                 caption:(NSString *)caption
+                 description:(NSString *)description;
 
 When the user shares to Facebook, their video is first uploaded to YouTube. We will then use your settings to populate the corresponding fields on YouTube and Facebook. Needless to say, this is a great way to advertise your game by putting links to your website or your game's page on the Apple App Store.
 
-It's worth noting that every time we upload a video to YouTube and post to Facebook, we use the currently set values of these properties. Therefore, you may want to change the title, caption, and or description to match the results of the most recent gameplay (to add the score, for instance).
+It's worth noting that every time we upload a video to YouTube and post to Facebook, we use the currently set values of these fields. Therefore, you may want to change the title, caption, and or description to match the results of the most recent gameplay (to add the score, for instance).
 
-Lastly, we offer two other properties that you should set after you call `endVideo`:
+Lastly, we another function you should set after you call `endVideo`:
 
-	@property (nonatomic, retain) NSString * level;
-	@property (nonatomic, retain) NSNumber * score;
+	+(void) setLevel:(NSString *)level
+     	       score:(NSNumber *)score;
 	
-These should be set per video. This metadata will be uploaded along with the video and in the future, we will offer a way to access this data to provide a better quality video viewing experience for your users.
+These values should be set per video. This metadata will be uploaded along with the video and in the future, we will offer a way to access this data to provide a better quality video viewing experience for your users.
 
 ### Developer Key and Secret
 
 As we've mentioned before in the installation section, don't forget to set your Kamcord developer key and secret using this function:
 
-	@property (nonatomic, retain) NSString * developerKey;
-	@property (nonatomic, retain) NSString * developerSecret;
+	+(void) setDeveloperKey:(NSString *)key
+	        developerSecret:(NSString *)secret;
 
 We will give you a key and secret per game you build. We'll give you as many key/secret pairs you need, just don't tell them to anyone else.
 
@@ -265,10 +213,6 @@ Below are all of the code integration points. We bold the lines we added to make
 	// before creating any layer, set the landscape mode
 	CCDirector *director = [CCDirector sharedDirector];
 	
-	// landscape orientation
-	<b>// Set as you normally do</b>
-	[director setDeviceOrientation:CCDeviceOrientationLandscapeRight];
-	
 	// set FPS at 60
 	[director setAnimationInterval:1.0/60];
 	
@@ -276,47 +220,44 @@ Below are all of the code integration points. We bold the lines we added to make
 	[director setDisplayFPS:YES];
 	
 	// Create an EAGLView with a RGB8 color buffer, and a depth buffer of 24-bits
-	EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
+	KCGLView *glView = [KCGLView viewWithFrame:[window bounds]
 								   pixelFormat:kEAGLColorFormatRGB565
 								   depthFormat:0];
-	
-	// attach the openglView to the director
-	[director setOpenGLView:glView];
-	
-	// 2D projection
-//	[director setProjection:kCCDirectorProjection2D];
-	
-	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-	if( ! [director enableRetinaDisplay:YES] )
-		CCLOG(@"Retina Display Not supported");
     
-    <b>
-    // Set the window's root view controller to an instance of KCViewController
-    // or its subclass.
+    // Create root view controller
     window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
     window.rootViewController.view = glView;
-    
-    // Tell Kamcord the parent view controller
-    KCManager * kcmanager 			= [KCManager sharedManager];
-    kcmanager.parentViewController 	= window.rootViewController;
-    
-    // Set developer key and secret
-    kcmanager.developerKey 			= @"My_Developer_Key";
-    kcmanager.developerSecret 		= @"My_Developer_Secret";
-
-	// Set fields for YouTube and Facebook
-    kcmanager.youtubeTitle 			= @"RenderTextureTest + Kamcord";
-    kcmanager.youtubeKeywords 		= @"cocos2d RenderTextureTest";
-    kcmanager.youtubeDescription 	= @"It's a test!";
-    
-    kcmanager.facebookTitle 		= @"RenderTextureTest";
-    kcmanager.facebookCaption 		= @"Facebook caption ...";
-    kcmanager.facebookDescription 	= @"Facebook desc …";
-    </b>
 	
-	// make the OpenGLView a child of the main window and make the main window visible
-	<b>// Must do this AFTER setting the window's rootViewController</b>
+	// Tell Kamcord the root view controller and the OpenGL View.
+    // It will pass on the OpenGL View to CCDirector, so you don't need to 
+    // call [[CCDirector sharedDirector] setOpenGLView:glView];
+    [Kamcord setParentViewController:window.rootViewController];
+	[Kamcord setOpenGLView:glView];
+    
+    // Developer settings
+    [Kamcord setDeveloperKey:@"kamcord-test"
+             developerSecret:@"kamcord-test"];
+    
+    // Game orientation
+    [Kamcord setDeviceOrientation:CCDeviceOrientationLandscapeRight];
+
+    // Social media settings
+    [Kamcord setYouTubeTitle:@"RenderTextureTest"
+                 description:@"This is a Cocos2D test app that was recorded with Kamcord."
+                    keywords:@"Cocos2D RenderTextureTest"];
+    
+    [Kamcord setFacebookTitle:@"RenderTextureTest"
+                      caption:@"Kamcord recording"
+                  description:@"This is a Cocos2D test app that was recorded with Kamcord."];
+	
+	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
+	if( ![director enableRetinaDisplay:YES] )
+		CCLOG(@"Retina Display Not supported");
+	
+	// make the OpenGLView a child of the main window
 	[window addSubview:glView];
+	
+	// make main window visible
 	[window makeKeyAndVisible];	
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
@@ -326,7 +267,7 @@ Below are all of the code integration points. We bold the lines we added to make
 	
 	CCScene *scene = [CCScene node];
 	[scene addChild: [nextAction() node]];
-    
+	
 	[director runWithScene: scene];
 }</code></pre>
 
@@ -374,39 +315,39 @@ This code sets up the window's root view controller and gives it ownership of th
 
 <b>-(void) startRecording:(id)sender
 {
-	[[KCManager sharedManager] beginVideo];
-    [[KCManager sharedManager] startRecordingClip];
+	[Kamcord beginVideo];
+    [Kamcord startRecording];
 }
 
 -(void) stopRecordingAndShowDialog:(id)sender
 {
-	[[KCManager sharedManager] stopRecordingClip];
-    [[KCManager sharedManager] endVideo];
-    [[KCManager sharedManager] showKamcordView];
+	[Kamcord stopRecording];
+    [Kamcord endVideo];
+    [Kamcord showView];
 }</b></code></pre>
 
-For most games, you'll want to defer the calls to `beginVideo` and `startRecordingClip` until appropriate (your user begins the actual level, etc.).
+For most games, you'll want to defer the calls to `beginVideo` and `startRecording` until appropriate (your user begins the actual level, etc.).
 
 To highlight the handling of the application lifecycle, we've made additions to the following functions:
 
 <pre><code>-(void) applicationWillResignActive:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] pause];
-    <b>[[KCManager sharedManager] stopRecordingClip];</b>
+    <b>[Kamcord stopRecording];</b>
 }
 
 -(void) applicationDidBecomeActive:(UIApplication *)application
 {
-    <b>[[KCManager sharedManager] startRecordingClip];</b>
+    <b>[Kamcord startRecording];</b>
 	[[CCDirector sharedDirector] resume];
 }
 </code></pre>
 
-That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `beginVideo` has not been called), the calls to `startRecordingClip` and `stopRecordingClip` do nothing.
+That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `beginVideo` has not been called), the calls to `startRecording` and `stopRecording` do nothing.
 
 To test this functionality, press `Start Recording`, play with the app, then close it by pressing the home button. Re-open the app, do some more actions, then press `Stop Recording`. When the Kamcord dialog appears, select `Replay Video`. It should show one seamless video of everything that's happened.
 
-<b>Note: in your game, you should defer calling</b> `startRecordingClip` <b>until your user resumes gameplay. Calling it in</b> `applicationDidBecomeActive:` <b>like in this example will capture the pause screen of your game, which is probably not what you or your user wants.</b>
+<b>Note: in your game, you should defer calling</b> `startRecording` <b>until your user resumes gameplay. Calling it in</b> `applicationDidBecomeActive:` <b>like in this example will capture the pause screen of your game, which is probably not what you or your user wants.</b>
 
 ## Contact Us
 
