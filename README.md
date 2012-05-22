@@ -59,6 +59,14 @@ To add <code>cocos2d-kamcord.framework</code> and <code>AWSiOSSDK.framework</cod
     <img src="http://dl.dropbox.com/u/6122/Kamcord/other_linker_flags.png"/>
     </p>
 </li>
+<li>
+<p>
+Import Kamcord into your application delegate:
+
+<pre><code>#import &lt;cocos2d-1.0.1-kamcord/Kamcord.h&gt;
+</code></pre>
+</p>
+</li>
 <li>We will provide you with a per-game Kamcord developer key and developer secret. Please be sure to set them when your app initializes or recording won't work:
 
 <p>
