@@ -15,10 +15,9 @@ do	{																							\
     if( ! [CCDirector setDirectorType:kCCDirectorTypeDisplayLink] )								\
         [CCDirector setDirectorType:kCCDirectorTypeNSTimer];									\
     CCDirector *__director = [CCDirector sharedDirector];										\
-    [__director setDeviceOrientation:kCCDeviceOrientationPortrait];                             \
     [__director setDisplayFPS:NO];																\
     [__director setAnimationInterval:1.0/60];													\
-    EAGLView *__glView = [EAGLView viewWithFrame:[window bounds]								\
+    KCGLView *__glView = [KCGLView viewWithFrame:[window bounds]								\
                                      pixelFormat:kEAGLColorFormatRGB565							\
                                      depthFormat:0 /* GL_DEPTH_COMPONENT24_OES */				\
                               preserveBackbuffer:NO												\
@@ -26,7 +25,13 @@ do	{																							\
                                    multiSampling:NO                                             \
                                 numberOfSamples:0												\
                                                     ];                                          \
-    [__director setOpenGLView:__glView];														\
+    window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];      \
+    window.rootViewController.view = __glView;                                                  \
+    [Kamcord setParentViewController:window.rootViewController];                                \
+    [Kamcord setOpenGLView:__glView];                                                           \
+    [Kamcord setDeviceOrientation:CCDeviceOrientationPortrait];                                 \
+    [window addSubview:__glView];                                                               \
+    [window makeKeyAndVisible];                                                                 \
 } while(0)
 
 
