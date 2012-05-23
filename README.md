@@ -14,7 +14,7 @@ This is currently an alpha 0.1.0 build. We will be making lots of improvements a
 
 ## A Sample Application
 
-Before explain how to use Kamcord in your own applications, let's run through a quick example that runs right out the box. Open the project located at `Examples/cocos2d-iphone-1.0.1/cocos2d-ios.xcodeproj` and select `RotateWorldTest` from the dropdown. Build and run that application and you will see the familiar `RotateWorldTest` from the Cocos2D suite of tests. **Make sure to run the application on a physical device with iOS 5+, not the simulator. Video replay does NOT work on the simulator!**
+Before we explain how to use Kamcord in your own applications, let's run through a quick example that runs right out the box. Open the project located at `Examples/cocos2d-iphone-1.0.1/cocos2d-ios.xcodeproj` and select `RotateWorldTest` from the dropdown. Build and run that application and you will see the familiar `RotateWorldTest` from the Cocos2D suite of tests. **Make sure to run the application on a physical device with iOS 5+, not the simulator. Video replay does NOT work on the simulator!**
 
 After 10 seconds, the Kamcord view should appear allowing you to replay a video recording of those first 10 seconds and share that video via Facebook, Twitter, and/or email. `ParticleTest`, `SceneTest`, and `SpriteTest` all work the same way.
 
