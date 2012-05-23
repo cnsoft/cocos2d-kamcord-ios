@@ -15,7 +15,7 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
 
 <ol>
 <li style="margin: 0";>Clone this repository to your local development machine.</li>
-<li style="margin: 0";>Drag and drop <code>cocos2d-kamcord.framework</code> into your project.</li>
+<li style="margin: 0";>Drag and drop <code>Kamcord.framework</code> into your project.</li>
 <li style="margin: 0";>Under <code>Other Frameworks</code>, drag and drop <code>AWSiOSSDK.framework</code> into your project.</li>
 <li style="margin: 0";">Drag and drop <code>Resources</code> to your project. <b>For steps 3-5, make sure to check the box next to the target application you want to link this library to (your game, presumably).</b></li>
 <li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
@@ -23,11 +23,11 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
 	<ul>
         <li style="margin: 0;">AVFoundation</li>
         <li style="margin: 0;"><b>AWSiOSSDK</b></li>
-        <li style="margin: 0;"><b><i>cocos2d-kamcord</i></b></li>
         <li style="margin: 0;">CoreGraphics</li>
         <li style="margin: 0;">CoreMedia</li>
         <li style="margin: 0;">CoreVideo</li>
         <li style="margin: 0;">Foundation</li>
+        <li style="margin: 0;"><b><i>Kamcord</i></b></li>
         <li style="margin: 0;">MediaPlayer</li>
         <li style="margin: 0;">MessageUI</li>
         <li style="margin: 0;">OpenGLES</li>
@@ -40,7 +40,7 @@ This is currently an alpha V0.1 build. We will be making lots of improvements ov
     </p>
 
 <p>
-To add <code>cocos2d-kamcord.framework</code> and <code>AWSiOSSDK.framework</code> to this list, you cannot use the <code>[+]</code> button at the bottom of the <code>Link Binary With Libraries</code> section. Instead, drag <code>cocos2d-kamcord.framework</code> from your project to this list.
+To add <code>Kamcord.framework</code> and <code>AWSiOSSDK.framework</code> to this list, you cannot use the <code>[+]</code> button at the bottom of the <code>Link Binary With Libraries</code> section. Instead, drag <code>Kamcord.framework</code> from your project to this list.
 </p>
 
 <p>
@@ -63,7 +63,7 @@ To add <code>cocos2d-kamcord.framework</code> and <code>AWSiOSSDK.framework</cod
 <p>
 Import Kamcord into your application delegate:
 
-<pre><code>#import &lt;cocos2d-1.0.1-kamcord/Kamcord.h&gt;
+<pre><code>#import &lt;Kamcord/Kamcord.h&gt;
 </code></pre>
 </p>
 </li>
@@ -101,7 +101,7 @@ Your project should build successfully at this point.
 
 ## How to use Kamcord
 
-We've tried to keep the Kamcord API as simple as possible. The only class you will need to interface with is `Kamcord`, which you can get by including `<cocos2d-1.0.1-kamcord/Kamcord.h>`.
+We've tried to keep the Kamcord API as simple as possible. The only class you will need to interface with is `Kamcord`, which you can get by including `<Kamcord/Kamcord.h>`.
 
 Kamcord's public API is broken down by different functionalities.
 
@@ -117,6 +117,8 @@ The API is:
     +(void) stopRecording;
 
 `beginVideo` is first called to indicate the beginning of a new video. *<b>It does not begin the actual video recording</b>*. After that, `startRecording` and `stopRecording` start and stop the video recording. If you call `startRecording` without calling `beginVideo` first, nothing will happen. When the entire gameplay is over, for example after the user finishes a level, call `endVideo`.
+
+**Before we move on, please be aware that video replay will NOT work in the simulator! The video will be recorded and it will be the right length, but it will be all black. You must test on a device to see the video replay actually work.**
 
 ### Presenting User Options
 
@@ -195,7 +197,7 @@ We will give you a key and secret per game you build. We'll give you as many key
 
 ## Examples
 
-The `Examples` directory has some fully functional examples of how to use Kamcord in your application. You will recognize these as test apps that come bundled with Cocos2D. Right now, there are four tests that have been ported over to `cocos2d-kamcord`:
+The `Examples` directory has some fully functional examples of how to use Kamcord in your application. You will recognize these as test apps that come bundled with Cocos2D. Right now, there are four tests that have been ported over to `Kamcord`:
 
 <ul>
     <li style="margin: 0;">ParticleTest</li>
