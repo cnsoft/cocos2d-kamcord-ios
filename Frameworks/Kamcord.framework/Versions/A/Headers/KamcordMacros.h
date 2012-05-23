@@ -30,8 +30,6 @@ do	{																							\
     [Kamcord setParentViewController:window.rootViewController];                                \
     [Kamcord setOpenGLView:__glView];                                                           \
     [Kamcord setDeviceOrientation:CCDeviceOrientationPortrait];                                 \
-    [window addSubview:__glView];                                                               \
-    [window makeKeyAndVisible];                                                                 \
 } while(0)
 
 
