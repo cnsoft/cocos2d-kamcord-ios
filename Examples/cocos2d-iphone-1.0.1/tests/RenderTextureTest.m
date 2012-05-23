@@ -160,8 +160,12 @@ Class restartAction()
 		
 		// Save Image menu
 		[CCMenuItemFont setFontSize:16];
-		CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Start Recording" target:self selector:@selector(startRecording:)];
-		CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Stop Recording" target:self selector:@selector(stopRecordingAndShowDialog:)];
+		CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Start Recording"
+                                                    target:self 
+                                                  selector:@selector(startRecording:)];
+		CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Stop Recording" 
+                                                    target:self
+                                                  selector:@selector(stopRecordingAndShowDialog:)];
 		CCMenu *menu = [CCMenu menuWithItems:item1, item2, nil];
 		[self addChild:menu];
 		[menu alignItemsVertically];

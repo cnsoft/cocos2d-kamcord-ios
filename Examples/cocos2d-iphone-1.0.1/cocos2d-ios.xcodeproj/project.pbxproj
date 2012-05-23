@@ -4903,10 +4903,12 @@
 			files = (
 				0AA6239A156B75F8006D25E1 /* Accounts.framework in Frameworks */,
 				0AA62391156B75F8006D25E1 /* AVFoundation.framework in Frameworks */,
+				0AA625C0156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */,
 				495E74F0104B752C0012BB52 /* CoreGraphics.framework in Frameworks */,
 				0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA6239C156B75F8006D25E1 /* CoreVideo.framework in Frameworks */,
 				495E74EE104B752C0012BB52 /* Foundation.framework in Frameworks */,
+				0AA6258D156C8161006D25E1 /* Kamcord.framework in Frameworks */,
 				0AA6239D156B75F8006D25E1 /* MediaPlayer.framework in Frameworks */,
 				0AA6239E156B75F8006D25E1 /* MessageUI.framework in Frameworks */,
 				495E74F1104B752C0012BB52 /* OpenGLES.framework in Frameworks */,
@@ -4917,8 +4919,6 @@
 				495E74EF104B752C0012BB52 /* UIKit.framework in Frameworks */,
 				495E74F3104B752C0012BB52 /* libcocos2d.a in Frameworks */,
 				495E74F4104B752C0012BB52 /* libz.dylib in Frameworks */,
-				0AA6258D156C8161006D25E1 /* Kamcord.framework in Frameworks */,
-				0AA625C0156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
