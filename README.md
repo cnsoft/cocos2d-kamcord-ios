@@ -14,7 +14,7 @@ This is currently an alpha 0.1.0 build. We will be making lots of improvements a
 
 ## A Sample Application
 
-Before we explain how to use Kamcord in your own applications, let's run through a quick example that runs right out the box. Open the project located at `Examples/cocos2d-iphone-1.0.1/cocos2d-ios.xcodeproj` and select `RotateWorldTest` from the dropdown. Build and run that application and you will see the familiar `RotateWorldTest` from the Cocos2D suite of tests. **Make sure to run the application on a physical device with iOS 5+, not the simulator. Video replay does NOT work on the simulator!**
+Before we explain how to use Kamcord in your own applications, let's go through a quick example that runs right out the box. Clone this repository to your local machine and open the project located at `Examples/cocos2d-iphone-1.0.1/cocos2d-ios.xcodeproj`.  Select `RotateWorldTest` from the dropdown and build and run that application. You should see the familiar `RotateWorldTest` from the Cocos2D suite of tests. **Make sure to run the application on a physical device with iOS 5+, not the simulator. Video replay is NOT supported by the simulator!**
 
 After 10 seconds, the Kamcord view should appear allowing you to replay a video recording of those first 10 seconds and share that video via Facebook, Twitter, and/or email. `ParticleTest`, `SceneTest`, and `SpriteTest` all work the same way.
 
@@ -30,9 +30,8 @@ Let's walk through how to get Kamcord into your games.
 ### Framework
 
 <ol>
-<li style="margin: 0";>Clone this repository to your local development machine.</li>
-<li style="margin: 0";>From <code>cocos2d-kamcord-ios/Frameworks</code>, drag and drop <code>Kamcord.framework</code> and <code>AWSiOSSDK.framework</code> into your project.</li>
-<li style="margin: 0";>Add the files under <code>cocos2d-kamcord-ios/Frameworks/Resources</code> to your project. For both this and the previous step, make sure to check the box next to the target application you want to link these frameworks and resources to (your game, presumably).</li>
+<li style="margin: 0";>From <code>Frameworks</code>, drag and drop <code>Kamcord.framework</code> and <code>AWSiOSSDK.framework</code> into your project.</li>
+<li style="margin: 0";>Drag and drop the files under <code>Frameworks/Resources</code> to your project. For both this and the previous step, make sure to check the box next to the target application you want to link these frameworks and resources to (your game, presumably).</li>
 <li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 	<ul style="margin-top: 15px; margin-bottom: 15px;">
@@ -81,7 +80,7 @@ Import Kamcord into your application delegate:
 </code></pre>
 </p>
 </li>
-<li>We will provide you with a per-game Kamcord developer key and developer secret. <b>Please be sure to set them when your app initializes or recording won't work</b>:
+<li>We will provide you with a per-game Kamcord developer key and developer secret. <b>Please set them when your app initializes or recording won't work</b>:
 
 <p>
 <pre><code>[Kamcord setDeveloperKey:@"My_Developer_Key"];
@@ -187,7 +186,13 @@ If your application's setup code calls `CC_DIRECTOR_INIT()`, replace it with `CC
 	[window addSubview:[[CCDirector sharedDirector] openGLView];
     [window makeKeyAndVisible];
     
-`ParticleTest`, `RotateWorldTest`, `SceneTest`, and `SpriteTest` all show how to use `CC_DIRECTOR_INIT_KAMCORD()`.
+`ParticleTest`, `RotateWorldTest`, `SceneTest`, and `SpriteTest` all show how to use `CC_DIRECTOR_INIT_KAMCORD()`. Their source code can be found in `Examples/cocos2d-iphone-1.0.1/tests`.
+
+Kamcord uses <a href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:autorotation#the_uikit_autorotation"/>UIKit for autorotation</a>. <b>To ensure everything works as advertised, please make your </b>`window.rootViewController` <b>an instance of </b>`KCViewController` and use
+
+	[Kamcord setDeviceOrientation:...]
+
+instead of `[[CCDirector sharedDirector] setDeviceOrientation:...]`. If you cannot make ur `window.rootViewController` an instance of `KCViewController`, <a href="mailto:kevin@kamcord.com" />let us know</a> and we'll give you a simple patch for your View Controller code.
 
 ### Developer Settings
 
