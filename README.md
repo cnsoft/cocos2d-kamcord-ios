@@ -8,7 +8,7 @@ Your users can then replay and share these gameplay videos via Facebook, Twitter
 
 In order to use Kamcord, you need a developer key and developer secret. To get these, please email Kevin at <a mailto="kevin@kamcord.com">kevin@kamcord.com</a>.
 
-Kamcord relies on **iOS 5.0** APIs. You can still will run without problem on older version of iOS, you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
+Kamcord relies on **iOS 5.0** APIs. You can still will run without problem on older version of iOS, although you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
 
 This is currently an alpha 0.1.0 build. We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to contact us.
 
