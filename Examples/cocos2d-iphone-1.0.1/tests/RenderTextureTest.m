@@ -540,37 +540,41 @@ Class restartAction()
 
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
-	// Init the window
-	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	
-	// must be called before any othe call to the director
-	[CCDirector setDirectorType:kCCDirectorTypeDisplayLink];
-	
-	// before creating any layer, set the landscape mode
-	CCDirector *director = [CCDirector sharedDirector];
-	
-	// set FPS at 60
-	[director setAnimationInterval:1.0/60];
-	
-	// Display FPS: yes
-	[director setDisplayFPS:YES];
-	
-	// Create an EAGLView with a RGB8 color buffer, and a depth buffer of 24-bits
-	KCGLView *glView = [KCGLView viewWithFrame:[window bounds]
-								   pixelFormat:kEAGLColorFormatRGB565
-								   depthFormat:0];
+    // Init the window
+    window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // Create root view controller
+    // must be called before any othe call to the director
+    [CCDirector setDirectorType:kCCDirectorTypeDisplayLink];
+    
+    // before creating any layer, set the landscape mode
+    CCDirector *director = [CCDirector sharedDirector];
+    
+    // set FPS at 60k
+    [director setAnimationInterval:1.0/60];
+    
+    // Display FPS: yes
+    [director setDisplayFPS:YES];
+    
+    
+    // Instantiate a KCGLView, which is a subclass with EAGLView with
+    // special recording functionality.
+    KCGLView * glView = [KCGLView viewWithFrame:[window bounds]
+                                    pixelFormat:kEAGLColorFormatRGB565
+                                    depthFormat:0];
+    
+    // Kamcord uses UIKit for autorotation, which requires special logic to handle rotations.
     window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
     window.rootViewController.view = glView;
-	
-	// attach the openglView to the director
+    
+    // Tell Kamcord about the root view controller and the KCGLView
     [Kamcord setParentViewController:window.rootViewController];
-	[Kamcord setOpenGLView:glView];
+    [Kamcord setOpenGLView:glView];
+    
+    // Set the device orientation. Must use Kamcord, not CCDirector!
+    [Kamcord setDeviceOrientation:CCDeviceOrientationLandscapeLeft];    
     
     // Developer settings
     [Kamcord setDeveloperKey:@"kamcord-test" developerSecret:@"kamcord-test"];
-    [Kamcord setDeviceOrientation:CCDeviceOrientationLandscapeRight];
     
     // Social media settings
     [Kamcord setYouTubeTitle:@"RenderTextureTest"
@@ -580,29 +584,27 @@ Class restartAction()
     [Kamcord setFacebookTitle:@"RenderTextureTest"
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
-	
-	// 2D projection
-    //	[director setProjection:kCCDirectorProjection2D];
-	
-	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-	if( ! [director enableRetinaDisplay:YES] )
-		CCLOG(@"Retina Display Not supported");
-	
-	// make the OpenGLView a child of the main window
-	[window addSubview:glView];
-	
-	// make main window visible
-	[window makeKeyAndVisible];	
-	
-	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
-	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
-	// You can change anytime.
-	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];		
-	
-	CCScene *scene = [CCScene node];
-	[scene addChild: [nextAction() node]];
-	
-	[director runWithScene: scene];
+    
+    // 2D projection
+    //  [director setProjection:kCCDirectorProjection2D];
+    
+    // Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
+    if( ! [director enableRetinaDisplay:YES] )
+        CCLOG(@"Retina Display Not supported");
+    
+    // Not Kamcord specific, but dont' forget to do this after
+    // all the Kamcord initialization is finished.
+    [window addSubview:glView];
+    [window makeKeyAndVisible];
+    
+    // Default texture format for PNG/BMP/TIFF/JPEG/GIF images
+    // It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
+    // You can change anytime.
+    [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];      
+    CCScene *scene = [CCScene node];
+    [scene addChild: [nextAction() node]];
+    
+    [director runWithScene: scene];
 }
 
 // getting a call, pause the game
