@@ -93,7 +93,7 @@ Import Kamcord into your application delegate:
 In your application delegate (or wherever you create the <code>UIWindow</code> and initialize <code>CCDirector</code>), instantiate a <code>KCGLView</code>. This is our special sublcass of <code>EAGLView</code> that aids in video recording. Then set <code>window.rootViewController</code> to an instance of <code>KCViewController</code> and set <code>window.rootViewController.view</code> to your <code>KCGLView</code>
 </p>
 <p>
-<b>Also be sure to use </b><code>[Kamcord setDeviceOrientation:...]</code> instead of <code>[director setDeviceOrientation:...]</code>!
+<b>Also be sure to use </b><code>[Kamcord setDeviceOrientation:...]</code> <b>instead of</b> <code>[director setDeviceOrientation:...]</code>:
 </p>
 
 <p>
@@ -191,7 +191,7 @@ If your application's setup code calls `CC_DIRECTOR_INIT()`, replace it with `CC
 
 ### Developer Settings
 
-You can set description fields when the user uploads videos to YouTube and shares them to Facebook. A YouTube video looks like this:
+A YouTube video looks like this:
 
 <img src="http://dl.dropbox.com/u/6122/Kamcord/youtube_video2.png"/>
 
