@@ -8,16 +8,7 @@ Your users can then replay and share these gameplay videos via Facebook, Twitter
 
 In order to use Kamcord, you need a developer key and developer secret. To get these, please email Kevin at <a mailto="kevin@kamcord.com">kevin@kamcord.com</a>.
 
-Kamcord relies on **iOS 5.0** APIs. You can still will run without problem on older version of iOS, you will not be able to to record video. We have tested Kamcord on physical devices and can confirm that it runs on the following devices:
-
-- iPhone 3GS
-- iPhone 4
-- iPhone 4S
-- iPod Touch 3G
-- iPod Touch 4G
-- iPad 1
-- iPad 2
-- iPad 3
+Kamcord relies on **iOS 5.0** APIs. You can still will run without problem on older version of iOS, you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
 
 This is currently an alpha 0.1.0 build. We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to contact us.
 
@@ -27,23 +18,23 @@ Before we dive into how to use Kamcord in your own applications, let's run throu
 
 After 10 seconds, the Kamcord view should appear allowing you to replay a video recording of those first 10 seconds and share that video via Facebook, Twitter, and/or email. `ParticleTest`, `SceneTest`, and `SpriteTest` all work the same way.
 
-`RenderTextureTest` is coolest because it allows you to start and stop recording by pressing the two corresponding buttons at the top right of the screen. When you press `Stop Recording`, you will again see the Kamcord view with options to replay and share. Later on, we'll walk through all the code we need to add recording and replay functionalities to `RenderTextureTest`.
+`RenderTextureTest` is different in that it allows you to start and stop recording by pressing the two corresponding buttons at the top right of the screen. When you press `Stop Recording`, you will again see the Kamcord view with options to replay and share. Later on in this documentation, we'll walk through all the code needed to add recording and replay functionalities to `RenderTextureTest`.
 
 There is no practical limit on how long you can record for. Everything gets written immediately to disk and old videos are always being erased, so the only real limitation is the device's hard drive size. Since modern iOS devices have 16+ GB of hard disk space, you can safely record one continuous gameplay video for over 24 hours straight, an upper limit your gamers will probably never run into.
 
 
 ## Installation
 
-Now let's walk you through how to get Kamcord into your games.
+Let's walk through how to get Kamcord into your games.
 
 ### Framework
 
 <ol>
 <li style="margin: 0";>Clone this repository to your local development machine.</li>
-<li style="margin: 0";>Under <code>Frameworks</code>, drag and drop <code>Kamcord.framework</code> and <code>AWSiOSSDK.framework</code> into your project. Also add the files under <code>Resources</code> to your project. Make sure to check the box next to the target application you want to link these frameworks and resources to (your game, presumably).</b></li>
+<li style="margin: 0";>From <code>cocos2d-kamcord-ios/Frameworks</code>, drag and drop <code>Kamcord.framework</code> and <code>AWSiOSSDK.framework</code> into your project. Also add the files under <code>Resources</code> to your project. Make sure to check the box next to the target application you want to link these frameworks and resources to (your game, presumably).</b></li>
 <li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
-	<ul>
+	<ul style="margin-top: 15px; margin-bottom: 15px;">
         <li style="margin: 0;">AVFoundation</li>
         <li style="margin: 0;"><b>AWSiOSSDK</b></li>
         <li style="margin: 0;">CoreGraphics</li>
