@@ -6,6 +6,8 @@
 
 #import "SceneTest.h"
 
+#import <Kamcord/Kamcord.h>
+
 #pragma mark -
 #pragma mark Layer1
 
@@ -230,13 +232,26 @@
 	// 8. Device orientation: Portrait
 	// 9. Connects the director to the EAGLView
 	//
-	CC_DIRECTOR_INIT();
+	CC_DIRECTOR_INIT_KAMCORD();
 	
 	// Obtain the shared director in order to...
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	// Sets landscape mode
-	[director setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
+	[Kamcord setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
+    
+    // Kamcord setup
+    [Kamcord setDeveloperKey:@"kamcord-test" developerSecret:@"kamcord-test"];
+    
+    // Social media settings
+    [Kamcord setYouTubeTitle:@"SceneTest"
+                 description:@"This is a Cocos2D test app that was recorded with Kamcord."
+                    keywords:@"Cocos2D RotateWorldTest"];
+    
+    [Kamcord setFacebookTitle:@"SceneTest"
+                      caption:@"Kamcord recording"
+                  description:@"This is a Cocos2D test app that was recorded with Kamcord."];
+
 	
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
 	if( ! [director enableRetinaDisplay:YES] )
@@ -245,28 +260,42 @@
 	// Turn on display FPS
 	[director setDisplayFPS:YES];
 	
-	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
 	// You can change anytime.
 	[CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGBA8888];
+    
+    // Do this after [Kamcord setDeviceOrientation:...];
+    [window addSubview:[director openGLView]];
+    [window makeKeyAndVisible];
 	
 	CCScene *scene = [CCScene node];
 
 	[scene addChild: [Layer1 node] z:0];
 	
+	[Kamcord startRecording];
+    [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
+    
 	[director runWithScene: scene];
+}
+
+-(void) stopRecordingAndShowKamcordView:(id)sender
+{
+	[Kamcord stopRecording];
+    [Kamcord showView];
 }
 
 // getting a call, pause the game
 -(void) applicationWillResignActive:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] pause];
+    [Kamcord pause];
 }
 
 // call got rejected
 -(void) applicationDidBecomeActive:(UIApplication *)application
 {
+    [Kamcord resume];
 	[[CCDirector sharedDirector] resume];
 }
 

@@ -8,7 +8,7 @@
 // cocos import
 #import "RenderTextureTest.h"
 
-#import <cocos2d-1.0.1-kamcord/Kamcord.h>
+#import <Kamcord/Kamcord.h>
 
 static int sceneIdx=-1;
 static NSString *tests[] = {	
@@ -182,14 +182,12 @@ Class restartAction()
 
 -(void) startRecording:(id)sender
 {
-	[Kamcord beginVideo];
     [Kamcord startRecording];
 }
 
 -(void) stopRecordingAndShowDialog:(id)sender
 {
 	[Kamcord stopRecording];
-    [Kamcord endVideo];
     [Kamcord showView];
 }
 
@@ -611,13 +609,13 @@ Class restartAction()
 -(void) applicationWillResignActive:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] pause];
-    [Kamcord stopRecording];
+    [Kamcord pause];
 }
 
 // call got rejected
 -(void) applicationDidBecomeActive:(UIApplication *)application
 {
-    [Kamcord startRecording];
+    [Kamcord resume];
 	[[CCDirector sharedDirector] resume];
 }
 

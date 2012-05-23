@@ -7,6 +7,8 @@
 // cocos import
 #import "cocos2d.h"
 
+#import <Kamcord/Kamcord.h>
+
 // local import
 #import "SpriteTest.h"
 
@@ -4023,16 +4025,31 @@ Class restartAction()
 	[director setDisplayFPS:YES];
 
 	// Create an EAGLView with a RGB8 color buffer, and a depth buffer of 24-bits
-	EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
-								   pixelFormat:kEAGLColorFormatRGBA8
-								   depthFormat:GL_DEPTH_COMPONENT24_OES
-							preserveBackbuffer:NO
-									sharegroup:nil
-								 multiSampling:NO
-							   numberOfSamples:0];
-
+	KCGLView *glView = [KCGLView viewWithFrame:[window bounds]
+								   pixelFormat:kEAGLColorFormatRGB565
+								   depthFormat:0];
+    
+    // Create root view controller
+    window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
+    window.rootViewController.view = glView;
+	
 	// attach the openglView to the director
-	[director setOpenGLView:glView];
+    [Kamcord setParentViewController:window.rootViewController];
+	[Kamcord setOpenGLView:glView];
+    
+    // Developer settings
+    [Kamcord setDeveloperKey:@"kamcord-test" developerSecret:@"kamcord-test"];
+    [Kamcord setDeviceOrientation:CCDeviceOrientationLandscapeRight];
+    
+    // Social media settings
+    [Kamcord setYouTubeTitle:@"SpriteTest"
+                 description:@"This is a Cocos2D test app that was recorded with Kamcord."
+                    keywords:@"Cocos2D SpriteTest"];
+    
+    [Kamcord setFacebookTitle:@"SpriteTest"
+                      caption:@"Kamcord recording"
+                  description:@"This is a Cocos2D test app that was recorded with Kamcord."];
+	
 
 	// 2D projection
 //	[director setProjection:kCCDirectorProjection2D];
@@ -4060,24 +4077,33 @@ Class restartAction()
 	[scene addChild: [nextAction() node]];
 	
 	
-	// and run it!
+	[Kamcord startRecording];
+    [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
+    
 	[director runWithScene: scene];
-	
-	return YES;
+    
+    return YES;
+}
+
+-(void) stopRecordingAndShowKamcordView:(id)sender
+{
+	[Kamcord stopRecording];
+    [Kamcord showView];
 }
 
 // getting a call, pause the game
 -(void) applicationWillResignActive:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] pause];
+    [Kamcord pause];
 }
 
 // call got rejected
 -(void) applicationDidBecomeActive:(UIApplication *)application
 {
+    [Kamcord resume];
 	[[CCDirector sharedDirector] resume];
 }
-
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
 	[[CCDirector sharedDirector] stopAnimation];

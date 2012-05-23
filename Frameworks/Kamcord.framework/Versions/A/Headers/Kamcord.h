@@ -57,10 +57,10 @@
 + (NSNumber *) score;
 
 // Video recording
-+ (BOOL) beginVideo;
-+ (BOOL) endVideo;
 + (BOOL) startRecording;
 + (BOOL) stopRecording;
++ (BOOL) resume;
++ (BOOL) pause;
 
 // Displays the Kamcord view inside the previously set parentViewController;
 + (void) showView;

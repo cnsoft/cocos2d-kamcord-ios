@@ -2,7 +2,7 @@
 
 
 ## Introduction
-
+/Users/kevin/git/kamcord/cocos2d-kamcord-ios/Examples/cocos2d-iphone-1.0.1/tests/RotateWorldTest.m
 Kamcord is a built-in gameplay recording technology for iOS. This repository contains an SDK that works with Cocos2D-1.0.1. It allows you, the game developer, to capture gameplay videos with a very simple API.
 Your users can then replay and share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
@@ -74,11 +74,11 @@ Import Kamcord into your application delegate:
 [Kamcord setDeveloperSecret:@"My_Developer_Secret"];</code></pre>
 </p>
 </li>
-<li style="margin: 0;">In your application delegate (or wherever you create the <code>UIWindow</code> and <code>EAGLView</code>), make sure <code>window.rootViewController</code> is set to an instance of <code>KCViewController</code>. Also set the view of that ViewController to your <code>EAGLView</code>.
+<li style="margin: 0;">In your application delegate (or wherever you create the <code>UIWindow</code> and <code>KCGLView</code>), make sure <code>window.rootViewController</code> is set to an instance of <code>KCViewController</code>. Also set the view of that ViewController to your <code>KCGLView</code>.
 
 <p>
 <pre><code>window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
-window.rootViewController.view = glView; // Assuming glView is your EAGLView
+window.rootViewController.view = glView; // Assuming glView is your KCGLView
 [Kamcord setParentViewController:window.rootViewController];</code></pre>
 <p>
 
@@ -111,12 +111,12 @@ The recording interface is built around the concept of one video, which has one 
 
 The API is:
 
-    +(void) beginVideo;
-    +(void) endVideo;
     +(void) startRecording;
     +(void) stopRecording;
+    +(void) pause;
+    +(void) resume;
 
-`beginVideo` is first called to indicate the beginning of a new video. *<b>It does not begin the actual video recording</b>*. After that, `startRecording` and `stopRecording` start and stop the video recording. If you call `startRecording` without calling `beginVideo` first, nothing will happen. When the entire gameplay is over, for example after the user finishes a level, call `endVideo`.
+`startRecording` starts the video recording, which you can pause and resume with `pause` and `resume`. Once you're done with the entire video, call `stopRecording`.
 
 **Before we move on, please be aware that video replay will NOT work in the simulator! The video will be recorded and it will be the right length, but it will be all black. You must test on a device to see the video replay actually work.**
 
@@ -135,7 +135,7 @@ This presents a modal view with the following options:
 </ul>
 </p>
 
-`Replay video` will show the video of the gameplay that just happened (the result of the last `endVideo` call). 
+`Replay video` will show the video of the gameplay that just happened (the result of the last `stopRecording` call). 
 
 `Share` will bring the user to a new view that lets them enter a message and select Facebook, Twitter, and/or email. When the user taps the `Share` button on this second view, we upload the video to our (Kamcord's) YouTube channel and share their message to their selected social networks or via email. The first time the user selects Facebook or Twitter, he will be prompted for the relevant credentials and permissions. 
 
@@ -151,7 +151,10 @@ where the kamcord.com URL will instantly <a href="http://en.wikipedia.org/wiki/H
 
 ### Differences from Cocos2D
 
-If your application's setup code calls `CC_DIRECTOR_INIT()` right now, replace it with `CC_DIRECTOR_INIT_KAMCORD()`.
+If your application's setup code calls `CC_DIRECTOR_INIT()`, replace it with `CC_DIRECTOR_INIT_KAMCORD()` and add the following two lines after `[Kamcord setDeviceOrientation:...]` is called:
+
+	[window addSubview:[[CCDirector sharedDirector] openGLView];
+    [window makeKeyAndVisible];
 
 ### Developer Goodies
 
@@ -179,7 +182,7 @@ When the user shares to Facebook, their video is first uploaded to YouTube. We w
 
 It's worth noting that every time we upload a video to YouTube and post to Facebook, we use the currently set values of these fields. Therefore, you may want to change the title, caption, and or description to match the results of the most recent gameplay (to add the score, for instance).
 
-Lastly, we another function you should set after you call `endVideo`:
+Lastly, we another function you should set after you call `stopRecording`:
 
 	+(void) setLevel:(NSString *)level
      	       score:(NSNumber *)score;
@@ -229,7 +232,7 @@ Below are all of the code integration points. We bold the lines we added to make
 	// Display FPS: yes
 	[director setDisplayFPS:YES];
 	
-	// Create an EAGLView with a RGB8 color buffer, and a depth buffer of 24-bits
+	// Create a KCGLView with a RGB8 color buffer, and a depth buffer of 24-bits
 	KCGLView *glView = [KCGLView viewWithFrame:[window bounds]
 								   pixelFormat:kEAGLColorFormatRGB565
 								   depthFormat:0];
@@ -238,19 +241,14 @@ Below are all of the code integration points. We bold the lines we added to make
     window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
     window.rootViewController.view = glView;
 	
-	// Tell Kamcord the root view controller and the OpenGL View.
-    // It will pass on the OpenGL View to CCDirector, so you don't need to 
-    // call [[CCDirector sharedDirector] setOpenGLView:glView];
+	// attach the openglView to the director
     [Kamcord setParentViewController:window.rootViewController];
 	[Kamcord setOpenGLView:glView];
     
     // Developer settings
-    [Kamcord setDeveloperKey:@"kamcord-test"
-             developerSecret:@"kamcord-test"];
-    
-    // Game orientation
+    [Kamcord setDeveloperKey:@"kamcord-test" developerSecret:@"kamcord-test"];
     [Kamcord setDeviceOrientation:CCDeviceOrientationLandscapeRight];
-
+    
     // Social media settings
     [Kamcord setYouTubeTitle:@"RenderTextureTest"
                  description:@"This is a Cocos2D test app that was recorded with Kamcord."
@@ -260,8 +258,11 @@ Below are all of the code integration points. We bold the lines we added to make
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
 	
+	// 2D projection
+    //	[director setProjection:kCCDirectorProjection2D];
+	
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-	if( ![director enableRetinaDisplay:YES] )
+	if( ! [director enableRetinaDisplay:YES] )
 		CCLOG(@"Retina Display Not supported");
 	
 	// make the OpenGLView a child of the main window
@@ -279,9 +280,10 @@ Below are all of the code integration points. We bold the lines we added to make
 	[scene addChild: [nextAction() node]];
 	
 	[director runWithScene: scene];
-}</code></pre>
+}
+</code></pre>
 
-This code sets up the window's root view controller and gives it ownership of the `EAGLView`. It then begins a new video and starts recording the scene. The `Start Recording` and `Stop Recording` buttons in the app are hooked in as follows:
+This code sets up the window's root view controller and gives it ownership of the `KCGLView`. It then begins a new video and starts recording the scene. The `Start Recording` and `Stop Recording` buttons in the app are hooked in as follows:
 
 <pre><code>@implementation KamcordRecording
 -(id) init
@@ -336,24 +338,24 @@ This code sets up the window's root view controller and gives it ownership of th
     [Kamcord showView];
 }</b></code></pre>
 
-For most games, you'll want to defer the calls to `beginVideo` and `startRecording` until appropriate (your user begins the actual level, etc.).
+For most games, you'll want to defer the calls to `startRecording` until appropriate (your user begins the actual level, etc.).
 
-To highlight the handling of the application lifecycle, we've made additions to the following functions:
+To highlight the handling of the application lifecycle, we've made additions to the foll	owing functions:
 
 <pre><code>-(void) applicationWillResignActive:(UIApplication *)application
 {
-	[[CCDirector sharedDirector] pause];
-    <b>[Kamcord stopRecording];</b>
+	[[CCDirecto shraredDirector] pause];
+    <b>[Kamcord pause];</b>
 }
 
--(void) applicationDidBecomeActive:(UIApplication *)application
-{
-    <b>[Kamcord startRecording];</b>
+-(void) applicationDidBecomeActive:(UIAplicpation *)applicaton
+{i
+    <b>[Kamcord resume];</b>
 	[[CCDirector sharedDirector] resume];
 }
 </code></pre>
 
-That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `beginVideo` has not been called), the calls to `startRecording` and `stopRecording` do nothing.
+That's all you have to do to manage the applicaton lifecycle. If no video is currently being recorded (i.e. `startRecording` has not been called), the calls to `pause` and `resume` do nothing.
 
 To test this functionality, press `Start Recording`, play with the app, then close it by pressing the home button. Re-open the app, do some more actions, then press `Stop Recording`. When the Kamcord dialog appears, select `Replay Video`. It should show one seamless video of everything that's happened.
 
