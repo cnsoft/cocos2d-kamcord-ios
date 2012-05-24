@@ -11,13 +11,6 @@
 
 #import "KCVideoUpdateReceiver.h"
 
-// The delegate for when the video is ready to be used
-@protocol KCVideoWriterDelegate <NSObject>
-@required
-- (void) videoCreatedAtURL:(NSURL *)videoURL
-                 thumbnail:(CGImageRef)thumbnail;
-@end
-
 @interface KCVideoWriter : NSObject
 
 // Public properties
@@ -28,8 +21,7 @@
 
 // Only initializer
 - (id) initWithDimensions:(CGSize) dimensions
-             videoBitRate:(NSUInteger) bitRate
-              andDelegate:(id <KCVideoWriterDelegate>) delegate;
+             videoBitRate:(NSUInteger) bitRate;
 
 // Write a frame to the video
 - (BOOL) addFrameToVideo:(CVPixelBufferRef) pixelBuffer

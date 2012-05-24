@@ -27,8 +27,7 @@
 
 - (id) initWithDimensions:(CGSize) dimensions
              videoBitRate:(NSUInteger) bitRate
-                targetFPS:(double) targetFPS
-              andDelegate:(id <KCVideoWriterDelegate>) delegate;
+                targetFPS:(double) targetFPS;
 
 - (void) handlePixelBuffer:(CVPixelBufferRef) pixelBuffer
                     atTime:(CFAbsoluteTime) time;

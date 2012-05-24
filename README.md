@@ -149,7 +149,19 @@ The API is:
 
 `startRecording` starts the video recording, which you can pause and resume with `pause` and `resume`. Once you're done with the entire video, call `stopRecording`.
 
-**Before we move on, please be aware that video replay will NOT work in the simulator! The video will be recorded and it will be the right length, but it will be all black. You must test on a device to see the video replay actually work.**
+**{lease be aware that video replay will NOT work in the simulator! The video will be recorded and it will be the right length, but it will be all black. You must test on a device to see the video replay actually work.**
+
+### Video Quality
+
+You can also set the dimensions and quality of the recorded video:
+
+	+(void) setVideoDimensions:(enum KC_VIDEO_DIMENSIONS)dimensions
+	    	           quality:(enum KC_VIDEO_QUALITY)quality;
+
+There are two video dimension settings: `VIDEO_DIMENSIONS_FULL` and `VIDEO_DIMENSIONS_HALF`. The first keeps the original rendered pixel dimensions while the second reduces the width and height by two, effectively reducing the video size by 4. The two video quality settings are `VIDEO_QUALITY_HIGH` and `VIDEO_QUALITY_MEDIUM`.
+
+Keep in mind that videos that are larger and have higher quality will take much longer to process and upload, potentially making for a worse user experience. We recommend running with either `VIDEO_DIMENSIONS_FULL` and `VIDEO_QUALITY_MEDIUM` (the default) or `VIDEO_DIMENSIONS_HALF` and `VIDEO_QUALITY_HIGH`. You should experiment with different combinations to see what works best for your games.
+
 
 ### Presenting User Options
 
