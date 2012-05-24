@@ -83,8 +83,8 @@ Import Kamcord into your application delegate:
 <li>We will provide you with a per-game Kamcord developer key and developer secret. <b>Please set them when your app initializes or recording won't work</b>:
 
 <p>
-<pre><code>[Kamcord setDeveloperKey:@"My_Developer_Key"];
-[Kamcord setDeveloperSecret:@"My_Developer_Secret"];</code></pre>
+<pre><code>[Kamcord setDeveloperKey:@"My_Developer_Key"
+         developerSecret:@"My_Developer_Secret"];</code></pre>
 </p>
 </li>
 <li style="margin: 0;">
