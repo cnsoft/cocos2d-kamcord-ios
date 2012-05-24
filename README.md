@@ -35,6 +35,7 @@ Let's walk through how to get Kamcord into your games.
 <li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 	<ul style="margin-top: 15px; margin-bottom: 15px;">
+		<li style="margin: 0;">Accounts</li>
         <li style="margin: 0;">AVFoundation</li>
         <li style="margin: 0;"><b>AWSiOSSDK</b></li>
         <li style="margin: 0;">CoreGraphics</li>
