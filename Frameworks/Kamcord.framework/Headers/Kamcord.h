@@ -56,6 +56,12 @@
 + (NSString *) level;
 + (NSNumber *) score;
 
+// Audio
++ (void) setAudioResourceName:(NSString *)name
+                    extension:(NSString *)extension;
++ (NSString *)audioResourceName;
++ (NSString *)audioResourceExtension;
+
 // Video recording
 + (BOOL) startRecording;
 + (BOOL) stopRecording;

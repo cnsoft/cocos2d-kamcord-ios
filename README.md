@@ -329,7 +329,7 @@ Then do all the Kamcord initialization:
 	if( ! [director enableRetinaDisplay:YES] )
 		CCLOG(@"Retina Display Not supported");
 	<b>
-	// Not Kamcord specific, but dont' forget to do this after
+	// Not Kamcord specific, but don't forget to do this after
 	// all the Kamcord initialization is finished.
 	[window addSubview:glView];
 	[window makeKeyAndVisible];
