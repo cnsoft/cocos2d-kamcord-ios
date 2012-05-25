@@ -22,5 +22,8 @@
              isReadyForSharing:(BOOL)isReadyForSharing;
 - (void)exportCancelled;
 
+- (void)videoUploadedOnlineToURL:(NSURL *)videoURL
+                    thumbnailURL:(NSURL *)thumbnailURL;
+
 
 @end
