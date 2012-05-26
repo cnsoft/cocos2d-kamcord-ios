@@ -29,7 +29,6 @@ do	{																							\
     window.rootViewController.view = __glView;                                                  \
     [Kamcord setParentViewController:window.rootViewController];                                \
     [Kamcord setOpenGLView:__glView];                                                           \
-    [Kamcord setDeviceOrientation:CCDeviceOrientationPortrait];                                 \
 } while(0)
 
 
