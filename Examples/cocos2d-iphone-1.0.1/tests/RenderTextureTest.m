@@ -589,6 +589,10 @@ Class restartAction()
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
     
+    // Set a background audio track we're going to loop over the recorded video.
+    [Kamcord setAudioResourceName:@"background"
+                        extension:@"wav"];
+    
     // 2D projection
     //  [director setProjection:kCCDirectorProjection2D];
     

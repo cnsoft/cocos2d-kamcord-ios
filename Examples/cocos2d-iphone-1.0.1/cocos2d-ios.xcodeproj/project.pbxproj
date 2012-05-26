@@ -60,6 +60,7 @@
 		05CA7AFE10ED674700F12774 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */; };
 		05CA7B0010ED674700F12774 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		05CA7B0C10ED67CE00F12774 /* ActionsWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA7B0B10ED67CE00F12774 /* ActionsWithBlocks.m */; };
+		0A1D64C31570BA8D00627EBE /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D64C21570BA8D00627EBE /* background.wav */; };
 		0AA62391156B75F8006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; };
 		0AA6239A156B75F8006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; };
 		0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
@@ -3807,6 +3808,7 @@
 		05CA7B0410ED674700F12774 /* ActionsWithBlocksSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActionsWithBlocksSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CA7B0A10ED67CE00F12774 /* ActionsWithBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsWithBlocks.h; sourceTree = "<group>"; };
 		05CA7B0B10ED67CE00F12774 /* ActionsWithBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionsWithBlocks.m; sourceTree = "<group>"; };
+		0A1D64C21570BA8D00627EBE /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = background.wav; path = Resources/background.wav; sourceTree = "<group>"; };
 		0AA62392156B75F8006D25E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0AA62393156B75F8006D25E1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		0AA62394156B75F8006D25E1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -6053,6 +6055,7 @@
 				0AA625D8156C828B006D25E1 /* KamcordStoryboard_iPad.storyboardc */,
 				0AA625D9156C828B006D25E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */,
 				0AA625DA156C828B006D25E1 /* KamcordStoryboard_iPhone.storyboardc */,
+				0A1D64C21570BA8D00627EBE /* background.wav */,
 				E02BB57E126CA73F006E46A2 /* Icon@2x.png */,
 				E02BB57F126CA73F006E46A2 /* Icon-Small@2x.png */,
 				E02BB580126CA73F006E46A2 /* Icon-Small.png */,
@@ -9536,6 +9539,7 @@
 				0AA62628156C828B006D25E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
 				0AA6265A156C828C006D25E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
 				0AA6268C156C828C006D25E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
+				0A1D64C31570BA8D00627EBE /* background.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
