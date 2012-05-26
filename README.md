@@ -164,14 +164,18 @@ Keep in mind that videos that are larger and have higher quality will take much 
 
 ### Background Audio
 
-You can add a repeating background audio track to your videos by providing a filename and extension using the following API call:
+You can add a repeating background audio track to your videos by giving a filename and extension using the following API call:
 
 	+(BOOL) setAudioResourceName:(NSString *)name
 	    	           extension:(NSString *)extension;
 
-For example, if you had a resource named `game_background.wav`, call this method with `game_background` and `wav`. This method returns `YES` if the audio file was found using the provided `name` and `extension`. Otherwise, it returns `NO`. We suport the common file formats (`aac`, `aif`, `m4a`, `mp3`, and `wav`).
+For example, if you have a resource named `game_background.wav`, call this method with `"game_background"` and `"wav"`. This method returns `YES` if the specified audio file was found. Otherwise, it returns `NO`. We suport all the common file formats (`aac`, `aif`, `caf`, `m4a`, `mp3`, and `wav`).
 
-If the audio file is too long for the recording, then we trim it appropriately. If the audio file is too short for the recording, we repeat it multiple times so that it plays throughout the entire video recording.
+If the audio file is too long for the video, then we truncate the end to match the video length. If the audio file is too short for the video, we repeat it endlessly so that it plays throughout the entire video.
+
+<b>Note that this audio track is only overlayed on the video once the video processing is finished.</b> We begin video processing in the background as soon as you call `stopRecording`, but the video you watch via the `Replay Video` button on the Kamcord UI may show the preprocessed video (without the audio overlay).
+
+If you have any existing game background music, we recommend you use this API call. It makes for a much better viewer experience. The `RenderTextureTest` example below shows this in action.
 
 ### Presenting User Options
 
@@ -331,6 +335,10 @@ Then do all the Kamcord initialization:
     [Kamcord setFacebookTitle:@"RenderTextureTest"
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
+    
+    // Set a background audio track we're going to loop over the recorded video.
+    [Kamcord setAudioResourceName:@"background"
+                        extension:@"wav"];
     </b>
 	// 2D projection
     //	[director setProjection:kCCDirectorProjection2D];
