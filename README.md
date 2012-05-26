@@ -153,7 +153,7 @@ The API is:
 
 ### Video Quality
 
-You can also set the dimensions and quality of the recorded video:
+You can set the dimensions and quality of the recorded video:
 
 	+(void) setVideoDimensions:(enum KC_VIDEO_DIMENSIONS)dimensions
 	    	           quality:(enum KC_VIDEO_QUALITY)quality;
@@ -162,6 +162,16 @@ There are two video dimension settings: `VIDEO_DIMENSIONS_FULL` and `VIDEO_DIMEN
 
 Keep in mind that videos that are larger and have higher quality will take much longer to process and upload, potentially making for a worse user experience. We recommend running with either `VIDEO_DIMENSIONS_FULL` and `VIDEO_QUALITY_MEDIUM` (the default) or `VIDEO_DIMENSIONS_HALF` and `VIDEO_QUALITY_HIGH`. You should experiment with different combinations to see what works best for your games.
 
+### Background Audio
+
+You can add a repeating background audio track to your videos by providing a filename and extension using the following API call:
+
+	+(BOOL) setAudioResourceName:(NSString *)name
+	    	           extension:(NSString *)extension;
+
+For example, if you had a resource named `game_background.wav`, call this method with `game_background` and `wav`. This method returns `YES` if the audio file was found using the provided `name` and `extension`. Otherwise, it returns `NO`. We suport the common file formats (`aac`, `aif`, `m4a`, `mp3`, and `wav`).
+
+If the audio file is too long for the recording, then we trim it appropriately. If the audio file is too short for the recording, we repeat it multiple times so that it plays throughout the entire video recording.
 
 ### Presenting User Options
 
