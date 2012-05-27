@@ -62,6 +62,7 @@ Let's walk through how to get Kamcord into your games.
     <ul style="margin-bottom: 15px;">
         <li style="margin: 0;">-ObjC</li>
         <li style="margin: 0;">-all_load</li>
+        <li style="margin: 0;">-lxml2</li>
     </ul>
     </p>
     <p>

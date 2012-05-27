@@ -13224,6 +13224,7 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"-lxml2",
 				);
 				PRODUCT_NAME = RenderTextureTest;
 			};
@@ -13249,6 +13250,7 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"-lxml2",
 				);
 				PRODUCT_NAME = RenderTextureTest;
 				ZERO_LINK = NO;
@@ -13555,6 +13557,8 @@
 					Foundation,
 					"-framework",
 					UIKit,
+					"-lxml2",
+					"-all_load",
 				);
 				PRODUCT_NAME = SpriteTest;
 			};
@@ -13583,6 +13587,8 @@
 					Foundation,
 					"-framework",
 					UIKit,
+					"-lxml2",
+					"-all_load",
 				);
 				PRODUCT_NAME = SpriteTest;
 				ZERO_LINK = NO;
@@ -13697,6 +13703,7 @@
 					UIKit,
 					"-all_load",
 					"-ObjC",
+					"-lxml2",
 				);
 				PRODUCT_NAME = RotateWorldTest;
 			};
@@ -13727,6 +13734,7 @@
 					UIKit,
 					"-all_load",
 					"-ObjC",
+					"-lxml2",
 				);
 				PRODUCT_NAME = RotateWorldTest;
 				ZERO_LINK = NO;
@@ -14720,6 +14728,8 @@
 					Foundation,
 					"-framework",
 					UIKit,
+					"-lxml2",
+					"-all_load",
 				);
 				PRODUCT_NAME = SceneTest;
 			};
@@ -14748,6 +14758,8 @@
 					Foundation,
 					"-framework",
 					UIKit,
+					"-lxml2",
+					"-all_load",
 				);
 				PRODUCT_NAME = SceneTest;
 				ZERO_LINK = NO;
@@ -15837,6 +15849,7 @@
 					Foundation,
 					"-framework",
 					UIKit,
+					"-all_load",
 				);
 				PRODUCT_NAME = ParticleTest;
 			};
@@ -15865,6 +15878,7 @@
 					Foundation,
 					"-framework",
 					UIKit,
+					"-all_load",
 				);
 				PRODUCT_NAME = ParticleTest;
 				ZERO_LINK = NO;
