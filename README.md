@@ -66,7 +66,7 @@ Let's walk through how to get Kamcord into your games.
     </ul>
     </p>
     <p>
-    <img src="http://dl.dropbox.com/u/6122/Kamcord/other_linker_flags.png"/>
+    <img src="http://dl.dropbox.com/u/6122/Kamcord/other_linker_flags2.png"/>
     </p>
 </li>
 </ol>
