@@ -222,6 +222,8 @@ Kamcord uses <a href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:aut
 
 instead of `[[CCDirector sharedDirector] setDeviceOrientation:...]`. If you cannot make ur `window.rootViewController` an instance of `KCViewController`, <a href="mailto:kevin@kamcord.com" />let us know</a> and we'll give you a simple patch for your View Controller code.
 
+If you set either `CCDeviceOrientationLandscapeLeft` or `CCDeviceOrientationLandscapeRight`, Kamcord will autorotate the screen to support both landscape orientations.
+
 ### Developer Settings
 
 A YouTube video looks like this:
