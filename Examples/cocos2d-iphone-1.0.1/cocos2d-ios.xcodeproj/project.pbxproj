@@ -15850,6 +15850,7 @@
 					"-framework",
 					UIKit,
 					"-all_load",
+					"-lxml2",
 				);
 				PRODUCT_NAME = ParticleTest;
 			};
@@ -15879,6 +15880,7 @@
 					"-framework",
 					UIKit,
 					"-all_load",
+					"-lxml2",
 				);
 				PRODUCT_NAME = ParticleTest;
 				ZERO_LINK = NO;
