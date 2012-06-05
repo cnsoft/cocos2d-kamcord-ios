@@ -1,4 +1,4 @@
-# cocos2d-kamcord 0.1.0 alpha
+# cocos2d-kamcord 0.1.1 alpha
 
 
 ## Introduction
@@ -156,12 +156,19 @@ The API is:
 
 You can set the dimensions and quality of the recorded video:
 
-	+(void) setVideoDimensions:(enum KC_VIDEO_DIMENSIONS)dimensions
-	    	           quality:(enum KC_VIDEO_QUALITY)quality;
+	+(void) setVideoResolution:(KC_VIDEO_RESOLUTION)resolution
+	    	           quality:(KC_VIDEO_QUALITY)quality;
 
-There are two video dimension settings: `VIDEO_DIMENSIONS_FULL` and `VIDEO_DIMENSIONS_HALF`. The first keeps the original rendered pixel dimensions while the second reduces the width and height by two, effectively reducing the video size by 4. The two video quality settings are `VIDEO_QUALITY_HIGH` and `VIDEO_QUALITY_MEDIUM`.
+There are two video dimension settings:
 
-Keep in mind that videos that are larger and have higher quality will take much longer to process and upload, potentially making for a worse user experience. We recommend running with either `VIDEO_DIMENSIONS_FULL` and `VIDEO_QUALITY_MEDIUM` (the default) or `VIDEO_DIMENSIONS_HALF` and `VIDEO_QUALITY_HIGH`. You should experiment with different combinations to see what works best for your games.
+- `SMART_VIDEO_RESOLUTION`: 512x384 on all iPads, 480x320 on all iPhone/iPods.
+- `FULL_VIDEO_RESOLUTION`: 1024x768 on all iPads, 480x320 on non-retina iPhone/iPods, and 960x480 on retina iPhone/iPods.
+
+The two video quality settings are `HIGH_VIDEO_QUALITY` and `MEDIUM_VIDEO_QUALITY`.
+
+Keep in mind that videos that are larger and have higher quality will take much longer to process and upload. We recommend running with  `SMART_VIDEO_RESOLUTION` and `MEDIUM_VIDEO_QUALITY` (the default). You should experiment with different combinations to see what works best for your games.
+
+We currently don't support recording at iPad retina resolutions (2048x1536) because it seems that Apple doesn't support writing videos of those resolutions, but we plan to come back to this issue in the future.
 
 ### Background Audio
 
@@ -448,5 +455,5 @@ To test this functionality, press `Start Recording`, play with the app, then clo
 
 ## Contact Us
 
-If you have any questions or comments, don't hesitate to email Kevin at <a href="mailto:kevin@kamcord.com">kevin@kamcord.com</a>. We reply to every email usually within a couple of hours, if not sooner.
+If you have any questions or comments, don't hesitate to email Kevin at <a href="mailto:kevin@kamcord.com">kevin@kamcord.com</a>. We reply to every email.
 

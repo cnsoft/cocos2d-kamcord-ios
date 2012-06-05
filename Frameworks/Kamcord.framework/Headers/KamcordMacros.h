@@ -31,5 +31,32 @@ do	{																							\
     [Kamcord setOpenGLView:__glView];                                                           \
 } while(0)
 
+// Logging
+#ifdef DEBUG
+
+#define NLog(fmt, ...) printf("%s\n", [[NSString stringWithFormat:@"%s:%d %@", __PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:fmt, ##__VA_ARGS__]] UTF8String])
+
+#else
+
+#define NLog(...)
+
+#endif
+
+
+
+////////////////////////////////////////////////
+// Macros that make it easier to port Kamcord
+// to different engines.
+
+// Orientation
+#define KCDeviceOrientation ccDeviceOrientation
+
+#define KCDeviceOrientationPortrait CCDeviceOrientationPortrait 
+#define KCDeviceOrientationPortraitUpsideDown CCDeviceOrientationPortraitUpsideDown
+#define KCDeviceOrientationLandscapeLeft CCDeviceOrientationLandscapeLeft
+#define KCDeviceOrientationLandscapeRight CCDeviceOrientationLandscapeRight
+
+// OpenGL
+#define KC_CONTENT_SCALE_FACTOR() CC_CONTENT_SCALE_FACTOR()
 
 #endif

@@ -32,7 +32,7 @@
 - (void) handlePixelBuffer:(CVPixelBufferRef) pixelBuffer
                     atTime:(CFAbsoluteTime) time;
 
-- (BOOL) beginVideo;
+- (BOOL) beginVideoWithId:(NSString *)videoID;
 - (BOOL) endVideo;
 - (BOOL) startRecording;
 - (BOOL) stopRecording;

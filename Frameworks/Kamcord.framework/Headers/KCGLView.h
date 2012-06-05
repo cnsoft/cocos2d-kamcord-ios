@@ -68,7 +68,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 #import "EAGLView.h"
 
-@class KCVideoReplayCreator;
+@class KCVideoWriter;
 
 @interface KCGLView : EAGLView
 
@@ -83,6 +83,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
        multiSampling:(BOOL)sampling
      numberOfSamples:(unsigned int)nSamples;
 
+- (id) initWithCoder:(NSCoder *)aDecoder;
+
 /** EAGLView uses double-buffer. This method swaps the buffers */
 -(void) swapBuffers;
 
@@ -91,7 +93,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 // Kamcord category extension
 @interface EAGLView (KCGLView)
 
-- (void)setVideoReplayCreator:(KCVideoReplayCreator *)videoReplayCreator;
+- (void)setVideoWriter:(KCVideoWriter *)videoWriter;
 
 @end
 

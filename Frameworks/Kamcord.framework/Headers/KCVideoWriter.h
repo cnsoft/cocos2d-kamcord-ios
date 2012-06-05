@@ -3,37 +3,36 @@
 //  cocos2d-ios
 //
 //  Created by Kevin Wang on 5/2/12.
-//  Copyright (c) 2012 KamCord. All rights reserved.
+//  Copyright (c) 2012 Kamcord. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
-#import "KCVideoUpdateReceiver.h"
+@class KCVideo;
 
 @interface KCVideoWriter : NSObject
 
 // Public properties
-@property (nonatomic, assign, readonly) BOOL isWritingVideo;
-@property (nonatomic, assign, readonly) BOOL isWritingClip;
-@property (nonatomic, assign, readonly) BOOL videoIsConverted;
-
+@property (nonatomic, copy, readonly) KCVideo * currentVideo;
 
 // Only initializer
 - (id) initWithDimensions:(CGSize) dimensions
-             videoBitRate:(NSUInteger) bitRate;
+             videoBitRate:(NSUInteger) bitRate
+                targetFPS:(double) targetFPS;
+
 
 // Write a frame to the video
 - (BOOL) addFrameToVideo:(CVPixelBufferRef) pixelBuffer
-                  atTime:(CMTime) time;
+                  atTime:(CFAbsoluteTime) time;
 
-- (BOOL) beginVideo;
+- (BOOL) beginVideo:(KCVideo *)video;
 - (BOOL) endVideo;
-- (BOOL) requestVideoURLWithConversion:(BOOL) convert
-                       progressDelgate:(id <KCVideoStatusUpdateReceiver>)delegate;
+- (BOOL) startRecording;
+- (BOOL) stopRecording;
 
-- (BOOL) startClip;
-- (BOOL) endClip;
+// Useful to know if we're currently writing frames or not
+- (BOOL) isWriting;
 
 - (void) dealloc;
 

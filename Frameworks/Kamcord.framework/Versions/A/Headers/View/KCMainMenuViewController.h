@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "KCViewController.h"
-#import "../KCVideoUpdateReceiver.h"
 
-@interface KCMainMenuViewController : KCViewController <KCVideoStatusUpdateReceiver>
+@class KCVideo;
+@class KCVideoProcessingAndShareManager;
+
+@interface KCMainMenuViewController : KCViewController
+
+@property (nonatomic, retain) KCVideo * latestVideo;
+@property (nonatomic, retain) KCVideoProcessingAndShareManager * shareManager;
+
+- (void) dealloc;
 
 @end

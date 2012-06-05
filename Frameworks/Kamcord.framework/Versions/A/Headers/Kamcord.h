@@ -16,6 +16,8 @@
 #import "KamcordMacros.h"
 #import "View/KCViewController.h"
 
+#import "MixpanelAPI.h"
+
 @interface Kamcord : NSObject
 
 ////////////////////////////////////////////////
@@ -33,8 +35,8 @@
 
 + (void) setOpenGLView:(KCGLView *)glView;
 
-+ (void) setDeviceOrientation:(ccDeviceOrientation)orientation;
-+ (ccDeviceOrientation) deviceOrientation;
++ (void) setDeviceOrientation:(KCDeviceOrientation)orientation;
++ (KCDeviceOrientation) deviceOrientation;
 
 // Social media
 + (void) setYouTubeTitle:(NSString *)title
@@ -69,24 +71,38 @@
 + (BOOL) pause;
 
 // Video recording settings
-enum KC_VIDEO_DIMENSIONS {
-    VIDEO_DIMENSIONS_FULL,
-    VIDEO_DIMENSIONS_HALF
-};
+// Recommend setting is VIDEO_DIMENSIONS_SMART:
+//   iPad 1 and 2 (non-retina): 512x384
+//   iPad 3 (retina): 1024x768
+//   All iPhone and iPods: 480x320
+//
+// Other option is VIDEO_DIMENSIONS_FULL:
+//   All iPads: 1024x768 or 768x1024
+//   iPhone/iPod non-retina: 480x320
+//   iPhone/iPad retina: 960x640
+typedef enum {
+    SMART_VIDEO_RESOLUTION,
+    FULL_VIDEO_RESOLUTION,
+} KC_VIDEO_RESOLUTION;
 
-enum KC_VIDEO_QUALITY {
-    VIDEO_QUALITY_MEDIUM,
-    VIDEO_QUALITY_HIGH
-};
+typedef enum {
+    MEDIUM_VIDEO_QUALITY,
+    HIGH_VIDEO_QUALITY
+} KC_VIDEO_QUALITY;
 
 // Size refers to the pixel dimensions. 
-+ (void) setVideoDimensions:(enum KC_VIDEO_DIMENSIONS)dimensions
-                    quality:(enum KC_VIDEO_QUALITY)quality;
-+ (enum KC_VIDEO_DIMENSIONS) videoDimensions;
-+ (enum KC_VIDEO_QUALITY) videoQuality;
++ (void) setVideoResolution:(KC_VIDEO_RESOLUTION)resolution
+                    quality:(KC_VIDEO_QUALITY)quality;
++ (KC_VIDEO_RESOLUTION) videoResolution;
++ (KC_VIDEO_QUALITY) videoQuality;
 
 
 // Displays the Kamcord view inside the previously set parentViewController;
 + (void) showView;
+
+
+// Returns the singleton Kamcord object. You don't ever really need this, just
+// use the static API calls.
++ (Kamcord *) sharedManager;
 
 @end
