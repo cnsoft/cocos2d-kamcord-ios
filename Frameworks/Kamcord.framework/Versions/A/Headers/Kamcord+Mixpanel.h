@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Kamcord.h"
-#import "MixpanelAPI.h"
+
+@class MixpanelAPI;
 
 @interface Kamcord (Mixpanel)
 

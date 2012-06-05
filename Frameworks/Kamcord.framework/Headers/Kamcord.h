@@ -16,7 +16,7 @@
 #import "KamcordMacros.h"
 #import "View/KCViewController.h"
 
-#import "MixpanelAPI.h"
+#import "Mixpanel/MixpanelAPI.h"
 
 @interface Kamcord : NSObject
 
