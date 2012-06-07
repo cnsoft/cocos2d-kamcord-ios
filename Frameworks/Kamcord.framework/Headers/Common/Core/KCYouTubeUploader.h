@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "GData/GData.h"
+#import "../External/GData/GData.h"
 
 // Upload status callbacks
 @protocol KCYouTubeUploaderDelegate <NSObject>

@@ -1,4 +1,4 @@
-# cocos2d-kamcord 0.1.1 alpha
+# Kamcord 0.9.1
 
 
 ## Introduction
@@ -10,13 +10,13 @@ In order to use Kamcord, you need a developer key and developer secret. To get t
 
 **Kamcord works on iOS 5 and above**. You can still will run without problems on older versions of iOS, though you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
 
-This is currently an alpha 0.1.0 build. We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to <a href="mailto:kevin@kamcord.com"/>contact us</a>.
+We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to <a href="mailto:kevin@kamcord.com"/>contact us</a>.
 
 ## A Sample Application
 
 Before we explain how to use Kamcord in your own applications, let's go through a quick example that runs right out the box. Clone this repository to your local machine and open the project located at `Examples/cocos2d-iphone-1.0.1/cocos2d-ios.xcodeproj`.  Select `RotateWorldTest` from the dropdown and build and run that application. You should see the familiar `RotateWorldTest` from the Cocos2D suite of tests. **Make sure to run the application on a physical device with iOS 5+, not the simulator. Video replay is NOT supported by the simulator!**
 
-After 10 seconds, the Kamcord view should appear allowing you to replay a video recording of those first 10 seconds and share that video via Facebook, Twitter, and/or email. `ParticleTest`, `SceneTest`, and `SpriteTest` all work the same way.
+After 10 seconds, the Kamcord view should appear allowing you to replay a video recording of those first 10 seconds and share that video via Facebook, Twitter, YouTube, and/or email. `ParticleTest`, `SceneTest`, and `SpriteTest` all work the same way.
 
 `RenderTextureTest` is different in that it allows you to start and stop recording by pressing the two corresponding buttons at the top right of the screen. When you press `Stop Recording`, you will again see the Kamcord view with options to replay and share. Later on in this documentation, we'll walk through all the code needed to add recording and replay functionalities to `RenderTextureTest`.
 
@@ -91,7 +91,7 @@ Import Kamcord into your application delegate:
 </li>
 <li style="margin: 0;">
 <p>
-In your application delegate (or wherever you create the <code>UIWindow</code> and initialize <code>CCDirector</code>), instantiate a <code>KCGLView</code>. This is our special sublcass of <code>EAGLView</code> that aids in video recording. Then set <code>window.rootViewController</code> to an instance of <code>KCViewController</code> and set <code>window.rootViewController.view</code> to your <code>KCGLView</code>
+In your application delegate (or wherever you create the <code>UIWindow</code> and initialize <code>CCDirector</code>), instantiate a <code>KCGLView</code>. This is our special sublcass of <code>EAGLView</code> that aids in video recording. Then set <code>window.rootViewController</code> to an instance of <code>KCViewController</code> and set <code>window.rootViewController.view</code> to your <code>KCGLView</code>. If you have any other view controllers, comment them out.
 </p>
 <p>
 <b>Also be sure to use </b><code>[Kamcord setDeviceOrientation:...]</code> <b>instead of</b> <code>[director setDeviceOrientation:...]</code>:
@@ -133,7 +133,7 @@ Your project should build successfully at this point.
 
 ## How to use Kamcord
 
-We've tried to keep the Kamcord API as simple as possible. The only class you will need to interface with is `Kamcord`, which you can get by including `<Kamcord/Kamcord.h>`.
+We've tried to keep the Kamcord API as simple as possible. The only class you will need to interface with is `Kamcord`, which you can get by importing `<Kamcord/Kamcord.h>`.
 
 Kamcord's public API is broken down by different functionalities.
 
@@ -202,7 +202,9 @@ This presents a modal view with the following options:
 
 `Replay video` will show the video of the gameplay that just happened (the result of the last `stopRecording` call). 
 
-`Share` will bring the user to a new view that lets them enter a message and select Facebook, Twitter, and/or email. When the user taps the `Share` button on this second view, we upload the video to our (Kamcord's) YouTube channel and share their message to their selected social networks or via email. The first time the user selects Facebook or Twitter, he will be prompted for the relevant credentials and permissions. 
+`Share` will bring the user to a new view that lets them enter a message and select Facebook, Twitter, YouTube, and/or email. When the user taps the `Share` button on this second view, we upload the video to our servers and share their message to their selected social networks. The first time the user selects Facebook, Twitter, or YouTube, he will be prompted for the relevant credentials and permissions.
+
+All uploading to YouTube and sharing on Facebook/Twitter happens in a background thread. Based on testing, this has negligible impact on performance and provides for a great user experience, because your user can hit `Share` and get back to playing your game  as soon as possible.
 
 On Facebook, we will share the URL of the video with their typed message. A thumbnail from the video will be automatically generated and shown. On Twitter, if the user types the following message:
 

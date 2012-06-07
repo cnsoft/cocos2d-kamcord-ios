@@ -10,6 +10,8 @@
 // local import
 #import "EffectsAdvancedTest.h"
 
+#import <Kamcord/Kamcord.h>
+
 enum {
 	kTagTextLayer = 1,
 
@@ -379,13 +381,36 @@ Class restartAction()
 	[director setAnimationInterval:1.0/60];
 	
 	// create an OpenGL view
-	EAGLView *glView = [EAGLView viewWithFrame:[window bounds]
-								   pixelFormat:kEAGLColorFormatRGBA8
-								   depthFormat:GL_DEPTH_COMPONENT16_OES];
+	KCGLView * glView = [KCGLView viewWithFrame:[window bounds]
+                                    pixelFormat:kEAGLColorFormatRGBA8
+                                    depthFormat:GL_DEPTH_COMPONENT16_OES];
 	[glView setMultipleTouchEnabled:YES];
 	
-	// connect it to the director
-	[director setOpenGLView:glView];
+	// Game orientation
+    [Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeRight];
+    
+    // Create root view controller
+    window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
+    window.rootViewController.view = glView;
+	
+	// Tell Kamcord the root view controller and the OpenGL View.
+    // It will pass on the OpenGL View to CCDirector, so you don't need to 
+    // call [[CCDirector sharedDirector] setOpenGLView:glView];
+    [Kamcord setParentViewController:window.rootViewController];
+	[Kamcord setOpenGLView:glView];
+    
+    // Developer settings
+    [Kamcord setDeveloperKey:@"kamcord-test"
+             developerSecret:@"kamcord-test"];
+    
+    // Social media settings
+    [Kamcord setYouTubeTitle:@"EffectsTest"
+                 description:@"This is a Cocos2D test app that was recorded with Kamcord."
+                    keywords:@"Cocos2D EffectsTest"];
+    
+    [Kamcord setFacebookTitle:@"EffectsTest"
+                      caption:@"Kamcord recording"
+                  description:@"This is a Cocos2D test app that was recorded with Kamcord."];
 	
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
 	if( ! [director enableRetinaDisplay:YES] )
@@ -405,8 +430,33 @@ Class restartAction()
 	CCScene *scene = [CCScene node];
 	[scene addChild: [nextAction() node]];
 
+	[Kamcord startRecording];
+    [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:5.0];
+    
 	[director runWithScene: scene];
 }
+
+-(void) stopRecordingAndShowKamcordView:(id)sender
+{
+	[Kamcord stopRecording];
+    [Kamcord showView];
+}
+
+// getting a call, pause the game
+-(void) applicationWillResignActive:(UIApplication *)application
+{
+	[[CCDirector sharedDirector] pause];
+    [Kamcord pause];
+}
+
+// call got rejected
+-(void) applicationDidBecomeActive:(UIApplication *)application
+{
+    [Kamcord resume];
+	[[CCDirector sharedDirector] resume];
+}
+
+
 
 - (void) dealloc
 {
@@ -414,18 +464,6 @@ Class restartAction()
 	[super dealloc];
 }
 
-
-// getting a call, pause the game
--(void) applicationWillResignActive:(UIApplication *)application
-{
-	[[CCDirector sharedDirector] pause];
-}
-
-// call got rejected
--(void) applicationDidBecomeActive:(UIApplication *)application
-{
-	[[CCDirector sharedDirector] resume];
-}
 
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {

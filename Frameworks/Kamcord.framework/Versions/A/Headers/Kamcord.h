@@ -9,14 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "KCGLView.h"
 #import "CCDirectorIOS.h"
+#import "KCGLView.h"
 
 // Convenient for game developers
 #import "KamcordMacros.h"
-#import "View/KCViewController.h"
-
-#import "Mixpanel/MixpanelAPI.h"
+#import "Common/View/KCViewController.h"
 
 @interface Kamcord : NSObject
 
@@ -71,13 +69,12 @@
 + (BOOL) pause;
 
 // Video recording settings
-// Recommend setting is VIDEO_DIMENSIONS_SMART:
-//   iPad 1 and 2 (non-retina): 512x384
-//   iPad 3 (retina): 1024x768
+// Recommend setting is SMART_VIDEO_DIMENSIONS:
+//   All iPads: 512x384
 //   All iPhone and iPods: 480x320
 //
-// Other option is VIDEO_DIMENSIONS_FULL:
-//   All iPads: 1024x768 or 768x1024
+// Other option is FULL_VIDEO_DIMENSIONS:
+//   All iPads: 1024x768
 //   iPhone/iPod non-retina: 480x320
 //   iPhone/iPad retina: 960x640
 typedef enum {
