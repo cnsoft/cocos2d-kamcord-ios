@@ -3,14 +3,14 @@
 
 ## Introduction
 
-Kamcord is a built-in gameplay recording technology for iOS. This repository contains a Kamcord SDK that works with Cocos2D-1.0.1 and allows you, the game developer, to capture gameplay videos with a very simple API.
+Kamcord is a built-in gameplay recording technology for iOS. This repository contains a Kamcord SDK that works with cocos2d-1.0.1 and allows you, the game developer, to capture gameplay videos with a very simple API.
 Your users can then replay and share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
-In order to use Kamcord, you need a developer key and developer secret. To get these, please email Kevin at <a mailto="kevin@kamcord.com">kevin@kamcord.com</a>.
+In order to use Kamcord, you need a developer key and developer secret. To get these, please email Matt at <a mailto="matt@kamcord.com">matt@kamcord.com</a>.
 
 **Kamcord works on iOS 5 and above**. You can still will run without problems on older versions of iOS, though you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
 
-We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to <a href="mailto:kevin@kamcord.com"/>contact us</a>.
+We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to <a href="mailto:matt@kamcord.com"/>contact us</a>.
 
 ## A Sample Application
 
@@ -21,6 +21,10 @@ After 10 seconds, the Kamcord view should appear allowing you to replay a video 
 `RenderTextureTest` is different in that it allows you to start and stop recording by pressing the two corresponding buttons at the top right of the screen. When you press `Stop Recording`, you will again see the Kamcord view with options to replay and share. Later on in this documentation, we'll walk through all the code needed to add recording and replay functionalities to `RenderTextureTest`.
 
 There is no practical limit on how long you can record for. Everything gets written immediately to disk and old videos are always being erased, so the only real limitation is the device's hard drive size. Since modern iOS devices have 16+ GB of hard disk space, you can safely record one continuous gameplay video for over 24 hours straight, an upper limit your gamers will probably never run into.
+
+## A Live Game Sample
+
+The team at <a target="_blank" href="http://www.sewerwars.com">Sewer Wars</a> has successfully integrated Kamcord into their game. Check out a <a target="_blank" href="http://kamcord.com/v/8Pm4x61dTEQ/">sample recording</a>!
 
 
 ## Installation
@@ -229,7 +233,7 @@ Kamcord uses <a href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:aut
 
 	[Kamcord setDeviceOrientation:...]
 
-instead of `[[CCDirector sharedDirector] setDeviceOrientation:...]`. If you cannot make ur `window.rootViewController` an instance of `KCViewController`, <a href="mailto:kevin@kamcord.com" />let us know</a> and we'll give you a simple patch for your View Controller code.
+instead of `[[CCDirector sharedDirector] setDeviceOrientation:...]`. If you cannot make ur `window.rootViewController` an instance of `KCViewController`, <a href="mailto:matt@kamcord.com" />let us know</a> and we'll give you a simple patch for your View Controller code.
 
 If you set either `CCDeviceOrientationLandscapeLeft` or `CCDeviceOrientationLandscapeRight`, Kamcord will autorotate the screen to support both landscape orientations.
 
@@ -257,9 +261,9 @@ The `Message` is the text the user will enter. You can set the title, caption, a
    	                 caption:(NSString *)caption
                  description:(NSString *)description;
 
-When the user shares to Facebook, their video is first uploaded to YouTube. We will then use your settings to populate the corresponding fields on YouTube and Facebook. Needless to say, this is a great way to advertise your game by putting links to your website or your game's page on the Apple App Store.
+When the user shares to Facebook, their video is first uploaded to Kamcord. We will then use your settings to populate the corresponding fields on Facebook. Needless to say, this is a great way to advertise your game by putting links to your website or your game's page on the Apple App Store.
 
-It's worth noting that every time we upload a video to YouTube and post to Facebook, we use the currently set values of these fields. Therefore, you may want to change the title, caption, and or description to match the results of the most recent gameplay. We recommend you do this so that the message looks more customized which should result in more clicks on the video.
+It's worth noting that every time we post to Facebook, we use the currently set values of these fields. Therefore, you may want to change the title, caption, and or description to match the results of the most recent gameplay. We recommend you do this so that the message looks more customized which should result in more clicks on the video.
 
 Another function you need to set after you call `stopRecording` is:
 
@@ -457,5 +461,5 @@ To test this functionality, press `Start Recording`, play with the app, then clo
 
 ## Contact Us
 
-If you have any questions or comments, don't hesitate to email Kevin at <a href="mailto:kevin@kamcord.com">kevin@kamcord.com</a>. We reply to every email.
+If you have any questions or comments, don't hesitate to email or call Matt at <a href="mailto:matt@kamcord.com">matt@kamcord.com</a> (650.267.1051). We reply to every email!
 
