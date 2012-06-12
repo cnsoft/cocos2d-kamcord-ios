@@ -65,7 +65,7 @@
 		0A3A7F731586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
 		0A3A7F741586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
 		0A3A7F751586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		0A3A7F761586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0A3A7F761586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		0A3A7F771586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
 		0A3A7F781586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
 		0A3A7F791586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
@@ -160,13 +160,13 @@
 		0AA625BB156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625BC156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625BD156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
-		0AA625BE156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
+		0AA625BE156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA625BF156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625C0156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA625C1156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		0AA625C2156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
+		0AA625C2156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA625C3156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
-		0AA625C4156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
+		0AA625C4156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA625C5156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625C6156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625C7156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
@@ -186,41 +186,41 @@
 		0AA625D5156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625D6156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA626DE156C9161006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		0AA626DF156C9161006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; };
+		0AA626DF156C9161006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA626E0156C9161006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
 		0AA626E1156C9161006D25E1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62394156B75F8006D25E1 /* CoreVideo.framework */; };
-		0AA626E2156C9161006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; };
-		0AA626E3156C9162006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; };
+		0AA626E2156C9161006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA626E3156C9162006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA626E4156C9162006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA626E5156C9162006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA626E6156C9162006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		0AA62722156C954F006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; };
-		0AA62723156C954F006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; };
+		0AA62722156C954F006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62723156C954F006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA62724156C954F006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
 		0AA62725156C954F006D25E1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62394156B75F8006D25E1 /* CoreVideo.framework */; };
-		0AA62726156C954F006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; };
-		0AA62727156C954F006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; };
-		0AA62728156C954F006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; };
-		0AA62729156C954F006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; };
-		0AA6272A156C9550006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; };
-		0AA6272B156C9868006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; };
-		0AA6272C156C9868006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; };
+		0AA62726156C954F006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62727156C954F006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62728156C954F006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62729156C954F006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA6272A156C9550006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA6272B156C9868006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA6272C156C9868006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA6272D156C9868006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
 		0AA6272E156C9868006D25E1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62394156B75F8006D25E1 /* CoreVideo.framework */; };
-		0AA6272F156C9868006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; };
-		0AA62730156C9868006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; };
-		0AA62731156C9868006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; };
-		0AA62732156C9868006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; };
-		0AA62733156C9868006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; };
-		0AA62734156C98B1006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; };
-		0AA62735156C98B1006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; };
+		0AA6272F156C9868006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62730156C9868006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62731156C9868006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62732156C9868006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62733156C9868006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62734156C98B1006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62735156C98B1006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA62736156C98B1006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
 		0AA62737156C98B1006D25E1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62394156B75F8006D25E1 /* CoreVideo.framework */; };
-		0AA62738156C98B1006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; };
-		0AA62739156C98B1006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; };
-		0AA6273A156C98B1006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; };
-		0AA6273B156C98B1006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; };
-		0AA6273C156C98B1006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; };
+		0AA62738156C98B1006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA62739156C98B1006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA6273A156C98B1006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA6273B156C98B1006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA6273C156C98B1006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AC597A0157DFFF2006ADD43 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; };
 		0AC597A1157DFFF2006ADD43 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AC597A2157DFFF2006ADD43 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; };
@@ -4728,24 +4728,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AA6239A156B75F8006D25E1 /* Accounts.framework in Frameworks */,
-				0AA62391156B75F8006D25E1 /* AVFoundation.framework in Frameworks */,
-				0AA625C0156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */,
 				495E74F0104B752C0012BB52 /* CoreGraphics.framework in Frameworks */,
 				0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA6239C156B75F8006D25E1 /* CoreVideo.framework in Frameworks */,
 				495E74EE104B752C0012BB52 /* Foundation.framework in Frameworks */,
 				0A3A7F751586A4B0007879E1 /* Kamcord.framework in Frameworks */,
-				0AA6239D156B75F8006D25E1 /* MediaPlayer.framework in Frameworks */,
-				0AA6239E156B75F8006D25E1 /* MessageUI.framework in Frameworks */,
 				495E74F1104B752C0012BB52 /* OpenGLES.framework in Frameworks */,
 				495E74F2104B752C0012BB52 /* QuartzCore.framework in Frameworks */,
-				0AA6239F156B75F8006D25E1 /* Security.framework in Frameworks */,
-				0AA623A0156B75F8006D25E1 /* SystemConfiguration.framework in Frameworks */,
-				0AA623A1156B75F8006D25E1 /* Twitter.framework in Frameworks */,
 				495E74EF104B752C0012BB52 /* UIKit.framework in Frameworks */,
 				495E74F3104B752C0012BB52 /* libcocos2d.a in Frameworks */,
 				495E74F4104B752C0012BB52 /* libz.dylib in Frameworks */,
+				0AA6239A156B75F8006D25E1 /* Accounts.framework in Frameworks */,
+				0AA62391156B75F8006D25E1 /* AVFoundation.framework in Frameworks */,
+				0AA625C0156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */,
+				0AA6239D156B75F8006D25E1 /* MediaPlayer.framework in Frameworks */,
+				0AA6239E156B75F8006D25E1 /* MessageUI.framework in Frameworks */,
+				0AA6239F156B75F8006D25E1 /* Security.framework in Frameworks */,
+				0AA623A0156B75F8006D25E1 /* SystemConfiguration.framework in Frameworks */,
+				0AA623A1156B75F8006D25E1 /* Twitter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4828,24 +4828,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				501C7C8A0F91EFFF0024A296 /* CoreGraphics.framework in Frameworks */,
+				0AA6272D156C9868006D25E1 /* CoreMedia.framework in Frameworks */,
+				0AA6272E156C9868006D25E1 /* CoreVideo.framework in Frameworks */,
+				501C7C880F91EFFF0024A296 /* Foundation.framework in Frameworks */,
+				0A3A7F781586A4B0007879E1 /* Kamcord.framework in Frameworks */,
+				501C7C8B0F91EFFF0024A296 /* OpenGLES.framework in Frameworks */,
+				501C7C8C0F91EFFF0024A296 /* QuartzCore.framework in Frameworks */,
+				501C7C890F91EFFF0024A296 /* UIKit.framework in Frameworks */,
 				501C7C8D0F91EFFF0024A296 /* libcocos2d.a in Frameworks */,
 				503092CF104474A4005F7AFC /* libz.dylib in Frameworks */,
 				0AA6272B156C9868006D25E1 /* Accounts.framework in Frameworks */,
 				0AA625C4156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */,
 				0AA6272C156C9868006D25E1 /* AVFoundation.framework in Frameworks */,
-				501C7C8A0F91EFFF0024A296 /* CoreGraphics.framework in Frameworks */,
-				0AA6272D156C9868006D25E1 /* CoreMedia.framework in Frameworks */,
-				0AA6272E156C9868006D25E1 /* CoreVideo.framework in Frameworks */,
-				501C7C880F91EFFF0024A296 /* Foundation.framework in Frameworks */,
 				0AA6272F156C9868006D25E1 /* MediaPlayer.framework in Frameworks */,
 				0AA62730156C9868006D25E1 /* MessageUI.framework in Frameworks */,
-				501C7C8B0F91EFFF0024A296 /* OpenGLES.framework in Frameworks */,
-				501C7C8C0F91EFFF0024A296 /* QuartzCore.framework in Frameworks */,
 				0AA62731156C9868006D25E1 /* Security.framework in Frameworks */,
 				0AA62732156C9868006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA62733156C9868006D25E1 /* Twitter.framework in Frameworks */,
-				501C7C890F91EFFF0024A296 /* UIKit.framework in Frameworks */,
-				0A3A7F781586A4B0007879E1 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4875,24 +4875,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				502C67070DFEFE1000E4107D /* libcocos2d.a in Frameworks */,
-				5030930A104479F8005F7AFC /* libz.dylib in Frameworks */,
-				0AA626DE156C9161006D25E1 /* Accounts.framework in Frameworks */,
-				0AA625C1156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */,
-				0AA626DF156C9161006D25E1 /* AVFoundation.framework in Frameworks */,
 				502C67040DFEFE1000E4107D /* CoreGraphics.framework in Frameworks */,
 				0AA626E0156C9161006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA626E1156C9161006D25E1 /* CoreVideo.framework in Frameworks */,
 				0A3A7F761586A4B0007879E1 /* Kamcord.framework in Frameworks */,
 				502C67020DFEFE1000E4107D /* Foundation.framework in Frameworks */,
-				0AA626E2156C9161006D25E1 /* MediaPlayer.framework in Frameworks */,
-				0AA626E3156C9162006D25E1 /* MessageUI.framework in Frameworks */,
 				502C67050DFEFE1000E4107D /* OpenGLES.framework in Frameworks */,
 				502C67060DFEFE1000E4107D /* QuartzCore.framework in Frameworks */,
+				502C67030DFEFE1000E4107D /* UIKit.framework in Frameworks */,
+				502C67070DFEFE1000E4107D /* libcocos2d.a in Frameworks */,
+				5030930A104479F8005F7AFC /* libz.dylib in Frameworks */,
+				0AA626DE156C9161006D25E1 /* Accounts.framework in Frameworks */,
+				0AA625C1156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */,
+				0AA626DF156C9161006D25E1 /* AVFoundation.framework in Frameworks */,
+				0AA626E2156C9161006D25E1 /* MediaPlayer.framework in Frameworks */,
+				0AA626E3156C9162006D25E1 /* MessageUI.framework in Frameworks */,
 				0AA626E4156C9162006D25E1 /* Security.framework in Frameworks */,
 				0AA626E5156C9162006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA626E6156C9162006D25E1 /* Twitter.framework in Frameworks */,
-				502C67030DFEFE1000E4107D /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5175,24 +5175,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506C80070E041C9300B48100 /* CoreGraphics.framework in Frameworks */,
+				0AA62724156C954F006D25E1 /* CoreMedia.framework in Frameworks */,
+				0AA62725156C954F006D25E1 /* CoreVideo.framework in Frameworks */,
+				506C80050E041C9300B48100 /* Foundation.framework in Frameworks */,
+				0A3A7F771586A4B0007879E1 /* Kamcord.framework in Frameworks */,
+				506C80080E041C9300B48100 /* OpenGLES.framework in Frameworks */,
+				506C80090E041C9300B48100 /* QuartzCore.framework in Frameworks */,
+				506C80060E041C9300B48100 /* UIKit.framework in Frameworks */,
 				506C800A0E041C9300B48100 /* libcocos2d.a in Frameworks */,
 				5030930C10447A13005F7AFC /* libz.dylib in Frameworks */,
 				0AA62722156C954F006D25E1 /* Accounts.framework in Frameworks */,
 				0AA625C2156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */,
 				0AA62723156C954F006D25E1 /* AVFoundation.framework in Frameworks */,
-				506C80070E041C9300B48100 /* CoreGraphics.framework in Frameworks */,
-				0AA62724156C954F006D25E1 /* CoreMedia.framework in Frameworks */,
-				0AA62725156C954F006D25E1 /* CoreVideo.framework in Frameworks */,
-				506C80050E041C9300B48100 /* Foundation.framework in Frameworks */,
 				0AA62726156C954F006D25E1 /* MediaPlayer.framework in Frameworks */,
 				0AA62727156C954F006D25E1 /* MessageUI.framework in Frameworks */,
-				506C80080E041C9300B48100 /* OpenGLES.framework in Frameworks */,
-				506C80090E041C9300B48100 /* QuartzCore.framework in Frameworks */,
 				0AA62728156C954F006D25E1 /* Security.framework in Frameworks */,
 				0AA62729156C954F006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA6272A156C9550006D25E1 /* Twitter.framework in Frameworks */,
-				506C80060E041C9300B48100 /* UIKit.framework in Frameworks */,
-				0A3A7F771586A4B0007879E1 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5489,24 +5489,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50DB1BC30E1C1E5900A89DFF /* CoreGraphics.framework in Frameworks */,
+				0AA62736156C98B1006D25E1 /* CoreMedia.framework in Frameworks */,
+				0AA62737156C98B1006D25E1 /* CoreVideo.framework in Frameworks */,
+				50DB1BC10E1C1E5900A89DFF /* Foundation.framework in Frameworks */,
+				0A3A7F741586A4B0007879E1 /* Kamcord.framework in Frameworks */,
+				50DB1BC40E1C1E5900A89DFF /* OpenGLES.framework in Frameworks */,
+				50DB1BC50E1C1E5900A89DFF /* QuartzCore.framework in Frameworks */,
+				50DB1BC20E1C1E5900A89DFF /* UIKit.framework in Frameworks */,
 				50DB1BC60E1C1E5900A89DFF /* libcocos2d.a in Frameworks */,
 				50309307104479A8005F7AFC /* libz.dylib in Frameworks */,
 				0AA62734156C98B1006D25E1 /* Accounts.framework in Frameworks */,
 				0AA625BE156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */,
 				0AA62735156C98B1006D25E1 /* AVFoundation.framework in Frameworks */,
-				50DB1BC30E1C1E5900A89DFF /* CoreGraphics.framework in Frameworks */,
-				0AA62736156C98B1006D25E1 /* CoreMedia.framework in Frameworks */,
-				0AA62737156C98B1006D25E1 /* CoreVideo.framework in Frameworks */,
-				50DB1BC10E1C1E5900A89DFF /* Foundation.framework in Frameworks */,
 				0AA62738156C98B1006D25E1 /* MediaPlayer.framework in Frameworks */,
 				0AA62739156C98B1006D25E1 /* MessageUI.framework in Frameworks */,
-				50DB1BC40E1C1E5900A89DFF /* OpenGLES.framework in Frameworks */,
-				50DB1BC50E1C1E5900A89DFF /* QuartzCore.framework in Frameworks */,
 				0AA6273A156C98B1006D25E1 /* Security.framework in Frameworks */,
 				0AA6273B156C98B1006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA6273C156C98B1006D25E1 /* Twitter.framework in Frameworks */,
-				50DB1BC20E1C1E5900A89DFF /* UIKit.framework in Frameworks */,
-				0A3A7F741586A4B0007879E1 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
