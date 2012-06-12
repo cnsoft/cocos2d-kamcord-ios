@@ -72,9 +72,6 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 @interface KCGLView : EAGLView
 
-+ (id) viewWithFrame:(CGRect)frame;
-- (id) initWithFrame:(CGRect)frame;
-
 - (id) initWithFrame:(CGRect)frame
          pixelFormat:(NSString*)format
          depthFormat:(GLuint)depth

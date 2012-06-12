@@ -64,8 +64,8 @@
 		0A3A7F721586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
 		0A3A7F731586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
 		0A3A7F741586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
-		0A3A7F751586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
-		0A3A7F761586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
+		0A3A7F751586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		0A3A7F761586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0A3A7F771586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
 		0A3A7F781586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
 		0A3A7F791586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
@@ -126,15 +126,15 @@
 		0A3A7FB61586A4D3007879E1 /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F801586A4D3007879E1 /* ShareKit.bundle */; };
 		0A3A7FB91586A953007879E1 /* test3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7FB71586A953007879E1 /* test3.m4a */; };
 		0A3A7FBA1586A953007879E1 /* test8.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7FB81586A953007879E1 /* test8.caf */; };
-		0AA62391156B75F8006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; };
-		0AA6239A156B75F8006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; };
+		0AA62391156B75F8006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA6239A156B75F8006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
 		0AA6239C156B75F8006D25E1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62394156B75F8006D25E1 /* CoreVideo.framework */; };
-		0AA6239D156B75F8006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; };
-		0AA6239E156B75F8006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; };
-		0AA6239F156B75F8006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; };
-		0AA623A0156B75F8006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; };
-		0AA623A1156B75F8006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; };
+		0AA6239D156B75F8006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA6239E156B75F8006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA6239F156B75F8006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA623A0156B75F8006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA623A1156B75F8006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA625A4156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625A5156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625A6156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
@@ -162,8 +162,8 @@
 		0AA625BD156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625BE156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625BF156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
-		0AA625C0156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
-		0AA625C1156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
+		0AA625C0156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA625C1156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA625C2156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625C3156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625C4156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
@@ -185,15 +185,15 @@
 		0AA625D4156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625D5156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
 		0AA625D6156C8162006D25E1 /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62570156C815F006D25E1 /* AWSiOSSDK.framework */; };
-		0AA626DE156C9161006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; };
+		0AA626DE156C9161006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA626DF156C9161006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; };
 		0AA626E0156C9161006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
 		0AA626E1156C9161006D25E1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62394156B75F8006D25E1 /* CoreVideo.framework */; };
 		0AA626E2156C9161006D25E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62395156B75F8006D25E1 /* MediaPlayer.framework */; };
 		0AA626E3156C9162006D25E1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62396156B75F8006D25E1 /* MessageUI.framework */; };
-		0AA626E4156C9162006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; };
-		0AA626E5156C9162006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; };
-		0AA626E6156C9162006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; };
+		0AA626E4156C9162006D25E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62397156B75F8006D25E1 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA626E5156C9162006D25E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62398156B75F8006D25E1 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		0AA626E6156C9162006D25E1 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62399156B75F8006D25E1 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA62722156C954F006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; };
 		0AA62723156C954F006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; };
 		0AA62724156C954F006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
@@ -4735,6 +4735,7 @@
 				0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA6239C156B75F8006D25E1 /* CoreVideo.framework in Frameworks */,
 				495E74EE104B752C0012BB52 /* Foundation.framework in Frameworks */,
+				0A3A7F751586A4B0007879E1 /* Kamcord.framework in Frameworks */,
 				0AA6239D156B75F8006D25E1 /* MediaPlayer.framework in Frameworks */,
 				0AA6239E156B75F8006D25E1 /* MessageUI.framework in Frameworks */,
 				495E74F1104B752C0012BB52 /* OpenGLES.framework in Frameworks */,
@@ -4745,7 +4746,6 @@
 				495E74EF104B752C0012BB52 /* UIKit.framework in Frameworks */,
 				495E74F3104B752C0012BB52 /* libcocos2d.a in Frameworks */,
 				495E74F4104B752C0012BB52 /* libz.dylib in Frameworks */,
-				0A3A7F751586A4B0007879E1 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4883,6 +4883,7 @@
 				502C67040DFEFE1000E4107D /* CoreGraphics.framework in Frameworks */,
 				0AA626E0156C9161006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA626E1156C9161006D25E1 /* CoreVideo.framework in Frameworks */,
+				0A3A7F761586A4B0007879E1 /* Kamcord.framework in Frameworks */,
 				502C67020DFEFE1000E4107D /* Foundation.framework in Frameworks */,
 				0AA626E2156C9161006D25E1 /* MediaPlayer.framework in Frameworks */,
 				0AA626E3156C9162006D25E1 /* MessageUI.framework in Frameworks */,
@@ -4892,7 +4893,6 @@
 				0AA626E5156C9162006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA626E6156C9162006D25E1 /* Twitter.framework in Frameworks */,
 				502C67030DFEFE1000E4107D /* UIKit.framework in Frameworks */,
-				0A3A7F761586A4B0007879E1 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12875,6 +12875,7 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -12901,6 +12902,7 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
