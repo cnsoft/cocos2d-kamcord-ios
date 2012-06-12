@@ -31,7 +31,7 @@
 -(NSString*) subtitle;
 @end
 
-@interface RenderTextureSave : RenderTextureTest
+@interface KamcordRecording : RenderTextureTest
 {
 	CCRenderTexture* target;
 	CCSprite* brush;

@@ -16,8 +16,9 @@
 // Convenient for game developers
 #import "KamcordMacros.h"
 #import "Common/View/KCViewController.h"
+#import "Common/Core/Audio/KCAudio.h"
 
-@class KCAudio;
+#define KAMCORD_VERSION "0.9.2"
 
 @interface Kamcord : NSObject
 
@@ -43,16 +44,16 @@
 + (void) setYouTubeTitle:(NSString *)title
              description:(NSString *)description 
                 keywords:(NSString *)keywords;
-+ (NSString *)youtubeTitle;
-+ (NSString *)youtubeDescription;
-+ (NSString *)youtubeKeywords;
++ (NSString *) youtubeTitle;
++ (NSString *) youtubeDescription;
++ (NSString *) youtubeKeywords;
 
 + (void) setFacebookTitle:(NSString *)title
                   caption:(NSString *)caption
               description:(NSString *)description;
-+ (NSString *)facebookTitle;
-+ (NSString *)facebookCaption;
-+ (NSString *)facebookDescription;
++ (NSString *) facebookTitle;
++ (NSString *) facebookCaption;
++ (NSString *) facebookDescription;
 
 + (void) setLevel:(NSString *)level
             score:(NSNumber *)score;
@@ -65,14 +66,6 @@
 + (BOOL) stopRecording;
 + (BOOL) resume;
 + (BOOL) pause;
-
-// Audio
-+ (KCAudio *) playAudio:(NSString *)filename
-                   loop:(BOOL)loop;
-
-+ (KCAudio *) playAudio:(NSString *)filename;
-
-+ (KCAudio *) audioBackground;
 
 
 // Video recording settings
@@ -95,16 +88,26 @@ typedef enum {
 + (KC_VIDEO_RESOLUTION) videoResolution;
 
 
+// Audio recording
++ (KCAudio *) playSound:(NSString *)filename
+                   loop:(BOOL)loop;
++ (KCAudio *) playSound:(NSString *)filename;
+
+
 // Displays the Kamcord view inside the previously set parentViewController;
 + (void) showView;
 
 
-// Helper to figure calculate the internal scale factor
-+ (unsigned int) resolutionScaleFactor;
-
+// --------------------------------------------------------
+// For Kamcord internal use, don't worry about these.
 
 // Returns the singleton Kamcord object. You don't ever really need this, just
 // use the static API calls.
 + (Kamcord *) sharedManager;
+
+// Helper to figure calculate the internal scale factor
++ (unsigned int) resolutionScaleFactor;
+
++ (KCAudio *) audioBackground;
 
 @end

@@ -1,4 +1,4 @@
-# Kamcord 0.9.1
+# Kamcord 0.9.2
 
 
 ## Introduction
@@ -8,7 +8,7 @@ Your users can then replay and share these gameplay videos via YouTube, Facebook
 
 In order to use Kamcord, you need a developer key and developer secret. To get these, please email Matt at <a mailto="matt@kamcord.com">matt@kamcord.com</a>.
 
-**Kamcord works on iOS 5 and above**. You can still will run without problems on older versions of iOS, though you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
+**Kamcord works on iOS 5+ and gracefully turns itself off on iOS 4**. You can still will run without problems on versions of iOS before iOS 5, though you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
 
 We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to <a href="mailto:matt@kamcord.com"/>contact us</a>.
 
@@ -38,27 +38,30 @@ Let's walk through how to get Kamcord into your games.
 <li style="margin: 0";>Drag and drop the files under <code>Frameworks/Resources</code> to your project. For both this and the previous step, make sure to check the box next to the target application you want to link these frameworks and resources to (your game, presumably).</li>
 <li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
-	<ul style="margin-top: 15px; margin-bottom: 15px;">
-		<li style="margin: 0;">Accounts</li>
-        <li style="margin: 0;">AVFoundation</li>
-        <li style="margin: 0;"><b>AWSiOSSDK</b></li>
-        <li style="margin: 0;">CoreGraphics</li>
-        <li style="margin: 0;">CoreMedia</li>
-        <li style="margin: 0;">CoreVideo</li>
-        <li style="margin: 0;">Foundation</li>
-        <li style="margin: 0;"><b>Kamcord</b></li>
-        <li style="margin: 0;">MediaPlayer</li>
-        <li style="margin: 0;">MessageUI</li>
-        <li style="margin: 0;">OpenGLES</li>
-        <li style="margin: 0;">QuartzCore</li>
-        <li style="margin: 0;">Security</li>
-        <li style="margin: 0;">SystemConfiguration</li>
-        <li style="margin: 0;">Twitter</li>
-        <li style="margin: 0;">UIKit</li>
-    </ul>
+		<ul style="margin-top: 15px; margin-bottom: 15px;">
+			<li style="margin: 0;">Accounts</li>
+	        <li style="margin: 0;">AVFoundation</li>
+	        <li style="margin: 0;"><b>AWSiOSSDK</b></li>
+	        <li style="margin: 0;">CoreGraphics</li>
+	        <li style="margin: 0;">CoreMedia</li>
+	        <li style="margin: 0;">CoreVideo</li>
+	        <li style="margin: 0;">Foundation</li>
+	        <li style="margin: 0;"><b>Kamcord</b></li>
+	        <li style="margin: 0;">MediaPlayer</li>
+	        <li style="margin: 0;">MessageUI</li>
+	        <li style="margin: 0;">OpenGLES</li>
+	        <li style="margin: 0;">QuartzCore</li>
+	        <li style="margin: 0;">Security</li>
+	        <li style="margin: 0;">SystemConfiguration</li>
+	        <li style="margin: 0;">Twitter</li>
+	        <li style="margin: 0;">UIKit</li>
+	    </ul>
     </p>
     <p>
-    <img src="http://dl.dropbox.com/u/6122/Kamcord/Frameworks.png" />
+    	<img src="http://dl.dropbox.com/u/6122/Kamcord/Frameworks.png" />
+    </p>
+    <p>
+    <b>To support iOS 4 deployment, set the frameworks inside the orange box to <code>Optional</code>. This will allow your app to run on devices with iOS 4 and ensures Kamcord functionality will gracefully silence itself on iOS 4 as if you had never installed Kamcord.</b>
     </p>
 </li>
 <li style="margin: 0;">Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>:
@@ -147,10 +150,10 @@ The recording interface is built around the concept of one video, which has one 
 
 The API is:
 
-    +(void) startRecording;
-    +(void) stopRecording;
-    +(void) pause;
-    +(void) resume;
+    + (void) startRecording;
+    + (void) stopRecording;
+    + (void) pause;
+    + (void) resume;
 
 `startRecording` starts the video recording, which you can pause and resume with `pause` and `resume`. Once you're done with the entire video, call `stopRecording`.
 
@@ -160,7 +163,7 @@ The API is:
 
 You can set the resolution of the recorded video:
 
-	+(void) setVideoResolution:(KC_VIDEO_RESOLUTION)resolution;
+	+ (void) setVideoResolution:(KC_VIDEO_RESOLUTION)resolution;
 
 There are two video resolution settings:
 
@@ -171,26 +174,37 @@ There are two video resolution settings:
 
 We currently don't support recording at iPad retina resolutions (2048x1536) because it seems that Apple doesn't support writing videos of those resolutions, but we plan to come back to this issue in the future.
 
-### Background Audio
+### Audio Recording
 
-You can add a repeating background audio track to your videos by giving a filename and extension using the following API call:
+As of version 0.9.2, you can overlay your game's audio to the recorded video with the following API calls:
 
-	+(BOOL) setAudioResourceName:(NSString *)name
-	    	           extension:(NSString *)extension;
+	+ (KCAudio *) playSound:(NSString *)filename
+    	               loop:(BOOL)loop;
+	+ (KCAudio *) playSound:(NSString *)filename;
 
-For example, if you have a resource named `game_background.wav`, call this method with `"game_background"` and `"wav"`. This method returns `YES` if the specified audio file was found. Otherwise, it returns `NO`. We suport all the common file formats (`aac`, `aif`, `caf`, `m4a`, `mp3`, and `wav`).
+The second function call simply calls the first with `loop` set to `NO`. These sounds *are not sent to the speakers*, but will be added to the recorded video at the exact time you call `playSound`. The intended use of these methods is to pair calls to `CocosDenshion` (or whichever sound engine you use) with calls to `Kamcord` like so:
 
-If the audio file is too long for the video, then we truncate the end to match the video length. If the audio file is too short for the video, we repeat it endlessly so that it plays throughout the entire video.
+	// One time sounds
+	[[SimpleAudioEngine sharedEngine] playEffect:@"sound.wav"];
+	[Kamcord playSound:@"sound.wav"];
+	
+	// Background sounds
+	[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.mp3"];
+	[Kamcord playSound:@"background.mp3" loop:YES];
 
-<b>Note that this audio track is only overlayed on the video once the video processing is finished.</b> We begin video processing in the background as soon as you call `stopRecording`, but the video you watch via the `Replay Video` button on the Kamcord UI may show the preprocessed video (without the audio overlay).
+If you'd ever like to stop a sound from playing in the recording, you can save the `KCAudio *` object that is returned by `playSound` and call `stop` on that object. You don't need to call `start` on the returned `KCAudio` object, `[Kamcord playSound:]` will take care of that for you.
 
-If you have any existing game background music, we recommend you use this API call. It makes for a much better viewer experience. The `RenderTextureTest` example below shows this in action.
+The `RenderTextureTest` example below shows how to use 
+
+**Note that this audio track is only overlayed on the video once the video processing is finished.** We begin video processing in the background as soon as you call stopRecording, but the video you watch via the Replay Video button on the Kamcord UI may show the preprocessed video (without the audio overlay). Don't worry, the final video that is shared on Facebook/Twitter and uploaded to YouTube *will* have the sounds overlayed.
+
+We are currently working on adding the played sounds to the replayed video. In the future, we intend to wrap calls to `CocosDenshion` so that you don't have to worry about pairing sounds calls together.
 
 ### Presenting User Options
 
 Now that the user has finished his gameplay and you have successfully recorded a video of it, you can present several options to the user with the following API call:
 
-	+(void) showView;
+	+ (void) showView;
 
 This presents a modal view with the following options:
 
@@ -213,9 +227,15 @@ On Facebook, we will share the URL of the video with their typed message. A thum
 
 the actual tweeted message will be
 
-`Check out my gameplay! | kamcord.com/v/abcfoobar123`
+`Check out my gameplay! | kamcord.com/v/abcfoo123`
 
-where the kamcord.com URL will instantly <a href="http://en.wikipedia.org/wiki/HTTP_302">HTTP 302</a> redirect to the corresponding YouTube video.
+### Downloading Video Trailers
+
+To get to the recorded videos from your device, click on `Window` ==> `Organizer`, select your device on the left hand side, and select your app from the apps list:
+
+<img src="https://dl.dropbox.com/u/6122/Kamcord/Organizer.png" />
+
+Click the `Download` button at the bottom of the window and you should get a folder on your computer that is a full copy of your device's filesystem. You can then browse to `Documents/Kamcord` and find the `GUID__coverted.mov` for your trailer.
 
 ### Differences from Cocos2D
 
@@ -232,6 +252,8 @@ Kamcord uses <a href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:aut
 
 instead of `[[CCDirector sharedDirector] setDeviceOrientation:...]`. If you cannot make ur `window.rootViewController` an instance of `KCViewController`, <a href="mailto:matt@kamcord.com" />let us know</a> and we'll give you a simple patch for your View Controller code.
 
+<b>If your code queries </b><code>[[CCDirector sharedDirector] deviceOrientation]</code><b>, replace all of those calls with </b><code>[Kamcord deviceOrientation]</code>.
+
 If you set either `CCDeviceOrientationLandscapeLeft` or `CCDeviceOrientationLandscapeRight`, Kamcord will autorotate the screen to support both landscape orientations.
 
 ### Developer Settings
@@ -242,9 +264,9 @@ A YouTube video looks like this:
 
 You can set the title, description, and keywords (highlighted in the orange boxes) with the following function:
 
-	+(void) setYouTubeTitle:(NSString *)title
-     	        description:(NSString *)description 
-                   keywords:(NSString *)keywords;
+	+ (void) setYouTubeTitle:(NSString *)title
+     	         description:(NSString *)description 
+                    keywords:(NSString *)keywords;
 
 `youtubeKeywords` is one string of word tokens delimited by commas (e.g. `"multi-word keyword, another multiword keyword, keyword3, keyword4"`).
 
@@ -254,9 +276,9 @@ A Facebook wall post looks like the following:
 
 The `Message` is the text the user will enter. You can set the title, caption, and description with the following function:
 
-	+(void) setFacebookTitle:(NSString *)title
-   	                 caption:(NSString *)caption
-                 description:(NSString *)description;
+	+ (void) setFacebookTitle:(NSString *)title
+   	                  caption:(NSString *)caption
+                  description:(NSString *)description;
 
 When the user shares to Facebook, their video is first uploaded to Kamcord. We will then use your settings to populate the corresponding fields on Facebook. Needless to say, this is a great way to advertise your game by putting links to your website or your game's page on the Apple App Store.
 
@@ -264,8 +286,8 @@ It's worth noting that every time we post to Facebook, we use the currently set 
 
 Another function you need to set after you call `stopRecording` is:
 
-	+(void) setLevel:(NSString *)level
-     	       score:(NSNumber *)score;
+	+ (void) setLevel:(NSString *)level
+     	        score:(NSNumber *)score;
 	
 These values should be set per video. This metadata will be uploaded along with the video and be used to better organize videos for viewers.
 
@@ -273,8 +295,8 @@ These values should be set per video. This metadata will be uploaded along with 
 
 As we've mentioned before in the installation section, don't forget to set your Kamcord developer key and secret using this function:
 
-	+(void) setDeveloperKey:(NSString *)key
-	        developerSecret:(NSString *)secret;
+	+ (void) setDeveloperKey:(NSString *)key
+	         developerSecret:(NSString *)secret;
 
 We will give you a key and secret per game you build. We'll give you as many key/secret pairs you need, just don't tell them to anyone else.
 
@@ -292,7 +314,7 @@ The `Examples` directory has some fully functional examples of how to use Kamcor
 
 ### RenderTextureTest
 
-When this app launches, there are two buttons on the top right of the screen you can press to start and stop video recording. Play around by pressing `Start Recording`, doing some drawing or flipping between different tests, and then pressing `Stop Recording`. The Kamcord dialog should pop up and you'll be able to replay a video recording of your actions as well as share that video online.
+When this app launches, there are six buttons on the top right of the screen. The top two control video recording and the next four control which sounds are played. Play around by pressing `Start Recording`, doing some drawing or flipping between different tests, playing and stopping a couple of sounds, and then pressing `Stop Recording`. The Kamcord dialog should pop up and you'll be able to replay a video recording of your actions as well as share that video online. Note that the audio overlay will only be available after the video has finished processing. We are working on adding audio overlay to the pre-processed video also.
 
 Below are all of the code integration points inside `Examples/cocos2d-iphone-1.0.1/tests/RenderTextureTest.m`. We bold the lines we added to make Kamcord work. First, include the library:
 
@@ -378,7 +400,33 @@ Then do all the Kamcord initialization:
 
 This code sets up the window's root view controller and gives it ownership of the `KCGLView`. It then starts recording a new video. The `Start Recording` and `Stop Recording` buttons in the app are hooked in as follows:
 
-<pre><code>@implementation KamcordRecording
+<pre><code>
+<b>@interface KamcordRecording ()
+
+@property (nonatomic, retain) KCAudio * sound1;
+@property (nonatomic, retain) KCAudio * sound2;
+
+@property (nonatomic, retain) AVAudioPlayer * audioPlayer1;
+@property (nonatomic, retain) AVAudioPlayer * audioPlayer2;
+
+@end
+
+
+@implementation KamcordRecording
+{
+    KCAudio * sound1_;
+    KCAudio * sound2_;
+    
+    AVAudioPlayer * audioPlayer1_;
+    AVAudioPlayer * audioPlayer2_;
+}
+
+@synthesize sound1 = sound1_;
+@synthesize sound2 = sound2_;
+
+@synthesize audioPlayer1 = audioPlayer1_;
+@synthesize audioPlayer2 = audioPlayer2_;</b>
+
 -(id) init
 {
 	if( (self = [super init]) ) {
@@ -408,16 +456,17 @@ This code sets up the window's root view controller and gives it ownership of th
 #endif
 		
 		[CCMenuItemFont setFont"Size:16];
-		<b>CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Start Recording"
-                                                    target:self 
-                                                  selector:@selector(startRecording:)];
-		CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Stop Recording" 
-                                                    target:self
-                                                  selector:@selector(stopRecordingAndShowDialog:)];</b>
+		<b>CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Start Recording" target:self selector:@selector(startRecording:)];
+		CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Stop Recording" target:self selector:@selector(stopRecordingAndShowDialog:)];
+		CCMenuItem *item3 = [CCMenuItemFont itemFromString:@"Play Sound #1" target:self selector:@selector(playSound1:)];
+        CCMenuItem *item4 = [CCMenuItemFont itemFromString:@"Play Sound #2" target:self selector:@selector(playSound2:)];
+        CCMenuItem *item5 = [CCMenuItemFont itemFromString:@"Stop Sound #1" target:self selector:@selector(stopSound1:)];
+        CCMenuItem *item6 = [CCMenuItemFont itemFromString:@"Stop Sound #2" target:self selector:@selector(stopSound2:)];
+		CCMenu *menu = [CCMenu menuWithItems:item1, item2, item3, item4, item5, item6, nil];</b>
 		CCMenu *menu = [CCMenu menuWithItems:item1, item2, nil];
 		[self addChild:menu];
 		[menu alignItemsVertically];
-		[menu setPosition:ccp(s.width-80, s.height-30)];
+		[menu setPosition:ccp(s.width-80, s.height-<b>80</b>)];
 	}
 	return self;
 }
@@ -431,7 +480,47 @@ This code sets up the window's root view controller and gives it ownership of th
 {
 	[Kamcord stopRecording];
     [Kamcord showView];
-}</b></code></pre>
+}
+
+-(void) playSound1:(id)sender
+{
+    if (!self.audioPlayer1)
+    {
+        NSURL * url = [[NSBundle mainBundle] URLForResource:@"test8" withExtension:@"caf"];
+        self.audioPlayer1 = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    }
+    
+    if ([self.audioPlayer1 play]) {
+        self.sound1 = [Kamcord playSound:@"test8.caf"];
+    }
+}
+
+-(void) playSound2:(id)sender
+{
+    if (!self.audioPlayer2)
+    {
+        NSURL * url = [[NSBundle mainBundle] URLForResource:@"test3" withExtension:@"m4a"];
+        self.audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    }
+    
+    if ([self.audioPlayer2 play]) {
+        self.sound2 = [Kamcord playSound:@"test3.m4a"];
+    }
+}
+
+-(void) stopSound1:(id)sender
+{
+    [self.audioPlayer1 stop];
+    [self.sound1 stop];
+}
+
+-(void) stopSound2:(id)sender
+{
+    [self.audioPlayer2 stop];
+    [self.sound2 stop];
+}
+
+</b></code></pre>
 
 For most games, you'll want to defer the calls to `startRecording` until appropriate (your user begins the actual level, etc.).
 

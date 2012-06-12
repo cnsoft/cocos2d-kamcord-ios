@@ -13,7 +13,7 @@
 
 static int sceneIdx=-1;
 static NSString *tests[] = {	
-	@"RenderTextureSave",
+	@"KamcordRecording",
 	@"RenderTextureIssue937",
 	@"RenderTextureZbuffer",
 };
@@ -128,9 +128,9 @@ Class restartAction()
 @end
 
 #pragma mark -
-#pragma mark RenderTextureSave
+#pragma mark KamcordRecording
 
-@interface RenderTextureSave ()
+@interface KamcordRecording ()
 
 @property (nonatomic, retain) KCAudio * sound1;
 @property (nonatomic, retain) KCAudio * sound2;
@@ -141,7 +141,7 @@ Class restartAction()
 @end
 
 
-@implementation RenderTextureSave
+@implementation KamcordRecording
 {
     KCAudio * sound1_;
     KCAudio * sound2_;
@@ -224,36 +224,29 @@ Class restartAction()
 
 -(void) playSound1:(id)sender
 {
-    self.sound1 = [Kamcord playAudio:@"test8.caf"];
+    if (!self.audioPlayer1)
+    {
+        NSURL * url = [[NSBundle mainBundle] URLForResource:@"test8" withExtension:@"caf"];
+        self.audioPlayer1 = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    }
     
-    NSURL * url = [[NSBundle mainBundle] URLForResource:@"test8" withExtension:@"caf"];
-    
-	NSError *error;
-	AVAudioPlayer * audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    self.audioPlayer1 = audioPlayer;    
-    
-	if (audioPlayer == nil)
-        NLog(@"error");
-	else
-		[audioPlayer play];
+    if ([self.audioPlayer1 play]) {
+        self.sound1 = [Kamcord playSound:@"test8.caf"];
+    }
 }
 
 -(void) playSound2:(id)sender
 {
-    self.sound2 = [Kamcord playAudio:@"test3.m4a"];
+    if (!self.audioPlayer2)
+    {
+        NSURL * url = [[NSBundle mainBundle] URLForResource:@"test3" withExtension:@"m4a"];
+        self.audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    }
     
-    NSURL * url = [[NSBundle mainBundle] URLForResource:@"test3" withExtension:@"m4a"];
-    
-	NSError *error;
-	AVAudioPlayer * audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    self.audioPlayer2 = audioPlayer;
-    
-	if (audioPlayer == nil)
-        NLog(@"error");
-	else
-		[audioPlayer play];
+    if ([self.audioPlayer2 play]) {
+        self.sound2 = [Kamcord playSound:@"test3.m4a"];
+    }
 }
-
 -(void) stopSound1:(id)sender
 {
     [self.audioPlayer1 stop];
@@ -663,7 +656,7 @@ Class restartAction()
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
     
     // Play this looping background audio over the recorded video
-    [Kamcord playAudio:@"background.wav" loop:YES];
+    [Kamcord playSound:@"background.wav" loop:YES];
     
     // 2D projection
     //  [director setProjection:kCCDirectorProjection2D];
