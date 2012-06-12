@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 #import "CCDirectorIOS.h"
 #import "KCGLView.h"
@@ -15,6 +16,8 @@
 // Convenient for game developers
 #import "KamcordMacros.h"
 #import "Common/View/KCViewController.h"
+
+@class KCAudio;
 
 @interface Kamcord : NSObject
 
@@ -56,11 +59,6 @@
 + (NSString *) level;
 + (NSNumber *) score;
 
-// Audio
-+ (BOOL) setAudioResourceName:(NSString *)name
-                    extension:(NSString *)extension;
-+ (NSString *)audioResourceName;
-+ (NSString *)audioResourceExtension;
 
 // Video recording
 + (BOOL) startRecording;
@@ -68,34 +66,41 @@
 + (BOOL) resume;
 + (BOOL) pause;
 
+// Audio
++ (KCAudio *) playAudio:(NSString *)filename
+                   loop:(BOOL)loop;
+
++ (KCAudio *) playAudio:(NSString *)filename;
+
++ (KCAudio *) audioBackground;
+
+
 // Video recording settings
-// Recommend setting is SMART_VIDEO_DIMENSIONS:
-//   All iPads: 512x384
+// For release, use SMART_VIDEO_DIMENSIONS:
+//   iPad 1 and 2: 512x384
+//   iPad 3: 1024x768
 //   All iPhone and iPods: 480x320
 //
-// Other option is FULL_VIDEO_DIMENSIONS:
+// For trailers, use TRAILER_VIDEO_RESOLUTION
 //   All iPads: 1024x768
 //   iPhone/iPod non-retina: 480x320
 //   iPhone/iPad retina: 960x640
 typedef enum {
     SMART_VIDEO_RESOLUTION,
-    FULL_VIDEO_RESOLUTION,
+    TRAILER_VIDEO_RESOLUTION,
 } KC_VIDEO_RESOLUTION;
 
-typedef enum {
-    MEDIUM_VIDEO_QUALITY,
-    HIGH_VIDEO_QUALITY
-} KC_VIDEO_QUALITY;
-
 // Size refers to the pixel dimensions. 
-+ (void) setVideoResolution:(KC_VIDEO_RESOLUTION)resolution
-                    quality:(KC_VIDEO_QUALITY)quality;
++ (void) setVideoResolution:(KC_VIDEO_RESOLUTION)resolution;
 + (KC_VIDEO_RESOLUTION) videoResolution;
-+ (KC_VIDEO_QUALITY) videoQuality;
 
 
 // Displays the Kamcord view inside the previously set parentViewController;
 + (void) showView;
+
+
+// Helper to figure calculate the internal scale factor
++ (unsigned int) resolutionScaleFactor;
 
 
 // Returns the singleton Kamcord object. You don't ever really need this, just

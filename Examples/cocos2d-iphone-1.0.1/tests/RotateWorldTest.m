@@ -171,7 +171,8 @@
 	[Kamcord setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
 
     // Kamcord setup
-    [Kamcord setDeveloperKey:@"kamcord-test" developerSecret:@"kamcord-test"];
+    [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
+             developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"];
 
     // Social media settings
     [Kamcord setYouTubeTitle:@"RotateWorldTest"
@@ -207,10 +208,16 @@
 	
 	[scene runAction: [CCRotateBy actionWithDuration: 4 angle:-360]];
 	
+    [director runWithScene: scene];
+    
+    // Give the layer time to resize for retina displays
+    [self performSelector:@selector(startRecording) withObject:nil afterDelay:0.5];
+}
+
+-(void) startRecording
+{
     [Kamcord startRecording];
     [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
-    
-	[director runWithScene: scene];
 }
 
 -(void) stopRecordingAndShowKamcordView:(id)sender

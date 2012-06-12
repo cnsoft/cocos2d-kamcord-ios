@@ -158,19 +158,16 @@ The API is:
 
 ### Video Quality
 
-You can set the dimensions and quality of the recorded video:
+You can set the resolution of the recorded video:
 
-	+(void) setVideoResolution:(KC_VIDEO_RESOLUTION)resolution
-	    	           quality:(KC_VIDEO_QUALITY)quality;
+	+(void) setVideoResolution:(KC_VIDEO_RESOLUTION)resolution;
 
-There are two video dimension settings:
+There are two video resolution settings:
 
-- `SMART_VIDEO_RESOLUTION`: 512x384 on all iPads, 480x320 on all iPhone/iPods.
-- `FULL_VIDEO_RESOLUTION`: 1024x768 on all iPads, 480x320 on non-retina iPhone/iPods, and 960x480 on retina iPhone/iPods.
+- `SMART_VIDEO_RESOLUTION`: 512x384 on iPad 1 and 2, 1024x768 on iPad , and 480x320 on all iPhone/iPods.
+- `TRAILER_VIDEO_RESOLUTION`: 1024x768 on all iPads, 480x320 on non-retina iPhone/iPods, and 960x480 on retina iPhone/iPods.
 
-The two video quality settings are `HIGH_VIDEO_QUALITY` and `MEDIUM_VIDEO_QUALITY`.
-
-Keep in mind that videos that are larger and have higher quality will take much longer to process and upload. We recommend running with  `SMART_VIDEO_RESOLUTION` and `MEDIUM_VIDEO_QUALITY` (the default). You should experiment with different combinations to see what works best for your games.
+`SMART_VIDEO_RESOLUTION` is the default setting and should be used when you deploy your game. As the name suggests, `TRAILER_VIDEO_RESOLUTION` is only intended for you to make trailers with. Releasing your game with `TRAILER_VIDEO_RESOLUTION` is **strongly** discouraged. It will eat up your user's data plan, CPU, game resources (FPS), battery and result in video uploads that are more than five times longer (and thus potentially more network failures).
 
 We currently don't support recording at iPad retina resolutions (2048x1536) because it seems that Apple doesn't support writing videos of those resolutions, but we plan to come back to this issue in the future.
 

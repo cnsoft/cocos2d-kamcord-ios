@@ -75,6 +75,7 @@ typedef enum
 // Handles video conversion and merging
 @interface KCVideoProcessingAndShareManager : NSObject
 
+// Are we currently merging, converting, or uploading/sharing?
 @property (nonatomic, readonly) BOOL isActive;
 
 -(id) init;
@@ -85,6 +86,7 @@ typedef enum
 - (void)shareFinished:(KCVideoSharingTask *)task
                 error:(NSError *)error;
 
+- (void)resumeTasks;
 
 // Puts a job on the worker queue. Returns immediately and calls
 // back to the delegates when finished.
@@ -98,7 +100,7 @@ typedef enum
 
 // Some ways to cancel tasks
 - (void)safelyPerformTaskAndVideoCleanup:(KCVideo *)video;
-- (void)cancelAllActiveTasks;
+- (void)cancelAllActiveTasksAndPause;
 
 - (void)dealloc;
 

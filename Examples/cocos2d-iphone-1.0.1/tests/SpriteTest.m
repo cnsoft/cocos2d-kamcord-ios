@@ -4015,9 +4015,6 @@ Class restartAction()
 	// before creating any layer, set the landscape mode
 	CCDirector *director = [CCDirector sharedDirector];
 	
-	// landscape orientation
-	[director setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
-	
 	// set FPS at 60
 	[director setAnimationInterval:1.0/60];
 	
@@ -4037,9 +4034,13 @@ Class restartAction()
     [Kamcord setParentViewController:window.rootViewController];
 	[Kamcord setOpenGLView:glView];
     
+    // Landscape orientation
+	[Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeLeft];
+    
     // Developer settings
-    [Kamcord setDeveloperKey:@"kamcord-test" developerSecret:@"kamcord-test"];
-    [Kamcord setDeviceOrientation:CCDeviceOrientationLandscapeRight];
+    [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
+             developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"];
+    [Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeRight];
     
     // Social media settings
     [Kamcord setYouTubeTitle:@"SpriteTest"
@@ -4076,15 +4077,19 @@ Class restartAction()
 	CCScene *scene = [CCScene node];
 	[scene addChild: [nextAction() node]];
 	
-	
-	[Kamcord startRecording];
-    [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
-    
 	[director runWithScene: scene];
+    
+    // Give the layer time to resize for retina displays
+    [self performSelector:@selector(startRecording) withObject:nil afterDelay:0.5];
     
     return YES;
 }
 
+-(void) startRecording
+{
+    [Kamcord startRecording];
+    [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
+}
 -(void) stopRecordingAndShowKamcordView:(id)sender
 {
 	[Kamcord stopRecording];

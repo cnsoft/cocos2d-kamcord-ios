@@ -1476,10 +1476,11 @@ Class restartAction()
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	// Sets landscape mode (make sure to use Kamcord, not CCDirector!!)
-	[Kamcord setDeviceOrientation:kCCDeviceOrientationPortrait];
+	[Kamcord setDeviceOrientation:KCDeviceOrientationPortrait];
     
     // Kamcord setup
-    [Kamcord setDeveloperKey:@"kamcord-test" developerSecret:@"kamcord-test"];
+    [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
+             developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"];
     
     // Social media settings
     [Kamcord setYouTubeTitle:@"ParticleTest"
@@ -1489,6 +1490,8 @@ Class restartAction()
     [Kamcord setFacebookTitle:@"ParticleTest"
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
+    
+    [Kamcord setVideoResolution:SMART_VIDEO_RESOLUTION];
     
 	// Turn on display FPS
 	[director setDisplayFPS:YES];
@@ -1509,10 +1512,16 @@ Class restartAction()
 	CCScene *scene = [CCScene node];
 	[scene addChild: [nextAction() node]];
 	
-	[Kamcord startRecording];
-    [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
-    
 	[director runWithScene: scene];
+    
+    // Give the layer time to resize for retina displays
+    [self performSelector:@selector(startRecording) withObject:nil afterDelay:0.5];
+}
+
+-(void) startRecording
+{
+    [Kamcord startRecording];
+    [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
 }
 
 -(void) stopRecordingAndShowKamcordView:(id)sender

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <CoreMedia/CMTime.h>
 
 #import "DataStructures/NSMutableArray+QueueAdditions.h"
 
@@ -37,6 +38,8 @@ alreadySharedWithEmail:(BOOL)alreadySharedWithEmail;
 
 //////////////////////////////////////////////////////
 // Begin KCVideo
+@class KCAudioCollection;
+
 @interface KCVideo : NSObject
 
 typedef enum
@@ -77,6 +80,9 @@ typedef enum
 @property (nonatomic, assign) CFAbsoluteTime startTime;
 @property (nonatomic, assign) CFAbsoluteTime timeOfLastRecordedFrame;
 
+// The total duration of all previous clips (before the current clip)
+@property (nonatomic, assign) CMTime durationOfAllPreviousClips;
+
 // Local video URLs
 @property (nonatomic, readonly, retain) NSURL * videoDirectory;
 
@@ -97,6 +103,9 @@ typedef enum
 @property (nonatomic, retain) NSURL * onlineYouTubeVideoURL;
 
 @property (nonatomic, assign) BOOL uploadedToKamcord;
+
+// Audio
+@property (nonatomic, retain) KCAudioCollection * audioCollection;
 
 // Has everything that we need to do with this video been done?
 // If so, we can just go ahead and erase it to save space.

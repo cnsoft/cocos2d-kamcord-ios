@@ -8,6 +8,7 @@
 // cocos import
 #import "RenderTextureTest.h"
 
+
 #import <Kamcord/Kamcord.h>
 
 static int sceneIdx=-1;
@@ -129,7 +130,32 @@ Class restartAction()
 #pragma mark -
 #pragma mark RenderTextureSave
 
+@interface RenderTextureSave ()
+
+@property (nonatomic, retain) KCAudio * sound1;
+@property (nonatomic, retain) KCAudio * sound2;
+
+@property (nonatomic, retain) AVAudioPlayer * audioPlayer1;
+@property (nonatomic, retain) AVAudioPlayer * audioPlayer2;
+
+@end
+
+
 @implementation RenderTextureSave
+{
+    KCAudio * sound1_;
+    KCAudio * sound2_;
+    
+    AVAudioPlayer * audioPlayer1_;
+    AVAudioPlayer * audioPlayer2_;
+}
+
+@synthesize sound1 = sound1_;
+@synthesize sound2 = sound2_;
+
+@synthesize audioPlayer1 = audioPlayer1_;
+@synthesize audioPlayer2 = audioPlayer2_;
+
 -(id) init
 {
 	if( (self = [super init]) ) {
@@ -160,16 +186,16 @@ Class restartAction()
 		
 		// Save Image menu
 		[CCMenuItemFont setFontSize:16];
-		CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Start Recording"
-                                                    target:self 
-                                                  selector:@selector(startRecording:)];
-		CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Stop Recording" 
-                                                    target:self
-                                                  selector:@selector(stopRecordingAndShowDialog:)];
-		CCMenu *menu = [CCMenu menuWithItems:item1, item2, nil];
+		CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Start Recording" target:self selector:@selector(startRecording:)];
+		CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Stop Recording" target:self selector:@selector(stopRecordingAndShowDialog:)];
+		CCMenuItem *item3 = [CCMenuItemFont itemFromString:@"Play Sound #1" target:self selector:@selector(playSound1:)];
+        CCMenuItem *item4 = [CCMenuItemFont itemFromString:@"Play Sound #2" target:self selector:@selector(playSound2:)];
+        CCMenuItem *item5 = [CCMenuItemFont itemFromString:@"Stop Sound #1" target:self selector:@selector(stopSound1:)];
+        CCMenuItem *item6 = [CCMenuItemFont itemFromString:@"Stop Sound #2" target:self selector:@selector(stopSound2:)];
+		CCMenu *menu = [CCMenu menuWithItems:item1, item2, item3, item4, item5, item6, nil];
 		[self addChild:menu];
 		[menu alignItemsVertically];
-		[menu setPosition:ccp(s.width-80, s.height-30)];
+		[menu setPosition:ccp(s.width-80, s.height-80)];
 	}
 	return self;
 }
@@ -194,6 +220,52 @@ Class restartAction()
 	[Kamcord stopRecording];
     [Kamcord showView];
 }
+
+
+-(void) playSound1:(id)sender
+{
+    self.sound1 = [Kamcord playAudio:@"test8.caf"];
+    
+    NSURL * url = [[NSBundle mainBundle] URLForResource:@"test8" withExtension:@"caf"];
+    
+	NSError *error;
+	AVAudioPlayer * audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    self.audioPlayer1 = audioPlayer;    
+    
+	if (audioPlayer == nil)
+        NLog(@"error");
+	else
+		[audioPlayer play];
+}
+
+-(void) playSound2:(id)sender
+{
+    self.sound2 = [Kamcord playAudio:@"test3.m4a"];
+    
+    NSURL * url = [[NSBundle mainBundle] URLForResource:@"test3" withExtension:@"m4a"];
+    
+	NSError *error;
+	AVAudioPlayer * audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    self.audioPlayer2 = audioPlayer;
+    
+	if (audioPlayer == nil)
+        NLog(@"error");
+	else
+		[audioPlayer play];
+}
+
+-(void) stopSound1:(id)sender
+{
+    [self.audioPlayer1 stop];
+    [self.sound1 stop];
+}
+
+-(void) stopSound2:(id)sender
+{
+    [self.audioPlayer2 stop];
+    [self.sound2 stop];
+}
+
 
 -(void) clearImage:(id)sender
 {
@@ -575,10 +647,11 @@ Class restartAction()
     [Kamcord setOpenGLView:glView];
     
     // Set the device orientation. Must use Kamcord, not CCDirector!
-    [Kamcord setDeviceOrientation:CCDeviceOrientationLandscapeRight];    
+    [Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeRight];    
     
     // Developer settings
-    [Kamcord setDeveloperKey:@"kamcord-test" developerSecret:@"kamcord-test"];
+    [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
+             developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"];
     
     // Social media settings
     [Kamcord setYouTubeTitle:@"RenderTextureTest"
@@ -589,9 +662,8 @@ Class restartAction()
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
     
-    // Set a background audio track we're going to loop over the recorded video.
-    [Kamcord setAudioResourceName:@"background"
-                        extension:@"wav"];
+    // Play this looping background audio over the recorded video
+    [Kamcord playAudio:@"background.wav" loop:YES];
     
     // 2D projection
     //  [director setProjection:kCCDirectorProjection2D];

@@ -210,7 +210,7 @@ CGFloat	__ccContentScaleFactor = 1;
 			glMatrixMode(GL_PROJECTION);
 			glLoadIdentity();
 //			gluPerspective(60, (GLfloat)size.width/size.height, zeye-size.height/2, zeye+size.height/2 );
-			gluPerspective(60, (GLfloat)size.width/size.height, 0.5f, 1500);
+			gluPerspective(60, (GLfloat)size.width/size.height, 0.5f, 2800);
 
 			glMatrixMode(GL_MODELVIEW);	
 			glLoadIdentity();
