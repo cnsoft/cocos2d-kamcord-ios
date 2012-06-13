@@ -44,7 +44,6 @@
  * The delegate.
  */
 @property(nonatomic,assign) id<FBDialogDelegate> delegate;
-
 /**
  * The parameters.
  */

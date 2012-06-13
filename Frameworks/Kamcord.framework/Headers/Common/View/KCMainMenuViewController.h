@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KCViewController.h"
+#import "KCShareViewController.h"
 
 @class KCVideo;
 @class KCVideoProcessingAndShareManager;
@@ -18,5 +19,6 @@
 @property (nonatomic, retain) KCVideoProcessingAndShareManager * shareManager;
 
 - (void) dealloc;
+- (BOOL) handleOpenURL_toShareView:(NSURL *)url;
 
 @end

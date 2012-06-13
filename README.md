@@ -487,11 +487,11 @@ This code sets up the window's root view controller and gives it ownership of th
         CCMenuItem *item4 = [CCMenuItemFont itemFromString:@"Play Sound #2" target:self selector:@selector(playSound2:)];
         CCMenuItem *item5 = [CCMenuItemFont itemFromString:@"Stop Sound #1" target:self selector:@selector(stopSound1:)];
         CCMenuItem *item6 = [CCMenuItemFont itemFromString:@"Stop Sound #2" target:self selector:@selector(stopSound2:)];
-		CCMenu *menu = [CCMenu menuWithItems:item1, item2, item3, item4, item5, item6, nil];</b>
-		CCMenu *menu = [CCMenu menuWithItems:item1, item2, nil];
+		CCMenuItem *item7 = [CCMenuItemFont itemFromString:@"Stop All Sounds" target:self selector:@selector(stopAllSounds:)];
+		CCMenu *menu = [CCMenu menuWithItems:item1, item2, item3, item4, item5, item6, item7, nil];</b>
 		[self addChild:menu];
 		[menu alignItemsVertically];
-		[menu setPosition:ccp(s.width-80, s.height-<b>80</b>)];
+		[menu setPosition:ccp(s.width-80, s.height-<b>90</b>)];
 	}
 	return self;
 }
@@ -545,6 +545,12 @@ This code sets up the window's root view controller and gives it ownership of th
     [self.sound2 stop];
 }
 
+-(void) stopAllSounds:(id)sender
+{
+    [self.audioPlayer1 stop];
+    [self.audioPlayer2 stop];
+    [Kamcord stopAllSounds:NO];
+}
 </b></code></pre>
 
 For most games, you'll want to defer the calls to `startRecording` until appropriate (your user begins the actual level, etc.).

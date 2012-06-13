@@ -10,4 +10,6 @@
 
 @interface KCSHKConfigurator : DefaultSHKConfigurator
 
+@property (nonatomic, copy) NSString *applicationKey;
+
 @end

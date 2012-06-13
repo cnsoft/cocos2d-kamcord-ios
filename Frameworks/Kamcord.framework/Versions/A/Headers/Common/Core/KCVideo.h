@@ -100,6 +100,8 @@ typedef enum
 
 @property (nonatomic, retain) NSURL * onlineKamcordVideoURL;
 @property (nonatomic, retain) NSURL * onlineKamcordThumbnailURL;
+
+//This is probably the solution to our Youtube problem
 @property (nonatomic, retain) NSURL * onlineYouTubeVideoURL;
 
 @property (nonatomic, assign) BOOL uploadedToKamcord;
