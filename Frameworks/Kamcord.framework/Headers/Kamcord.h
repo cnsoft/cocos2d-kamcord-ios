@@ -93,6 +93,10 @@ typedef enum {
                    loop:(BOOL)loop;
 + (KCAudio *) playSound:(NSString *)filename;
 
+// Will stop all non-looping sounds. If loop is YES, will also stop
+// all looping sounds.
++ (void) stopAllSounds:(BOOL)loop;
+
 
 // Displays the Kamcord view inside the previously set parentViewController;
 + (void) showView;

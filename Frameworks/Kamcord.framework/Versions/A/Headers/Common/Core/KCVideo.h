@@ -125,6 +125,7 @@ typedef enum
 // local URL to that file path. Returns YES on success.
 - (BOOL)addNewVideoClip;
 
+- (void)stopAllSounds:(BOOL)loop;
 
 // Erases all video files associated with this video
 - (void)dealloc;

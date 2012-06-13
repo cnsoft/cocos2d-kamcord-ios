@@ -192,10 +192,11 @@ Class restartAction()
         CCMenuItem *item4 = [CCMenuItemFont itemFromString:@"Play Sound #2" target:self selector:@selector(playSound2:)];
         CCMenuItem *item5 = [CCMenuItemFont itemFromString:@"Stop Sound #1" target:self selector:@selector(stopSound1:)];
         CCMenuItem *item6 = [CCMenuItemFont itemFromString:@"Stop Sound #2" target:self selector:@selector(stopSound2:)];
-		CCMenu *menu = [CCMenu menuWithItems:item1, item2, item3, item4, item5, item6, nil];
+		CCMenuItem *item7 = [CCMenuItemFont itemFromString:@"Stop All Sounds" target:self selector:@selector(stopAllSounds:)];
+		CCMenu *menu = [CCMenu menuWithItems:item1, item2, item3, item4, item5, item6, item7, nil];
 		[self addChild:menu];
 		[menu alignItemsVertically];
-		[menu setPosition:ccp(s.width-80, s.height-80)];
+		[menu setPosition:ccp(s.width-80, s.height-90)];
 	}
 	return self;
 }
@@ -257,6 +258,13 @@ Class restartAction()
 {
     [self.audioPlayer2 stop];
     [self.sound2 stop];
+}
+
+-(void) stopAllSounds:(id)sender
+{
+    [self.audioPlayer1 stop];
+    [self.audioPlayer2 stop];
+    [Kamcord stopAllSounds:NO];
 }
 
 
@@ -657,6 +665,8 @@ Class restartAction()
     
     // Play this looping background audio over the recorded video
     [Kamcord playSound:@"background.wav" loop:YES];
+    
+    [Kamcord setVideoResolution:SMART_VIDEO_RESOLUTION];
     
     // 2D projection
     //  [director setProjection:kCCDirectorProjection2D];

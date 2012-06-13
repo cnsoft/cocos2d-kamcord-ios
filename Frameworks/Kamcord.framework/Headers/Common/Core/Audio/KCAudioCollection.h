@@ -26,4 +26,6 @@
 // Update the times of the audio objects in the array
 - (void)startAllAndSetVideo:(KCVideo *)video;
 
+- (void)stopAllSounds:(BOOL)loop;
+
 @end

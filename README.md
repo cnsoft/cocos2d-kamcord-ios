@@ -3,14 +3,42 @@
 
 ## Introduction
 
-Kamcord is a built-in gameplay recording technology for iOS. This repository contains a Kamcord SDK that works with cocos2d-1.0.1 and allows you, the game developer, to capture gameplay videos with a very simple API.
+Kamcord is a built-in gameplay video and audio recording technology for iOS. This repository contains a Kamcord SDK that works with cocos2d-1.0.1 and allows you, the game developer, to capture gameplay videos with a very simple API.
 Your users can then replay and share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
 In order to use Kamcord, you need a developer key and developer secret. To get these, please email Matt at <a mailto="matt@kamcord.com">matt@kamcord.com</a>.
 
 **Kamcord works on iOS 5+ and gracefully turns itself off on iOS 4**. You can still will run without problems on versions of iOS before iOS 5, though you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
 
-We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to <a href="mailto:matt@kamcord.com"/>contact us</a>.
+We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to email or call Matt at <a href="mailto:matt@kamcord.com">matt@kamcord.com</a> (650.267.1051).
+
+## Gameplay Recordings
+
+Check out some gameplays recorded with Kamcord:
+
+<p>
+	<ul>
+	<li>
+		<a target="_blank" href="http://www.youtube.com/watch?v=R80Huefqvq0">Mr. Ball</a> (<a target="_blank" href="http://itunes.apple.com/us/app/mr.-ball/id521546799">Apple App Store</a>)
+	</li>
+	<li>
+		<a target="_blank" href="http://www.youtube.com/watch?v=rpPb2NhlD0Q">Platform Hell</a> (<a target="_blank" href="http://itunes.apple.com/us/app/platform-hell-pro/id428765417">Apple App Store</a>)
+	</li>
+	<li>
+		<a target="_blank" href="http://www.youtube.com/watch?v=R2zqZ0FJ6yI">Adhesion</a> (<a target="_blank" href="http://itunes.apple.com/us/app/adhesion/id501869784">Apple App Store</a>)
+	</li>
+	<li>
+		<a target="_blank" href="http://kamcord.com/v/8Pm4x61dTEQ/">Sewar Wars</a> (<a target="_blank" href="http://www.sewerwars.com">Website</a>)
+	</li>
+	<li>
+		<a target="_blank" href="http://kamcord.com/v/D2I3G5o8dO/">Carl The Spider</a> (<a target="_blank" href="http://itunes.apple.com/us/app/carl-the-spider/id504163507">Apple App Store</a>)
+	</li>
+	<li>
+		<a target="_blank" href="http://kamcord.com/v/So5sOMb8pn/">Atlantis Oceans</a> (<a target="_blank" href="http://itunes.apple.com/us/app/atlantis-oceans/id384836591">Apple App Store</a>)
+	</li>
+	</ul>
+</p>
+	
 
 ## A Sample Application
 
@@ -21,11 +49,6 @@ After 10 seconds, the Kamcord view should appear allowing you to replay a video 
 `RenderTextureTest` is different in that it allows you to start and stop recording by pressing the two corresponding buttons at the top right of the screen. When you press `Stop Recording`, you will again see the Kamcord view with options to replay and share. Later on in this documentation, we'll walk through all the code needed to add recording and replay functionalities to `RenderTextureTest`.
 
 There is no practical limit on how long you can record for. Everything gets written immediately to disk and old videos are always being erased, so the only real limitation is the device's hard drive size. Since modern iOS devices have 16+ GB of hard disk space, you can safely record one continuous gameplay video for over 24 hours straight, an upper limit your gamers will probably never run into.
-
-## A Live Game Sample
-
-The team at <a target="_blank" href="http://www.sewerwars.com">Sewer Wars</a> has successfully integrated Kamcord into their game. Check out a <a target="_blank" href="http://kamcord.com/v/8Pm4x61dTEQ/">sample recording</a>!
-
 
 ## Installation
 
@@ -194,7 +217,13 @@ The second function call simply calls the first with `loop` set to `NO`. These s
 
 If you'd ever like to stop a sound from playing in the recording, you can save the `KCAudio *` object that is returned by `playSound` and call `stop` on that object. You don't need to call `start` on the returned `KCAudio` object, `[Kamcord playSound:]` will take care of that for you.
 
-The `RenderTextureTest` example below shows how to use 
+For convenience, we've added a method to stop all sounds:
+
+	+ (void) stopAllSounds:(BOOL)loop;
+	
+If `loop` is `NO`, this will only stop non-looping sounds. If `loop` is `YES`, this will stop ALL sounds.
+
+The `RenderTextureTest` example below shows how to record sound.
 
 **Note that this audio track is only overlayed on the video once the video processing is finished.** We begin video processing in the background as soon as you call stopRecording, but the video you watch via the Replay Video button on the Kamcord UI may show the preprocessed video (without the audio overlay). Don't worry, the final video that is shared on Facebook/Twitter and uploaded to YouTube *will* have the sounds overlayed.
 
@@ -208,16 +237,13 @@ Now that the user has finished his gameplay and you have successfully recorded a
 
 This presents a modal view with the following options:
 
-<p>
-<ul>
-    <li style="margin: 0;">Replay video</li>
-    <li style="margin: 0;">Share</li>
-</ul>
-</p>
+<img src="https://dl.dropbox.com/u/6122/Kamcord/MainMenu.png" style="display: block; margin-left: auto; margin-right: auto;" />
 
-`Replay video` will show the video of the gameplay that just happened (the result of the last `stopRecording` call). 
+`Replay video` will show the video of the gameplay that just happened (the result of the last `stopRecording` call).
 
 `Share` will bring the user to a new view that lets them enter a message and select Facebook, Twitter, YouTube, and/or email. When the user taps the `Share` button on this second view, we upload the video to our servers and share their message to their selected social networks. The first time the user selects Facebook, Twitter, or YouTube, he will be prompted for the relevant credentials and permissions.
+
+<img src="https://dl.dropbox.com/u/6122/Kamcord/ShareView.png" style="display: block; margin-left: auto; margin-right: auto;" />
 
 All uploading to YouTube and sharing on Facebook/Twitter happens in a background thread. Based on testing, this has negligible impact on performance and provides for a great user experience, because your user can hit `Share` and get back to playing your game  as soon as possible.
 
@@ -400,8 +426,7 @@ Then do all the Kamcord initialization:
 
 This code sets up the window's root view controller and gives it ownership of the `KCGLView`. It then starts recording a new video. The `Start Recording` and `Stop Recording` buttons in the app are hooked in as follows:
 
-<pre><code>
-<b>@interface KamcordRecording ()
+<pre><code><b>@interface KamcordRecording ()
 
 @property (nonatomic, retain) KCAudio * sound1;
 @property (nonatomic, retain) KCAudio * sound2;
@@ -544,6 +569,34 @@ That's all you have to do to manage the applicaton lifecycle. If no video is cur
 To test this functionality, press `Start Recording`, play with the app, then close it by pressing the home button. Re-open the app, do some more actions, then press `Stop Recording`. When the Kamcord dialog appears, select `Replay Video`. It should show one seamless video of everything that's happened.
 
 <b>Note: in your game, you should defer calling</b> `resume` <b>until your user resumes gameplay. Calling it in</b> `applicationDidBecomeActive:` <b>like in this example will capture the pause screen of your game, which is probably not what you or your user wants.</b>
+
+## Other Kamcord details
+
+### Mixpanel
+
+We collect analytics on user behavior. Specifically, we keep track of how often users replay videos, how often they share to social networks, which social networks they share to, etc. The information we track is purely aggregate statistics and **not** personally identifiable, so you can rest assured there are no privacy concerns for your end users.
+
+### Amazon Simple Storage Service (S3)
+
+Kamcord stores videos on Amazon S3, hence why we need `AWSiOSSDK.framework`.
+
+## Troubleshooting
+
+Below are various integration issues that some game developers have run into.
+
+### Application crashes when you press [Done] on the main Kamcord view
+
+Make sure that there is only **one** view controller in your application delegate, and barring some strange cases, that root view controller should be an instance of `KCViewController`. We've seen cases where people have had both a `RootViewController` and a `KCViewController` instantiated inside their app delegate. Removing the `RootViewController` solved the crash problems.
+
+### Video uploads to kamcord.com don't succeed
+
+Kamcord uploads videos in the background. This allows your user to get back to playing your game right away. Even after your app loses foreground, we still have 10 mins of time to upload. In the case that we can't finish it in those 10 minutes, we queue the job for next time the app regains foreground, and keep doing this until the video upload succeeds.
+
+If you are testing Kamcord with XCode and press the `Stop` button too soon after you press `Share`, the video will most likely not have finished uploading. This is especially true for videos recorded with `TRAILER_VIDEO_RESOLUTION` since they are about 5x larger than those recorded with `SMART_VIDEO_RESOLUTION`. Videos also upload much more quickly on WiFi than 3G. To ensure the video upload succeeds, just leave the app running for a sufficient time and check the video on kamcord.com. 
+
+### armv6
+
+Kamcord only supports i386 and armv7. If you need an armv6 build for some reason, <a href="mailto:matt@kamcord.com" />shoot us an email</a>.
 
 ## Contact Us
 
