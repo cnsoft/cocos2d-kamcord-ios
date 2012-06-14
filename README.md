@@ -19,7 +19,7 @@ Check out some gameplays recorded with Kamcord:
 <p>
 	<ul>
 	<li>
-		<a target="_blank" href="http://www.youtube.com/watch?v=R80Huefqvq0">Mr. Ball</a> (<a target="_blank" href="http://itunes.apple.com/us/app/mr.-ball/id521546799">Apple App Store</a>)
+		<a target="_blank" href="http://www.youtube.com/watch?v=C4yM_iZSKxk">Mr. Ball</a> (<a target="_blank" href="http://itunes.apple.com/us/app/mr.-ball/id521546799">Apple App Store</a>)
 	</li>
 	<li>
 		<a target="_blank" href="http://www.youtube.com/watch?v=rpPb2NhlD0Q">Platform Hell</a> (<a target="_blank" href="http://itunes.apple.com/us/app/platform-hell-pro/id428765417">Apple App Store</a>)
