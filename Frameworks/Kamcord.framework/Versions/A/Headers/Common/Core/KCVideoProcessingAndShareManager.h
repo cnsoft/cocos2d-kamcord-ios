@@ -86,8 +86,6 @@ typedef enum
 - (void)shareFinished:(KCVideoSharingTask *)task
                 error:(NSError *)error;
 
-- (void)resumeTasks;
-
 // Puts a job on the worker queue. Returns immediately and calls
 // back to the delegates when finished.
 - (void)mergeVideo:(KCVideo *)video
@@ -98,8 +96,11 @@ typedef enum
               info:(KCVideoShareInfo *)info
           delegate:(id <KCShareFinishedDelegate>)delegate;
 
-// Some ways to cancel tasks
+// Try to erase this video
 - (void)safelyPerformTaskAndVideoCleanup:(KCVideo *)video;
+
+// Resume and cancel task queues
+- (void)resumeTasks;
 - (void)cancelAllActiveTasksAndPause;
 
 - (void)dealloc;

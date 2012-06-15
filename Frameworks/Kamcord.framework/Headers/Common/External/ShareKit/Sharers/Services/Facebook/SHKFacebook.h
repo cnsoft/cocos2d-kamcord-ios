@@ -30,8 +30,23 @@
 #import "SHKSharer.h"
 #import "SHKCustomFormControllerLargeTextField.h"
 
+
+@protocol KCLoginDismissedDelegate <NSObject>
+        
+-(void) loginDismissed;
+
+@end
+
 @interface SHKFacebook : SHKSharer <FBSessionDelegate, FBDialogDelegate, FBRequestDelegate, SHKFormControllerLargeTextFieldDelegate>
 
+@property (nonatomic, assign) id<KCLoginDismissedDelegate> dismissalDelegate;
+
 + (BOOL)handleOpenURL:(NSURL*)url;
+
++ (void)setEnableSSO:(BOOL)enabled;
+
+
+//EXPERIMENTAL 
+//+ (void)flushAccessToken;
 
 @end

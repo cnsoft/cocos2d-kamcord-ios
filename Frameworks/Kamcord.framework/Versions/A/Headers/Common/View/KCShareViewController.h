@@ -13,14 +13,14 @@
 #import "SHKSharer.h"
 #import "KCYouTubeUploader.h"
 #import "Facebook.h"
-
+#import "SHKFacebook.h"
 // For composing email
 #import <MessageUI/MFMailComposeViewController.h>
 
 @class KCVideo;
 @class KCVideoProcessingAndShareManager;
 
-@interface KCShareViewController : KCViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, SHKSharerDelegate, MFMailComposeViewControllerDelegate, NSURLConnectionDelegate,KCYouTubeUploaderDelegate,FBSessionDelegate>
+@interface KCShareViewController : KCViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, SHKSharerDelegate, MFMailComposeViewControllerDelegate, NSURLConnectionDelegate,KCYouTubeUploaderDelegate,FBSessionDelegate, FBDialogDelegate, KCLoginDismissedDelegate>
 
 @property (nonatomic, retain) KCVideo * latestVideo;
 @property (nonatomic, retain) KCVideoProcessingAndShareManager * shareManager;

@@ -42,7 +42,6 @@
 @property(nonatomic, assign) id<FBSessionDelegate> sessionDelegate;
 @property(nonatomic, copy) NSString* urlSchemeSuffix;
 
-
 - (id)initWithAppId:(NSString *)appId
         andDelegate:(id<FBSessionDelegate>)delegate;
 
@@ -50,7 +49,7 @@
     urlSchemeSuffix:(NSString *)urlSchemeSuffix
         andDelegate:(id<FBSessionDelegate>)delegate;
 
-- (void)authorize:(NSArray *)permissions;
+- (void)authorize:(NSArray *)permissions useSSO:(BOOL)SSOEnabled;
 
 - (BOOL)handleOpenURL:(NSURL *)url;
 

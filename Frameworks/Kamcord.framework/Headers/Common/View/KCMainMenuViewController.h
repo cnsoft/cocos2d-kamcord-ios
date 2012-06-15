@@ -20,5 +20,4 @@
 
 - (void) dealloc;
 - (BOOL) handleOpenURL_toShareView:(NSURL *)url;
-
 @end
