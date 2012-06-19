@@ -28,7 +28,7 @@
 #import "OAMutableURLRequest.h"
 
 
-@interface OAServiceTicket : NSObject {
+@interface KC_OAServiceTicket : NSObject {
 @private
     OAMutableURLRequest *request;
     NSHTTPURLResponse *response;
@@ -45,3 +45,6 @@
 - (id)initWithRequest:(OAMutableURLRequest *)aRequest response:(NSHTTPURLResponse *)aResponse data:(NSData *)aData didSucceed:(BOOL)success;
 
 @end
+
+@compatibility_alias OAServiceTicket KC_OAServiceTicket;
+

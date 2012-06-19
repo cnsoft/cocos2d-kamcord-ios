@@ -29,7 +29,10 @@
 #import "SHK.h"
 #import "SHKSharer.h"
 
-@interface SHKOfflineSharer : NSOperation <SHKSharerDelegate>
+@class KC_SHKOfflineSharer;
+@compatibility_alias SHKOfflineSharer KC_SHKOfflineSharer;
+
+@interface SHKOfflineSharer : NSOperation <KCSHKSharerDelegate>
 {
 	SHKItem *item;
 	NSString *sharerId;

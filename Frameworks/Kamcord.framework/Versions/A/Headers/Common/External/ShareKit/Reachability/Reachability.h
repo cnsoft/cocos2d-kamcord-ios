@@ -57,7 +57,10 @@ typedef enum {
 } NetworkStatus;
 #define kReachabilityChangedNotification @"kNetworkReachabilityChangedNotification"
 
-@interface Reachability: NSObject
+@class KC_Reachability;
+@compatibility_alias Reachability KC_Reachability;
+
+@interface KC_Reachability: NSObject
 {
 	BOOL localWiFiRef;
 	SCNetworkReachabilityRef reachabilityRef;
@@ -85,5 +88,3 @@ typedef enum {
 //WiFi may require a connection for VPN on Demand.
 - (BOOL) connectionRequired;
 @end
-
-

@@ -28,7 +28,10 @@
 #import <Foundation/Foundation.h>
 #import "DefaultSHKConfigurator.h"
 
-@interface SHKConfiguration : NSObject 
+@class KC_SHKConfiguration;
+@compatibility_alias SHKConfiguration KC_SHKConfiguration;
+
+@interface KC_SHKConfiguration : NSObject 
 
 + (SHKConfiguration*)sharedInstance;
 + (SHKConfiguration*)sharedInstanceWithConfigurator:(DefaultSHKConfigurator*)config;

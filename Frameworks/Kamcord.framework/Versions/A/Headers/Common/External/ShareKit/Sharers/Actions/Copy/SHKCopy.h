@@ -28,9 +28,11 @@
 #import <Foundation/Foundation.h>
 #import "SHKSharer.h"
 
-@interface SHKCopy : SHKSharer 
+@interface KC_SHKCopy : SHKSharer 
 {
 
 }
 - (void) placeImageOnPasteboard;
 @end
+
+@compatibility_alias SHKCopy KC_SHKCopy;

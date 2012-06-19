@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface SHKRequest : NSObject 
+@interface KC_SHKRequest : NSObject 
 {
 	NSURL *url;
 	NSString *params;
@@ -72,3 +72,5 @@
 
 
 @end
+
+@compatibility_alias SHKRequest KC_SHKRequest;

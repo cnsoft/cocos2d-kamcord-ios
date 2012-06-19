@@ -26,7 +26,7 @@
 
 #import "OAMutableURLRequest.h"
 
-@interface OAAsynchronousDataFetcher : NSObject {
+@interface KC_OAAsynchronousDataFetcher : NSObject {
     OAMutableURLRequest *request;
     NSHTTPURLResponse *response;
     NSURLConnection *connection;
@@ -43,3 +43,6 @@
 - (void)cancel;
 
 @end
+
+@compatibility_alias OAAsynchronousDataFetcher KC_OAAsynchronousDataFetcher;
+

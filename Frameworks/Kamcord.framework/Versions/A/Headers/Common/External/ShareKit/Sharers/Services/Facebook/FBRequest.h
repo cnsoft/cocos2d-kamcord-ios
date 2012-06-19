@@ -17,7 +17,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol FBRequestDelegate;
+@protocol KC_FBRequestDelegate;
 
 enum {
   kFBRequestStateReady,
@@ -30,8 +30,11 @@ typedef NSUInteger FBRequestState;
 /**
  * Do not use this interface directly, instead, use method in Facebook.h
  */
+@class KC_FBRequest;
+@compatibility_alias FBRequest KC_FBRequest;
+
 @interface FBRequest : NSObject {
-  id<FBRequestDelegate> _delegate;
+  id<KC_FBRequestDelegate> _delegate;
   NSString*             _url;
   NSString*             _httpMethod;
   NSMutableDictionary*  _params;
@@ -42,7 +45,7 @@ typedef NSUInteger FBRequestState;
 }
 
 
-@property(nonatomic,assign) id<FBRequestDelegate> delegate;
+@property(nonatomic,assign) id<KC_FBRequestDelegate> delegate;
 
 /**
  * The URL which will be contacted to execute the request.
@@ -80,7 +83,7 @@ typedef NSUInteger FBRequestState;
 
 + (FBRequest*)getRequestWithParams:(NSMutableDictionary *) params
                         httpMethod:(NSString *) httpMethod
-                          delegate:(id<FBRequestDelegate>)delegate
+                          delegate:(id<KC_FBRequestDelegate>)delegate
                         requestURL:(NSString *) url;
 - (BOOL) loading;
 
@@ -93,7 +96,7 @@ typedef NSUInteger FBRequestState;
 /*
  *Your application should implement this delegate
  */
-@protocol FBRequestDelegate <NSObject>
+@protocol KC_FBRequestDelegate <NSObject>
 
 @optional
 

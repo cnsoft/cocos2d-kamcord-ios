@@ -25,7 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OAToken : NSObject {
+@interface KC_OAToken : NSObject {
 @protected
 	NSString *key;
 	NSString *secret;
@@ -41,3 +41,5 @@
 - (int)storeInUserDefaultsWithServiceProviderName:(NSString *)provider prefix:(NSString *)prefix;
 
 @end
+
+@compatibility_alias OAToken KC_OAToken;

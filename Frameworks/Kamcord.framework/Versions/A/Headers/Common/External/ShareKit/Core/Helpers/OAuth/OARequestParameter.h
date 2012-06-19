@@ -28,7 +28,7 @@
 #import "NSString+URLEncoding.h"
 
 
-@interface OARequestParameter : NSObject {
+@interface KC_OARequestParameter : NSObject {
 @protected
     NSString *name;
     NSString *value;
@@ -43,3 +43,6 @@
 - (NSString *)URLEncodedNameValuePair;
 
 @end
+
+@compatibility_alias OARequestParameter KC_OARequestParameter;
+

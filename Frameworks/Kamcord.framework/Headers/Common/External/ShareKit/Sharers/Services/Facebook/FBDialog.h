@@ -17,7 +17,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol FBDialogDelegate;
+@protocol KC_FBDialogDelegate;
 
 /**
  * Do not use this interface directly, instead, use dialog in Facebook.h
@@ -25,8 +25,11 @@
  * Facebook dialog interface for start the facebook webView UIServer Dialog.
  */
 
+@class KC_FBDialog;
+@compatibility_alias FBDialog KC_FBDialog;
+
 @interface FBDialog : UIView <UIWebViewDelegate> {
-  id<FBDialogDelegate> _delegate;
+  id<KC_FBDialogDelegate> _delegate;
   NSMutableDictionary *_params;
   NSString * _serverURL;
   NSURL* _loadingURL;
@@ -43,7 +46,7 @@
 /**
  * The delegate.
  */
-@property(nonatomic,assign) id<FBDialogDelegate> delegate;
+@property(nonatomic,assign) id<KC_FBDialogDelegate> delegate;
 /**
  * The parameters.
  */
@@ -53,7 +56,7 @@
 
 - (id)initWithURL: (NSString *) loadingURL
            params: (NSMutableDictionary *) params
-         delegate: (id <FBDialogDelegate>) delegate;
+         delegate: (id <KC_FBDialogDelegate>) delegate;
 
 /**
  * Displays the view with an animation.
@@ -115,7 +118,7 @@
 /*
  *Your application should implement this delegate
  */
-@protocol FBDialogDelegate <NSObject>
+@protocol KC_FBDialogDelegate <NSObject>
 
 @optional
 

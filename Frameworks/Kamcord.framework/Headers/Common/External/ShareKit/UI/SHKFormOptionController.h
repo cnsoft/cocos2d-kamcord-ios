@@ -8,22 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@class SHKFormFieldSettings;
-@protocol SHKFormOptionControllerClient;
-@protocol SHKFormOptionControllerOptionProvider;
+@class KC_SHKFormFieldSettings;
+@protocol KCSHKFormOptionControllerClient;
+@protocol KCSHKFormOptionControllerOptionProvider;
 
 @interface SHKFormOptionController : UITableViewController {
-	SHKFormFieldSettings* settings;
-	id<SHKFormOptionControllerClient> client;
-	id<SHKFormOptionControllerOptionProvider> provider;
+	KC_SHKFormFieldSettings* settings;
+	id<KCSHKFormOptionControllerClient> client;
+	id<KCSHKFormOptionControllerOptionProvider> provider;
 	bool didLoad;
 }
 
-@property(nonatomic,retain) SHKFormFieldSettings* settings;
-@property(nonatomic,assign) id<SHKFormOptionControllerClient> client;
+@property(nonatomic,retain) KC_SHKFormFieldSettings* settings;
+@property(nonatomic,assign) id<KCSHKFormOptionControllerClient> client;
 
 
-- (id)initWithOptionsInfo:(SHKFormFieldSettings*) settingsItem client:(id<SHKFormOptionControllerClient>) optionClient;
+- (id)initWithOptionsInfo:(KC_SHKFormFieldSettings*) settingsItem client:(id<KCSHKFormOptionControllerClient>) optionClient;
 - (void) optionsEnumerated:(NSArray*) options;
 - (void) optionsEnumerationFailedWithError:(NSError *)error;;
 @end
@@ -31,7 +31,7 @@
 
 
 
-@protocol SHKFormOptionControllerClient
+@protocol KCSHKFormOptionControllerClient
 
 @required
 // called when an item is taped or cancel is clicked, cancel passes nil pickedOption.
@@ -41,7 +41,7 @@
 
 
 
-@protocol SHKFormOptionControllerOptionProvider
+@protocol KCSHKFormOptionControllerOptionProvider
 
 @required
 // called when network based options need to be enumerated

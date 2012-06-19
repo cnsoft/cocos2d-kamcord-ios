@@ -36,7 +36,11 @@
 
  Requests are forwarded to instances of SBJsonWriter and SBJsonParser.
  */
-@interface SBJSON : SBJsonBase <SBJsonParser, SBJsonWriter> {
+
+@class KC_SBJSON;
+@compatibility_alias SBJSON KC_SBJSON;
+
+@interface KC_SBJSON : SBJsonBase <KC_SBJsonParser, KC_SBJsonWriter> {
 
 @private    
     SBJsonParser *jsonParser;

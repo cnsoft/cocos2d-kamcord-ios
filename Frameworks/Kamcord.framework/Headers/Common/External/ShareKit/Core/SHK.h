@@ -38,11 +38,13 @@
 
 extern NSString * const SHKHideCurrentViewFinishedNotification;
 
-@class SHKActionSheet;
-@class SHKViewControllerWrapper;
+@class KC_SHKActionSheet;
+@class KC_SHKViewControllerWrapper;
 
+@class KC_SHK;
+@compatibility_alias SHK KC_SHK;
 
-@interface SHK : NSObject 
+@interface KC_SHK : NSObject 
 {
 	UIViewController *currentView;
 	UIViewController *pendingView;
@@ -125,3 +127,5 @@ NSString * SHKEncodeURL(NSURL * value);
 NSString * SHKFlattenHTML(NSString * value, BOOL preserveLineBreaks);
 NSString * SHKLocalizedString(NSString* key, ...);
 void SHKSwizzle(Class c, SEL orig, SEL newClassName);
+
+

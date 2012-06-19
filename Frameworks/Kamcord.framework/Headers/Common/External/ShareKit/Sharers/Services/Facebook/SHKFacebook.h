@@ -37,16 +37,15 @@
 
 @end
 
-@interface SHKFacebook : SHKSharer <FBSessionDelegate, FBDialogDelegate, FBRequestDelegate, SHKFormControllerLargeTextFieldDelegate>
+@class KC_SHKFacebook;
+@compatibility_alias SHKFacebook KC_SHKFacebook;
+
+@interface SHKFacebook : SHKSharer <KC_FBSessionDelegate, KC_FBDialogDelegate, KC_FBRequestDelegate, KC_SHKFormControllerLargeTextFieldDelegate>
 
 @property (nonatomic, assign) id<KCLoginDismissedDelegate> dismissalDelegate;
 
 + (BOOL)handleOpenURL:(NSURL*)url;
 
 + (void)setEnableSSO:(BOOL)enabled;
-
-
-//EXPERIMENTAL 
-//+ (void)flushAccessToken;
 
 @end

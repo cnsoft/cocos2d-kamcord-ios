@@ -218,7 +218,17 @@ Class restartAction()
 
 -(void) stopRecordingAndShowDialog:(id)sender
 {
-	[Kamcord stopRecording];
+    KCSound * sound1 = [[KCSound alloc] initWithSoundFileURL:[[NSBundle mainBundle] URLForResource:@"test8" withExtension:@"caf"]
+                                                   startTime:CMTimeMake(0, 1000)
+                                                     endTime:CMTimeMake(1000, 1000)];
+    KCSound * sound2 = [[KCSound alloc] initWithSoundFileURL:[[NSBundle mainBundle] URLForResource:@"test3" withExtension:@"m4a"]
+                                                   startTime:CMTimeMake(2000, 1000)
+                                                     endTime:CMTimeMake(3000, 1000)];
+    [Kamcord stopRecordingWithSounds:[NSArray arrayWithObjects: sound1, sound2, nil]];
+    [sound1 release];
+    [sound2 release];
+    
+	// [Kamcord stopRecording];
     [Kamcord showView];
 }
 
@@ -648,7 +658,9 @@ Class restartAction()
     [Kamcord setOpenGLView:glView];
     
     // Set the device orientation. Must use Kamcord, not CCDirector!
-    [Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeRight];    
+    [Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeRight];
+    // [Kamcord setDeviceOrientation:KCDeviceOrientationPortrait];
+    // [Kamcord setSupportPortraitAndPortraitUpsideDown:YES];
     
     // Developer settings
     [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
@@ -664,7 +676,7 @@ Class restartAction()
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
     
     // Play this looping background audio over the recorded video
-    [Kamcord playSound:@"background.wav" loop:YES];
+    // [Kamcord playSound:@"background.wav" loop:YES];
     
     [Kamcord setVideoResolution:SMART_VIDEO_RESOLUTION];
     

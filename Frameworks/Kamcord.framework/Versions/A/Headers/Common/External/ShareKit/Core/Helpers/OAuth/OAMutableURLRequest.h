@@ -33,13 +33,13 @@
 #import "NSURL+Base.h"
 
 
-@interface OAMutableURLRequest : NSMutableURLRequest {
+@interface KC_OAMutableURLRequest : NSMutableURLRequest {
 @protected
     OAConsumer *consumer;
     OAToken *token;
     NSString *realm;
     NSString *signature;
-    id<OASignatureProviding> signatureProvider;
+    id<KCOASignatureProviding> signatureProvider;
     NSString *nonce;
     NSString *timestamp;
 	NSMutableDictionary *extraOAuthParameters;
@@ -52,13 +52,13 @@
 		 consumer:(OAConsumer *)aConsumer
 			token:(OAToken *)aToken
             realm:(NSString *)aRealm
-signatureProvider:(id<OASignatureProviding, NSObject>)aProvider;
+signatureProvider:(id<KCOASignatureProviding, NSObject>)aProvider;
 
 - (id)initWithURL:(NSURL *)aUrl
 		 consumer:(OAConsumer *)aConsumer
 			token:(OAToken *)aToken
             realm:(NSString *)aRealm
-signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
+signatureProvider:(id<KCOASignatureProviding, NSObject>)aProvider
             nonce:(NSString *)aNonce
         timestamp:(NSString *)aTimestamp;
 
@@ -67,3 +67,5 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
 - (void)setOAuthParameterName:(NSString*)parameterName withValue:(NSString*)parameterValue;
 
 @end
+
+@compatibility_alias OAMutableURLRequest KC_OAMutableURLRequest;

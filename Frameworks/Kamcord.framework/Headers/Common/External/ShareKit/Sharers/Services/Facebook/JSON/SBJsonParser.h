@@ -35,7 +35,7 @@
  
  This exists so the SBJSON facade can implement the options in the parser without having to re-declare them.
  */
-@protocol SBJsonParser
+@protocol KC_SBJsonParser
 
 /**
  @brief Return the object represented by the given string.
@@ -71,7 +71,11 @@
  as we can thus avoid any loss of precision. (JSON allows ridiculously large numbers.)
  
  */
-@interface SBJsonParser : SBJsonBase <SBJsonParser> {
+
+@class KC_SBJsonParser;
+@compatibility_alias SBJsonParser KC_SBJsonParser;
+
+@interface SBJsonParser : SBJsonBase <KC_SBJsonParser> {
     
 @private
     const char *c;

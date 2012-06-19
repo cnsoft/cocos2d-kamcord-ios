@@ -43,7 +43,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface DefaultSHKConfigurator : NSObject 
+@interface KC_DefaultSHKConfigurator : NSObject 
 
 - (NSString*)appName;
 - (NSString*)appURL;
@@ -99,3 +99,5 @@
 - (NSNumber*)usePlaceholders;
 
 @end
+
+@compatibility_alias DefaultSHKConfigurator KC_DefaultSHKConfigurator;

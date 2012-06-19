@@ -27,5 +27,7 @@
 #import <Foundation/Foundation.h>
 #import "OASignatureProviding.h"
 
-@interface OAPlaintextSignatureProvider : NSObject <OASignatureProviding>
+@interface KC_OAPlaintextSignatureProvider : NSObject <KCOASignatureProviding>
 @end
+
+@compatibility_alias OAPlaintextSignatureProvider KC_OAPlaintextSignatureProvider;

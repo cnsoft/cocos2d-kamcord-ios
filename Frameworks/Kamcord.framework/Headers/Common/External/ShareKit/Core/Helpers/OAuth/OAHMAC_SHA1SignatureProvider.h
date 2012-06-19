@@ -28,5 +28,8 @@
 #import "OASignatureProviding.h"
 
 
-@interface OAHMAC_SHA1SignatureProvider : NSObject <OASignatureProviding>
+@interface KC_OAHMAC_SHA1SignatureProvider : NSObject <KCOASignatureProviding>
 @end
+
+@compatibility_alias OAHMAC_SHA1SignatureProvider KC_OAHMAC_SHA1SignatureProvider;
+

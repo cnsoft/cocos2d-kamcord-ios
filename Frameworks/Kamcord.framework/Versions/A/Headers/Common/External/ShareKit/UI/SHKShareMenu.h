@@ -28,20 +28,23 @@
 #import <UIKit/UIKit.h>
 #import "SHK.h"
 
-@protocol SHKShareItemDelegate;
+@protocol KCSHKShareItemDelegate;
+
+@class SHKShareMenu;
+@compatibility_alias KC_SHKShareMenu SHKShareMenu;
 
 @interface SHKShareMenu : UITableViewController 
 {
 	SHKItem *item;
 	NSMutableArray *tableData;
 	NSMutableArray *exclusions;
-	id<SHKShareItemDelegate> shareDelegate;
+	id<KCSHKShareItemDelegate> shareDelegate;
 }
 
 @property (nonatomic, retain) SHKItem *item;
 @property (retain) NSMutableArray *tableData;
 @property (retain) NSMutableArray *exclusions;
-@property (retain) id<SHKShareItemDelegate> shareDelegate;
+@property (retain) id<KCSHKShareItemDelegate> shareDelegate;
 
 
 - (void)rebuildTableDataAnimated:(BOOL)animated;

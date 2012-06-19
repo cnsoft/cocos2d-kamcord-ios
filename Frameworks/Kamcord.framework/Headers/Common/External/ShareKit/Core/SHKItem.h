@@ -39,7 +39,7 @@ typedef enum
 } SHKShareType;
 
 
-@interface SHKItem : NSObject
+@interface KC_SHKItem : NSObject
 {	
 	SHKShareType shareType;
 	
@@ -86,3 +86,6 @@ typedef enum
 + (id)itemFromDictionary:(NSDictionary *)dictionary;
 
 @end
+
+@compatibility_alias SHKItem KC_SHKItem;
+

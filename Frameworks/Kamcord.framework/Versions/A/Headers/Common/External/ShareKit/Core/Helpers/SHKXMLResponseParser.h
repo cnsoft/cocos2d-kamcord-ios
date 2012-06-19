@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SHKXMLResponseParser : NSObject <NSXMLParserDelegate>
+@interface KC_SHKXMLResponseParser : NSObject <NSXMLParserDelegate>
 
 + (NSString *)getValueForElement:(NSString *)element fromResponse:(NSData *)data;
 
 @end
+
+@compatibility_alias SHKXMLResponseParser KC_SHKXMLResponseParser;

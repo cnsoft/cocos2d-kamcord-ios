@@ -35,7 +35,7 @@
  
  This exists so the SBJSON facade can implement the options in the writer without having to re-declare them.
  */
-@protocol SBJsonWriter
+@protocol KC_SBJsonWriter
 
 /**
  @brief Whether we are generating human-readable (multiline) JSON.
@@ -91,7 +91,10 @@
  way you would expect.
  
  */
-@interface SBJsonWriter : SBJsonBase <SBJsonWriter> {
+@class KC_SBJsonWriter;
+@compatibility_alias SBJsonWriter KC_SBJsonWriter;
+
+@interface SBJsonWriter : SBJsonBase <KC_SBJsonWriter> {
 
 @private
     BOOL sortKeys, humanReadable;

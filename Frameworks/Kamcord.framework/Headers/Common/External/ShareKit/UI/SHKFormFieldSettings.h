@@ -39,6 +39,9 @@ typedef enum
 #define SHKFormFieldSwitchOff @"0"
 #define SHKFormFieldSwitchOn @"1"
 
+@class KC_SHKFormFieldSettings;
+@compatibility_alias SHKFormFieldSettings KC_SHKFormFieldSettings;
+
 @interface SHKFormFieldSettings : NSObject 
 {
 	NSString *label;

@@ -20,7 +20,7 @@
 @class KCVideo;
 @class KCVideoProcessingAndShareManager;
 
-@interface KCShareViewController : KCViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, SHKSharerDelegate, MFMailComposeViewControllerDelegate, NSURLConnectionDelegate,KCYouTubeUploaderDelegate,FBSessionDelegate, FBDialogDelegate, KCLoginDismissedDelegate>
+@interface KCShareViewController : KCViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, KCSHKSharerDelegate, MFMailComposeViewControllerDelegate, NSURLConnectionDelegate,KCYouTubeUploaderDelegate,KC_FBSessionDelegate, KC_FBDialogDelegate, KCLoginDismissedDelegate>
 
 @property (nonatomic, retain) KCVideo * latestVideo;
 @property (nonatomic, retain) KCVideoProcessingAndShareManager * shareManager;

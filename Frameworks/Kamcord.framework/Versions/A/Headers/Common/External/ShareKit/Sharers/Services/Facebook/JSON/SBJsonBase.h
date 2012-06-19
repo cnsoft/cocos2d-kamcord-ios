@@ -52,6 +52,9 @@ enum {
 
  This class contains the common error-handling code and option between the parser/writer.
  */
+@class KC_SBJsonBase;
+@compatibility_alias SBJsonBase KC_SBJsonBase;
+
 @interface SBJsonBase : NSObject {
     NSMutableArray *errorTrace;
 

@@ -27,17 +27,16 @@
 
 #import <UIKit/UIKit.h>
 
-@class SHKOAuthView;
-@class SHKOAuthSharer;
+@class KC_SHKOAuthView;
+@compatibility_alias SHKOAuthView KC_SHKOAuthView;
 
-@protocol SHKOAuthViewDelegate
+@protocol KCSHKOAuthViewDelegate
 
-- (void)tokenAuthorizeView:(SHKOAuthView *)authView didFinishWithSuccess:(BOOL)success queryParams:(NSMutableDictionary *)queryParams error:(NSError *)error;
-- (void)tokenAuthorizeCancelledView:(SHKOAuthView *)authView;
+- (void)tokenAuthorizeView:(KC_SHKOAuthView *)authView didFinishWithSuccess:(BOOL)success queryParams:(NSMutableDictionary *)queryParams error:(NSError *)error;
+- (void)tokenAuthorizeCancelledView:(KC_SHKOAuthView *)authView;
 - (NSURL *)authorizeCallbackURL;
 
 @end
-
 
 @interface SHKOAuthView : UIViewController <UIWebViewDelegate>
 {
@@ -47,7 +46,7 @@
 }
 
 @property (nonatomic, retain) UIWebView *webView;
-@property (retain) id<SHKOAuthViewDelegate> delegate;
+@property (retain) id<KCSHKOAuthViewDelegate> delegate;
 @property (nonatomic, retain) UIActivityIndicatorView *spinner;
 
 - (id)initWithURL:(NSURL *)authorizeURL delegate:(id)d;

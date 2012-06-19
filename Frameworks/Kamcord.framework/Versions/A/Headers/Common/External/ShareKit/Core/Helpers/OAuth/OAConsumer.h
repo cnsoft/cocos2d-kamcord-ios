@@ -27,7 +27,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface OAConsumer : NSObject {
+@interface KC_OAConsumer : NSObject {
 @protected
 	NSString *key;
 	NSString *secret;
@@ -38,3 +38,6 @@
 - (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret;
 
 @end
+
+@compatibility_alias OAConsumer KC_OAConsumer;
+

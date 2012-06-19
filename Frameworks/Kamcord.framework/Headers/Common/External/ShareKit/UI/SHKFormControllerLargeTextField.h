@@ -5,11 +5,14 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol SHKFormControllerLargeTextFieldDelegate;
+@protocol KC_SHKFormControllerLargeTextFieldDelegate;
+
+@class KC_SHKFormControllerLargeTextField;
+@compatibility_alias SHKFormControllerLargeTextField KC_SHKFormControllerLargeTextField;
 
 @interface SHKFormControllerLargeTextField : UIViewController <UITextViewDelegate>
 
-@property (nonatomic, readonly, assign) id <SHKFormControllerLargeTextFieldDelegate> delegate;
+@property (nonatomic, readonly, assign) id <KC_SHKFormControllerLargeTextFieldDelegate> delegate;
 @property (nonatomic, retain) UITextView *textView;
 
 // these properties are used for counter text display only. 
@@ -20,11 +23,11 @@
 @property BOOL hasLink; //only if the link is not part of the text in a text view
 @property (nonatomic, retain) NSString *text;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil delegate:(id <SHKFormControllerLargeTextFieldDelegate>)aDelegate;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil delegate:(id <KC_SHKFormControllerLargeTextFieldDelegate>)aDelegate;
 
 @end
 
-@protocol SHKFormControllerLargeTextFieldDelegate <NSObject> 
+@protocol KC_SHKFormControllerLargeTextFieldDelegate <NSObject> 
 
 - (void)sendForm:(SHKFormControllerLargeTextField *)form;
 + (NSString *)sharerTitle;

@@ -17,6 +17,7 @@
 #import "KamcordMacros.h"
 #import "Common/View/KCViewController.h"
 #import "Common/Core/Audio/KCAudio.h"
+#import "Common/Core/Audio/KCSound.h"
 
 #define KAMCORD_VERSION "0.9.2"
 
@@ -39,6 +40,10 @@
 
 + (void) setDeviceOrientation:(KCDeviceOrientation)orientation;
 + (KCDeviceOrientation) deviceOrientation;
+
+// For Portrait, do we support PortraitUpsideDown also?
++ (void) setSupportPortraitAndPortraitUpsideDown:(BOOL)value;
++ (BOOL) supportPortraitAndPortraitUpsideDown;
 
 // Social media
 + (void) setYouTubeTitle:(NSString *)title
@@ -67,6 +72,8 @@
 + (BOOL) resume;
 + (BOOL) pause;
 
+// Displays the Kamcord view inside the previously set parentViewController;
++ (void) showView;
 
 // Video recording settings
 // For release, use SMART_VIDEO_DIMENSIONS:
@@ -97,9 +104,9 @@ typedef enum {
 // all looping sounds.
 + (void) stopAllSounds:(BOOL)loop;
 
-
-// Displays the Kamcord view inside the previously set parentViewController;
-+ (void) showView;
+// If you have specific sounds you want to overlay at particular times,
+// pass in an array populated with KCSound objects.
++ (BOOL) stopRecordingWithSounds:(NSArray *)sounds;
 
 
 // --------------------------------------------------------

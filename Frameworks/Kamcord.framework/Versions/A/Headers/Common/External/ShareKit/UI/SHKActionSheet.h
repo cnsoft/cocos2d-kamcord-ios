@@ -28,18 +28,21 @@
 #import <Foundation/Foundation.h>
 #import "SHK.h"
 
-@protocol SHKShareItemDelegate;
+@protocol KCSHKShareItemDelegate;
+
+@class KC_SHKActionSheet;
+@compatibility_alias SHKActionSheet KC_SHKActionSheet;
 
 @interface SHKActionSheet : UIActionSheet <UIActionSheetDelegate>
 {		
 	NSMutableArray *sharers;
 	SHKItem *item;
-	id<SHKShareItemDelegate> shareDelegate;
+	id<KCSHKShareItemDelegate> shareDelegate;
 }
 
 @property (retain) NSMutableArray *sharers;
 @property (retain) SHKItem *item;
-@property (retain) id<SHKShareItemDelegate> shareDelegate;
+@property (retain) id<KCSHKShareItemDelegate> shareDelegate;
 
 + (SHKActionSheet *)actionSheetForType:(SHKShareType)type;
 + (SHKActionSheet *)actionSheetForItem:(SHKItem *)i;

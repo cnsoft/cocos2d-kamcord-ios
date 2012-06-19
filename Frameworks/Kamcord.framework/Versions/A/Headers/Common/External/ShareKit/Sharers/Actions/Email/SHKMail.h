@@ -35,7 +35,7 @@
 @end
 
 
-@interface SHKMail : SHKSharer <MFMailComposeViewControllerDelegate>
+@interface KC_SHKMail : SHKSharer <MFMailComposeViewControllerDelegate>
 {
 
 }
@@ -43,3 +43,5 @@
 - (BOOL)sendMail;
 
 @end
+
+@compatibility_alias SHKMail KC_SHKMail;

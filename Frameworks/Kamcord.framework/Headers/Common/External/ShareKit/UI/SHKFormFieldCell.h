@@ -28,7 +28,7 @@
 #import <UIKit/UIKit.h>
 #import "SHK.h"
 
-@class SHKFormController;
+@class KC_SHKFormController;
 
 @interface SHKFormFieldCell : UITableViewCell 
 {
@@ -41,7 +41,7 @@
 	
 	NSString *tmpValue;
 	
-	SHKFormController *form;
+	KC_SHKFormController *form;
 }
 
 @property (nonatomic, retain) SHKFormFieldSettings *settings;
@@ -53,7 +53,7 @@
 
 @property (nonatomic, retain) NSString *tmpValue;
 
-@property (nonatomic, assign) SHKFormController *form;
+@property (nonatomic, assign) KC_SHKFormController *form;
 
 - (void)setValue:(NSString *)value;
 - (NSString *)getValue;

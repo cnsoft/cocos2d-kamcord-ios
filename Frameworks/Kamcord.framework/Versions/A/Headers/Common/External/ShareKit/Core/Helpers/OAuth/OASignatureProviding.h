@@ -26,9 +26,11 @@
 #import <Foundation/Foundation.h>
 
 
-@protocol OASignatureProviding <NSObject>
+@protocol KCOASignatureProviding <NSObject>
 
 - (NSString *)name;
 - (NSString *)signClearText:(NSString *)text withSecret:(NSString *)secret;
 
 @end
+
+

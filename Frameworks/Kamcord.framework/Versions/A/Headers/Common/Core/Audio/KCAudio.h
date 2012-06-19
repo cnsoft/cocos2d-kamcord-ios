@@ -26,10 +26,16 @@
 // Resource URL
 @property (nonatomic, retain) NSURL * url;
 
-- (id)  initWithName:(NSString *)name
-            extension:(NSString *)extension
-                loop:(BOOL) loop
-            forVideo:(KCVideo *)video;
+- (id)initWithName:(NSString *)name
+         extension:(NSString *)extension
+              loop:(BOOL) loop
+          forVideo:(KCVideo *)video;
+
+- (id)initWithURL:(NSURL *)url
+        startTime:(CMTime)start
+          endTime:(CMTime)end
+         forVideo:(KCVideo *)video;
+
 
 - (void)start;
 - (void)stop;

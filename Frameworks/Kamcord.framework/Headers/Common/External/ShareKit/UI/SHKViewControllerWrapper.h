@@ -27,6 +27,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class KC_SHKViewControllerWrapper;
+@compatibility_alias SHKViewControllerWrapper KC_SHKViewControllerWrapper;
 
 @interface SHKViewControllerWrapper : UIViewController {
 

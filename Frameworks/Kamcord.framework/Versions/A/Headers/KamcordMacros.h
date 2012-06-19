@@ -59,6 +59,7 @@ do	{																							\
 #define KCDeviceOrientationLandscapeLeft CCDeviceOrientationLandscapeLeft
 #define KCDeviceOrientationLandscapeRight CCDeviceOrientationLandscapeRight
 
+
 // OpenGL
 #define KC_CONTENT_SCALE_FACTOR() CC_CONTENT_SCALE_FACTOR()
 

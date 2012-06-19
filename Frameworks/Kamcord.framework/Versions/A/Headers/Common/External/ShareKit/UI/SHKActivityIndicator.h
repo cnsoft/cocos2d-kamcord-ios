@@ -28,6 +28,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class KC_SHKActivityIndicator;
+@compatibility_alias SHKActivityIndicator KC_SHKActivityIndicator;
 
 @interface SHKActivityIndicator : UIView
 {

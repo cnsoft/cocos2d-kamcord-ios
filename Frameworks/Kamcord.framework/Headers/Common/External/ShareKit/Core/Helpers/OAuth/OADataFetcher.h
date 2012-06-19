@@ -28,7 +28,7 @@
 #import "OAServiceTicket.h"
 
 
-@interface OADataFetcher : NSObject {
+@interface KC_OADataFetcher : NSObject {
 @private
     OAMutableURLRequest *request;
     NSHTTPURLResponse *response;
@@ -42,3 +42,5 @@
 - (void)fetchDataWithRequest:(OAMutableURLRequest *)aRequest delegate:(id)aDelegate didFinishSelector:(SEL)finishSelector didFailSelector:(SEL)failSelector;
 
 @end
+
+@compatibility_alias OADataFetcher KC_OADataFetcher;
