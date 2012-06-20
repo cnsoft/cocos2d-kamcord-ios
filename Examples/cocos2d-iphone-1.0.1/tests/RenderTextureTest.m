@@ -8,7 +8,6 @@
 // cocos import
 #import "RenderTextureTest.h"
 
-
 #import <Kamcord/Kamcord.h>
 
 static int sceneIdx=-1;
@@ -218,6 +217,7 @@ Class restartAction()
 
 -(void) stopRecordingAndShowDialog:(id)sender
 {
+    /*
     KCSound * sound1 = [[KCSound alloc] initWithSoundFileURL:[[NSBundle mainBundle] URLForResource:@"test8" withExtension:@"caf"]
                                                    startTime:CMTimeMake(0, 1000)
                                                      endTime:CMTimeMake(1000, 1000)];
@@ -227,8 +227,9 @@ Class restartAction()
     [Kamcord stopRecordingWithSounds:[NSArray arrayWithObjects: sound1, sound2, nil]];
     [sound1 release];
     [sound2 release];
+     */
     
-	// [Kamcord stopRecording];
+	[Kamcord stopRecording];
     [Kamcord showView];
 }
 
@@ -664,7 +665,8 @@ Class restartAction()
     
     // Developer settings
     [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
-             developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"];
+             developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"
+                     appName:@"RenderTextureTest"];
     
     // Social media settings
     [Kamcord setYouTubeTitle:@"RenderTextureTest"
