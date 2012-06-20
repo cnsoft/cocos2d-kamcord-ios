@@ -28,9 +28,11 @@
 
 // Setup
 + (void) setDeveloperKey:(NSString *)key
-         developerSecret:(NSString *)secret;
+         developerSecret:(NSString *)secret
+                 appName:(NSString *)appName;
 + (NSString *)developerKey;
 + (NSString *)developerSecret;
++ (NSString *)appName;
 
 // View and OpenGL
 + (void) setParentViewController:(UIViewController *)viewController;

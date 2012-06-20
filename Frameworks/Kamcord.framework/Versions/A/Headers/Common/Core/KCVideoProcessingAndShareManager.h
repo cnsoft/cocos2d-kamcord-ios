@@ -24,7 +24,6 @@
 
 @end
 
-
 // Handles when a video is finished uploading and sharing
 @protocol KCShareFinishedDelegate <NSObject>
 

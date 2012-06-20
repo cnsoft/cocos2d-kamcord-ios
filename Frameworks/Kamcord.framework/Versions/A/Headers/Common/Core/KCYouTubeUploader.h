@@ -24,27 +24,29 @@
                          error:(NSError *) error;
 @end
 
-
 @interface KCYouTubeUploader : NSObject <UIWebViewDelegate>
 {
     NSString * developerKey_;
+    NSString * appName_;
     NSURL * uploadLocationURL_;
     GDataServiceTicket * uploadTicket_;
-    
+
     id <KCYouTubeUploaderDelegate> delegate_;
-    
+
     UIViewController * parentViewController_;
 }
 
 // Public properties
 @property (nonatomic, retain) NSString * developerKey;
+@property (nonatomic, retain) NSString * appName;
 @property (nonatomic, retain) id <KCYouTubeUploaderDelegate> delegate;
 
 // Public methods
 - (BOOL)isAuthenticated;
 
 - (id) initWithDelegate:(id <KCYouTubeUploaderDelegate>)delegate
-        andDeveloperKey:(NSString *)developerKey;
+        andDeveloperKey:(NSString *)developerKey
+                appName:(NSString *)appName;
 - (void) showUserLoginViewInViewController:(UIViewController *)parentViewController;
 
 // Returns NO if the user is not logged in. The upload is not attempted (obviously).
