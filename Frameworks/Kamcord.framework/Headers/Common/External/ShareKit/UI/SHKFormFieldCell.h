@@ -29,6 +29,8 @@
 #import "SHK.h"
 
 @class KC_SHKFormController;
+@class KC_SHKFormFieldCell;
+@compatibility_alias SHKFormFieldCell KC_SHKFormFieldCell;
 
 @interface SHKFormFieldCell : UITableViewCell 
 {

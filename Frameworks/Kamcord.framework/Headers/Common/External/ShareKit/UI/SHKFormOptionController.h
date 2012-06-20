@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class KC_SHKFormFieldSettings;
+
 @protocol KCSHKFormOptionControllerClient;
 @protocol KCSHKFormOptionControllerOptionProvider;
+
+@class KC_SHKFormOptionController;
+@compatibility_alias SHKFormOptionController KC_SHKFormOptionController;
 
 @interface SHKFormOptionController : UITableViewController {
 	KC_SHKFormFieldSettings* settings;

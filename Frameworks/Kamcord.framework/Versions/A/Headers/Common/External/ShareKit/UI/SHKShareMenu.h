@@ -30,8 +30,8 @@
 
 @protocol KCSHKShareItemDelegate;
 
-@class SHKShareMenu;
-@compatibility_alias KC_SHKShareMenu SHKShareMenu;
+@class KC_SHKShareMenu;
+@compatibility_alias SHKShareMenu KC_SHKShareMenu;
 
 @interface SHKShareMenu : UITableViewController 
 {

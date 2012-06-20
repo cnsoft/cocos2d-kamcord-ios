@@ -36,7 +36,7 @@
 #import "SHKFormFieldSettings.h"
 #import "UIWebView+SHK.h"
 
-extern NSString * const SHKHideCurrentViewFinishedNotification;
+extern NSString * const KC_SHKHideCurrentViewFinishedNotification;
 
 @class KC_SHKActionSheet;
 @class KC_SHKViewControllerWrapper;
@@ -121,11 +121,11 @@ extern NSString * const SHKHideCurrentViewFinishedNotification;
 
 @end
 
-NSString * SHKStringOrBlank(NSString * value);
-NSString * SHKEncode(NSString * value);
-NSString * SHKEncodeURL(NSURL * value);
-NSString * SHKFlattenHTML(NSString * value, BOOL preserveLineBreaks);
-NSString * SHKLocalizedString(NSString* key, ...);
-void SHKSwizzle(Class c, SEL orig, SEL newClassName);
+NSString * KC_SHKStringOrBlank(NSString * value);
+NSString * KC_SHKEncode(NSString * value);
+NSString * KC_SHKEncodeURL(NSURL * value);
+NSString * KC_SHKFlattenHTML(NSString * value, BOOL preserveLineBreaks);
+NSString * KC_SHKLocalizedString(NSString* key, ...);
+void KC_SHKSwizzle(Class c, SEL orig, SEL newClassName);
 
 

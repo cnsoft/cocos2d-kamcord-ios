@@ -45,35 +45,35 @@ typedef enum {
 	SSKeychainErrorFailedToDecode = errSecDecode
 } SSKeychainErrorCode;
 
-extern NSString *const kSSKeychainErrorDomain;
+extern NSString *const KC_kSSKeychainErrorDomain;
 
 /** Account name. */
-extern NSString *const kSSKeychainAccountKey;
+extern NSString *const KC_kSSKeychainAccountKey;
 
 /**
  Time the item was created.
  
  The value will be a string.
  */
-extern NSString *const kSSKeychainCreatedAtKey;
+extern NSString *const KC_kSSKeychainCreatedAtKey;
 
 /** Item class. */
-extern NSString *const kSSKeychainClassKey;
+extern NSString *const KC_kSSKeychainClassKey;
 
 /** Item description. */
-extern NSString *const kSSKeychainDescriptionKey;
+extern NSString *const KC_kSSKeychainDescriptionKey;
 
 /** Item label. */
-extern NSString *const kSSKeychainLabelKey;
+extern NSString *const KC_kSSKeychainLabelKey;
 
 /** Time the item was last modified.
  
  The value will be a string.
  */
-extern NSString *const kSSKeychainLastModifiedKey;
+extern NSString *const KC_kSSKeychainLastModifiedKey;
 
 /** Where the item was created. */
-extern NSString *const kSSKeychainWhereKey;
+extern NSString *const KC_kSSKeychainWhereKey;
 
 /**
  Simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system
