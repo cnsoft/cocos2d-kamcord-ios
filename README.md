@@ -117,11 +117,11 @@ Import Kamcord into your application delegate:
 </code></pre>
 </p>
 </li>
-<li>We will provide you with a per-game Kamcord developer key and developer secret. <b>Please set them when your app initializes or recording won't work</b>:
-
+<li>We will provide you with a per-game Kamcord developer key and developer secret. Please set them along with your app name when your app initializes or recording won't work.
 <p>
 <pre><code>[Kamcord setDeveloperKey:@"My_Developer_Key"
-         developerSecret:@"My_Developer_Secret"];</code></pre>
+         developerSecret:@"My_Developer_Secret"
+                 appName:@"My_Game_Name"];</code></pre>
 </p>
 </li>
 <li style="margin: 0;">
@@ -322,14 +322,16 @@ Another function you need to set after you call `stopRecording` is:
 	
 These values should be set per video. This metadata will be uploaded along with the video and be used to better organize videos for viewers.
 
-### Developer Key and Secret
+### Developer Key, Secret, and Application Name
 
-As we've mentioned before in the installation section, don't forget to set your Kamcord developer key and secret using this function:
+You must set your Kamcord developer key, secret, and app name using this function:
 
 	+ (void) setDeveloperKey:(NSString *)key
-	         developerSecret:(NSString *)secret;
+	         developerSecret:(NSString *)secret
+	                 appName:(NSString *)name;
 
 We will give you a key and secret per game you build. We'll give you as many key/secret pairs you need, just don't tell them to anyone else.
+
 
 ## Examples
 
@@ -391,7 +393,8 @@ Then do all the Kamcord initialization:
 	
     // Developer settings
     [Kamcord setDeveloperKey:@"MY_DEVELOPER_KEY"
-             developerSecret:@"MY_DEVELOPER_SECRET"];
+             developerSecret:@"MY_DEVELOPER_SECRET"
+                     appName:@"A Test App"];
     
     // Social media settings
     [Kamcord setYouTubeTitle:@"RenderTextureTest"
