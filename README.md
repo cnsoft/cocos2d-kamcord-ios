@@ -281,7 +281,7 @@ Kamcord uses <a href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:aut
 
 	[Kamcord setDeviceOrientation:...]
 
-instead of `[[CCDirector sharedDirector] setDeviceOrientation:...]`. If you cannot make ur `window.rootViewController` an instance of `KCViewController`, <a href="mailto:matt@kamcord.com" />let us know</a> and we'll give you a simple patch for your View Controller code.
+instead of `[[CCDirector sharedDirector] setDeviceOrientation:...]`. If you cannot make your `window.rootViewController` an instance of `KCViewController`, <a href="mailto:matt@kamcord.com" />let us know</a> and we'll give you a simple patch for your View Controller code.
 
 <b>If your code queries </b><code>[[CCDirector sharedDirector] deviceOrientation]</code><b>, replace all of those calls with </b><code>[Kamcord deviceOrientation]</code>.
 
