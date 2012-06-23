@@ -172,7 +172,8 @@
 
     // Kamcord setup
     [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
-             developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"];
+             developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"
+                     appName:@"RotateWorldTest"];
 
     // Social media settings
     [Kamcord setYouTubeTitle:@"RotateWorldTest"
