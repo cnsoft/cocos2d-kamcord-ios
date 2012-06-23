@@ -62,8 +62,16 @@ Let's walk through how to get Kamcord into your games.
 ### Framework
 
 <ol>
-<li style="margin: 0";>From <code>Frameworks</code>, drag and drop <code>Kamcord.framework</code> and <code>AWSiOSSDK.framework</code> into your project.</li>
-<li style="margin: 0";>Drag and drop the files under <code>Frameworks/Resources</code> to your project. For both this and the previous step, make sure to check the box next to the target application you want to link these frameworks and resources to (your game, presumably).</li>
+<li style="margin: 0";>From <code>Frameworks</code>, drag and drop <code>Kamcord.framework</code> and <code>AWSiOSSDK.framework</code> into your project.
+<p>
+<img src="https://dl.dropbox.com/u/6122/Kamcord/Kamcord%20Frameworks.png" />
+</p>
+</li>
+<li style="margin: 0";>Drag and drop the files under <code>Frameworks/Resources</code> to your project. For both this and the previous step, make sure to check the box next to the target application you want to link these frameworks and resources to (your game, presumably).
+<p>
+<img src="https://dl.dropbox.com/u/6122/Kamcord/Resources.png" />
+</p>
+</li>
 <li style="margin: 0";>Ensure you have the following frameworks under <code>Build Phases</code> ==> <code>Link Binary With Libraries</code>:
 	<p>
 		<ul style="margin-top: 15px; margin-bottom: 15px;">
