@@ -88,33 +88,6 @@
 		0A3A7F901586A4D3007879E1 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7C1586A4D3007879E1 /* FBDialog.bundle */; };
 		0A3A7F911586A4D3007879E1 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7C1586A4D3007879E1 /* FBDialog.bundle */; };
 		0A3A7F921586A4D3007879E1 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7C1586A4D3007879E1 /* FBDialog.bundle */; };
-		0A3A7F931586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */; };
-		0A3A7F941586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */; };
-		0A3A7F951586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */; };
-		0A3A7F961586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */; };
-		0A3A7F971586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */; };
-		0A3A7F981586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */; };
-		0A3A7F991586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */; };
-		0A3A7F9A1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */; };
-		0A3A7F9B1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */; };
-		0A3A7F9C1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A3A7F9D1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A3A7F9E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A3A7F9F1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A3A7FA01586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A3A7FA11586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A3A7FA21586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A3A7FA31586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A3A7FA41586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */; };
-		0A3A7FA51586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */; };
-		0A3A7FA61586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */; };
-		0A3A7FA71586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */; };
-		0A3A7FA81586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */; };
-		0A3A7FA91586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */; };
-		0A3A7FAA1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */; };
-		0A3A7FAB1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */; };
-		0A3A7FAC1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */; };
-		0A3A7FAD1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */; };
 		0A3A7FAE1586A4D3007879E1 /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F801586A4D3007879E1 /* ShareKit.bundle */; };
 		0A3A7FAF1586A4D3007879E1 /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F801586A4D3007879E1 /* ShareKit.bundle */; };
 		0A3A7FB01586A4D3007879E1 /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F801586A4D3007879E1 /* ShareKit.bundle */; };
@@ -126,6 +99,7 @@
 		0A3A7FB61586A4D3007879E1 /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7F801586A4D3007879E1 /* ShareKit.bundle */; };
 		0A3A7FB91586A953007879E1 /* test3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7FB71586A953007879E1 /* test3.m4a */; };
 		0A3A7FBA1586A953007879E1 /* test8.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0A3A7FB81586A953007879E1 /* test8.caf */; };
+		0A4CDD0815987D13009958C7 /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A4CDD0715987D13009958C7 /* Kamcord.bundle */; };
 		0AA62391156B75F8006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA6239A156B75F8006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
@@ -3635,12 +3609,10 @@
 		0A3A7F711586A4B0007879E1 /* Kamcord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamcord.framework; path = ../../Frameworks/Kamcord.framework; sourceTree = "<group>"; };
 		0A3A7F7B1586A4D3007879E1 /* GTMOAuth2ViewTouch.nib */ = {isa = PBXFileReference; lastKnownFileType = file; name = GTMOAuth2ViewTouch.nib; path = ../../Frameworks/Resources/GTMOAuth2ViewTouch.nib; sourceTree = "<group>"; };
 		0A3A7F7C1586A4D3007879E1 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = ../../Frameworks/Resources/FBDialog.bundle; sourceTree = "<group>"; };
-		0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.storyboardc; name = KamcordStoryboard_iPad.storyboardc; path = ../../Frameworks/Resources/KamcordStoryboard_iPad.storyboardc; sourceTree = "<group>"; };
-		0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.storyboardc; name = KamcordStoryboard_iPhone_Portrait.storyboardc; path = ../../Frameworks/Resources/KamcordStoryboard_iPhone_Portrait.storyboardc; sourceTree = "<group>"; };
-		0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.storyboardc; name = KamcordStoryboard_iPhone.storyboardc; path = ../../Frameworks/Resources/KamcordStoryboard_iPhone.storyboardc; sourceTree = "<group>"; };
 		0A3A7F801586A4D3007879E1 /* ShareKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ShareKit.bundle; path = ../../Frameworks/Resources/ShareKit.bundle; sourceTree = "<group>"; };
 		0A3A7FB71586A953007879E1 /* test3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = test3.m4a; path = Resources/test3.m4a; sourceTree = "<group>"; };
 		0A3A7FB81586A953007879E1 /* test8.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = test8.caf; path = Resources/test8.caf; sourceTree = "<group>"; };
+		0A4CDD0715987D13009958C7 /* Kamcord.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kamcord.bundle; path = ../../Frameworks/Resources/Kamcord.bundle; sourceTree = "<group>"; };
 		0AA62392156B75F8006D25E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0AA62393156B75F8006D25E1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		0AA62394156B75F8006D25E1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -5856,10 +5828,8 @@
 				0A3A7FB71586A953007879E1 /* test3.m4a */,
 				0A3A7FB81586A953007879E1 /* test8.caf */,
 				0A3A7F7B1586A4D3007879E1 /* GTMOAuth2ViewTouch.nib */,
+				0A4CDD0715987D13009958C7 /* Kamcord.bundle */,
 				0A3A7F7C1586A4D3007879E1 /* FBDialog.bundle */,
-				0A3A7F7D1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc */,
-				0A3A7F7E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc */,
-				0A3A7F7F1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc */,
 				0A3A7F801586A4D3007879E1 /* ShareKit.bundle */,
 			);
 			name = Resources;
@@ -9328,12 +9298,10 @@
 				0A1D64C31570BA8D00627EBE /* background.wav in Resources */,
 				0A3A7F841586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F8D1586A4D3007879E1 /* FBDialog.bundle in Resources */,
-				0A3A7F961586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
-				0A3A7F9F1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
-				0A3A7FA81586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
 				0A3A7FB11586A4D3007879E1 /* ShareKit.bundle in Resources */,
 				0A3A7FB91586A953007879E1 /* test3.m4a in Resources */,
 				0A3A7FBA1586A953007879E1 /* test8.caf in Resources */,
+				0A4CDD0815987D13009958C7 /* Kamcord.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9513,9 +9481,6 @@
 				E0D2D4F3128CA9E300F78C63 /* piece.png in Resources */,
 				0A3A7F871586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F901586A4D3007879E1 /* FBDialog.bundle in Resources */,
-				0A3A7F991586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
-				0A3A7FA21586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
-				0A3A7FAB1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
 				0A3A7FB41586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9570,9 +9535,6 @@
 				E02BB618126CA73F006E46A2 /* Icon-72.png in Resources */,
 				0A3A7F851586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F8E1586A4D3007879E1 /* FBDialog.bundle in Resources */,
-				0A3A7F971586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
-				0A3A7FA01586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
-				0A3A7FA91586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
 				0A3A7FB21586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9612,9 +9574,6 @@
 				E02BB5FA126CA73F006E46A2 /* Icon-72.png in Resources */,
 				0A3A7F891586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F921586A4D3007879E1 /* FBDialog.bundle in Resources */,
-				0A3A7F9B1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
-				0A3A7FA41586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
-				0A3A7FAD1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
 				0A3A7FB61586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10027,9 +9986,6 @@
 				A0064C2C13B432B100C1C744 /* grossini_pvr_rgba8888.pvr in Resources */,
 				0A3A7F881586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F911586A4D3007879E1 /* FBDialog.bundle in Resources */,
-				0A3A7F9A1586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
-				0A3A7FA31586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
-				0A3A7FAC1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
 				0A3A7FB51586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10275,9 +10231,6 @@
 				E02BB612126CA73F006E46A2 /* Icon-72.png in Resources */,
 				0A3A7F861586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F8F1586A4D3007879E1 /* FBDialog.bundle in Resources */,
-				0A3A7F981586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
-				0A3A7FA11586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
-				0A3A7FAA1586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
 				0A3A7FB31586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10490,9 +10443,6 @@
 				E02BB68A126CA73F006E46A2 /* Icon-72.png in Resources */,
 				0A3A7F811586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F8A1586A4D3007879E1 /* FBDialog.bundle in Resources */,
-				0A3A7F931586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
-				0A3A7F9C1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
-				0A3A7FA51586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
 				0A3A7FAE1586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10834,9 +10784,6 @@
 				E02BB684126CA73F006E46A2 /* Icon-72.png in Resources */,
 				0A3A7F821586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F8B1586A4D3007879E1 /* FBDialog.bundle in Resources */,
-				0A3A7F941586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
-				0A3A7F9D1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
-				0A3A7FA61586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
 				0A3A7FAF1586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10887,9 +10834,6 @@
 				E0D2C5D412AF1067008D5DBB /* particles-hd.png in Resources */,
 				0A3A7F831586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F8C1586A4D3007879E1 /* FBDialog.bundle in Resources */,
-				0A3A7F951586A4D3007879E1 /* KamcordStoryboard_iPad.storyboardc in Resources */,
-				0A3A7F9E1586A4D3007879E1 /* KamcordStoryboard_iPhone_Portrait.storyboardc in Resources */,
-				0A3A7FA71586A4D3007879E1 /* KamcordStoryboard_iPhone.storyboardc in Resources */,
 				0A3A7FB01586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

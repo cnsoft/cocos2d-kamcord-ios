@@ -89,8 +89,9 @@ typedef enum
 @property (nonatomic, retain) NSMutableArray * videoClipLocalURLs;
 @property (nonatomic, retain) NSURL * mergedVideoLocalURL;
 @property (nonatomic, retain) NSURL * convertedVideoLocalURL;
-@property (nonatomic, retain) CGImageRef thumbnail __attribute__((NSObject));
 
+@property (nonatomic, retain) CGImageRef thumbnail __attribute__((NSObject));
+@property (nonatomic, retain) CGImageRef mergeThumbnail __attribute__((NSObject));
 // Online URLs and IDs
 @property (nonatomic, copy) NSString * onlineVideoID;
 @property (nonatomic, copy) NSString * onlineThumbnailID;

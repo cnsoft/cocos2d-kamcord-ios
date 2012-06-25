@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 
 #import "KCVideo.h"
+#import "Reachability.h"
 
 // Forward class declarations
 @class KCVideoProcessor;
@@ -103,5 +104,7 @@ typedef enum
 - (void)cancelAllActiveTasksAndPause;
 
 - (void)dealloc;
+
++ (NetworkStatus)getNetworkStatus;
 
 @end
