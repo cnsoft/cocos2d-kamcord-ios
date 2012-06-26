@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MPMoviePlayerController.h>
 #import "KC_BaseView.h"
+#import "KC_ShareMessageDelegate.h"
+#import "Kamcord.h"
 @class MPMoviePlayerController, KC_BaseView;
 
-@interface KC_iPadView : KCViewController 
+@interface KC_iPadView : KCViewController <KC_ShareMessageDelegate>
 @property (retain, nonatomic) KC_BaseView *parent;
 @property (assign, nonatomic) CGRect myFrame;
+@property (copy, nonatomic) NSString *currentText;
+
 - (id)initWithParent:(KC_BaseView *)parent frame: (CGRect)Frame;
 
 @end

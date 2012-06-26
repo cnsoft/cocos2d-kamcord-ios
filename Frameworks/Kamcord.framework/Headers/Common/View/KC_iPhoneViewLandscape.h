@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "KC_BaseView.h"
 #import "KCViewController.h"
-@interface KC_iPhoneViewLandscape : KCViewController
+#import "KC_ShareMessageDelegate.h"
+@interface KC_iPhoneViewLandscape : KCViewController <KC_ShareMessageDelegate>
 
 @property (retain, nonatomic) KC_BaseView *parent;
 @property (assign, nonatomic) CGRect myFrame;

@@ -60,6 +60,10 @@
 		05CA7AFE10ED674700F12774 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */; };
 		05CA7B0010ED674700F12774 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		05CA7B0C10ED67CE00F12774 /* ActionsWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA7B0B10ED67CE00F12774 /* ActionsWithBlocks.m */; };
+		0A17484B159A754600739B1F /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A4CDD0715987D13009958C7 /* Kamcord.bundle */; };
+		0A17484D159A755100739B1F /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A4CDD0715987D13009958C7 /* Kamcord.bundle */; };
+		0A17484E159A757300739B1F /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A4CDD0715987D13009958C7 /* Kamcord.bundle */; };
+		0A17484F159A757800739B1F /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A4CDD0715987D13009958C7 /* Kamcord.bundle */; };
 		0A1D64C31570BA8D00627EBE /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D64C21570BA8D00627EBE /* background.wav */; };
 		0A3A7F721586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
 		0A3A7F731586A4B0007879E1 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3A7F711586A4B0007879E1 /* Kamcord.framework */; };
@@ -9480,6 +9484,7 @@
 				E02BB606126CA73F006E46A2 /* Icon-72.png in Resources */,
 				E0D2D4F3128CA9E300F78C63 /* piece.png in Resources */,
 				0A3A7F871586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
+				0A17484F159A757800739B1F /* Kamcord.bundle in Resources */,
 				0A3A7F901586A4D3007879E1 /* FBDialog.bundle in Resources */,
 				0A3A7FB41586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
@@ -9535,6 +9540,7 @@
 				E02BB618126CA73F006E46A2 /* Icon-72.png in Resources */,
 				0A3A7F851586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F8E1586A4D3007879E1 /* FBDialog.bundle in Resources */,
+				0A17484B159A754600739B1F /* Kamcord.bundle in Resources */,
 				0A3A7FB21586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10231,6 +10237,7 @@
 				E02BB612126CA73F006E46A2 /* Icon-72.png in Resources */,
 				0A3A7F861586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F8F1586A4D3007879E1 /* FBDialog.bundle in Resources */,
+				0A17484E159A757300739B1F /* Kamcord.bundle in Resources */,
 				0A3A7FB31586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10834,6 +10841,7 @@
 				E0D2C5D412AF1067008D5DBB /* particles-hd.png in Resources */,
 				0A3A7F831586A4D3007879E1 /* GTMOAuth2ViewTouch.nib in Resources */,
 				0A3A7F8C1586A4D3007879E1 /* FBDialog.bundle in Resources */,
+				0A17484D159A755100739B1F /* Kamcord.bundle in Resources */,
 				0A3A7FB01586A4D3007879E1 /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

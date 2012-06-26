@@ -1,4 +1,4 @@
-# Kamcord 0.9.2
+# Kamcord 0.9.3
 
 ## Code
 
@@ -248,17 +248,21 @@ Now that the user has finished his gameplay and you have successfully recorded a
 
 	+ (void) showView;
 
-This presents a modal view with the following options:
+This presents the following modal view:
 
 <img src="https://dl.dropbox.com/u/6122/Kamcord/MainMenu.png" style="display: block; margin-left: auto; margin-right: auto;" />
 
-`Replay video` will show the video of the gameplay that just happened (the result of the last `stopRecording` call).
+Pressing the play button will replay the last recorded video (the result of the last `stopRecording` call).
 
-`Share` will bring the user to a new view that lets them enter a message and select Facebook, Twitter, YouTube, and/or email. When the user taps the `Share` button on this second view, we upload the video to our servers and share their message to their selected social networks. The first time the user selects Facebook, Twitter, or YouTube, he will be prompted for the relevant credentials and permissions.
+Pressing any of the four buttons below will let the user share on Facebook/Twitter/YouTube and with Email:
 
 <img src="https://dl.dropbox.com/u/6122/Kamcord/ShareView.png" style="display: block; margin-left: auto; margin-right: auto;" />
 
-All uploading to YouTube and sharing on Facebook/Twitter happens in a background thread. Based on testing, this has negligible impact on performance and provides for a great user experience, because your user can hit `Share` and get back to playing your game  as soon as possible.
+The first time the user presses the share button on this view, he will be prompted for the relevant credentials and permissions.
+
+This view is built programmatically, so there are no storyboards or nibs to mess with.
+
+All uploading to YouTube and sharing on Facebook/Twitter happens in a background thread. This provides for a great user experience because your user can share/upload in the background and and get back to playing your game as soon as possible.
 
 On Facebook, we will share the URL of the video with their typed message. A thumbnail from the video will be automatically generated and shown. On Twitter, if the user types the following message:
 
@@ -266,7 +270,7 @@ On Facebook, we will share the URL of the video with their typed message. A thum
 
 the actual tweeted message will be
 
-`Check out my gameplay! | kamcord.com/v/abcfoo123`
+`Check out my gameplay! kamcord.com/v/abcfoo123`
 
 ### Downloading Video Trailers
 

@@ -27,7 +27,7 @@
 @property (assign, nonatomic) UIViewController *parentView;
 -(void) presentFacebookLoginView;
 -(void) authenticateTwitter;
--(void) presentComposeEmailViewInViewController:(UIViewController *)parentViewController;
+-(void) presentComposeEmailViewInViewController:(UIViewController *)parentViewController withBody:(NSString *)bodyText;
 -(void) presentYoutubeLoginViewInViewController:(UIViewController *)parentViewController;
 -(void) presentVideoPlayerToViewController:(UIViewController *)parentViewController;
 //general 

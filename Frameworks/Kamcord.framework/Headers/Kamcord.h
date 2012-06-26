@@ -19,21 +19,60 @@
 #import "Common/Core/Audio/KCAudio.h"
 #import "Common/Core/Audio/KCSound.h"
 
-#define KAMCORD_VERSION "0.9.2"
+#define KAMCORD_VERSION "0.9.3"
 
 @class KCAudio;
 @class KCUI;
+
+// --------------------------------------------------------
+// API elements for custom sharing UI.
+// Will be documented soon as we roll out complete
+// support for custom UIs.
+typedef enum
+{
+    NO_ERROR,
+    FACEBOOK_NOT_AUTHENTICATED,
+    FACEBOOK_LOGIN_CANCELLED,
+    
+    TWITTER_NOT_SETUP,
+    TWITTER_NOT_AUTHENTICATED,
+    
+    YOUTUBE_NOT_AUTHENTICATED,
+    YOUTUBE_LOGIN_CANCELLED,
+    
+    EMAIL_NOT_SETUP,
+    EMAIL_CANCELLED,
+    EMAIL_FAILED,
+    NO_INTERNET,
+    NOTHING_TO_SHARE,
+    MESSAGE_TOO_LONG
+} KCShareStatus;
+
+
+@protocol KCShareDelegate 
+@optional
+- (void)facebookAuthSucceeded;
+- (void)twitterAuthSucceeded;
+- (void)youTubeAuthSucceeded;
+
+- (void)facebookShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+- (void)twitterShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+- (void)youTubeUploadFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+- (void)emailSentWithSuccess:(BOOL)success error:(KCShareStatus)error;
+
+- (void)generalError:(KCShareStatus)error;
+- (void)videoIsReadyToShare:(NSURL *)onlineVideoURL
+                  thumbnail:(NSURL *)onlineThumbnailURL
+                      error:(NSError *)error;
+@end
+
 
 @interface Kamcord : NSObject
 
 ////////////////////////////////////////////////
 // Public methods
 
-
-
 // Setup
-+ (BOOL) handleOpenURL:(NSURL *)url;
-
 + (void) setDeveloperKey:(NSString *)key
          developerSecret:(NSString *)secret
                  appName:(NSString *)appName;
@@ -42,46 +81,46 @@
 + (NSString *)appName;
 
 // View and OpenGL
-+ (void) setParentViewController:(UIViewController *)viewController;
++ (void)setParentViewController:(UIViewController *)viewController;
 + (UIViewController *)parentViewController;
 
-+ (void) setOpenGLView:(KCGLView *)glView;
++ (void)setOpenGLView:(KCGLView *)glView;
 
-+ (void) setDeviceOrientation:(KCDeviceOrientation)orientation;
++ (void)setDeviceOrientation:(KCDeviceOrientation)orientation;
 + (KCDeviceOrientation) deviceOrientation;
 
 // For Portrait, do we support PortraitUpsideDown also?
-+ (void) setSupportPortraitAndPortraitUpsideDown:(BOOL)value;
-+ (BOOL) supportPortraitAndPortraitUpsideDown;
++ (void)setSupportPortraitAndPortraitUpsideDown:(BOOL)value;
++ (BOOL)supportPortraitAndPortraitUpsideDown;
 
 // Social media
 + (void) setYouTubeTitle:(NSString *)title
              description:(NSString *)description 
                 keywords:(NSString *)keywords;
-+ (NSString *) youtubeTitle;
-+ (NSString *) youtubeDescription;
-+ (NSString *) youtubeKeywords;
++ (NSString *)youtubeTitle;
++ (NSString *)youtubeDescription;
++ (NSString *)youtubeKeywords;
 
 + (void) setFacebookTitle:(NSString *)title
                   caption:(NSString *)caption
               description:(NSString *)description;
-+ (NSString *) facebookTitle;
-+ (NSString *) facebookCaption;
-+ (NSString *) facebookDescription;
++ (NSString *)facebookTitle;
++ (NSString *)facebookCaption;
++ (NSString *)facebookDescription;
 
-+ (void) setLevel:(NSString *)level
-            score:(NSNumber *)score;
-+ (NSString *) level;
-+ (NSNumber *) score;
++ (void)setLevel:(NSString *)level
+           score:(NSNumber *)score;
++ (NSString *)level;
++ (NSNumber *)score;
 
 // Video recording
-+ (BOOL) startRecording;
-+ (BOOL) stopRecording;
-+ (BOOL) resume;
-+ (BOOL) pause;
++ (BOOL)startRecording;
++ (BOOL)stopRecording;
++ (BOOL)resume;
++ (BOOL)pause;
 
 // Displays the Kamcord view inside the previously set parentViewController;
-+ (void) showView;
++ (void)showView;
 
 // Video recording settings
 // For release, use SMART_VIDEO_DIMENSIONS:
@@ -102,11 +141,10 @@ typedef enum {
 + (void) setVideoResolution:(KC_VIDEO_RESOLUTION)resolution;
 + (KC_VIDEO_RESOLUTION) videoResolution;
 
-
 // Audio recording
-+ (KCAudio *) playSound:(NSString *)filename
-                   loop:(BOOL)loop;
-+ (KCAudio *) playSound:(NSString *)filename;
++ (KCAudio *)playSound:(NSString *)filename
+                  loop:(BOOL)loop;
++ (KCAudio *)playSound:(NSString *)filename;
 
 // Will stop all non-looping sounds. If loop is YES, will also stop
 // all looping sounds.
@@ -118,76 +156,35 @@ typedef enum {
 
 // --------------------------------------------------------
 // API for custom UIs
+// Will be documented soon as we roll out complete
+// support for custom UIs.
 
-// Authentication
-+ (void)presentFacebookLoginView;
++ (void)showFacebookLoginView;
 + (void)authenticateTwitter; 
-+ (void)presentYoutubeLoginViewInViewController:(UIViewController *)parentViewController;
-
-// One method to share
++ (void)presentYouTubeLoginViewInViewController:(UIViewController *)parentViewController;
 + (void)shareOnFacebook:(BOOL)shareFacebook
-                onTwitter:(BOOL)shareTwitter
-                onYouTube:(BOOL)shareYoutube
+                Twitter:(BOOL)shareTwitter
+                YouTube:(BOOL)shareYoutube 
             withMessage:(NSString *)message;
++ (void)presentVideoPlayerInViewController:(UIViewController *)parentViewController;
++ (void)presentComposeEmailViewInViewController:(UIViewController *)parentViewController
+                                       withBody:(NSString *)bodyText;
 
-// Replay the last video
-+ (void)playVideoInViewController:(UIViewController *)parentViewController;
++ (void)setShareDelegate:(id<KCShareDelegate>)delegate;
 
-// Let people share a video through an email link
-+ (void)presentComposeEmailViewInViewController:(UIViewController *)parentViewController;
-
-// Possible error states as a result of trying to share
-typedef enum {
-    NO_ERROR,
-    FACEBOOK_NOT_AUTHENTICATED,
-    FACEBOOK_LOGIN_CANCELLED,
-    
-    TWITTER_NOT_SETUP,
-    TWITTER_NOT_AUTHENTICATED,
-    
-    YOUTUBE_NOT_AUTHENTICATED,
-    YOUTUBE_LOGIN_CANCELLED,
-    
-    EMAIL_NOT_SETUP,
-    EMAIL_CANCELLED,
-    EMAIL_FAILED,
-    NO_INTERNET,
-    NOTHING_TO_SHARE,
-    MESSAGE_TOO_LONG
-    
-} KCUI_SHARE_FAILURE;
-
++ (BOOL)handleOpenURL:(NSURL *)url;
 
 // --------------------------------------------------------
 // For Kamcord internal use, don't worry about these.
 
 // Returns the singleton Kamcord object. You don't ever really need this, just
 // use the static API calls.
-+ (Kamcord *) sharedManager;
+ 
++ (Kamcord *)sharedManager;
 
 // Helper to figure calculate the internal scale factor
-+ (unsigned int) resolutionScaleFactor;
++ (unsigned int)resolutionScaleFactor;
 
-+ (KCAudio *) audioBackground;
-
-@end
-
-// Delegate for sharing results
-@protocol KCShareDelegate 
-
-@optional
-- (void)facebookShareFinishedWithStatus:(BOOL)success
-                                  error:(KCUI_SHARE_FAILURE)error;
-- (void)twitterShareFinishedWithStatus:(BOOL)success
-                                 error:(KCUI_SHARE_FAILURE)error;
-- (void)youTubeShareFinishedWithStatus:(BOOL)success
-                                 error:(KCUI_SHARE_FAILURE)error;
-- (void)emailSentWithStatus:(BOOL)success
-                      error:(KCUI_SHARE_FAILURE)error;
-
-- (void)generalError:(KCUI_SHARE_FAILURE)error;
-- (void)videoIsReadyToShare:(NSURL *)onlineURL
-                  thumbnail:(NSURL *)thumbnailURL    // For Facebook wall posts
-                      error:(NSError *)error;
++ (KCAudio *)audioBackground;
 
 @end

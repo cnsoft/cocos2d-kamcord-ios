@@ -1476,7 +1476,7 @@ Class restartAction()
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	// Sets landscape mode (make sure to use Kamcord, not CCDirector!!)
-	[Kamcord setDeviceOrientation:KCDeviceOrientationPortrait];
+	[Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeLeft];
     
     // Kamcord setup
     [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
