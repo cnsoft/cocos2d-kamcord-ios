@@ -21,7 +21,6 @@
 
 #define KAMCORD_VERSION "0.9.3"
 
-@class KCAudio;
 @class KCUI;
 
 // --------------------------------------------------------
@@ -172,6 +171,8 @@ typedef enum {
 
 + (void)setShareDelegate:(id<KCShareDelegate>)delegate;
 
+// --------------------------------------------------------
+// For Facebook SSO
 + (BOOL)handleOpenURL:(NSURL *)url;
 
 // --------------------------------------------------------
