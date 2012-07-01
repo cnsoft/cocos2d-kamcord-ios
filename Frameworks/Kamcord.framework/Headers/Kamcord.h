@@ -76,12 +76,13 @@ typedef enum
 
 @optional
 // --------------------------------------------------------
-// Callbacks for case 1 (see below)
+// Callbacks for sharing
 
+// The following are only relevant for Option 1:
 // Auth requests
-- (void)facebookAuthSucceeded;
-- (void)twitterAuthSucceeded;
-- (void)youTubeAuthSucceeded;
+- (void)facebookAuthFinishedWithSuccess:(BOOL)success;
+- (void)twitterAuthFinishedWithSuccess:(BOOL)success;
+- (void)youTubeAuthFinishedWithSuccess:(BOOL)success;
 
 // Beginning of share process
 //
@@ -95,6 +96,9 @@ typedef enum
 - (void)facebookShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
 - (void)twitterShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
 - (void)youTubeUploadFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+
+
+// The following callback will be made for both Option 1 and Option 2:
 
 // If the error object is nil, then the video and thumbnail
 // URLs are valid. Otherwise, the video and thumbnail URLs
