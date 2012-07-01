@@ -1,4 +1,4 @@
-# Kamcord 0.9.3
+# Kamcord 0.9.4
 
 ## Code
 
@@ -11,7 +11,7 @@ Please add yourself as a watcher since we frequently release new features and pa
 Kamcord is a built-in gameplay video and audio recording technology for iOS. This repository contains a Kamcord SDK that works with cocos2d-1.0.1 and allows you, the game developer, to capture gameplay videos with a very simple API.
 Your users can then replay and share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
-In order to use Kamcord, you need a developer key and developer secret. To get these, please email Matt at <a mailto="matt@kamcord.com">matt@kamcord.com</a>.
+In order to use Kamcord, you need a developer key and developer secret. To get these, please sign up at <a target="_blank" href="http://kamcord.com/signup">http://kamcord.com/signup</a>.
 
 **Kamcord works on iOS 5+ and gracefully turns itself off on iOS 4**. You can still run without problems on versions of iOS before iOS 5, though you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
 
@@ -78,6 +78,7 @@ Let's walk through how to get Kamcord into your games.
 			<li style="margin: 0;">Accounts</li>
 	        <li style="margin: 0;">AVFoundation</li>
 	        <li style="margin: 0;"><b>AWSiOSSDK</b></li>
+	        <li style="margin: 0;">CoreData</li>
 	        <li style="margin: 0;">CoreGraphics</li>
 	        <li style="margin: 0;">CoreMedia</li>
 	        <li style="margin: 0;">CoreVideo</li>
@@ -596,6 +597,97 @@ To test this functionality, press `Start Recording`, play with the app, then clo
 
 <b>Note: in your game, you should defer calling</b> `resume` <b>until your user resumes gameplay. Calling it in</b> `applicationDidBecomeActive:` <b>like in this example will capture the pause screen of your game, which is probably not what you or your user wants.</b>
 
+## Implementing Custom UIs
+
+As of 0.9.4, we've added support that lets game developers create their own UIs that interact with Kamcord. Specifically, you can replay the most recent video in a `UIViewController` of your choice:
+
+    + (void)presentVideoPlayerInViewController:(UIViewController *)parentViewController;
+    
+
+You can also share the most recent video by plugging into our API. There are two options.
+
+### Option 1: Kamcord handles Facebook/Twitter/YouTube auth
+
+The Kamcord stock UI is built on top of this option. If you don't want to deal with the hassle of doing Facebook/Twitter/YouTube auth, you should use the following API calls:
+
+    + (void)showFacebookLoginView;
+    + (void)authenticateTwitter; 
+    + (void)presentYouTubeLoginViewInViewController:(UIViewController *)parentViewController;
+
+These functions pop up the Facebook login view, the Twitter auth alert view, and the YouTube login views, respectively. Once the user authenticates with these methods, Kamcord will store their credentials. You can verify the results of these authentication actions by implementing the following delegates inside the `KCShareDelegate` protocol:
+
+    - (void)facebookAuthFinishedWithSuccess:(BOOL)success;
+    - (void)twitterAuthFinishedWithSuccess:(BOOL)success;
+    - (void)youTubeAuthFinishedWithSuccess:(BOOL)success;
+
+If the authentication was successfuly, the value of `success` will be `YES`, else `NO`. You can also check the status of authentication and logout the user with these calls:
+
+    + (BOOL)facebookIsAuthenticated;
+    + (BOOL)twitterIsAuthenticated;
+    + (BOOL)youTubeIsAuthenticated;
+
+    + (void)performFacebookLogout;
+    + (void)performYouTubeLogout;
+
+Once the user is authenticated to the relevant social networks, you can perform a share with those stored credentials with this API call:
+
+    + (BOOL)shareVideoOnFacebook:(BOOL)shareFacebook
+                         Twitter:(BOOL)shareTwitter
+                         YouTube:(BOOL)shareYouTube
+                     withMessage:(NSString *)message;
+
+Simply set the values to YES for the networks you want to share to and give us the message the user wanted to share and we'll take care of the rest. One important note: this method returns `YES` if the request was accepted. If this returns `NO`, it means you tried to submit requests too quickly. More specifically, once you get one of the two following callbacks via the `KCShareDelegate` protocol:
+
+    - (void)shareStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+    - (void)generalError:(KCShareStatus)error;
+    
+it will be safe to submit new share requests.
+
+You will get callbacks about the status of the share via these callbacks from the `KCShareDelegate` protocol:
+
+    - (void)facebookShareStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+    - (void)twitterShareStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+    - (void)youTubeUploadStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+    - (void)emailSentWithSuccess:(BOOL)success error:(KCShareStatus)error;
+
+    - (void)facebookShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+    - (void)twitterShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+    - (void)youTubeUploadFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+    
+The last three indicate that the requested message has been posted on the relevant social network.
+
+You can also share with email using the following method:
+
+    + (void)presentComposeEmailViewInViewController:(UIViewController *)parentViewController
+                                           withBody:(NSString *)bodyText;
+
+for which the corresponding finishd callback is:
+
+	- (void)emailSentWithSuccess:(BOOL)success error:(KCShareStatus)error;
+
+### Option 2: Kamcord only uploads the video and returns a shareable video URL and you handle the Facebook/Twitter/YouTube authentication and sharing
+
+The API for case 2 is much simpler because you are responsible for all the sharing. Kamcord will only upload the video to Kamcord (and Youtube if requested), after which we will call back via the `KCShareDelegate` protocol to let you know the online URL of the video and thumbnail.
+
+To ask Kamcord to upload the videos, call:
+
+    + (BOOL)shareVideoWithMessage:(NSString *)message
+                  withYouTubeAuth:(GTMOAuth2Authentication *)youTubeAuth
+                             data:(NSDictionary *)data;
+
+All videos will get uploaded to Kamcord. If you want to upload to YouTube also, pass in a valid auth object for the `youTubeAuth` argument. Otherwise, leave that argument `nil`. You can also pass in a dictionary of data that we will return to you once the video is ready to share. As with Option 1, this method returns a BOOL telling you whether or not the request was accepted. If the returned value was `NO`, you need to try again at a later time (typically on the order of seconds).
+
+The callback you will receive is either `generalError:` or the following:
+
+    - (void)videoIsReadyToShare:(NSURL *)onlineVideoURL
+                      thumbnail:(NSURL *)onlineThumbnailURL
+                        message:(NSString *)message
+                           data:(NSDictionary *)data
+                          error:(NSError *)error;
+
+You can use the video and thumbnail URLs to share to whichever social networks you like.
+
+
 ## Other Kamcord details
 
 ### Mixpanel
@@ -619,6 +711,12 @@ Make sure that there is only **one** view controller in your application delegat
 Kamcord uploads videos in the background. This allows your user to get back to playing your game right away. Even after your app loses foreground, we still have 10 mins of time to upload. In the case that we can't finish it in those 10 minutes, we queue the job for next time the app regains foreground, and keep doing this until the video upload succeeds.
 
 If you are testing Kamcord with XCode and press the `Stop` button too soon after you press `Share`, the video will most likely not have finished uploading. This is especially true for videos recorded with `TRAILER_VIDEO_RESOLUTION` since they are about 5x larger than those recorded with `SMART_VIDEO_RESOLUTION`. Videos also upload much more quickly on WiFi than 3G. To ensure the video upload succeeds, just leave the app running for a sufficient time and check the video on kamcord.com. 
+
+### Link error: Duplicate symbols in SBJsonWriter.o and SBJsonParser.o
+
+This is a collision that results from `AWSiOSSDK.framework`. This framework is necessary in order for us to upload videos to our servers. Unfortunately, Amazon was careless and didn't rename the popular JSON library `SBJson` when they built their framework.
+
+To remove these collisions, for every file `SBJson*.o` that complains of duplicate symbols, simply remove the corresopnding `SBJson*.m` file.
 
 ### armv6
 
