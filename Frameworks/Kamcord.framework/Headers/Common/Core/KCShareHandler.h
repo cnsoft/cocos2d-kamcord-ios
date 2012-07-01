@@ -14,7 +14,6 @@
 // For uploading to S3
 #import <AWSiOSSDK/S3/AmazonS3Client.h>
 
-
 @class KCVideoSharingTask;
 @class KCVideoProcessingAndShareManager;
 
@@ -23,7 +22,7 @@
 // Weak reference b/c the task retains this object, so don't
 // want a retain cycle.
 @property (nonatomic, readonly, assign) KCVideoSharingTask * sharingTask;
-@property (nonatomic, readonly, retain) KCVideoProcessingAndShareManager * delegate;
+@property (nonatomic, readonly, assign) KCVideoProcessingAndShareManager * delegate;
 
 - (id) initWithTask:(KCVideoSharingTask *)task
            delegate:(KCVideoProcessingAndShareManager *)delegate;

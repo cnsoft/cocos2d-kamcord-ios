@@ -14,30 +14,45 @@
 #import "KCVideo.h"
 #import "KCVideoProcessingAndShareManager.h"
 #import "Kamcord.h"
+
 @class KCSHKConfigurator;
 
-
-@interface KCUI : NSObject <KCSHKSharerDelegate, MFMailComposeViewControllerDelegate, NSURLConnectionDelegate,KCYouTubeUploaderDelegate,KC_FBSessionDelegate, KC_FBDialogDelegate, KCLoginDismissedDelegate, KCShareFinishedDelegate>
-
+@interface KCUI : NSObject <KCSHKSharerDelegate, MFMailComposeViewControllerDelegate, NSURLConnectionDelegate,KCYouTubeUploaderDelegate,KC_FBSessionDelegate, KC_FBDialogDelegate, KCLoginDismissedDelegate>
 
 
-@property (assign, nonatomic) id<KCShareDelegate> delegate;
-@property (retain, nonatomic) KCVideoProcessingAndShareManager *shareManager; 
-@property (assign, nonatomic) KCVideo *latestVideo;
-@property (assign, nonatomic) UIViewController *parentView;
--(void) presentFacebookLoginView;
--(void) authenticateTwitter;
--(void) presentComposeEmailViewInViewController:(UIViewController *)parentViewController withBody:(NSString *)bodyText;
--(void) presentYoutubeLoginViewInViewController:(UIViewController *)parentViewController;
--(void) presentVideoPlayerToViewController:(UIViewController *)parentViewController;
-//general 
+@property (assign, nonatomic) id <KCShareDelegate> delegate;
+@property (retain, nonatomic) KCVideoProcessingAndShareManager * shareManager; 
+@property (assign, nonatomic) KCVideo * latestVideo;
+@property (assign, nonatomic) UIViewController * parentViewController;
 
--(void) setVideo:(KCVideo *)video;
+// Replay
+- (void)presentVideoPlayerInViewController:(UIViewController *)parentViewController;
 
--(void) shareToFacebook:(BOOL)shareFacebook 
-                Twitter:(BOOL)shareTwitter 
-                Youtube:(BOOL)shareYoutube 
-            withMessage:(NSString *)message;
+// Authentication
+- (void)presentFacebookLoginView;
+- (void)authenticateTwitter;
+- (void)presentYouTubeLoginViewInViewController:(UIViewController *)parentViewController;
+
+- (void)performFacebookLogout; 
+- (void)performYoutubeLogout;
+
+- (BOOL)facebookIsAuthenticated;
+- (BOOL)twitterIsAuthenticated;
+- (BOOL)youTubeIsAuthenticated;
+
+
+// Sharing
+- (BOOL)shareVideoOnFacebook:(BOOL)shareFacebook 
+                     Twitter:(BOOL)shareTwitter 
+                     YouTube:(BOOL)shareYoutube 
+                 withMessage:(NSString *)message;
+- (BOOL)presentComposeEmailViewInViewController:(UIViewController *)parentViewController withBody:(NSString *)bodyText;
+
+// Used for Case 2 where they just want to upload the video
+- (BOOL)uploadVideoToKamcordAndAlsoYouTubeWithAuth:(GTMOAuth2Authentication *)youTubeAuth
+                                       withMessage:(NSString *)message
+                                              data:(NSDictionary *)data;
+
 
 
 @end

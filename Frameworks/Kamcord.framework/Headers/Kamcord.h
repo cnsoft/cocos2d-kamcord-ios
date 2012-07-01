@@ -21,7 +21,14 @@
 
 #define KAMCORD_VERSION "0.9.3"
 
-@class KCUI;
+
+// --------------------------------------------------------
+// The following enum and protocol are only relevant
+// if you're implementing your own custom UI.
+// If you're using the default Kamcord UI, please
+// ignore the following as it is irrelevant for you.
+
+@class GTMOAuth2Authentication;
 
 // --------------------------------------------------------
 // API elements for custom sharing UI.
@@ -32,36 +39,71 @@ typedef enum
     NO_ERROR,
     FACEBOOK_NOT_AUTHENTICATED,
     FACEBOOK_LOGIN_CANCELLED,
+    FACEBOOK_DAILY_SHARE_EXCEEDED,
+    FACEBOOK_SERVER_ERROR,
     
     TWITTER_NOT_SETUP,
     TWITTER_NOT_AUTHENTICATED,
+    TWITTER_SERVER_ERROR,
     
     YOUTUBE_NOT_AUTHENTICATED,
     YOUTUBE_LOGIN_CANCELLED,
+    YOUTUBE_SERVER_ERROR,
     
     EMAIL_NOT_SETUP,
     EMAIL_CANCELLED,
     EMAIL_FAILED,
     NO_INTERNET,
+    
+    KAMCORD_SERVER_ERROR,
+    
     NOTHING_TO_SHARE,
     MESSAGE_TOO_LONG
 } KCShareStatus;
 
 
-@protocol KCShareDelegate 
+@protocol KCShareDelegate <NSObject>
+
+@required
+// Only after this callback (or a generalError below) is it safe
+// make a new share request.
+- (void)shareStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+
+// Errors that happen along the way
+- (void)generalError:(KCShareStatus)error;
+
+
+
 @optional
+// --------------------------------------------------------
+// Callbacks for case 1 (see below)
+
+// Auth requests
 - (void)facebookAuthSucceeded;
 - (void)twitterAuthSucceeded;
 - (void)youTubeAuthSucceeded;
 
+// Beginning of share process
+//
+// First: auth verification
+- (void)facebookShareStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+- (void)twitterShareStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+- (void)youTubeUploadStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
+- (void)emailSentWithSuccess:(BOOL)success error:(KCShareStatus)error;
+//
+// End of share process
 - (void)facebookShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
 - (void)twitterShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
 - (void)youTubeUploadFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
-- (void)emailSentWithSuccess:(BOOL)success error:(KCShareStatus)error;
 
-- (void)generalError:(KCShareStatus)error;
+// If the error object is nil, then the video and thumbnail
+// URLs are valid. Otherwise, the video and thumbnail URLs
+// should not be considered valid, even if they are non-nil.
+// The data is the original object that was passed in with the share request.
 - (void)videoIsReadyToShare:(NSURL *)onlineVideoURL
                   thumbnail:(NSURL *)onlineThumbnailURL
+                    message:(NSString *)message
+                       data:(NSDictionary *)data
                       error:(NSError *)error;
 @end
 
@@ -153,23 +195,101 @@ typedef enum {
 // pass in an array populated with KCSound objects.
 + (BOOL) stopRecordingWithSounds:(NSArray *)sounds;
 
-// --------------------------------------------------------
-// API for custom UIs
-// Will be documented soon as we roll out complete
-// support for custom UIs.
 
+
+// --------------------------------------------------------
+// Custom sharing API
+
+
+// Used for both Case 1 and Case 2
+
+// Replay the latest video in the parent view controller.
+// The "latest video" is defined as the last one for which
+// you called [Kamcord stopRecording].
++ (void)presentVideoPlayerInViewController:(UIViewController *)parentViewController;
+
+// The object that will receive callbacks about sharing state.
+// You must make sure that this object is retained until
+// all the callbacks are done. This delegate is retained
+// until all the callbacks are complete, after which it
+// is released by Kamcord.
++ (void)setShareDelegate:(id <KCShareDelegate>)delegate;
++ (id <KCShareDelegate>)shareDelegate;
+
+
+// Case 1: Use the following API for sharing if you want
+//         your own custom UI but would like Kamcord to handle
+//         all of the Facebook/Twitter/YouTube authentication for you.
+
+// Authenticate to the three social media services
 + (void)showFacebookLoginView;
 + (void)authenticateTwitter; 
 + (void)presentYouTubeLoginViewInViewController:(UIViewController *)parentViewController;
-+ (void)shareOnFacebook:(BOOL)shareFacebook
-                Twitter:(BOOL)shareTwitter
-                YouTube:(BOOL)shareYoutube 
-            withMessage:(NSString *)message;
-+ (void)presentVideoPlayerInViewController:(UIViewController *)parentViewController;
+
+// Status of authentication
++ (BOOL)facebookIsAuthenticated;
++ (BOOL)twitterIsAuthenticated;
++ (BOOL)youTubeIsAuthenticated;
+
++ (void)performFacebookLogout;
++ (void)performYouTubeLogout;
+
+// The method to share a message on these services.
+// You can also use this if you want to mix different
+// authentications. For instance, you can handle
+// Facebook and Twitter auth and let Kamcord upload
+// to YouTube with its own auth (which it got via
+// presentYouTubeLoginViewInViewController: above.
+// Simply call this with shareFacebook and shareTwitter set to NO
+// and shareYouTube set to YES.
+//
+// Once the video uploads are done, we will call back
+// to videoIsReadyToShare.
+//
+// Returns YES if the share was accepted for processing.
+// Returns NO if there was a previous share that is still
+// in its early stages (specifically, before a generalError:
+// or shareshareStartedWithSuccess:error: callback).
++ (BOOL)shareVideoOnFacebook:(BOOL)shareFacebook
+                     Twitter:(BOOL)shareTwitter
+                     YouTube:(BOOL)shareYouTube
+                 withMessage:(NSString *)message;
+
+// Show the send email dialog with the Kamcord URL in the message.
+// Any additional body text you'd like to add should be passed in the
+// second argument.
 + (void)presentComposeEmailViewInViewController:(UIViewController *)parentViewController
                                        withBody:(NSString *)bodyText;
 
-+ (void)setShareDelegate:(id<KCShareDelegate>)delegate;
+
+// Case 2: Use the following API for sharing if you want to use
+//         your own custom UI and will also perform all of the 
+//         Facebook/Twitter/YouTube authentication yourself.
+//         Simply call this one function that will upload the video
+//         to Kamcord (and optionally YouTube). Once the video is successfully
+//         uploaded, you'll get a callback to 
+//
+//         - (void)videoIsReadyToShare:(NSURL *)onlineVideoURL
+//                           thumbnail:(NSURL *)onlineThumbnailURL
+//                             message:(NSString *)message
+//                                data:(NSDictionary *)data
+//                               error:(NSError *)error;
+//
+//         (defined above in KCShareDelegate).
+//         If you don't want to upload to YouTube, simply pass
+//         in nil for the youTubeAuth object.
+//
+//         The data object you pass in will be passed back to you
+//         in videoIsReadyToShare.
+//
+//         Returns YES if the share was accepted for processing.
+//         Returns NO if there was a previous share that is still
+//         in its early stages (specifically, before a generalError:
+//         or shareshareStartedWithSuccess:error: callback).
++ (BOOL)shareVideoWithMessage:(NSString *)message
+              withYouTubeAuth:(GTMOAuth2Authentication *)youTubeAuth
+                         data:(NSDictionary *)data;
+
 
 // --------------------------------------------------------
 // For Facebook SSO

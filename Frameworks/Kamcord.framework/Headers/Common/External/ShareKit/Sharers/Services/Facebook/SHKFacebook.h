@@ -48,4 +48,7 @@
 
 + (void)setEnableSSO:(BOOL)enabled;
 
++ (void)logout;
+
+
 @end

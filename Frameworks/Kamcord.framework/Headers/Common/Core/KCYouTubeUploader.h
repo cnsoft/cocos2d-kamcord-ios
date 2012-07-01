@@ -24,6 +24,8 @@
                          error:(NSError *) error;
 @end
 
+@class GTMOAuth2Authentication;
+
 @interface KCYouTubeUploader : NSObject <UIWebViewDelegate>
 {
     NSString * developerKey_;
@@ -40,6 +42,8 @@
 @property (nonatomic, retain) NSString * developerKey;
 @property (nonatomic, retain) NSString * appName;
 @property (nonatomic, retain) id <KCYouTubeUploaderDelegate> delegate;
+// The auth object
+@property (nonatomic, retain) GTMOAuth2Authentication * auth;
 
 // Public methods
 - (BOOL)isAuthenticated;

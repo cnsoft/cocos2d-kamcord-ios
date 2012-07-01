@@ -10,6 +10,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
+#import "Kamcord.h"
 #import "KCVideo.h"
 #import "Reachability.h"
 
@@ -17,19 +18,11 @@
 @class KCVideoProcessor;
 @class KCShareHandler;
 
-// Handles when a video is merged or convered
+// Handles when a video is merged or converted
 @protocol KCVideoProcessDelegate <NSObject>
 
 - (void) mergeFinished:(KCVideo *)video;
 - (void) conversionFinished:(KCVideo *)video;
-
-@end
-
-// Handles when a video is finished uploading and sharing
-@protocol KCShareFinishedDelegate <NSObject>
-
-- (void) shareFinished:(KCVideo *)video
-                 error:(NSError *)error;
 
 @end
 
@@ -43,7 +36,7 @@ typedef enum
 @interface KCVideoProcessingTask : NSObject
 
 @property (nonatomic, retain) KCVideo * video;
-@property (nonatomic, retain) id <KCVideoProcessDelegate> delegate;
+@property (nonatomic, assign) id <KCVideoProcessDelegate> delegate;
 @property (nonatomic, retain) KCVideoProcessor * taskHandler;
 @property (nonatomic, assign) KC_VIDEO_PROCESS_TYPE type;
 
@@ -59,12 +52,12 @@ typedef enum
 
 @property (nonatomic, retain) KCVideo * video;
 @property (nonatomic, retain) KCVideoShareInfo * info;
-@property (nonatomic, retain) id <KCShareFinishedDelegate> delegate;
+@property (nonatomic, retain) id <KCShareDelegate> delegate;
 @property (nonatomic, retain) KCShareHandler * taskHandler;
 
 - (id) initWithVideo:(KCVideo *)video
                 info:(KCVideoShareInfo *)shareInfo
-            delegate:(id <KCShareFinishedDelegate>)delegate;
+            delegate:(id <KCShareDelegate>)delegate;
 
 - (void) dealloc;
 
@@ -94,7 +87,7 @@ typedef enum
             delegate:(id <KCVideoProcessDelegate>)delegate;
 - (void)shareVideo:(KCVideo *)video
               info:(KCVideoShareInfo *)info
-          delegate:(id <KCShareFinishedDelegate>)delegate;
+          delegate:(id <KCShareDelegate>)delegate;
 
 // Try to erase this video
 - (void)safelyPerformTaskAndVideoCleanup:(KCVideo *)video;

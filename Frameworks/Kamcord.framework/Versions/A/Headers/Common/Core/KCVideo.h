@@ -12,6 +12,8 @@
 
 #import "DataStructures/NSMutableArray+QueueAdditions.h"
 
+@class GTMOAuth2Authentication;
+
 //////////////////////////////////////////////////////
 // Begin KCVideoSharingState
 @interface KCVideoShareInfo : NSObject
@@ -21,12 +23,16 @@
 @property (readonly, nonatomic, assign) BOOL shareOnTwitter;
 @property (readonly, nonatomic, assign) BOOL shareOnYouTube;
 @property (readonly, nonatomic, assign) BOOL alreadySharedWithEmail;
+@property (readonly, nonatomic, assign) NSDictionary * data;
+@property (readonly, nonatomic, retain) GTMOAuth2Authentication * youTubeAuth;
 
 - (id) initWithMessage:(NSString *)message
        shareOnFacebook:(BOOL)shareOnFacebook
         shareOnTwitter:(BOOL)shareOnTwitter
         shareOnYouTube:(BOOL)shareOnYouTube
-alreadySharedWithEmail:(BOOL)alreadySharedWithEmail;
+alreadySharedWithEmail:(BOOL)alreadySharedWithEmail
+                  data:(NSDictionary *)data
+           youTubeAuth:(GTMOAuth2Authentication *)auth;
 
 - (void) dealloc;
 
@@ -45,32 +51,43 @@ alreadySharedWithEmail:(BOOL)alreadySharedWithEmail;
 typedef enum
 {
     KC_VIDEO_STATUS_NONE,       // Just instantiated
-    
+
     KC_VIDEO_BEGUN,             // beginVideo
     KC_VIDEO_RECORDING,         // startRecording
     KC_VIDEO_DONE_RECORDING,    // stopRecording
     KC_VIDEO_ENDED,             // endVideo
-    
+
     KC_VIDEO_QUEUED_FOR_MERGE,
     KC_VIDEO_MERGING,
     KC_VIDEO_DONE_MERGING,    
-    
+
     KC_VIDEO_QUEUED_FOR_CONVERSION,
     KC_VIDEO_CONVERTING,
     KC_VIDEO_DONE_CONVERTING,
     
     KC_VIDEO_REQUESTING_KAMCORD_URL,
     KC_VIDEO_RECEIVED_KAMCORD_URL, 
-    
+
     KC_VIDEO_UPLOADING_TO_KAMCORD,
     KC_VIDEO_DONE_UPLOADING_TO_KAMCORD,
-    
-    KC_VIDEO_SHARING,
-    KC_VIDEO_DONE_SHARING
+
+    KC_VIDEO_UPLOADING_TO_YOUTUBE,
+    KC_VIDEO_DONE_UPLOADING_TO_YOUTUBE,
+
+    KC_VIDEO_QUEUED_FOR_DELETION
 } KC_VIDEO_STATUS;
+
+typedef enum
+{
+    KC_OS_PRE_5_0, // 3.x and 4.x
+    KC_OS_5_0_0,   // 5.0.0
+    KC_OS_5_0_1,   // 5.0.1
+    KC_OS_POST_5_1 // 5.1 and later
+} KC_OS_VERSION;
 
 // The unique video ID
 @property (readonly, nonatomic, copy) NSString * localVideoID;
+@property (readonly, nonatomic, copy) NSURL * kamcordDirectory;
 
 // Video state variable
 @property (nonatomic, assign) KC_VIDEO_STATUS videoStatus;
@@ -105,7 +122,7 @@ typedef enum
 @property (nonatomic, retain) NSURL * onlineKamcordVideoURL;
 @property (nonatomic, retain) NSURL * onlineKamcordThumbnailURL;
 
-//This is probably the solution to our Youtube problem
+// This is probably the solution to our Youtube problem
 @property (nonatomic, retain) NSURL * onlineYouTubeVideoURL;
 
 @property (nonatomic, assign) BOOL uploadedToKamcord;
@@ -120,9 +137,11 @@ typedef enum
 
 
 // Public methods
++ (NSString *)videoStatusToString:(KC_VIDEO_STATUS)videoStatus;
 
 // Initializes a video with an ID
-- (id)initWithID:(NSString *)videoID;
+- (id)initWithID:(NSString *)videoID
+kamcordDirectory:(NSURL *)kamcordDirectory;
 
 // Returns the URL of the current video being recorded
 - (NSURL *)currentVideoClipLocalURL;
