@@ -103,6 +103,14 @@ typedef enum
 // The total duration of all previous clips (before the current clip)
 @property (nonatomic, assign) CMTime durationOfAllPreviousClips;
 
+// The maximum length of this video. If 0 (default), it's unlimited.
+// If the video recording time goes over maximumLength, this video
+// should be processed to only include the last maxiumLength time.
+@property (nonatomic, assign) CMTime maximumLength;
+
+// Only relevant if number of clips > 1 and maximumLength > 0
+@property (nonatomic, assign) CMTime croppedVideoStartTime;
+
 // Local video URLs
 @property (nonatomic, readonly, retain) NSURL * videoDirectory;
 

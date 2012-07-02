@@ -201,6 +201,12 @@ typedef enum {
 
 
 
+// Optional: Set the maximum video time in seconds. If the recorded video goes over that time,
+//           then only the last N seconds are taken.
+//           To not have a maximum video time, set this value to 0 (the default).
++ (void)setMaximumVideoTime:(NSUInteger)seconds;
++ (NSUInteger)maximumVideoTime;
+
 // --------------------------------------------------------
 // Custom sharing API
 
