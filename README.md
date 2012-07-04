@@ -599,7 +599,9 @@ To test this functionality, press `Start Recording`, play with the app, then clo
 
 ## Implementing Custom UIs
 
-As of 0.9.4, we've added support that lets game developers create their own UIs that interact with Kamcord. Specifically, you can replay the most recent video in a `UIViewController` of your choice:
+As of 0.9.4, we've added support that lets game developers create their own UIs that interact with Kamcord. Please add a small `Powered by Kamcord` to your sharing view along the same veins as with the stock UI.
+
+You can replay the most recent video in a `UIViewController` of your choice:
 
     + (void)presentVideoPlayerInViewController:(UIViewController *)parentViewController;
     

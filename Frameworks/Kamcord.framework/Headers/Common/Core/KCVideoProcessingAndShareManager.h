@@ -90,7 +90,7 @@ typedef enum
           delegate:(id <KCShareDelegate>)delegate;
 
 // Try to erase this video
-- (void)safelyPerformTaskAndVideoCleanup:(KCVideo *)video;
+- (BOOL)safelyPerformTaskAndVideoCleanup:(KCVideo *)video;
 
 // Resume and cancel task queues
 - (void)resumeTasks;

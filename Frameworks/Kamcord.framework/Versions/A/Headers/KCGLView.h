@@ -87,11 +87,4 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 @end
 
-// Kamcord category extension
-@interface EAGLView (KCGLView)
-
-- (void)setVideoWriter:(KCVideoWriter *)videoWriter;
-
-@end
-
 #endif // __IPHONE_OS_VERSION_MAX_ALLOWED

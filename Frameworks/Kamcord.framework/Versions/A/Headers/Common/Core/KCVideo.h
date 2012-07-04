@@ -90,7 +90,7 @@ typedef enum
 @property (readonly, nonatomic, copy) NSURL * kamcordDirectory;
 
 // Video state variable
-@property (nonatomic, assign) KC_VIDEO_STATUS videoStatus;
+@property KC_VIDEO_STATUS videoStatus;
 
 @property (nonatomic, readonly, assign) BOOL hasEnded;
 @property (nonatomic, readonly, assign) BOOL isMerged;
@@ -150,6 +150,9 @@ typedef enum
 // Initializes a video with an ID
 - (id)initWithID:(NSString *)videoID
 kamcordDirectory:(NSURL *)kamcordDirectory;
+
+- (KC_VIDEO_STATUS)videoStatus;
+- (void)setVideoStatus:(KC_VIDEO_STATUS)videoStatus;
 
 // Returns the URL of the current video being recorded
 - (NSURL *)currentVideoClipLocalURL;

@@ -193,13 +193,28 @@ typedef enum {
 
 // Will stop all non-looping sounds. If loop is YES, will also stop
 // all looping sounds.
-+ (void) stopAllSounds:(BOOL)loop;
++ (void)stopAllSounds:(BOOL)loop;
 
 // If you have specific sounds you want to overlay at particular times,
 // pass in an array populated with KCSound objects.
-+ (BOOL) stopRecordingWithSounds:(NSArray *)sounds;
++ (BOOL)stopRecordingWithSounds:(NSArray *)sounds;
 
-
+// Every time you call startRecording, Kamcord will delete
+// the previous video if it is not currently being shared.
+// If you want to erase the video before then, you can call
+// this method. If the video is currently being shared, it
+// it will be erased after the next share is complete.
+//
+// Please be careful with this call. If there are no pending shares,
+// the video WILL be erased. If, for instance, you call
+// [Kamcord presentVideoPlayerInViewController:] and
+// then [Kamcord deleteLatestVideo] while the video is
+// being shown, you may get EXC_BAD_ACCESS. 
+//
+// Returns YES if the latest video was deleted NOW.
+// Returns NO if the latest video will be deleted after
+// all sharing has been completed.
++ (BOOL)deleteLatestVideo;
 
 // Optional: Set the maximum video time in seconds. If the recorded video goes over that time,
 //           then only the last N seconds are taken.
