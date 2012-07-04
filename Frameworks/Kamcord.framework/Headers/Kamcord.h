@@ -78,6 +78,17 @@ typedef enum
 // --------------------------------------------------------
 // Callbacks for sharing
 
+// Updates on video conversion.
+// You should only try to show the video replay after
+// the merge is finished. When the conversion is finished,
+// the sound will have been added in.
+//
+// Don't worry about deferring on sharing until these are
+// called. Our internal system will wait until conversion
+// is finished before your share request is executed.
+- (void)videoMergeFinished;
+- (void)videoConversionFinished;
+
 // The following are only relevant for Option 1:
 // Auth requests
 - (void)facebookAuthFinishedWithSuccess:(BOOL)success;
@@ -238,6 +249,8 @@ typedef enum {
 // all the callbacks are done. This delegate is retained
 // until all the callbacks are complete, after which it
 // is released by Kamcord.
+//
+// When you release the object, you MUST set this delegate to nil.
 + (void)setShareDelegate:(id <KCShareDelegate>)delegate;
 + (id <KCShareDelegate>)shareDelegate;
 
