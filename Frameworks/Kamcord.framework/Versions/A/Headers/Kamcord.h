@@ -164,8 +164,11 @@ typedef enum
 + (NSString *)facebookCaption;
 + (NSString *)facebookDescription;
 
+// Achievements is an NSArray of KCAchievement objects
 + (void)setLevel:(NSString *)level
-           score:(NSNumber *)score;
+           score:(NSNumber *)score
+    achievements:(NSArray *)achievements;
+
 + (NSString *)level;
 + (NSNumber *)score;
 

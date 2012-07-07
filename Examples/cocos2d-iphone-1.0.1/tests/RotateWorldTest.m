@@ -208,11 +208,10 @@
 	[scene addChild: mainLayer];
 	
 	[scene runAction: [CCRotateBy actionWithDuration: 4 angle:-360]];
+    
+    [self performSelector:@selector(startRecording) withObject:nil afterDelay:2];
 	
     [director runWithScene: scene];
-    
-    // Give the layer time to resize for retina displays
-    [self performSelector:@selector(startRecording) withObject:nil afterDelay:0.5];
 }
 
 -(void) startRecording
