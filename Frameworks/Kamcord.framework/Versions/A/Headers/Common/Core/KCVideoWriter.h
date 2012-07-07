@@ -29,6 +29,8 @@
 - (BOOL) beginVideo:(KCVideo *)video;
 - (BOOL) endVideo;
 - (BOOL) startRecording;
+- (BOOL) pause;
+- (BOOL) resume;
 - (BOOL) stopRecording;
 
 // Useful to know if we're currently writing frames or not

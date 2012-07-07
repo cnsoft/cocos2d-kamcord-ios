@@ -53,7 +53,8 @@ typedef enum
     KC_VIDEO_STATUS_NONE,       // Just instantiated
 
     KC_VIDEO_BEGUN,             // beginVideo
-    KC_VIDEO_RECORDING,         // startRecording
+    KC_VIDEO_RECORDING,         // startRecording/resume
+    KC_VIDEO_PAUSED,            // pause
     KC_VIDEO_DONE_RECORDING,    // stopRecording
     KC_VIDEO_ENDED,             // endVideo
 

@@ -209,9 +209,39 @@
 	
 	[scene runAction: [CCRotateBy actionWithDuration: 4 angle:-360]];
     
+    // [self spawnTonsOfWork];
+    [Kamcord beginVideo];
+    
     [self performSelector:@selector(startRecording) withObject:nil afterDelay:2];
 	
     [director runWithScene: scene];
+}
+
+- (void)spawnTonsOfWork
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        for (int i = 0; i < 2000000; ++i) {
+            if (i % 1000 == 0) {
+                NSLog(@"A: %d", i);
+            }
+        }
+    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        for (int i = 0; i < 2000000; ++i) {
+            if (i % 1000 == 0) {
+                NSLog(@"B: %d", i);
+            }
+        }
+    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        for (int i = 0; i < 2000000; ++i) {
+            if (i % 1000 == 0) {
+                NSLog(@"C: %d", i);
+            }
+        }
+    });
 }
 
 -(void) startRecording

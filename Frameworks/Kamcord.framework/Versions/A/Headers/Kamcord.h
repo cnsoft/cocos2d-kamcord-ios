@@ -19,7 +19,7 @@
 #import "Common/Core/Audio/KCAudio.h"
 #import "Common/Core/Audio/KCSound.h"
 
-#define KAMCORD_VERSION "0.9.3"
+#define KAMCORD_VERSION "0.9.4"
 
 
 // --------------------------------------------------------
@@ -172,7 +172,17 @@ typedef enum
 + (NSString *)level;
 + (NSNumber *)score;
 
+////////////////////
 // Video recording
+//
+
+// Not necessary to call. However, if you want to avoid
+// the slight FPS drop when calling startRecording,
+// call this method earlier when there's very little
+// processing and a slight drop in FPS won't be noticed
+// (for example, on startup, or an end of level screen).
++ (BOOL)beginVideo;
+
 + (BOOL)startRecording;
 + (BOOL)stopRecording;
 + (BOOL)resume;
