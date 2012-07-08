@@ -128,6 +128,13 @@ typedef enum
 ////////////////////////////////////////////////
 // Public methods
 
+// Returns YES if and only if Kamcord is supported by 
+// this device's version of iOS.
+// Note: You do NOT need to wrap your Kamcord calls
+//       with this function. Kamcord will turn itself
+//       off if this is NO.
++ (BOOL)isEnabled;
+
 // Setup
 + (void) setDeveloperKey:(NSString *)key
          developerSecret:(NSString *)secret

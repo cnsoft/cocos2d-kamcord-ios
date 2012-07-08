@@ -229,6 +229,7 @@ Class restartAction()
     [sound2 release];
      */
     
+    [Kamcord pause];
 	[Kamcord stopRecording];
     [Kamcord showView];
 }

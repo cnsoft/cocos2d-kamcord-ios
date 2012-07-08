@@ -96,6 +96,9 @@ typedef enum
 - (void)resumeTasks;
 - (void)cancelAllActiveTasksAndPause;
 
+// Upload status
+- (BOOL)isUploadingInBackground;
+
 - (void)dealloc;
 
 + (NetworkStatus)getNetworkStatus;
