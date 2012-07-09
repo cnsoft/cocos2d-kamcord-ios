@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreMedia/CMTime.h>
 
+#import "KCVideoTracker.h"
 #import "DataStructures/NSMutableArray+QueueAdditions.h"
 
 @class GTMOAuth2Authentication;
@@ -47,36 +49,6 @@ alreadySharedWithEmail:(BOOL)alreadySharedWithEmail
 @class KCAudioCollection;
 
 @interface KCVideo : NSObject
-
-typedef enum
-{
-    KC_VIDEO_STATUS_NONE,       // Just instantiated
-
-    KC_VIDEO_BEGUN,             // beginVideo
-    KC_VIDEO_RECORDING,         // startRecording/resume
-    KC_VIDEO_PAUSED,            // pause
-    KC_VIDEO_DONE_RECORDING,    // stopRecording
-    KC_VIDEO_ENDED,             // endVideo
-
-    KC_VIDEO_QUEUED_FOR_MERGE,
-    KC_VIDEO_MERGING,
-    KC_VIDEO_DONE_MERGING,    
-
-    KC_VIDEO_QUEUED_FOR_CONVERSION,
-    KC_VIDEO_CONVERTING,
-    KC_VIDEO_DONE_CONVERTING,
-    
-    KC_VIDEO_REQUESTING_KAMCORD_URL,
-    KC_VIDEO_RECEIVED_KAMCORD_URL, 
-
-    KC_VIDEO_UPLOADING_TO_KAMCORD,
-    KC_VIDEO_DONE_UPLOADING_TO_KAMCORD,
-
-    KC_VIDEO_UPLOADING_TO_YOUTUBE,
-    KC_VIDEO_DONE_UPLOADING_TO_YOUTUBE,
-
-    KC_VIDEO_QUEUED_FOR_DELETION
-} KC_VIDEO_STATUS;
 
 typedef enum
 {
@@ -144,13 +116,17 @@ typedef enum
 @property (nonatomic, assign) BOOL markForDeletion;
 @property (nonatomic, assign) BOOL deleted;
 
+// The managed object context that we use to store video state.
+@property (nonatomic, assign) NSManagedObjectContext * managedObjectContext;
 
 // Public methods
 + (NSString *)videoStatusToString:(KC_VIDEO_STATUS)videoStatus;
 
 // Initializes a video with an ID
 - (id)initWithID:(NSString *)videoID
-kamcordDirectory:(NSURL *)kamcordDirectory;
+kamcordDirectory:(NSURL *)kamcordDirectory
+managedObjectContext:(NSManagedObjectContext *)managedObjectContext
+   maximumLength:(CMTime)maxLength;
 
 - (KC_VIDEO_STATUS)videoStatus;
 - (void)setVideoStatus:(KC_VIDEO_STATUS)videoStatus;
@@ -163,6 +139,8 @@ kamcordDirectory:(NSURL *)kamcordDirectory;
 - (BOOL)addNewVideoClip;
 
 - (void)stopAllSounds:(BOOL)loop;
+
+- (void)updateVideoTrackerSharing:(KCVideoShareInfo *)shareInfo;
 
 // Erases all video files associated with this video
 - (void)dealloc;

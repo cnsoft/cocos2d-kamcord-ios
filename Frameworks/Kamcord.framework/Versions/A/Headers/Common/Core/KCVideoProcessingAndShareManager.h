@@ -21,8 +21,10 @@
 // Handles when a video is merged or converted
 @protocol KCVideoProcessDelegate <NSObject>
 
-- (void) mergeFinished:(KCVideo *)video;
-- (void) conversionFinished:(KCVideo *)video;
+- (void) mergeFinished:(KCVideo *)video
+                 error:(NSError *)error;
+- (void) conversionFinished:(KCVideo *)video
+                      error:(NSError *)error;
 
 @end
 
@@ -74,8 +76,10 @@ typedef enum
 -(id) init;
 
 // Own custom video process callback
-- (void)mergeFinished:(KCVideoProcessingTask *)obj;
-- (void)conversionFinished:(KCVideoProcessingTask *)obj;
+- (void)mergeFinished:(KCVideoProcessingTask *)obj
+                error:(NSError *)error;
+- (void)conversionFinished:(KCVideoProcessingTask *)obj
+                     error:(NSError *)error;
 - (void)shareFinished:(KCVideoSharingTask *)task
                 error:(NSError *)error;
 

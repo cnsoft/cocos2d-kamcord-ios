@@ -58,7 +58,9 @@ typedef enum
     KAMCORD_SERVER_ERROR,
     
     NOTHING_TO_SHARE,
-    MESSAGE_TOO_LONG
+    MESSAGE_TOO_LONG,
+    
+    VIDEO_PROCESSING_ERROR,
 } KCShareStatus;
 
 
@@ -86,8 +88,10 @@ typedef enum
 // Don't worry about deferring on sharing until these are
 // called. Our internal system will wait until conversion
 // is finished before your share request is executed.
-- (void)videoMergeFinished;
-- (void)videoConversionFinished;
+//
+// 
+- (void)videoMergeFinishedWithSuccess:(BOOL)success error:(NSError *)error;
+- (void)videoConversionFinishedWithSuccess:(BOOL)success error:(NSError *)error;
 
 // The following are only relevant for Option 1:
 // Auth requests
@@ -148,6 +152,7 @@ typedef enum
 + (UIViewController *)parentViewController;
 
 + (void)setOpenGLView:(KCGLView *)glView;
++ (KCGLView *)openGLView;
 
 + (void)setDeviceOrientation:(KCDeviceOrientation)orientation;
 + (KCDeviceOrientation) deviceOrientation;
@@ -188,7 +193,8 @@ typedef enum
 // call this method earlier when there's very little
 // processing and a slight drop in FPS won't be noticed
 // (for example, on startup, or an end of level screen).
-+ (BOOL)beginVideo;
++ (BOOL)prepareNextVideo;     // Same as [Kamcord beginVideoAsync:NO];
++ (BOOL)prepareNextVideo:(BOOL)async;
 
 + (BOOL)startRecording;
 + (BOOL)stopRecording;

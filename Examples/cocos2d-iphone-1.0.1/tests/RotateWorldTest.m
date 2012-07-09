@@ -209,36 +209,38 @@
 	
 	[scene runAction: [CCRotateBy actionWithDuration: 4 angle:-360]];
     
-    // [self spawnTonsOfWork];
-    [Kamcord beginVideo];
+    [self spawnTonsOfWork];
+    [Kamcord prepareNextVideo];
     
-    [self performSelector:@selector(startRecording) withObject:nil afterDelay:2];
+    [self performSelector:@selector(startRecording) withObject:nil afterDelay:3];
 	
     [director runWithScene: scene];
 }
 
 - (void)spawnTonsOfWork
 {
+    int MAX = 30000000;
+    int benchmark = 500000;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        for (int i = 0; i < 2000000; ++i) {
-            if (i % 1000 == 0) {
+        for (int i = 0; i < MAX; ++i) {
+            if (i % benchmark == 0) {
                 NSLog(@"A: %d", i);
             }
         }
     });
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        for (int i = 0; i < 2000000; ++i) {
-            if (i % 1000 == 0) {
-                NSLog(@"B: %d", i);
+        for (int i = 0; i < MAX; ++i) {
+            if (i % benchmark == 0) {
+                NSLog(@"BB: %d", i);
             }
         }
     });
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        for (int i = 0; i < 2000000; ++i) {
-            if (i % 1000 == 0) {
-                NSLog(@"C: %d", i);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (int i = 0; i < MAX; ++i) {
+            if (i % benchmark == 0) {
+                NSLog(@"CCC: %d", i);
             }
         }
     });
@@ -246,8 +248,15 @@
 
 -(void) startRecording
 {
+    NSLog(@"Is main thread: %d", [NSThread isMainThread]);
     [Kamcord startRecording];
+    [self performSelector:@selector(prepareNextVideo) withObject:nil afterDelay:5.0];
     [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
+}
+
+- (void)prepareNextVideo
+{
+    [Kamcord prepareNextVideo:YES];
 }
 
 -(void) stopRecordingAndShowKamcordView:(id)sender
