@@ -209,7 +209,7 @@
 	
 	[scene runAction: [CCRotateBy actionWithDuration: 4 angle:-360]];
     
-    [self spawnTonsOfWork];
+    // [self spawnTonsOfWork];
     [Kamcord prepareNextVideo];
     
     [self performSelector:@selector(startRecording) withObject:nil afterDelay:3];
@@ -250,13 +250,7 @@
 {
     NSLog(@"Is main thread: %d", [NSThread isMainThread]);
     [Kamcord startRecording];
-    [self performSelector:@selector(prepareNextVideo) withObject:nil afterDelay:5.0];
     [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
-}
-
-- (void)prepareNextVideo
-{
-    [Kamcord prepareNextVideo:YES];
 }
 
 -(void) stopRecordingAndShowKamcordView:(id)sender

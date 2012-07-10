@@ -65,6 +65,7 @@ typedef enum
 // Video state variable
 @property KC_VIDEO_STATUS videoStatus;
 
+@property (nonatomic, readonly, assign) BOOL hasStopped;
 @property (nonatomic, readonly, assign) BOOL hasEnded;
 @property (nonatomic, readonly, assign) BOOL isMerged;
 @property (nonatomic, readonly, assign) BOOL isConverted;

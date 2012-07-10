@@ -27,7 +27,7 @@
                   atTime:(CFAbsoluteTime) time;
 
 - (BOOL) beginVideo:(KCVideo *)video;
-- (BOOL) endVideo;
+- (BOOL) endVideo:(BOOL)discard;
 - (BOOL) startRecording;
 - (BOOL) pause;
 - (BOOL) resume;

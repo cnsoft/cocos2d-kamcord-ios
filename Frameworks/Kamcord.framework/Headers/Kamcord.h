@@ -193,11 +193,11 @@ typedef enum
 // call this method earlier when there's very little
 // processing and a slight drop in FPS won't be noticed
 // (for example, on startup, or an end of level screen).
-+ (BOOL)prepareNextVideo;     // Same as [Kamcord beginVideoAsync:NO];
-+ (BOOL)prepareNextVideo:(BOOL)async;
++ (BOOL)prepareNextVideo;
 
 + (BOOL)startRecording;
 + (BOOL)stopRecording;
++ (BOOL)stopRecordingAndDiscardVideo; // Cannot call showView after this
 + (BOOL)resume;
 + (BOOL)pause;
 
