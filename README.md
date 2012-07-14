@@ -1,4 +1,4 @@
-# Kamcord 0.9.4
+# Kamcord 0.9.5
 
 ## Code
 
@@ -8,12 +8,11 @@ Please add yourself as a watcher since we frequently release new features and pa
 
 ## Introduction
 
-Kamcord is a built-in gameplay video and audio recording technology for iOS. This repository contains a Kamcord SDK that works with cocos2d-1.0.1 and allows you, the game developer, to capture gameplay videos with a very simple API.
-Your users can then replay and share these gameplay videos via YouTube, Facebook, Twitter, and email.
+Kamcord is a built-in gameplay video and audio recording technology for iOS. This repository contains a Kamcord SDK that works with cocos2d-1.0.1 and allows you, the game developer, to capture gameplay videos with a very simple API. Your users can then replay and share these gameplay videos via YouTube, Facebook, Twitter, and email.
 
 In order to use Kamcord, you need a developer key and developer secret. To get these, please sign up at <a target="_blank" href="http://kamcord.com/signup">http://kamcord.com/signup</a>.
 
-**Kamcord works on iOS 5+ and gracefully turns itself off on iOS 4**. You can still run without problems on versions of iOS before iOS 5, though you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
+**Kamcord works on iOS 5+ and gracefully turns itself off on iOS 3-4**. You can still run without problems on versions of iOS before iOS 5, though you will not be able to to record video. Kamcord works on the iPhone 3GS, iPhone 4, iPhone 4S, iPod Touch 3G and 4G, and all iPads.
 
 We will be making lots of improvements and adding many features over the next few months. We'd love to hear your feedback and thoughts. If you have any questions or comments, please don't hesitate to email or call Matt at <a href="mailto:matt@kamcord.com">matt@kamcord.com</a> (650.267.1051).
 
@@ -53,7 +52,7 @@ After 10 seconds, the Kamcord view should appear allowing you to replay a video 
 
 `RenderTextureTest` is different in that it allows you to start and stop recording by pressing the two corresponding buttons at the top right of the screen. When you press `Stop Recording`, you will again see the Kamcord view with options to replay and share. Later on in this documentation, we'll walk through all the code needed to add recording and replay functionalities to `RenderTextureTest`.
 
-There is no practical limit on how long you can record for. Everything gets written immediately to disk and old videos are always being erased, so the only real limitation is the device's hard drive size. Since modern iOS devices have 16+ GB of hard disk space, you can safely record one continuous gameplay video for over 24 hours straight, an upper limit your gamers will probably never run into.
+Video length is limited only by hard drive space, although post-recording processing takes up memory proportional to the length of the recorded video. In light of this, it's best to keep your recorded videos under 5 minutes. This also makes the video smaller so there is a higher chance of success when your users share videos online.
 
 ## Installation
 
@@ -62,9 +61,12 @@ Let's walk through how to get Kamcord into your games.
 ### Framework
 
 <ol>
-<li style="margin: 0";>From <code>Frameworks</code>, drag and drop <code>Kamcord.framework</code> and <code>AWSiOSSDK.framework</code> into your project.
+<li style="margin: 0";>From <code>Frameworks</code>, drag and drop either <code>armv7/Kamcord.framework</code> or <code>armv6+armv7/Kamcord.framework</code> and <code>AWSiOSSDK.framework</code> into your project.
 <p>
 <img src="https://dl.dropbox.com/u/6122/Kamcord/Kamcord%20Frameworks.png" />
+</p>
+<p>
+<img src="https://dl.dropbox.com/u/6122/Kamcord/Amazon%20Framework.png" />
 </p>
 </li>
 <li style="margin: 0";>Drag and drop the files under <code>Frameworks/Resources</code> to your project. For both this and the previous step, make sure to check the box next to the target application you want to link these frameworks and resources to (your game, presumably).
@@ -98,7 +100,7 @@ Let's walk through how to get Kamcord into your games.
     	<img src="http://dl.dropbox.com/u/6122/Kamcord/Frameworks.png" />
     </p>
     <p>
-    <b>To support iOS 4 deployment, set the frameworks inside the orange box to <code>Optional</code>. This will allow your app to run on devices with iOS 4 and ensures Kamcord functionality will gracefully silence itself on iOS 4 as if you had never installed Kamcord.</b>
+    <b>To support iOS 3 deployment, set the frameworks inside the orange box to <code>Optional</code>. This will allow your app to run on devices with iOS 3 and ensures Kamcord functionality will gracefully silence itself on iOS 3 as if you had never installed Kamcord.</b>
     </p>
 </li>
 <li style="margin: 0;">Add the following to <code>Build Settings</code> ==> <code>Other Linker Flags</code>:
@@ -204,7 +206,7 @@ You can set the resolution of the recorded video:
 
 There are two video resolution settings:
 
-- `SMART_VIDEO_RESOLUTION`: 512x384 on iPad 1 and 2, 1024x768 on iPad , and 480x320 on all iPhone/iPods.
+- `SMART_VIDEO_RESOLUTION`: 512x384 on iPad 1 and 2, 1024x768 on iPad 3, and 480x320 on all iPhone/iPods.
 - `TRAILER_VIDEO_RESOLUTION`: 1024x768 on all iPads, 480x320 on non-retina iPhone/iPods, and 960x480 on retina iPhone/iPods.
 
 `SMART_VIDEO_RESOLUTION` is the default setting and should be used when you deploy your game. As the name suggests, `TRAILER_VIDEO_RESOLUTION` is only intended for you to make trailers with. Releasing your game with `TRAILER_VIDEO_RESOLUTION` is **strongly** discouraged. It will eat up your user's data plan, CPU, game resources (FPS), battery and result in video uploads that are more than five times longer (and thus potentially more network failures).
@@ -241,7 +243,7 @@ The `RenderTextureTest` example below shows how to record sound.
 
 **Note that this audio track is only overlayed on the video once the video processing is finished.** We begin video processing in the background as soon as you call stopRecording, but the video you watch via the Replay Video button on the Kamcord UI may show the preprocessed video (without the audio overlay). Don't worry, the final video that is shared on Facebook/Twitter and uploaded to YouTube *will* have the sounds overlayed.
 
-We are currently working on adding the played sounds to the replayed video. In the future, we intend to wrap calls to `CocosDenshion` so that you don't have to worry about pairing sounds calls together.
+We are currently working on adding the played sounds to the replayed video.
 
 ### Presenting User Options
 
@@ -669,7 +671,7 @@ for which the corresponding finishd callback is:
 
 ### Option 2: Kamcord only uploads the video and returns a shareable video URL and you handle the Facebook/Twitter/YouTube authentication and sharing
 
-The API for case 2 is much simpler because you are responsible for all the sharing. Kamcord will only upload the video to Kamcord (and Youtube if requested), after which we will call back via the `KCShareDelegate` protocol to let you know the online URL of the video and thumbnail.
+The API for case 2 is much simpler because you are responsible for all the sharing. Kamcord will only upload the video to Kamcord (and YouTube if requested), after which we will call back via the `KCShareDelegate` protocol to let you know the online URL of the video and thumbnail.
 
 To ask Kamcord to upload the videos, call:
 
@@ -719,10 +721,6 @@ If you are testing Kamcord with XCode and press the `Stop` button too soon after
 This is a collision that results from `AWSiOSSDK.framework`. This framework is necessary in order for us to upload videos to our servers. Unfortunately, Amazon was careless and didn't rename the popular JSON library `SBJson` when they built their framework.
 
 To remove these collisions, for every file `SBJson*.o` that complains of duplicate symbols, simply remove the corresopnding `SBJson*.m` file.
-
-### armv6
-
-Kamcord only supports i386 and armv7. If you need an armv6 build for some reason, <a href="mailto:matt@kamcord.com" />shoot us an email</a>.
 
 ## Contact Us
 
