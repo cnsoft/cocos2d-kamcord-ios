@@ -11,10 +11,12 @@
 #import "KCViewController.h"
 #import "KC_BaseView.h"
 #import "KC_ShareMessageDelegate.h"
+#import "KCVideoProcessingAndShareManager.h"
 
-@interface MainView : KCViewController <KC_ShareMessageDelegate, KCShareDelegate>
 
-@property (retain, nonatomic) KC_BaseView *parent;
+@interface MainView : KCViewController <KC_ShareMessageDelegate, KCShareDelegate, KCMoviePlayerDelegate, KCVideoProcessDelegate, UINavigationControllerDelegate>
+
+@property (assign, nonatomic) KC_BaseView *parent;
 @property (assign, nonatomic) CGRect myFrame;
 
 - (id)initWithParent:(KC_BaseView *)parent frame:(CGRect)frame;

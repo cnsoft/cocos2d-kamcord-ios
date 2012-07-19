@@ -22,6 +22,7 @@
 @property (nonatomic, assign) KCVideo * video;
 @property (nonatomic, readonly, assign) CMTime startTime;
 @property (nonatomic, readonly, assign) CMTime endTime;
+@property (nonatomic, assign) CMTime adjustedEndTime; // Used when a video has a maximum length
 
 // Resource URL
 @property (nonatomic, retain) NSURL * url;

@@ -26,6 +26,8 @@
 - (void) conversionFinished:(KCVideo *)video
                       error:(NSError *)error;
 
+- (void)setConversionProgress:(float)progress;
+
 @end
 
 typedef enum
@@ -67,6 +69,9 @@ typedef enum
 @property (nonatomic, retain) id <KCShareDelegate> delegate;
 @property (nonatomic, retain) KCShareHandler * taskHandler;
 
+// Number of times we've tried to process this task
+@property (nonatomic, assign) int numAttempts;
+
 - (id) initWithVideo:(KCVideo *)video
                 info:(KCVideoShareInfo *)shareInfo
             delegate:(id <KCShareDelegate>)delegate;
@@ -105,6 +110,8 @@ typedef enum
 
 // Try to erase this video
 - (BOOL)safelyPerformTaskAndVideoCleanup:(KCVideo *)video;
+// Cancel conversion for this video
+- (BOOL)cancelConversionForVideo:(KCVideo *)video;
 
 // Resume and cancel task queues
 - (void)resumeTasks;

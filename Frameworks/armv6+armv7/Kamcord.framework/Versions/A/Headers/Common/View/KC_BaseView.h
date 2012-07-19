@@ -11,14 +11,14 @@
 #import "KCVideo.h"
 #import "KCVideoProcessingAndShareManager.h"
 
-@interface KC_BaseView : UINavigationController
+@interface KC_BaseView : UINavigationController <KCVideoProcessDelegate>
 
 - (id)initMainViewWithFrame:(CGRect)frame
-                     isDark:(BOOL)isDark;
+                     isDark:(BOOL)isDark
+                      video:(KCVideo *)video;
 
 @property (nonatomic, readonly) BOOL isDark;
 @property (nonatomic, readonly) CGRect frame;
 
 @property (nonatomic, retain) KCVideo * latestVideo;
-@property (nonatomic, retain) KCVideoProcessingAndShareManager * shareManager;
 @end

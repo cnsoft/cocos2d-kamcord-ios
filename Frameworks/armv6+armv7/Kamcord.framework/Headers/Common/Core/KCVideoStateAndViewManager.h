@@ -23,6 +23,11 @@
 // Audio background
 @property (nonatomic, retain) KCAudio * audioBackground;
 
+// Should the UI wait for conversion to finish before
+// dismissing the share view?
+@property (assign, nonatomic) BOOL enableSynchronousConversionUI;
+
+
 // Video properties
 @property (nonatomic, assign) CGSize        dimensions;
 @property (nonatomic, assign) NSUInteger    bitrate;
@@ -31,7 +36,7 @@
 - (id)init;
 
 - (void)showView;
-- (BOOL)safelyCleanupLatestVideo;
+- (BOOL)cancelConversionForLatestVideo;
 
 // Video
 - (BOOL)beginVideoForce:(BOOL)force;

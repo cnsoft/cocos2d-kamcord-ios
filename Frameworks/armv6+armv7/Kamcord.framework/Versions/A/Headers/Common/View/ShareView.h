@@ -11,10 +11,12 @@
 #import "KC_ShareMessageDelegate.h"
 #import "MainView.h"
 #import "HintTextView.h"
+#import "KCVideoProcessingAndShareManager.h"
 
-@interface ShareView : KCViewController <UITextViewDelegate, KCShareDelegate>
 
-@property (retain, nonatomic) KC_BaseView *parent;
+@interface ShareView : KCViewController <UITextViewDelegate, KCShareDelegate, KCVideoProcessDelegate>
+
+@property (assign, nonatomic) KC_BaseView *parent;
 @property (retain, nonatomic) HintTextView *textView; 
 
 - (id)initWithTitle:(NSString *)title
