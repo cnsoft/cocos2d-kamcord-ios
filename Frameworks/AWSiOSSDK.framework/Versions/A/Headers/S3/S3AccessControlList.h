@@ -38,7 +38,6 @@
  * will be able to access objects the user created unless permission is explicitly granted to
  * the bucket owner.
  *
- * \ingroup S3
  */
 @interface S3AccessControlList:NSObject {
     S3Owner        *owner;
@@ -61,5 +60,8 @@
 
 /** Returns the XML represenation of the ACL */
 -(NSString *)toXml;
+
+/** Returns x-amz header representation of the ACL */
+-(NSDictionary *)toHeaders;
 
 @end

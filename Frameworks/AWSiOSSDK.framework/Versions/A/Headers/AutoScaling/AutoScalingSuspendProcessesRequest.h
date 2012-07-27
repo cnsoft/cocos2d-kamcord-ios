@@ -20,8 +20,6 @@
 
 /**
  * Suspend Processes Request
- *
- * \ingroup AutoScaling
  */
 
 @interface AutoScalingSuspendProcessesRequest:AmazonServiceRequestConfig
@@ -53,7 +51,7 @@
  * The processes that you want to suspend or resume, which can include
  * one or more of the following: <ul> <li>Launch</li> <li>Terminate</li>
  * <li>HealthCheck</li> <li>ReplaceUnhealthy</li> <li>AZRebalance</li>
- * <li>AlarmNotifications</li> <li>ScheduledActions</li>
+ * <li>AlarmNotification</li> <li>ScheduledActions</li>
  * <li>AddToLoadBalancer</li> </ul> <p> To suspend all process types,
  * omit this parameter.
  */
