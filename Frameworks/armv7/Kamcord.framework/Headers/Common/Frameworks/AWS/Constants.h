@@ -30,7 +30,7 @@
 
 
 #define CREDENTIALS_ALERT_MESSAGE    @"Please update the Constants.h file with your credentials or Token Vending Machine URL."
-#define ACCESS_KEY_ID                @"USED_ONLY_FOR_TESTING"  // Leave this value as is.
+#define ACCESS_KEY_ID                @"USED_ONLY_FOR_TESTING"
 #define SECRET_KEY                   @"USED_ONLY_FOR_TESTING"  // Leave this value as is.
 
 

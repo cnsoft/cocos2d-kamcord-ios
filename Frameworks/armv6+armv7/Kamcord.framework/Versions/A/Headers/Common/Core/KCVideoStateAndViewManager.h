@@ -27,6 +27,9 @@
 // dismissing the share view?
 @property (assign, nonatomic) BOOL enableSynchronousConversionUI;
 
+// Show video controls when the replay is presented?
+@property (assign, nonatomic) BOOL showVideoControlsOnReplay;
+
 
 // Video properties
 @property (nonatomic, assign) CGSize        dimensions;
@@ -43,7 +46,7 @@
 - (BOOL)endVideo;
 
 - (BOOL)endVideoAndDiscardVideo;
-- (BOOL)endVideoWithSounds:(NSArray *)sounds;
+- (BOOL)endVideoAndAddSounds:(NSArray *)sounds;
 
 - (BOOL)startRecording;
 - (BOOL)stopRecording;
@@ -53,12 +56,10 @@
 // Sound
 - (KCAudio *)playAudioWithName:(NSString *)name
                      extension:(NSString *)extension
+                        volume:(float)volume
                           loop:(BOOL)loop;
 
 - (void)stopAllSounds:(BOOL)loop;
-
-// Uploading status
-- (BOOL)isUploadingInBackground;
 
 - (void)dealloc;
 

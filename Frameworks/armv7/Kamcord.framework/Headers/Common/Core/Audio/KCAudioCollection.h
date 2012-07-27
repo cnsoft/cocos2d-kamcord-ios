@@ -20,6 +20,7 @@
 // Add audio objects to the array
 - (KCAudio *)playAudioWithName:(NSString *)name
                      extension:(NSString *)extension
+                        volume:(float)volume
                           loop:(BOOL)loop
                       forVideo:(KCVideo *)video;
 

@@ -117,9 +117,6 @@ typedef enum
 - (void)resumeTasks;
 - (void)cancelAllActiveTasksAndPause;
 
-// Upload status
-- (BOOL)isUploadingInBackground;
-
 // Are there any active or pending tasks?
 // I don't care if it's a video converison, share, or pending share.
 - (BOOL)hasActiveOrPendingTasks;

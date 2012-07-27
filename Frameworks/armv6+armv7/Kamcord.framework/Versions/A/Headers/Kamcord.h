@@ -130,7 +130,7 @@ typedef enum
 
 
 
-// The following callback will be made for both Option 1 and Option 2:
+// The following callbacks will be made for both Option 1 and Option 2:
 
 // We call this after we've received a video URL from the Kamcord server.
 // The purpose of this call is to give you two pieces of information:
@@ -248,8 +248,9 @@ typedef enum
 // Not necessary to call. However, if you want to avoid
 // the slight FPS drop when calling startRecording,
 // call this method earlier when there's very little
-// processing and a slight drop in FPS won't be noticed
-// (for example, on startup, or an end of level screen).
+// processing and a slight drop in FPS won't be noticed.
+// Only need to call this ONCE on app startup to prime
+// the first video.
 + (BOOL)prepareNextVideo;
 
 + (BOOL)startRecording;
@@ -277,6 +278,13 @@ typedef enum
 + (BOOL)enableSynchronousConversionUI;
 
 
+// Show the video player controls when the replay is shown?
+// By default YES, since user studies have shown that users
+// don't understand what they're seeing is an actual video
+// as opposed to the round restarting again.
++ (void)setShowVideoControlsOnReplay:(BOOL)showControls;
++ (BOOL)showVideoControlsOnReplay;
+
 
 // Video recording settings
 // For release, use SMART_VIDEO_DIMENSIONS:
@@ -297,6 +305,7 @@ typedef enum {
 + (KC_VIDEO_RESOLUTION) videoResolution;
 
 // Audio recording
+// The volume is a float bewteen 0 (silence) and 1 (maximum)
 + (KCAudio *)playSound:(NSString *)filename
                   loop:(BOOL)loop;
 + (KCAudio *)playSound:(NSString *)filename;
@@ -307,7 +316,7 @@ typedef enum {
 
 // If you have specific sounds you want to overlay at particular times,
 // pass in an array populated with KCSound objects.
-+ (BOOL)stopRecordingWithSounds:(NSArray *)sounds;
++ (BOOL)stopRecordingAndAddSounds:(NSArray *)sounds;
 
 // Every time you call startRecording, Kamcord will delete
 // the previous video if it is not currently being shared.
@@ -322,7 +331,7 @@ typedef enum {
 // Please be careful with this call. If there are no pending shares,
 // the video WILL be erased. If, for instance, you call
 // [Kamcord presentVideoPlayerInViewController:] and
-// then [Kamcord deleteLatestVideo] while the video is
+// then [Kamcord cancelConversionForLatestVideo] while the video is
 // being shown, you may get EXC_BAD_ACCESS. 
 //
 // Returns YES if conversion for the latest video was cancelled.
@@ -332,11 +341,8 @@ typedef enum {
 // Optional: Set the maximum video time in seconds. If the recorded video goes over that time,
 //           then only the last N seconds are taken.
 //           To not have a maximum video time, set this value to 0 (the default).
-+ (void)setMaximumVideoTime:(NSUInteger)seconds;
-+ (NSUInteger)maximumVideoTime;
-
-// Returns YES if and only if a video is still uploading in the background.
-+ (BOOL)isUploadingInBackground;
++ (void)setMaximumVideoLength:(NSUInteger)seconds;
++ (NSUInteger)maximumVideoLength;
 
 
 // --------------------------------------------------------
@@ -396,7 +402,7 @@ typedef enum {
 // Returns YES if the share was accepted for processing.
 // Returns NO if there was a previous share that is still
 // in its early stages (specifically, before a generalError:
-// or shareshareStartedWithSuccess:error: callback).
+// or shareStartedWithSuccess:error: callback).
 + (BOOL)shareVideoOnFacebook:(BOOL)shareFacebook
                      Twitter:(BOOL)shareTwitter
                      YouTube:(BOOL)shareYouTube
@@ -432,7 +438,7 @@ typedef enum {
 //           Returns YES if the share was accepted for processing.
 //           Returns NO if there was a previous share that is still
 //           in its early stages (specifically, before a generalError:
-//           or shareshareStartedWithSuccess:error: callback).
+//           or shareStartedWithSuccess:error: callback).
 + (BOOL)shareVideoWithMessage:(NSString *)message
               withYouTubeAuth:(GTMOAuth2Authentication *)youTubeAuth
                          data:(NSDictionary *)data;

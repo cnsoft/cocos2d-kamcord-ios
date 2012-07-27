@@ -14,7 +14,7 @@
 #import "KCVideoProcessingAndShareManager.h"
 
 
-@interface ShareView : KCViewController <UITextViewDelegate, KCShareDelegate, KCVideoProcessDelegate>
+@interface ShareView : KCViewController <UITextViewDelegate, KCShareDelegate>
 
 @property (assign, nonatomic) KC_BaseView *parent;
 @property (retain, nonatomic) HintTextView *textView; 

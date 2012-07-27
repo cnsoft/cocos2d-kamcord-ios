@@ -682,6 +682,7 @@ Class restartAction()
     // [Kamcord playSound:@"background.wav" loop:YES];
     
     [Kamcord setVideoResolution:SMART_VIDEO_RESOLUTION];
+    [Kamcord setEnableSynchronousConversionUI:YES];
     
     // 2D projection
     //  [director setProjection:kCCDirectorProjection2D];

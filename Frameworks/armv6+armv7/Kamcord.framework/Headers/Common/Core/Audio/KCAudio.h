@@ -16,6 +16,7 @@
 // File name, extension, and loop
 @property (nonatomic, copy) NSString * name;
 @property (nonatomic, copy) NSString * extension;
+@property (nonatomic, assign) float volume;
 @property (nonatomic, assign) BOOL loop;
 
 // Start and end times
@@ -29,10 +30,12 @@
 
 - (id)initWithName:(NSString *)name
          extension:(NSString *)extension
+            volume:(float)volume
               loop:(BOOL) loop
           forVideo:(KCVideo *)video;
 
 - (id)initWithURL:(NSURL *)url
+           volume:(float)volume
         startTime:(CMTime)start
           endTime:(CMTime)end
          forVideo:(KCVideo *)video;

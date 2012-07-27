@@ -26,7 +26,7 @@
 @property (readonly, nonatomic, assign) BOOL shareOnYouTube;
 @property (readonly, nonatomic, assign) BOOL alreadySharedWithEmail;
 @property (readonly, nonatomic, assign) NSDictionary * data;
-@property (readonly, nonatomic, retain) GTMOAuth2Authentication * youTubeAuth;
+@property (readonly, nonatomic, assign) GTMOAuth2Authentication * youTubeAuth;
 
 - (id) initWithMessage:(NSString *)message
        shareOnFacebook:(BOOL)shareOnFacebook

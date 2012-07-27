@@ -12,6 +12,7 @@
 @interface KCSound : NSObject
 
 @property (nonatomic, copy) NSURL * url;
+@property (nonatomic, assign) float volume; // Not yet functional
 @property (nonatomic, assign) CMTime startTime;
 @property (nonatomic, assign) CMTime endTime;
 

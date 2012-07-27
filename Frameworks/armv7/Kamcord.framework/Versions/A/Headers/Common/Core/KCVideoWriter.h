@@ -22,10 +22,6 @@
                 targetFPS:(double) targetFPS;
 
 
-// Write a frame to the video
-- (BOOL) addFrameToVideo:(CVPixelBufferRef) pixelBuffer
-                  atTime:(CFAbsoluteTime) time;
-
 - (BOOL)beginVideo:(KCVideo *)video;
 - (BOOL)endVideo:(BOOL)discard;
 - (BOOL)startRecording;
