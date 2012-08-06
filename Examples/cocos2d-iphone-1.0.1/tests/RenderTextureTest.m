@@ -218,10 +218,10 @@ Class restartAction()
 -(void) stopRecordingAndShowDialog:(id)sender
 {
     /*
-    KCSound * sound1 = [[KCSound alloc] initWithSoundFileURL:[[NSBundle mainBundle] URLForResource:@"test8" withExtension:@"caf"]
+    KCSound * sound1 = [[KCSound alloc] initWithSoundFileURL:[[NSBundle mainBundle] URLForResource:@"test1" withExtension:@"caf"]
                                                    startTime:CMTimeMake(0, 1000)
                                                      endTime:CMTimeMake(1000, 1000)];
-    KCSound * sound2 = [[KCSound alloc] initWithSoundFileURL:[[NSBundle mainBundle] URLForResource:@"test3" withExtension:@"m4a"]
+    KCSound * sound2 = [[KCSound alloc] initWithSoundFileURL:[[NSBundle mainBundle] URLForResource:@"test2" withExtension:@"m4a"]
                                                    startTime:CMTimeMake(2000, 1000)
                                                      endTime:CMTimeMake(3000, 1000)];
     [Kamcord stopRecordingWithSounds:[NSArray arrayWithObjects: sound1, sound2, nil]];
@@ -239,12 +239,12 @@ Class restartAction()
 {
     if (!self.audioPlayer1)
     {
-        NSURL * url = [[NSBundle mainBundle] URLForResource:@"test8" withExtension:@"caf"];
+        NSURL * url = [[NSBundle mainBundle] URLForResource:@"test1" withExtension:@"caf"];
         self.audioPlayer1 = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     }
     
     if ([self.audioPlayer1 play]) {
-        self.sound1 = [Kamcord playSound:@"test8.caf"];
+        self.sound1 = [Kamcord playSound:@"test1.caf"];
     }
 }
 
@@ -252,12 +252,12 @@ Class restartAction()
 {
     if (!self.audioPlayer2)
     {
-        NSURL * url = [[NSBundle mainBundle] URLForResource:@"test3" withExtension:@"m4a"];
+        NSURL * url = [[NSBundle mainBundle] URLForResource:@"test2" withExtension:@"m4a"];
         self.audioPlayer2 = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     }
     
     if ([self.audioPlayer2 play]) {
-        self.sound2 = [Kamcord playSound:@"test3.m4a"];
+        self.sound2 = [Kamcord playSound:@"test2.m4a"];
     }
 }
 -(void) stopSound1:(id)sender
@@ -672,7 +672,7 @@ Class restartAction()
     // Social media settings
     [Kamcord setYouTubeTitle:@"RenderTextureTest"
                  description:@"This is a Cocos2D test app that was recorded with Kamcord."
-                    keywords:@"Cocos2D RenderTextureTest"];
+                        tags:@"Cocos2D RenderTextureTest"];
     
     [Kamcord setFacebookTitle:@"RenderTextureTest"
                       caption:@"Kamcord recording"

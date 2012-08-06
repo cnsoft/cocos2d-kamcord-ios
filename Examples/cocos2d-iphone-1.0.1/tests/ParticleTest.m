@@ -1486,7 +1486,7 @@ Class restartAction()
     // Social media settings
     [Kamcord setYouTubeTitle:@"ParticleTest"
                  description:@"This is a Cocos2D test app that was recorded with Kamcord."
-                    keywords:@"Cocos2D ParticleTest"];
+                        tags:@"Cocos2D ParticleTest"];
     
     [Kamcord setFacebookTitle:@"ParticleTest"
                       caption:@"Kamcord recording"

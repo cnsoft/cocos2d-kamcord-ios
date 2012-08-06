@@ -11,6 +11,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreMedia/CMTime.h>
 
+#import "Kamcord.h"
 #import "KCVideoTracker.h"
 #import "DataStructures/NSMutableArray+QueueAdditions.h"
 
@@ -25,6 +26,8 @@
 @property (readonly, nonatomic, assign) BOOL shareOnTwitter;
 @property (readonly, nonatomic, assign) BOOL shareOnYouTube;
 @property (readonly, nonatomic, assign) BOOL alreadySharedWithEmail;
+@property (readonly, nonatomic, assign) BOOL customUIShare;
+
 @property (readonly, nonatomic, assign) NSDictionary * data;
 @property (readonly, nonatomic, assign) GTMOAuth2Authentication * youTubeAuth;
 
@@ -33,6 +36,7 @@
         shareOnTwitter:(BOOL)shareOnTwitter
         shareOnYouTube:(BOOL)shareOnYouTube
 alreadySharedWithEmail:(BOOL)alreadySharedWithEmail
+         customUIShare:(BOOL)customUIShare
                   data:(NSDictionary *)data
            youTubeAuth:(GTMOAuth2Authentication *)auth;
 
@@ -42,6 +46,10 @@ alreadySharedWithEmail:(BOOL)alreadySharedWithEmail
 // End KCVideoSharingState
 //////////////////////////////////////////////////////
 
+ 
+
+// Used by KCVideo
+@class KCVideoSharingTask;
 
 
 //////////////////////////////////////////////////////
@@ -118,6 +126,15 @@ typedef enum
 @property (nonatomic, assign) BOOL deleted;
 @property (nonatomic, assign) BOOL markAsDoNotConvert;
 
+
+
+// List of sharing tasks
+@property (readonly, nonatomic, retain) NSMutableArray * pendingTasks;
+@property (readonly, nonatomic, retain) NSMutableArray * activeTasks;
+@property (readonly, nonatomic, retain) NSMutableArray * finishedTasks;
+
+
+
 // The managed object context that we use to store video state.
 @property (nonatomic, assign) NSManagedObjectContext * managedObjectContext;
 
@@ -140,9 +157,16 @@ managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 // local URL to that file path. Returns YES on success.
 - (BOOL)addNewVideoClip;
 
-- (void)stopAllSounds:(BOOL)loop;
+- (void)stopAllSounds:(KC_SOUND_TYPE)soundType;
 
 - (void)updateVideoTrackerSharing:(KCVideoShareInfo *)shareInfo;
+
+// API to track sharing task status
+- (void)addTask:(KCVideoSharingTask *)shareTask;
+- (void)taskStarted:(KCVideoSharingTask *)shareTask;
+- (void)taskFinished:(KCVideoSharingTask *)shareTask
+               error:(NSError *)error;
+
 
 // Erases all video files associated with this video
 - (void)dealloc;

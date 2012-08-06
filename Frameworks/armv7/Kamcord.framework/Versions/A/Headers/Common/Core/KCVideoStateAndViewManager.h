@@ -59,7 +59,7 @@
                         volume:(float)volume
                           loop:(BOOL)loop;
 
-- (void)stopAllSounds:(BOOL)loop;
+- (void)stopAllSounds:(KC_SOUND_TYPE)soundType;
 
 - (void)dealloc;
 

@@ -39,8 +39,8 @@
 }
 
 // Public properties
-@property (nonatomic, retain) NSString * developerKey;
-@property (nonatomic, retain) NSString * appName;
+@property (nonatomic, copy) NSString * developerKey;
+@property (nonatomic, copy) NSString * appName;
 @property (nonatomic, retain) id <KCYouTubeUploaderDelegate> delegate;
 // The auth object
 @property (nonatomic, retain) GTMOAuth2Authentication * auth;
@@ -67,5 +67,6 @@
 
 - (void) signOut;
 
+- (void)dealloc;
 
 @end

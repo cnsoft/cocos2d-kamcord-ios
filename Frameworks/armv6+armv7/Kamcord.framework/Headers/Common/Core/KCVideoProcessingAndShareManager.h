@@ -69,14 +69,27 @@ typedef enum
 @property (nonatomic, retain) id <KCShareDelegate> delegate;
 @property (nonatomic, retain) KCShareHandler * taskHandler;
 
+@property (nonatomic, assign, readonly) BOOL finished;
+
 // Number of times we've tried to process this task
 @property (nonatomic, assign) int numAttempts;
+
+// The error object for taskFinished (only valid once finished == YES
+@property (nonatomic, retain) NSError * error;
 
 - (id) initWithVideo:(KCVideo *)video
                 info:(KCVideoShareInfo *)shareInfo
             delegate:(id <KCShareDelegate>)delegate;
 
-- (void) dealloc;
+// Tell the task when it's started
+- (void)started;
+
+// Call this to tell the task that it's all done.
+// This will release all the objects except for
+// the share info.
+- (void)finished:(NSError *)error;
+
+- (void)dealloc;
 
 @end
 

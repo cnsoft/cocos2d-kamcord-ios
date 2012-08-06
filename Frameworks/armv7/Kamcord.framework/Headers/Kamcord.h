@@ -211,10 +211,10 @@ typedef enum
 // YouTube
 + (void) setYouTubeTitle:(NSString *)title
              description:(NSString *)description 
-                keywords:(NSString *)keywords;
+                tags:(NSString *)tags;
 + (NSString *)youtubeTitle;
 + (NSString *)youtubeDescription;
-+ (NSString *)youtubeKeywords;
++ (NSString *)youtubeTags;
 
 + (void) setDefaultYouTubeMessage:(NSString *)message;
 + (NSString *)defaultYouTubeMessage;
@@ -310,9 +310,14 @@ typedef enum {
                   loop:(BOOL)loop;
 + (KCAudio *)playSound:(NSString *)filename;
 
-// Will stop all non-looping sounds. If loop is YES, will also stop
-// all looping sounds.
-+ (void)stopAllSounds:(BOOL)loop;
+// Will stop all looping, non-looping, or looping and non-looping sounds.
+typedef enum
+{
+    NONLOOPING_SOUNDS,
+    LOOPING_SOUNDS,
+    ALL_SOUNDS
+} KC_SOUND_TYPE;
++ (void)stopAllSounds:(KC_SOUND_TYPE)soundType;
 
 // If you have specific sounds you want to overlay at particular times,
 // pass in an array populated with KCSound objects.
@@ -376,8 +381,8 @@ typedef enum {
 
 // Authenticate to the three social media services
 + (void)showFacebookLoginView;
-+ (void)authenticateTwitter; 
-+ (void)presentYouTubeLoginViewInViewController:(UIViewController *)parentViewController;
++ (void)showTwitterAuthentication; 
++ (void)showYouTubeLoginViewInViewController:(UIViewController *)parentViewController;
 
 // Status of authentication
 + (BOOL)facebookIsAuthenticated;

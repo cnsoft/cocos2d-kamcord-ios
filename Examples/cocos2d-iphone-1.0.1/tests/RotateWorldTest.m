@@ -178,7 +178,7 @@
     // Social media settings
     [Kamcord setYouTubeTitle:@"RotateWorldTest"
                  description:@"This is a Cocos2D test app that was recorded with Kamcord."
-                    keywords:@"Cocos2D RotateWorldTest"];
+                        tags:@"Cocos2D RotateWorldTest"];
     
     [Kamcord setFacebookTitle:@"RotateWorldTest"
                       caption:@"Kamcord recording"

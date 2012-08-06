@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreMedia/CMTime.h>
+
+#import "Kamcord.h"
 #import "KCAudio.h"
 
 @class KCVideo;
@@ -27,6 +29,6 @@
 // Update the times of the audio objects in the array
 - (void)startAllAndSetVideo:(KCVideo *)video;
 
-- (void)stopAllSounds:(BOOL)loop;
+- (void)stopAllSounds:(KC_SOUND_TYPE)soundType;
 
 @end
