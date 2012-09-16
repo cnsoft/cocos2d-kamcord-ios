@@ -257,7 +257,7 @@
 {
 	return [NSString stringWithFormat:@"<%@ = %08X | Tag = %i | target = %@ | selector = %@>",
 			[self class],
-			self,
+			(NSUInteger)self,
 			tag_,
 			[targetCallback_ class],
 			NSStringFromSelector(selector_)

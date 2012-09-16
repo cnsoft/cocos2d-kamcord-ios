@@ -318,7 +318,7 @@
 
 - (NSString*) description
 {
-	return [NSString stringWithFormat:@"<%@ = %08X | Tag = %i>", [self class], self, tag_];
+	return [NSString stringWithFormat:@"<%@ = %08X | Tag = %i>", [self class], (NSUInteger)self, tag_];
 }
 
 - (void) dealloc
