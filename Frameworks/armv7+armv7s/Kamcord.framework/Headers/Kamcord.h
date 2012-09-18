@@ -19,7 +19,7 @@
 #import "Common/Core/Audio/KCAudio.h"
 #import "Common/Core/Audio/KCSound.h"
 
-#define KAMCORD_VERSION "0.9.5"
+#define KAMCORD_VERSION "0.9.6"
 
 
 // --------------------------------------------------------
