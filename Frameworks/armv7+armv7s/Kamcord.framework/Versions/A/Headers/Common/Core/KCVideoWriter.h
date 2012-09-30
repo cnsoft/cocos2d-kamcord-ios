@@ -17,9 +17,10 @@
 @property (nonatomic, retain, readonly) KCVideo * currentVideo;
 
 // Only initializer
-- (id) initWithDimensions:(CGSize) dimensions
-             videoBitRate:(NSUInteger) bitRate
-                targetFPS:(double) targetFPS;
+- (id) initWithDimensions:(CGSize)dimensions
+             videoBitRate:(NSUInteger)bitRate
+                targetFPS:(double)targetFPS
+        videoWritingQueue:(dispatch_queue_t)queue;
 
 
 - (BOOL)beginVideo:(KCVideo *)video;
@@ -33,8 +34,7 @@
 #if KCUNITY
 - (void)setAudioFormatDescription:(CMFormatDescriptionRef)desc;
 - (void)writeAudioData:(float [])data
-           numChannels:(int)numChannels
-             audioTime:(CFAbsoluteTime)audioTimestamp;
+           numChannels:(int)numChannels;
 #endif
 
 // Useful to know if we're currently writing frames or not

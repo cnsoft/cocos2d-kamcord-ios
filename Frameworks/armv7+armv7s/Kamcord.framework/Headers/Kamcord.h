@@ -19,7 +19,7 @@
 #import "Common/Core/Audio/KCAudio.h"
 #import "Common/Core/Audio/KCSound.h"
 
-#define KAMCORD_VERSION "0.9.6"
+#define KAMCORD_VERSION "0.9.7"
 
 
 // --------------------------------------------------------
@@ -307,8 +307,14 @@ typedef enum
 // This can be turned on for games that experience a performance
 // hit if the video processing is happening in the background
 // while the user is playing the next round or level.
-+ (void)setEnableSynchronousConversionUI:(BOOL)on;
+//
+// The second arguments determines whether or not the video processing
+// progress bar is always visible (set to YES), or only visible
+// when the user presses a button to share (defaults to this setting, which is NO).
++ (void)setEnableSynchronousConversionUI:(BOOL)on
+                   alwaysShowProgressBar:(BOOL)alwaysShow;
 + (BOOL)enableSynchronousConversionUI;
++ (BOOL)alwaysShowProgressBar;
 
 
 // Show the video player controls when the replay is shown?
@@ -342,6 +348,9 @@ typedef enum {
 + (KCAudio *)playSound:(NSString *)filename
                   loop:(BOOL)loop;
 + (KCAudio *)playSound:(NSString *)filename;
++ (KCAudio *)playSoundAtURL:(NSURL *)fileURL
+                       loop:(BOOL)loop;
++ (KCAudio *)playSoundAtURL:(NSURL *)fileURL;
 
 // Will stop all looping, non-looping, or looping and non-looping sounds.
 typedef enum
