@@ -19,7 +19,7 @@
 #import "Common/Core/Audio/KCAudio.h"
 #import "Common/Core/Audio/KCSound.h"
 
-#define KAMCORD_VERSION "0.9.6"
+#define KAMCORD_VERSION "0.9.7"
 
 
 // --------------------------------------------------------
@@ -308,7 +308,7 @@ typedef enum
 // hit if the video processing is happening in the background
 // while the user is playing the next round or level.
 //
-// The second arguments determines whether or not the video processing
+// The second argument determines whether or not the video processing
 // progress bar is always visible (set to YES), or only visible
 // when the user presses a button to share (defaults to this setting, which is NO).
 + (void)setEnableSynchronousConversionUI:(BOOL)on
