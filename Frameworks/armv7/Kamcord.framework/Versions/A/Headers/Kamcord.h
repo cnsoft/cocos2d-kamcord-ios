@@ -19,7 +19,7 @@
 #import "Common/Core/Audio/KCAudio.h"
 #import "Common/Core/Audio/KCSound.h"
 
-#define KAMCORD_VERSION "0.9.5"
+#define KAMCORD_VERSION "0.9.7"
 
 
 // --------------------------------------------------------
@@ -207,6 +207,9 @@ typedef enum
 + (void)setSupportPortraitAndPortraitUpsideDown:(BOOL)value;
 + (BOOL)supportPortraitAndPortraitUpsideDown;
 
++ (void)setUseUIKitAutorotation:(BOOL)yes;
++ (BOOL)useUIKitAutorotation;
+
 // Social media
 // YouTube
 + (void) setYouTubeTitle:(NSString *)title
@@ -234,6 +237,12 @@ typedef enum
 + (void)setDefaultTweet:(NSString *)tweet;
 + (NSString *)defaultTweet;
 
+// Email
++ (void)setDefaultEmailSubject:(NSString *)subject
+                          body:(NSString *)body;
++ (NSString *)defaultEmailSubject;
++ (NSString *)defaultEmailBody;
+
 // Used to keep track of settings per video
 + (void)setLevel:(NSString *)level
            score:(NSNumber *)score;
@@ -259,6 +268,30 @@ typedef enum
 + (BOOL)pause;
 + (BOOL)resume;
 
+////////////////////
+// Creating Highlight Reels
+//
+// If you call [Kamcord markNow] one or more times during the course
+// of a recording, Kamcord will stitch those marked times into one 
+// "highlight" reel that contains some specified time before and
+// after each marked time. For instance, if you set both the pre and post
+// time windows to 5s and then call [Kamcord markNow] 15s and 35s into
+// the video (which is say 60s long), then we will make one video
+// which shows times: [10s, 20s] and [30s, 40s] with a fade
+// effect in between those two times.
+//
+// If times ovelap such as if you called [Kamcord markNow] at 10s and 11s,
+// then we're smart and clip the video from [5s, 16s] ([10s-5s, 11s+5s]).
+
+/*
++ (void)setPreMarkTimeWindow:(CMTime)timeBefore
+          postMarkTimeWindow:(CMTime)timeAfter;
++ (CMTime)preMarkTimeWindow;
++ (CMTime)postMarkTimeWindow;
+
++ (void)markNow;
+ */
+
 
 ////////////////////
 // Kamcord UI
@@ -274,8 +307,14 @@ typedef enum
 // This can be turned on for games that experience a performance
 // hit if the video processing is happening in the background
 // while the user is playing the next round or level.
-+ (void)setEnableSynchronousConversionUI:(BOOL)on;
+//
+// The second arguments determines whether or not the video processing
+// progress bar is always visible (set to YES), or only visible
+// when the user presses a button to share (defaults to this setting, which is NO).
++ (void)setEnableSynchronousConversionUI:(BOOL)on
+                   alwaysShowProgressBar:(BOOL)alwaysShow;
 + (BOOL)enableSynchronousConversionUI;
++ (BOOL)alwaysShowProgressBar;
 
 
 // Show the video player controls when the replay is shown?
@@ -309,6 +348,9 @@ typedef enum {
 + (KCAudio *)playSound:(NSString *)filename
                   loop:(BOOL)loop;
 + (KCAudio *)playSound:(NSString *)filename;
++ (KCAudio *)playSoundAtURL:(NSURL *)fileURL
+                       loop:(BOOL)loop;
++ (KCAudio *)playSoundAtURL:(NSURL *)fileURL;
 
 // Will stop all looping, non-looping, or looping and non-looping sounds.
 typedef enum
