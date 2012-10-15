@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import <CoreData/CoreData.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreMedia/CMTime.h>
@@ -66,6 +67,7 @@ alreadySharedWithEmail:(BOOL)alreadySharedWithEmail
 
 - (void)finished:(KCVideoSharingTask *)task
            error:(NSError *)error;
+- (NSString *)getSharedOnStr;
 - (void)dealloc;
 
 @end
@@ -89,7 +91,8 @@ typedef enum
     KC_OS_PRE_5_0, // 3.x and 4.x
     KC_OS_5_0_0,   // 5.0.0
     KC_OS_5_0_1,   // 5.0.1
-    KC_OS_POST_5_1 // 5.1 and later
+    KC_OS_5_1,     // 5.1 and 5.1.1
+    KC_OS_POST_6_0 // 6.0 and later
 } KC_OS_VERSION;
 
 // The unique video ID
@@ -131,7 +134,7 @@ typedef enum
 @property (nonatomic, retain) NSURL * convertedVideoLocalURL;
 
 @property (nonatomic, retain) CGImageRef thumbnail __attribute__((NSObject));
-@property (nonatomic, retain) CGImageRef mergeThumbnail __attribute__((NSObject));
+
 // Online URLs and IDs
 @property (nonatomic, copy) NSString * onlineVideoID;
 @property (nonatomic, copy) NSString * onlineThumbnailID;
@@ -197,6 +200,11 @@ managedObjectContext:(NSManagedObjectContext *)managedObjectContext
 - (void)stopAllSounds:(KC_SOUND_TYPE)soundType;
 
 - (void)updateVideoTrackerSharing:(KCVideoShareRequest *)shareRequest;
+
+// Extracts the thumbnail from the video asset and saves it
+// as the thumbnail for this video. If a thumbnail already exists,
+// it just returns that one.
+- (CGImageRef)extractThumbnailFromAsset:(AVURLAsset *)asset;
 
 // API to track sharing task status
 - (void)addTask:(KCVideoSharingTask *)shareTask;

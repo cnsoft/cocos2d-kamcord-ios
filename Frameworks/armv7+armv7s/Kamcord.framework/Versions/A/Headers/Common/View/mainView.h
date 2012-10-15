@@ -14,7 +14,7 @@
 #import "KCVideoProcessingAndShareManager.h"
 
 
-@interface MainView : KCViewController <KC_ShareMessageDelegate, KCShareDelegate, KCMoviePlayerDelegate, KCVideoProcessDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
+@interface MainView : KCViewController <KC_ShareMessageDelegate, KCShareDelegate, KCVideoDelegate, KCVideoProcessDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 
 @property (assign, nonatomic) KC_BaseView *parent;
 @property (assign, nonatomic) CGRect myFrame;

@@ -44,6 +44,9 @@
 @property (nonatomic, assign) NSUInteger    bitrate;
 @property (nonatomic, assign) float         targetFPS;
 
++ (KC_OS_VERSION)getDeviceOSVersion;
++ (NSString *)deviceOSVersionToString:(KC_OS_VERSION)osVersion;
+
 - (id)init;
 
 - (void)showView;

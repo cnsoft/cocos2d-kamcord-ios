@@ -126,7 +126,7 @@
  @endcode
  
  */
-@interface NSObject (SBProxyForJson)
+@interface NSObject (AWSSBProxyForJson)
 - (id)proxyForJson;
 @end
 

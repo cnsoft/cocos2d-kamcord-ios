@@ -77,7 +77,7 @@
 
 #import "AWSSBJsonParser.h"
 #import "AWSSBJsonWriter.h"
-#import "SBJsonStreamParser.h"
-#import "SBJsonStreamParserAdapter.h"
-#import "SBJsonStreamWriter.h"
+#import "AWSSBJsonStreamParser.h"
+#import "AWSSBJsonStreamParserAdapter.h"
+#import "AWSSBJsonStreamWriter.h"
 

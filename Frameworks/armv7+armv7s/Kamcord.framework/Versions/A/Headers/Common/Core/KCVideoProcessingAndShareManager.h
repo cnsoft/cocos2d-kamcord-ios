@@ -10,7 +10,6 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
-#import "Kamcord.h"
 #import "KCVideo.h"
 #import "Reachability.h"
 

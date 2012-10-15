@@ -17,6 +17,7 @@
 @class KCVideoSharingTask;
 @class KCVideoProcessingAndShareManager;
 
+
 @interface KCShareHandler : NSObject <KCSHKSharerDelegate, AmazonServiceRequestDelegate, NSURLConnectionDelegate, KCYouTubeUploaderDelegate>
 
 // Weak reference b/c the task retains this object, so don't
