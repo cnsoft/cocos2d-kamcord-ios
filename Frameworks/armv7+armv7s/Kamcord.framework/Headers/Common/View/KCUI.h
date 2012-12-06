@@ -21,12 +21,11 @@
 
 
 // The share delegate
-@property (assign, nonatomic) id <KCShareDelegate> delegate;
+@property (assign, nonatomic) id <KamcordDelegate> delegate;
+@property (assign, nonatomic) id <KCShareDelegate> shareDelegate;
 
-@property (assign, nonatomic) id <KCVideoDelegate> videoPlayerDelegate;
 @property (retain, nonatomic) KCVideoProcessingAndShareManager * shareManager; 
 @property (assign, nonatomic) KCVideo * latestVideo;
-@property (assign, nonatomic) UIViewController * parentViewController;
 
 // Replay
 - (void)presentVideoPlayerInViewController:(UIViewController *)parentViewController;
@@ -50,8 +49,10 @@
 // Sharing
 - (BOOL)shareVideoOnFacebook:(BOOL)shareFacebook 
                      Twitter:(BOOL)shareTwitter 
-                     YouTube:(BOOL)shareYoutube 
+                     YouTube:(BOOL)shareYoutube
+                       Email:(BOOL)shareEmail
                  withMessage:(NSString *)message
+        parentViewController:(UIViewController *)parentViewController
                     delegate:(id <KCShareDelegate>)delegate;
 
 - (BOOL)presentComposeEmailViewInViewController:(UIViewController *)parentViewController

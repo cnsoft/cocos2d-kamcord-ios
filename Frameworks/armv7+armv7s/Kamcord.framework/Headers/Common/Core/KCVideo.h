@@ -51,7 +51,8 @@ typedef enum
 
 @property (readonly, nonatomic, retain) NSDictionary * data;
 @property (readonly, nonatomic, retain) GTMOAuth2Authentication * youTubeAuth;
-@property (readonly, nonatomic, retain) id <KCShareDelegate> delegate;
+@property (readonly, nonatomic, retain) id <KCShareDelegate> shareDelegate;
+@property (readonly, nonatomic, retain) id <KamcordDelegate> delegate;
 
 - (id)    initForVideo:(KCVideo *)video
                message:(NSString *)message
@@ -63,7 +64,8 @@ alreadySharedWithEmail:(BOOL)alreadySharedWithEmail
          customUIShare:(BOOL)customUIShare
                   data:(NSDictionary *)data
            youTubeAuth:(GTMOAuth2Authentication *)auth
-              delegate:(id <KCShareDelegate>)delegate;
+         shareDelegate:(id <KCShareDelegate>)shareDelegate
+              delegate:(id <KamcordDelegate>)delegate;
 
 - (void)finished:(KCVideoSharingTask *)task
            error:(NSError *)error;

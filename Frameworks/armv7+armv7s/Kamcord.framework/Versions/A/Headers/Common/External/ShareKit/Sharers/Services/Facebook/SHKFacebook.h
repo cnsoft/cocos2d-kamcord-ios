@@ -33,7 +33,7 @@
 
 @protocol KCLoginDismissedDelegate <NSObject>
         
--(void) loginDismissed;
+- (void)loginDismissed;
 
 @end
 
@@ -49,6 +49,6 @@
 
 + (void)logout;
 
-+ (void) setDismissalDelegate:(id <KCLoginDismissedDelegate>) delegate;
++ (void)setDismissalDelegate:(id <KCLoginDismissedDelegate>) delegate;
 
 @end
