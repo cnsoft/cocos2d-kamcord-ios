@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) KCVideo * latestVideo;
 
-- (id)initWithVideo:(KCVideo *)video;
+- (id)initWithVideo:(KCVideo *)video
+         useOldView:(BOOL)oldView;
 
 @end

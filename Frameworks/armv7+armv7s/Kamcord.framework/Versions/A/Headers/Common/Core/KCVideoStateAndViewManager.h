@@ -49,7 +49,11 @@
 
 - (id)init;
 
-- (void)showView;
+- (void)showViewInViewController:(UIViewController *)parentViewController
+                      useOldView:(BOOL)oldView;
+- (UIView *) getThumbnailView:(NSUInteger)width
+         parentViewController:(UIViewController *)parentViewController;
+
 - (BOOL)cancelConversionForLatestVideo;
 
 // Video
