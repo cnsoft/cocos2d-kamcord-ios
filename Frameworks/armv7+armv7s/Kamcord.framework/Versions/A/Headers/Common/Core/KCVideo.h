@@ -23,17 +23,23 @@
 @interface KCVideoUploadStatus : NSObject
 
 @property (nonatomic, assign) int uploadPartSizeInBytes;
-@property (nonatomic, assign) int currentUploadPartNumber;
-@property (nonatomic, assign) short currentUploadPartAttempt;
+@property (nonatomic, assign) int lastUploadPartNumber;
 @property (nonatomic, assign) int totalUploadParts;
+@property (nonatomic, retain) NSString * s3VideoId;
+@property (nonatomic, retain) NSString * s3BucketName;
+@property (nonatomic, retain) NSString * s3UploadId;
+@property (nonatomic, retain) NSString * s3Etags;
 @property (nonatomic, assign) short youtubeUploadAttempt;
 @property (nonatomic, assign) short kamcordUploadAttempt;
 @property (nonatomic, assign) short uploadCompleted;
 
 - (id)     initForUpload:(int)uploadPartSizeInBytes
- currentUploadPartNumber:(int)currentUploadPartNumber
-currentUploadPartAttempt:(short)currentUploadPartAttempt
+    lastUploadPartNumber:(int)lastUploadPartNumber
         totalUploadParts:(int)totalUploadParts
+               s3VideoId:(NSString *)s3VideoId
+            s3BucketName:(NSString *)s3BucketName
+              s3UploadId:(NSString *)s3UploadId
+                 s3Etags:(NSString *)s3Etags
     youtubeUploadAttempt:(short)youtubeUploadAttempt
     kamcordUploadAttempt:(short)kamcordUploadAttempt
          uploadCompleted:(BOOL)uploadCompleted;
@@ -240,7 +246,12 @@ persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordi
 - (KC_VIDEO_STATUS)videoStatus;
 - (void)setVideoStatus:(KC_VIDEO_STATUS)videoStatus;
 
-- (void)updateVideoTrackerUploadStatus:(KCVideoUploadStatus *)uploadStatus;
+- (void)updateVideoTrackerUploadStatus:(KCVideoUploadStatus *)uploadStatus
+                                  eTag:(NSString *)eTag;
+
+- (KCVideoUploadStatus *)getUploadStatus:(int)numberOfParts
+                              numAttempt:(int)numAttempt
+                          uploadPartSize:(int)uploadPartSize;
 
 // Returns the URL of the current video being recorded
 - (NSURL *)currentVideoClipLocalURL;

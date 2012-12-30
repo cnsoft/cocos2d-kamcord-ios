@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import <MessageUI/MessageUI.h>
 
+#import "Common/Core/KamcordProtocols.h"
 #import "CCDirectorIOS.h"
 #import "KCGLView.h"
 
@@ -22,187 +21,7 @@
 
 #import "Common/Core/KCAnalytics.h"
 
-FOUNDATION_EXPORT NSString *const KamcordVersion;
-
-
-// --------------------------------------------------------
-// The following enum and protocol are only relevant
-// if you're implementing your own custom UI.
-// If you're using the default Kamcord UI, please
-// ignore the following as it is irrelevant for you.
-
-@class GTMOAuth2Authentication;
-
-// --------------------------------------------------------
-// API elements for custom sharing UI.
-// Will be documented soon as we roll out complete
-// support for custom UIs.
-typedef enum
-{
-    NO_ERROR,
-    FACEBOOK_NOT_AUTHENTICATED,
-    FACEBOOK_LOGIN_CANCELLED,
-    FACEBOOK_DAILY_SHARE_EXCEEDED,
-    FACEBOOK_SERVER_ERROR,
-    
-    TWITTER_NOT_SETUP,
-    TWITTER_NOT_AUTHENTICATED,
-    TWITTER_NO_ACCOUNTS,
-    TWITTER_SERVER_ERROR,
-    
-    YOUTUBE_NOT_AUTHENTICATED,
-    YOUTUBE_LOGIN_CANCELLED,
-    YOUTUBE_SERVER_ERROR,
-    
-    EMAIL_NOT_SETUP,
-    EMAIL_CANCELLED,
-    EMAIL_FAILED,
-    NO_INTERNET,
-    
-    KAMCORD_SERVER_ERROR,
-    KAMCORD_S3_ERROR,
-    
-    NOTHING_TO_SHARE,
-    MESSAGE_TOO_LONG,
-    
-    VIDEO_PROCESSING_ERROR,
-} KCShareStatus;
-
-typedef enum
-{
-    SUCCESS,
-    NO_ACCOUNT,
-    ACCESS_NOT_GRANTED,
-} KCTwitterAuthStatus;
-
-// --------------------------------------------------------
-// Callbacks for sharing
-@protocol KCShareDelegate <NSObject>
-
-@required
-// Only after this callback (or a generalError below) is it safe
-// make a new share request.
-- (void)shareStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
-
-// Errors that happen along the way
-- (void)generalError:(KCShareStatus)error;
-
-
-
-@optional
-
-// Updates on video conversion.
-// You should only try to show the video replay after
-// the merge is finished. When the conversion is finished,
-// the sound will have been added in.
-//
-// Don't worry about deferring on sharing until these are
-// called. Our internal system will wait until conversion
-// is finished before your share request is executed.
-//
-// 
-- (void)videoMergeFinishedWithSuccess:(BOOL)success error:(NSError *)error;
-- (void)videoConversionFinishedWithSuccess:(BOOL)success error:(NSError *)error;
-
-// The following are only relevant for Option 1:
-// Auth requests
-- (void)facebookAuthFinishedWithSuccess:(BOOL)success;
-- (void)twitterAuthFinishedWithSuccess:(BOOL)success status:(KCTwitterAuthStatus)status;
-- (void)youTubeAuthFinishedWithSuccess:(BOOL)success;
-
-// Beginning of share process
-// First: auth verification
-- (void)facebookShareStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
-- (void)twitterShareStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
-- (void)youTubeUploadStartedWithSuccess:(BOOL)success error:(KCShareStatus)error;
-- (void)emailSentWithSuccess:(BOOL)success error:(KCShareStatus)error;
-//
-// End of share process
-- (void)facebookShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
-- (void)twitterShareFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
-- (void)youTubeUploadFinishedWithSuccess:(BOOL)success error:(KCShareStatus)error;
-
-- (void)shareCancelled;
-
-//
-// Retrying failed uploads/shares
-//
-
-// Indicate that we are queueing a failed share for retrying later
-- (void)queueingFailedShareForFutureRetry;
-
-// Indicate that we are retrying failed uploads/shares
-- (void)retryingPreviouslyFailedShares:(NSUInteger)numShares;
-
-// Indicate that we have given up on retrying a failed share
-- (void)stoppingRetryForFailedShare;
-
-
-
-// The following callbacks will be made for both Option 1 and Option 2:
-
-// We call this after we've received a video URL from the Kamcord server.
-// The purpose of this call is to give you two pieces of information:
-//
-//   1. The URL the video will be at once the upload finishes
-//   2. The URL the video thumbnail will be at once the upload finishes
-//
-// We also pass in the data dictionary you passed in with the share request,
-// along with any possible error messages.
-- (void)videoWillBeginUploading:(NSURL *)onlineVideoURL
-                      thumbnail:(NSURL *)onlineThumbnailURL
-                           data:(NSDictionary *)data
-                          error:(NSError *)error;
-
-
-// If the error object is nil, then the video and thumbnail
-// URLs are valid. Otherwise, the video and thumbnail URLs
-// should not be considered valid, even if they are non-nil.
-// The data is the original object that was passed in with the share request.
-- (void)videoIsReadyToShare:(NSURL *)onlineVideoURL
-                  thumbnail:(NSURL *)onlineThumbnailURL
-                    message:(NSString *)message
-                       data:(NSDictionary *)data
-                      error:(NSError *)error;
-@end
-
-
-
-// --------------------------------------------------------
-// Callbacks for video playback
-// 
-@protocol KamcordDelegate <NSObject>
-
-@optional
-
-// Called when the Kamcord main view is dismissed
-- (void)mainViewDidDisappear;
-
-// Called when the Kamcord share view is dismissed
-- (void)shareViewDidDisappear;
-
-// Called when the movie player is presented
-- (void)moviePlayerDidAppear;
-
-// Called when the movie player is dismissed
-- (void)moviePlayerDidDisappear;
-
-// Called when a thumbnail image for the video is ready
-- (void)thumbnailReady:(CGImageRef)thumbnail;
-
-#if KCUNITY
-// Called when the thumbnail image for the video is ready
-- (void)thumbnailReadyAtFilePath:(NSString *)thumbnailFilePath;
-#endif
-
-// Called when the video has started to upload
-- (void)videoWillUploadToURL:(NSString *)kamcordURLString;
-
-// Called when the video has finished uploading
-- (void)videoFinishedUploadingWithSuccess:(BOOL)success;
-
-@end
-
+FOUNDATION_EXPORT NSString * const KamcordVersion;
 
 @interface Kamcord : NSObject
 
@@ -241,19 +60,16 @@ typedef enum
 + (void)setUseUIKitAutorotation:(BOOL)yes;
 + (BOOL)useUIKitAutorotation;
 
-// Social media
-// YouTube
+// Social media default messages.
 + (void) setYouTubeTitle:(NSString *)title
-             description:(NSString *)description 
-                tags:(NSString *)tags;
+             description:(NSString *)description
+                    tags:(NSString *)tags;
++ (void)setYouTubeVideoCategory:(NSString *)category;
 + (NSString *)youtubeTitle;
 + (NSString *)youtubeDescription;
 + (NSString *)youtubeTags;
++ (NSString *)youtubeCategory;
 
-+ (void) setDefaultYouTubeMessage:(NSString *)message;
-+ (NSString *)defaultYouTubeMessage;
-
-// Facebook
 + (void) setFacebookTitle:(NSString *)title
                   caption:(NSString *)caption
               description:(NSString *)description;
@@ -261,18 +77,29 @@ typedef enum
 + (NSString *)facebookCaption;
 + (NSString *)facebookDescription;
 
-+ (void) setDefaultFacebookMessage:(NSString *)message;
++ (void)setDefaultEmailSubject:(NSString *)subject;
++ (NSString *)defaultEmailSubject;
+
+// The default message to show in the share box regardless of network shared to.
++ (void)setDefaultMessage:(NSString *)message;
++ (NSString *)defaultMessage;
+
+
+// Start of depcrecated social media default messages.
+// These only work when using showViewDepcrecated.
++ (void)setDefaultYouTubeMessage:(NSString *)message;
++ (NSString *)defaultYouTubeMessage;
+
++ (void)setDefaultFacebookMessage:(NSString *)message;
 + (NSString *)defaultFacebookMessage;
 
-// Twitter
 + (void)setDefaultTweet:(NSString *)tweet;
 + (NSString *)defaultTweet;
 
-// Email
 + (void)setDefaultEmailSubject:(NSString *)subject
                           body:(NSString *)body;
-+ (NSString *)defaultEmailSubject;
 + (NSString *)defaultEmailBody;
+// End of depcrecated social media default messages.
 
 // Used to keep track of settings per video
 + (void)setLevel:(NSString *)level
@@ -299,29 +126,8 @@ typedef enum
 + (BOOL)pause;
 + (BOOL)resume;
 
-////////////////////
-// Creating Highlight Reels
-//
-// If you call [Kamcord markNow] one or more times during the course
-// of a recording, Kamcord will stitch those marked times into one 
-// "highlight" reel that contains some specified time before and
-// after each marked time. For instance, if you set both the pre and post
-// time windows to 5s and then call [Kamcord markNow] 15s and 35s into
-// the video (which is say 60s long), then we will make one video
-// which shows times: [10s, 20s] and [30s, 40s] with a fade
-// effect in between those two times.
-//
-// If times ovelap such as if you called [Kamcord markNow] at 10s and 11s,
-// then we're smart and clip the video from [5s, 16s] ([10s-5s, 11s+5s]).
++ (BOOL)isRecording;
 
-/*
-+ (void)setPreMarkTimeWindow:(CMTime)timeBefore
-          postMarkTimeWindow:(CMTime)timeAfter;
-+ (CMTime)preMarkTimeWindow;
-+ (CMTime)postMarkTimeWindow;
-
-+ (void)markNow;
- */
 
 
 ////////////////////
@@ -329,8 +135,8 @@ typedef enum
 //
 
 // Displays the Kamcord view inside the previously set parentViewController;
-+ (void) showView;
-+ (void) showViewInViewController:(UIViewController *)parentViewController;
++ (void)showView;
++ (void)showViewInViewController:(UIViewController *)parentViewController;
 
 // Displays the old Kamcord View, deprecated since 0.9.96
 + (void)showViewDeprecated;

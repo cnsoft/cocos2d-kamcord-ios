@@ -9,9 +9,10 @@
 #import "RenderTextureTest.h"
 
 #import <Kamcord/Kamcord.h>
+#import <AVFoundation/AVFoundation.h>
 
 static int sceneIdx=-1;
-static NSString *tests[] = {	
+static NSString *tests[] = {
 	@"KamcordRecording",
 	@"RenderTextureIssue937",
 	@"RenderTextureZbuffer",
@@ -677,7 +678,7 @@ Class restartAction()
     [Kamcord setFacebookTitle:@"RenderTextureTest"
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
-    
+
     // Play this looping background audio over the recorded video
     // [Kamcord playSound:@"background.wav" loop:YES];
     
