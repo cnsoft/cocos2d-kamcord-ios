@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Kamcord.h"
 #import "KCViewController.h"
+@class KC_BaseView;
 
 @class KCVideo;
 
-@interface KCShareView : KCViewController <KCShareDelegate>
+@interface KCShareView : KCViewController <KCShareDelegate, UITextViewDelegate>
 
 - (id)initWithVideo:(KCVideo *)video;
 - (void)dealloc;
+- (void)dismissView;
+- (void)setParentTabViewController:(KC_BaseView *)parentViewController;
 
 @end

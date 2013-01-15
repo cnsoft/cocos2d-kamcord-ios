@@ -12,11 +12,13 @@
 
 @class KCVideo;
 
-@interface KC_BaseView : UINavigationController <KCVideoProcessDelegate>
+@interface KC_BaseView : UINavigationController <KCVideoProcessDelegate, UITabBarControllerDelegate>
 
 @property (nonatomic, retain) KCVideo * latestVideo;
 
 - (id)initWithVideo:(KCVideo *)video
          useOldView:(BOOL)oldView;
 
+- (void)doneTapped;
+- (void)setSelectedTab:(NSInteger)index;
 @end
