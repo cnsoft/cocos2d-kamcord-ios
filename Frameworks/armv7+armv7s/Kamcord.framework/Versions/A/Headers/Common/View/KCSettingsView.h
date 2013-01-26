@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Kamcord.h"
 #import "KCViewController.h"
+#import "SHKSharer.h"
 
-@interface KCSettingsView : UITableViewController <KCShareDelegate, UIAlertViewDelegate>
+@interface KCSettingsView : UITableViewController <KCShareDelegate, UIAlertViewDelegate, UIActionSheetDelegate, KCSHKSharerDelegate>
 
-@property (nonatomic, strong) NSMutableArray * networkInfo;
+@property (nonatomic, retain) NSMutableArray * networkInfo;
 
 @end
 
@@ -24,5 +25,6 @@
 @property (nonatomic, retain) NSString * imageName;
 @property (nonatomic, retain) UIButton * button;
 @property (nonatomic, retain) UILabel  * label;
+@property (nonatomic, retain) UILabel  * titleLabel;
 
 @end

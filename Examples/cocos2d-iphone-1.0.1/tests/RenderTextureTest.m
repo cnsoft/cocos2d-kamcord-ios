@@ -671,9 +671,8 @@ Class restartAction()
                      appName:@"RenderTextureTest"];
     
     // Social media settings
-    [Kamcord setYouTubeTitle:@"RenderTextureTest"
-                 description:@"This is a Cocos2D test app that was recorded with Kamcord."
-                        tags:@"Cocos2D RenderTextureTest"];
+    [Kamcord setYouTubeDescription:@"This is a Cocos2D test app that was recorded with Kamcord."
+                              tags:@"Cocos2D RenderTextureTest"];
     
     [Kamcord setFacebookTitle:@"RenderTextureTest"
                       caption:@"Kamcord recording"

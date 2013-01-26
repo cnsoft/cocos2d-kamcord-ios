@@ -4041,12 +4041,10 @@ Class restartAction()
     [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
              developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"
                      appName:@"SpriteTest"];
-    [Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeRight];
     
     // Social media settings
-    [Kamcord setYouTubeTitle:@"SpriteTest"
-                 description:@"This is a Cocos2D test app that was recorded with Kamcord."
-                        tags:@"Cocos2D SpriteTest"];
+    [Kamcord setYouTubeDescription:@"This is a Cocos2D test app that was recorded with Kamcord."
+                              tags:@"Cocos2D SpriteTest"];
     
     [Kamcord setFacebookTitle:@"SpriteTest"
                       caption:@"Kamcord recording"

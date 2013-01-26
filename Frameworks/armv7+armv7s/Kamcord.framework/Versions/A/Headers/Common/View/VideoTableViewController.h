@@ -39,6 +39,9 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <StoreKit/StoreKit.h>
+#import "KCVideo.h"
+#import "../Core/KCShareDelegateIntermediary.h"
+#import "KCProgressUIView.h"
 
 @interface VideoEntity : NSObject
 
@@ -67,29 +70,30 @@
 
 @end
 
-@interface VideoTableViewController : UITableViewController<SKStoreProductViewControllerDelegate, NSURLConnectionDelegate> {
-    UIView * refreshHeaderView;
-    UILabel * refreshLabel;
-    UIImageView * refreshArrow;
-    UIActivityIndicatorView * refreshSpinner;
-    BOOL isDragging;
-    BOOL isLoading;
-}
+@interface VideoTableViewController : UITableViewController<SKStoreProductViewControllerDelegate, NSURLConnectionDelegate, KCShareDelegate>
 
-@property (nonatomic, strong) UIView * refreshHeaderView;
-@property (nonatomic, strong) UILabel * refreshLabel;
-@property (nonatomic, strong) UIImageView * refreshArrow;
-@property (nonatomic, strong) UIActivityIndicatorView * refreshSpinner;
+@property (nonatomic, retain) UIView * refreshHeaderView;
+@property (nonatomic, retain) UILabel * refreshLabel;
+@property (nonatomic, retain) UIImageView * refreshArrow;
+@property (nonatomic, retain) UIActivityIndicatorView * refreshSpinner;
 
-@property (nonatomic, strong) NSMutableArray * videoEntities;
-@property (nonatomic, strong) NSMutableData * httpResponseData;
-@property (nonatomic, strong) KCMPMoviePlayerViewController * player;
-@property (nonatomic, strong) NSDateFormatter * dateFormatter;
-@property (nonatomic, strong) NSDate * lastUpdatedAt;
-@property (nonatomic, strong) UILabel * noInternetLabel;
+@property (nonatomic, retain) NSMutableArray * videoEntities;
+@property (nonatomic, retain) NSMutableData * httpResponseData;
+@property (nonatomic, retain) KCMPMoviePlayerViewController * player;
+@property (nonatomic, retain) NSDateFormatter * dateFormatter;
+@property (nonatomic, retain) NSDate * lastUpdatedAt;
+@property (nonatomic, retain) UILabel * noInternetLabel;
+
+@property (nonatomic, retain) KCProgressUIView * progressUIView;
+@property (nonatomic, retain) KCShareDelegateIntermediary * intermediary;
+@property (nonatomic, retain) KCVideo * currentVideo;
 
 - (void)addPullToRefreshHeader;
 - (void)startLoading;
 - (void)stopLoading;
+- (id)initWithVideo:(KCVideo *)video;
+
+- (void)setupProgressUIView;
+- (void)s3UploadDidStart:(NSNotification *)notification;
 
 @end

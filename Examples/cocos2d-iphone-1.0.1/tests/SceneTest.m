@@ -246,9 +246,8 @@
                      appName:@"SceneTest"];
     
     // Social media settings
-    [Kamcord setYouTubeTitle:@"SceneTest"
-                 description:@"This is a Cocos2D test app that was recorded with Kamcord."
-                        tags:@"Cocos2D RotateWorldTest"];
+    [Kamcord setYouTubeDescription:@"This is a Cocos2D test app that was recorded with Kamcord."
+                              tags:@"Cocos2D RotateWorldTest"];
     
     [Kamcord setFacebookTitle:@"SceneTest"
                       caption:@"Kamcord recording"
