@@ -23,19 +23,30 @@
 #import "Common/Core/KCAnalytics.h"
 
 // --------------------------------------------------------
-// Current verion is 0.9.99 (1/16/2013)
+// Current verion is 1.0.1 (2/15/2013)
 FOUNDATION_EXPORT NSString * const KamcordVersion;
+
+static NSString * const DEVICE_TYPE_IPOD        = @"DEVICE_TYPE_IPOD";
+static NSString * const DEVICE_TYPE_IPAD_1      = @"DEVICE_TYPE_IPAD_1";
+static NSString * const DEVICE_TYPE_IPAD_2      = @"DEVICE_TYPE_IPAD_2";
+static NSString * const DEVICE_TYPE_IPAD_MINI   = @"DEVICE_TYPE_IPAD_MINI";
+static NSString * const DEVICE_TYPE_IPHONE_3GS  = @"DEVICE_TYPE_IPHONE_3GS";
+static NSString * const DEVICE_TYPE_IPHONE_4    = @"DEVICE_TYPE_IPHONE_4";
 
 @interface Kamcord : NSObject
 
 ////////////////////////////////////////////////
 // Public methods
 
-// Returns YES if and only if Kamcord is supported by 
-// this device's version of iOS.
-// Note: You do NOT need to wrap your Kamcord calls
-//       with this function. Kamcord will turn itself
-//       off if this is NO.
+// If you want to automatically turn off Kamcord on these devices,
+// make [Kamcord setDeviceBlacklist:...] first Kamcord call you make.
+// (even before instantiate KCGLView).
+// Pass in an NSArray consisting of any of the devices listed above
+// (i.e. DEVICE_TYPE_IPOD, etc.).
++ (void)setDeviceBlacklist:(NSArray *)blacklist;
+
+// Will return if Kamcord is enabled on the current device.
+// Takes into account the device blacklist and also version of iOS.
 + (BOOL)isEnabled;
 
 // Setup
@@ -86,7 +97,6 @@ FOUNDATION_EXPORT NSString * const KamcordVersion;
 + (NSString *)defaultTitle;
 
 
-
 // Start of depcrecated social media default messages.
 // These only work when using showViewDepcrecated.
 + (void)setDefaultYouTubeMessage:(NSString *)message;
@@ -109,6 +119,9 @@ FOUNDATION_EXPORT NSString * const KamcordVersion;
 
 + (NSString *)level;
 + (NSNumber *)score;
+
++ (void)setVideoMetadata:(NSDictionary *)metadata;
++ (NSDictionary *)videoMetadata;
 
 ////////////////////
 // Video recording
@@ -145,9 +158,6 @@ FOUNDATION_EXPORT NSString * const KamcordVersion;
 // If parentViewController is nil, the [Kamcord parentViewController] will be used.
 + (UIView *)getThumbnailView:(NSUInteger)width
         parentViewController:(UIViewController *)parentViewController;
-
-// Displays the old Kamcord View, deprecated since 0.9.96
-+ (void)showViewDeprecated;
 
 // When the user shares a video, should the Kamcord UI wait for
 // the video to finish converting before automatically dismissing 
@@ -363,7 +373,6 @@ analyticsType:(KC_ANALYTICS_TYPE)analyticsType;
 + (KCAudio *)audioBackground;
 
 + (BOOL)isIPhone5;
-+ (BOOL)isEnabled;
 + (BOOL)checkInternet;
 
 @end
