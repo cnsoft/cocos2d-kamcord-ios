@@ -30,7 +30,7 @@
 - (BOOL)startRecording;
 - (BOOL)pause;
 - (BOOL)resume;
-- (BOOL)stopRecording;
+- (BOOL)stopRecordingWithCompletionHandler:(void (^)(BOOL))handler;
 - (BOOL)isRecording;
 
 #if KCUNITY

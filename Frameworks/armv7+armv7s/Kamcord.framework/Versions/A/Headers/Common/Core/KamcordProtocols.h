@@ -57,9 +57,29 @@
 
 @end
 
+
+
 // --------------------------------------------------------
-// Kamcord callbacks if you're implementing a custom UI
+// Kamcord callbacks from the push notification receiver view
 //
+@protocol KCVideoPushNotificationReceiverViewDelegate <NSObject>
+
+@optional
+
+// When the video push notification view appears and disappears
+- (void)videoPushNotificationViewDidAppear;
+- (void)videoPushNotificationViewDidDisappear;
+
+// When the video in the video push notification view is played and finishes playing.
+- (void)videoPushNotificationVideoPlayerDidAppear;
+- (void)videoPushNotificationVideoPlayerDidDisappear;
+
+// When the user presses the call to action, all of the parameters
+// that were passed in when the 
+- (void)callToActionButtonWasPressed:(NSDictionary *)params;
+
+@end
+
 
 
 // --------------------------------------------------------

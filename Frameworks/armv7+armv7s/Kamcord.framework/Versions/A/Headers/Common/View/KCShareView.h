@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Kamcord.h"
 #import "KCViewController.h"
+#import "KCUiAssetMap.h"
 
 @class KC_BaseView;
 @class KCVideo;
 
 @interface KCShareView : KCViewController <KCShareDelegate, UITextViewDelegate, UIActionSheetDelegate>
 
-- (id)initWithVideo:(KCVideo *)video;
+- (id)initWithVideo:(KCVideo *)video assetMap:(KCUiAssetMap *)assetMap;
 - (void)dealloc;
 - (void)dismissView;
 - (void)setParentTabViewController:(KC_BaseView *)parentViewController;

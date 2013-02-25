@@ -28,7 +28,8 @@
 @property (assign, nonatomic) KCVideo * latestVideo;
 
 // Replay
-- (void)presentVideoPlayerInViewController:(UIViewController *)parentViewController;
+- (void)presentVideoPlayerInViewController:(UIViewController *)parentViewController
+                                  forVideo:(KCVideo *)video;
 
 // Authentication
 - (void)presentFacebookLoginView;
@@ -47,13 +48,22 @@
 - (void)videoConversionFinished:(NSError *)error;
 
 // Sharing
-- (BOOL)shareVideoOnFacebook:(BOOL)shareFacebook 
-                     Twitter:(BOOL)shareTwitter 
-                     YouTube:(BOOL)shareYoutube
+- (BOOL)shareVideoOnFacebook:(BOOL)shareOnFacebook
+                     Twitter:(BOOL)shareOnTwitter
+                     YouTube:(BOOL)shareOnYoutube
                        Email:(BOOL)shareEmail
                  withMessage:(NSString *)message
         parentViewController:(UIViewController *)parentViewController
                     delegate:(id <KCShareDelegate>)delegate;
+
+- (BOOL)shareVideo:(KCVideo *)video
+        onFacebook:(BOOL)shareFacebook
+           Twitter:(BOOL)shareTwitter
+           YouTube:(BOOL)shareYoutube
+             Email:(BOOL)shareEmail
+       withMessage:(NSString *)message
+parentViewController:(UIViewController *)parentViewController
+           delegate:(id <KCShareDelegate>)delegate;
 
 - (BOOL)presentComposeEmailViewInViewController:(UIViewController *)parentViewController
                                        withBody:(NSString *)bodyText;

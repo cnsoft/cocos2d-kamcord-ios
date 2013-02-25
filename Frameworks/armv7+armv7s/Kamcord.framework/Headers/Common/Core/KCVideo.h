@@ -128,33 +128,35 @@ typedef enum
 
 typedef enum
 {
-    KC_VIDEO_STATUS_NONE = 0,       // Just instantiated
+    KC_VIDEO_STATUS_NONE                = 0,    // Just instantiated
 
-    KC_VIDEO_BEGUN = 1,             // beginVideo
-    KC_VIDEO_RECORDING = 2,         // startRecording
-    KC_VIDEO_PAUSED = 3,            // pause
-    KC_VIDEO_DONE_RECORDING = 4,    // stopRecording
-    KC_VIDEO_ENDED = 5,             // endVideo
+    KC_VIDEO_BEGUN,                             // beginVideo
+    KC_VIDEO_RECORDING,                         // startRecording
+    KC_VIDEO_PAUSING,
+    KC_VIDEO_PAUSED,                            // pause
+    KC_VIDEO_STOPPING,
+    KC_VIDEO_DONE_RECORDING,                    // stopRecording
+    KC_VIDEO_ENDED,                             // endVideo
 
-    KC_VIDEO_QUEUED_FOR_MERGE = 6,
-    KC_VIDEO_MERGING = 7,
-    KC_VIDEO_DONE_MERGING = 8,
+    KC_VIDEO_QUEUED_FOR_MERGE,
+    KC_VIDEO_MERGING,
+    KC_VIDEO_DONE_MERGING,
 
-    KC_VIDEO_QUEUED_FOR_CONVERSION = 9,
-    KC_VIDEO_CONVERTING = 10,
-    KC_VIDEO_DONE_CONVERTING = 11,
+    KC_VIDEO_QUEUED_FOR_CONVERSION,
+    KC_VIDEO_CONVERTING,
+    KC_VIDEO_DONE_CONVERTING,
 
-    KC_VIDEO_REQUESTING_KAMCORD_URL = 12,
-    KC_VIDEO_RECEIVED_KAMCORD_URL = 13,
+    KC_VIDEO_REQUESTING_KAMCORD_URL,
+    KC_VIDEO_RECEIVED_KAMCORD_URL,
 
-    KC_VIDEO_UPLOADING_TO_KAMCORD = 14,
-    KC_VIDEO_DONE_UPLOADING_TO_KAMCORD = 15,
+    KC_VIDEO_UPLOADING_TO_KAMCORD,
+    KC_VIDEO_DONE_UPLOADING_TO_KAMCORD,
 
-    KC_VIDEO_UPLOADING_TO_YOUTUBE = 16,
-    KC_VIDEO_DONE_UPLOADING_TO_YOUTUBE = 17,
+    KC_VIDEO_UPLOADING_TO_YOUTUBE,
+    KC_VIDEO_DONE_UPLOADING_TO_YOUTUBE,
 
-    KC_VIDEO_QUEUED_FOR_DELETION = 18,
-    KC_VIDEO_DONE_DELETING = 19,
+    KC_VIDEO_QUEUED_FOR_DELETION,
+    KC_VIDEO_DONE_DELETING       
 } KC_VIDEO_STATUS;
 
 // The unique video ID
@@ -165,7 +167,6 @@ typedef enum
 @property KC_VIDEO_STATUS videoStatus;
 
 @property (nonatomic, readonly, assign) BOOL hasStopped;
-@property (nonatomic, readonly, assign) BOOL hasEnded;
 @property (nonatomic, readonly, assign) BOOL isMerged;
 @property (nonatomic, readonly, assign) BOOL isConverted;
 
@@ -196,6 +197,8 @@ typedef enum
 @property (nonatomic, retain) NSURL * convertedVideoLocalURL;
 
 @property (nonatomic, retain) CGImageRef thumbnail __attribute__((NSObject));
+
+@property (nonatomic, assign) BOOL showViewForVideoAfterStopRecording;
 
 // Online URLs and IDs
 @property (nonatomic, copy) NSString * onlineVideoID;

@@ -10,7 +10,6 @@
 #import <UIKit/UIKit.h>
 
 #import "KCVideoProcessingAndShareManager.h"
-#import "KCAudioListener.h"
 
 @class KCUI;
 @class KCVideoWriter;
@@ -53,17 +52,21 @@
 
 - (void)showViewInViewController:(UIViewController *)parentViewController
                       useOldView:(BOOL)oldView;
-- (UIView *) getThumbnailView:(NSUInteger)width
-                       height:(NSUInteger)height
-         parentViewController:(UIViewController *)parentViewController;
+- (void)showViewInViewController:(UIViewController *)parentViewController
+                      useOldView:(BOOL)oldView
+                        forVideo:(KCVideo *)video;
+- (UIView *)getThumbnailView:(NSUInteger)width
+                    height:(NSUInteger)height
+      parentViewController:(UIViewController *)parentViewController;
 
 - (BOOL)cancelConversionForLatestVideo;
 
 // Video
 - (BOOL)beginVideoForce:(BOOL)force;
-- (BOOL)endVideo;
-- (BOOL)endVideoAndDiscardVideo;
-- (BOOL)endVideoAndAddSounds:(NSArray *)sounds;
+- (BOOL)endVideo:(KCVideoWriter *)videoWriter;
+- (BOOL)endVideoAndDiscardVideo:(KCVideoWriter *)videoWriter;
+- (BOOL)endVideo:(KCVideoWriter *)videoWriter
+    andAddSounds:(NSArray *)sounds;
 
 - (BOOL)startRecording;
 - (BOOL)stopRecording;
@@ -74,6 +77,12 @@
 - (BOOL)isRecording;
 
 - (void)markAbsoluteTime:(CFAbsoluteTime)absoluteTime;
+
+// Video push notifications
+- (void)retrieveMetadataForVideoWithID:(NSString *)videoID
+                 withCompletionHandler:(void (^)(NSDictionary *, NSError *))completionHandler;
+- (void)showVideoPushNotificationReceiverViewInParentViewController:(UIViewController *)parentViewController
+                                                         withParams:(NSDictionary *)params;
 
 #if (COCOS2D_1_0_1 || COCOS2D_2_0 || COCOS2D_2_1)
 // Sound

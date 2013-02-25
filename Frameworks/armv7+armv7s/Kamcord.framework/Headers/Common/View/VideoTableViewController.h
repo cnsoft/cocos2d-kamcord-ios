@@ -43,6 +43,7 @@
 #import "../Core/KCShareDelegateIntermediary.h"
 #import "KCProgressUIView.h"
 #import "KCMoviePlayerViewController.h"
+#import "KCUiAssetMap.h"
 
 @interface VideoEntity : NSObject
 
@@ -89,11 +90,12 @@
 @property (nonatomic, retain) KCProgressUIView * progressUIView;
 @property (nonatomic, retain) KCShareDelegateIntermediary * intermediary;
 @property (nonatomic, retain) KCVideo * currentVideo;
+@property (nonatomic, assign) KCUiAssetMap * assetMap;
 
 - (void)addPullToRefreshHeader;
 - (void)startLoading;
 - (void)stopLoading;
-- (id)initWithVideo:(KCVideo *)video;
+- (id)initWithVideo:(KCVideo *)video assetMap:(KCUiAssetMap *)assetMap;
 
 - (void)setupProgressUIView;
 - (void)s3UploadDidStart:(NSNotification *)notification;

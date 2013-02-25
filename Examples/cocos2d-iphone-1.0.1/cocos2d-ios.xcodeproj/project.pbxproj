@@ -61,6 +61,26 @@
 		05CA7B0010ED674700F12774 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		05CA7B0C10ED67CE00F12774 /* ActionsWithBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA7B0B10ED67CE00F12774 /* ActionsWithBlocks.m */; };
 		0A1D64C31570BA8D00627EBE /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D64C21570BA8D00627EBE /* background.wav */; };
+		0A4AD6DC16DB3598004B9401 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4AD6DB16DB3598004B9401 /* Kamcord.framework */; };
+		0A4AD6DD16DB3598004B9401 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4AD6DB16DB3598004B9401 /* Kamcord.framework */; };
+		0A4AD6DE16DB3598004B9401 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4AD6DB16DB3598004B9401 /* Kamcord.framework */; };
+		0A4AD6DF16DB3598004B9401 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4AD6DB16DB3598004B9401 /* Kamcord.framework */; };
+		0A4AD6E016DB3598004B9401 /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4AD6DB16DB3598004B9401 /* Kamcord.framework */; };
+		0A4AD6E516DB37D4004B9401 /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CB2FCA1004C8B100B7A750 /* libCocosDenshion.a */; };
+		0A4AD6E616DB37E1004B9401 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876E10446C6E00150883 /* AudioToolbox.framework */; };
+		0A4AD6E716DB37EA004B9401 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3877010446C6E00150883 /* OpenAL.framework */; };
+		0A4AD6EA16DB381B004B9401 /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CB2FCA1004C8B100B7A750 /* libCocosDenshion.a */; };
+		0A4AD6EB16DB3821004B9401 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876E10446C6E00150883 /* AudioToolbox.framework */; };
+		0A4AD6EC16DB3826004B9401 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3877010446C6E00150883 /* OpenAL.framework */; };
+		0A4AD6EF16DB384B004B9401 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3877010446C6E00150883 /* OpenAL.framework */; };
+		0A4AD6F016DB384F004B9401 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876E10446C6E00150883 /* AudioToolbox.framework */; };
+		0A4AD6F116DB38AC004B9401 /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CB2FCA1004C8B100B7A750 /* libCocosDenshion.a */; };
+		0A4AD6F416DB38C5004B9401 /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CB2FCA1004C8B100B7A750 /* libCocosDenshion.a */; };
+		0A4AD6F516DB38D7004B9401 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3877010446C6E00150883 /* OpenAL.framework */; };
+		0A4AD6F616DB38DD004B9401 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876E10446C6E00150883 /* AudioToolbox.framework */; };
+		0A4AD6F916DB38F3004B9401 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3877010446C6E00150883 /* OpenAL.framework */; };
+		0A4AD6FA16DB3900004B9401 /* libCocosDenshion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50CB2FCA1004C8B100B7A750 /* libCocosDenshion.a */; };
+		0A4AD6FB16DB3929004B9401 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876E10446C6E00150883 /* AudioToolbox.framework */; };
 		0AA62391156B75F8006D25E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E3876C10446C6E00150883 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA6239A156B75F8006D25E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62392156B75F8006D25E1 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA62393156B75F8006D25E1 /* CoreMedia.framework */; };
@@ -134,11 +154,6 @@
 		40B3C87016A5252E0088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40B3C87216A5263E0088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40B3C87416A526B60088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		40C0C24116B4919200D0CB2B /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C0C24016B4919200D0CB2B /* Kamcord.framework */; };
-		40C0C24216B4919200D0CB2B /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C0C24016B4919200D0CB2B /* Kamcord.framework */; };
-		40C0C24316B4919200D0CB2B /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C0C24016B4919200D0CB2B /* Kamcord.framework */; };
-		40C0C24416B4919200D0CB2B /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C0C24016B4919200D0CB2B /* Kamcord.framework */; };
-		40C0C24516B4919200D0CB2B /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C0C24016B4919200D0CB2B /* Kamcord.framework */; };
 		40C0C25116B491B400D0CB2B /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C0C24716B491B400D0CB2B /* FBDialog.bundle */; };
 		40C0C25216B491B400D0CB2B /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C0C24716B491B400D0CB2B /* FBDialog.bundle */; };
 		40C0C25316B491B400D0CB2B /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C0C24716B491B400D0CB2B /* FBDialog.bundle */; };
@@ -2701,6 +2716,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0A4AD6E316DB37CB004B9401 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50CB2FC91004C8B100B7A750;
+			remoteInfo = CocosDenshion;
+		};
+		0A4AD6E816DB3816004B9401 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50CB2FC91004C8B100B7A750;
+			remoteInfo = CocosDenshion;
+		};
+		0A4AD6ED16DB3834004B9401 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50CB2FC91004C8B100B7A750;
+			remoteInfo = CocosDenshion;
+		};
+		0A4AD6F216DB38BF004B9401 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50CB2FC91004C8B100B7A750;
+			remoteInfo = CocosDenshion;
+		};
+		0A4AD6F716DB38EE004B9401 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50CB2FC91004C8B100B7A750;
+			remoteInfo = CocosDenshion;
+		};
 		50010EBC103B3DB80059EC2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -3583,6 +3633,7 @@
 		05CA7B0A10ED67CE00F12774 /* ActionsWithBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionsWithBlocks.h; sourceTree = "<group>"; };
 		05CA7B0B10ED67CE00F12774 /* ActionsWithBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionsWithBlocks.m; sourceTree = "<group>"; };
 		0A1D64C21570BA8D00627EBE /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = background.wav; path = Resources/background.wav; sourceTree = "<group>"; };
+		0A4AD6DB16DB3598004B9401 /* Kamcord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamcord.framework; path = "../../Frameworks/armv7+armv7s/Kamcord.framework"; sourceTree = "<group>"; };
 		0AA62392156B75F8006D25E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0AA62393156B75F8006D25E1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		0AA62394156B75F8006D25E1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -3600,7 +3651,6 @@
 		2D500B920D5A79C200DBA0E3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		40B3C86A16A522A00088D21D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		40C0C24016B4919200D0CB2B /* Kamcord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamcord.framework; path = "../../Frameworks/armv7+armv7s/Kamcord.framework"; sourceTree = "<group>"; };
 		40C0C24716B491B400D0CB2B /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = "../../Frameworks/armv7+armv7s/Resources/FBDialog.bundle"; sourceTree = "<group>"; };
 		40C0C24816B491B400D0CB2B /* GTMOAuth2ViewTouch.nib */ = {isa = PBXFileReference; lastKnownFileType = file; name = GTMOAuth2ViewTouch.nib; path = "../../Frameworks/armv7+armv7s/Resources/GTMOAuth2ViewTouch.nib"; sourceTree = "<group>"; };
 		40C0C24916B491B400D0CB2B /* Kamcord.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kamcord.bundle; path = "../../Frameworks/armv7+armv7s/Resources/Kamcord.bundle"; sourceTree = "<group>"; };
@@ -4682,6 +4732,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A4AD6E716DB37EA004B9401 /* OpenAL.framework in Frameworks */,
+				0A4AD6E616DB37E1004B9401 /* AudioToolbox.framework in Frameworks */,
+				0A4AD6E516DB37D4004B9401 /* libCocosDenshion.a in Frameworks */,
 				495E74F0104B752C0012BB52 /* CoreGraphics.framework in Frameworks */,
 				0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA6239C156B75F8006D25E1 /* CoreVideo.framework in Frameworks */,
@@ -4701,7 +4754,7 @@
 				0AA623A0156B75F8006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA623A1156B75F8006D25E1 /* Twitter.framework in Frameworks */,
 				495E74EF104B752C0012BB52 /* UIKit.framework in Frameworks */,
-				40C0C24216B4919200D0CB2B /* Kamcord.framework in Frameworks */,
+				0A4AD6DD16DB3598004B9401 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4780,6 +4833,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A4AD6F616DB38DD004B9401 /* AudioToolbox.framework in Frameworks */,
+				0A4AD6F516DB38D7004B9401 /* OpenAL.framework in Frameworks */,
+				0A4AD6F416DB38C5004B9401 /* libCocosDenshion.a in Frameworks */,
 				501C7C8A0F91EFFF0024A296 /* CoreGraphics.framework in Frameworks */,
 				0AA6272D156C9868006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA6272E156C9868006D25E1 /* CoreVideo.framework in Frameworks */,
@@ -4799,7 +4855,7 @@
 				0AA62732156C9868006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA62733156C9868006D25E1 /* Twitter.framework in Frameworks */,
 				501C7C890F91EFFF0024A296 /* UIKit.framework in Frameworks */,
-				40C0C24516B4919200D0CB2B /* Kamcord.framework in Frameworks */,
+				0A4AD6E016DB3598004B9401 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4828,6 +4884,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A4AD6EC16DB3826004B9401 /* OpenAL.framework in Frameworks */,
+				0A4AD6EB16DB3821004B9401 /* AudioToolbox.framework in Frameworks */,
+				0A4AD6EA16DB381B004B9401 /* libCocosDenshion.a in Frameworks */,
 				502C67040DFEFE1000E4107D /* CoreGraphics.framework in Frameworks */,
 				0AA626E0156C9161006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA626E1156C9161006D25E1 /* CoreVideo.framework in Frameworks */,
@@ -4847,7 +4906,7 @@
 				0AA626E5156C9162006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA626E6156C9162006D25E1 /* Twitter.framework in Frameworks */,
 				502C67030DFEFE1000E4107D /* UIKit.framework in Frameworks */,
-				40C0C24316B4919200D0CB2B /* Kamcord.framework in Frameworks */,
+				0A4AD6DE16DB3598004B9401 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5116,6 +5175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A4AD6F116DB38AC004B9401 /* libCocosDenshion.a in Frameworks */,
+				0A4AD6F016DB384F004B9401 /* AudioToolbox.framework in Frameworks */,
+				0A4AD6EF16DB384B004B9401 /* OpenAL.framework in Frameworks */,
 				506C80070E041C9300B48100 /* CoreGraphics.framework in Frameworks */,
 				0AA62724156C954F006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA62725156C954F006D25E1 /* CoreVideo.framework in Frameworks */,
@@ -5135,7 +5197,7 @@
 				0AA62729156C954F006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA6272A156C9550006D25E1 /* Twitter.framework in Frameworks */,
 				506C80060E041C9300B48100 /* UIKit.framework in Frameworks */,
-				40C0C24416B4919200D0CB2B /* Kamcord.framework in Frameworks */,
+				0A4AD6DF16DB3598004B9401 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5414,6 +5476,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A4AD6FB16DB3929004B9401 /* AudioToolbox.framework in Frameworks */,
+				0A4AD6FA16DB3900004B9401 /* libCocosDenshion.a in Frameworks */,
+				0A4AD6F916DB38F3004B9401 /* OpenAL.framework in Frameworks */,
 				50DB1BC30E1C1E5900A89DFF /* CoreGraphics.framework in Frameworks */,
 				0AA62736156C98B1006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA62737156C98B1006D25E1 /* CoreVideo.framework in Frameworks */,
@@ -5433,7 +5498,7 @@
 				0AA6273B156C98B1006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA6273C156C98B1006D25E1 /* Twitter.framework in Frameworks */,
 				50DB1BC20E1C1E5900A89DFF /* UIKit.framework in Frameworks */,
-				40C0C24116B4919200D0CB2B /* Kamcord.framework in Frameworks */,
+				0A4AD6DC16DB3598004B9401 /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5793,7 +5858,7 @@
 				0AA62394156B75F8006D25E1 /* CoreVideo.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				40B3C86A16A522A00088D21D /* ImageIO.framework */,
-				40C0C24016B4919200D0CB2B /* Kamcord.framework */,
+				0A4AD6DB16DB3598004B9401 /* Kamcord.framework */,
 				503092B210447296005F7AFC /* libz.dylib */,
 				0AA62395156B75F8006D25E1 /* MediaPlayer.framework */,
 				0AA62396156B75F8006D25E1 /* MessageUI.framework */,
@@ -7843,6 +7908,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0A4AD6E416DB37CB004B9401 /* PBXTargetDependency */,
 				50A04DC110D17FCB00386268 /* PBXTargetDependency */,
 			);
 			name = RenderTextureTest;
@@ -7952,6 +8018,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0A4AD6F316DB38BF004B9401 /* PBXTargetDependency */,
 				501C7C6E0F91EFFF0024A296 /* PBXTargetDependency */,
 			);
 			name = SpriteTest;
@@ -8006,6 +8073,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0A4AD6E916DB3816004B9401 /* PBXTargetDependency */,
 				502C661F0DFEFCDF00E4107D /* PBXTargetDependency */,
 			);
 			name = RotateWorldTest;
@@ -8369,6 +8437,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0A4AD6EE16DB3834004B9401 /* PBXTargetDependency */,
 				506C7FF80E041C9300B48100 /* PBXTargetDependency */,
 			);
 			name = SceneTest;
@@ -8819,6 +8888,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0A4AD6F816DB38EE004B9401 /* PBXTargetDependency */,
 				50DB1BB20E1C1E5900A89DFF /* PBXTargetDependency */,
 			);
 			name = ParticleTest;
@@ -12037,6 +12107,31 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0A4AD6E416DB37CB004B9401 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50CB2FC91004C8B100B7A750 /* CocosDenshion */;
+			targetProxy = 0A4AD6E316DB37CB004B9401 /* PBXContainerItemProxy */;
+		};
+		0A4AD6E916DB3816004B9401 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50CB2FC91004C8B100B7A750 /* CocosDenshion */;
+			targetProxy = 0A4AD6E816DB3816004B9401 /* PBXContainerItemProxy */;
+		};
+		0A4AD6EE16DB3834004B9401 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50CB2FC91004C8B100B7A750 /* CocosDenshion */;
+			targetProxy = 0A4AD6ED16DB3834004B9401 /* PBXContainerItemProxy */;
+		};
+		0A4AD6F316DB38BF004B9401 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50CB2FC91004C8B100B7A750 /* CocosDenshion */;
+			targetProxy = 0A4AD6F216DB38BF004B9401 /* PBXContainerItemProxy */;
+		};
+		0A4AD6F816DB38EE004B9401 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50CB2FC91004C8B100B7A750 /* CocosDenshion */;
+			targetProxy = 0A4AD6F716DB38EE004B9401 /* PBXContainerItemProxy */;
+		};
 		50010EBB103B3DB80059EC2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5018F24C0DFDEAC400C013A5 /* cocos2d */;

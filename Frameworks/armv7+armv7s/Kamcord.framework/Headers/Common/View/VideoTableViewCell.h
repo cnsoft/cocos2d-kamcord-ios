@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KCUiAssetMap.h"
 
 typedef struct
 {
@@ -57,6 +58,7 @@ typedef struct
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
             xOffset:(int)xOffset
-            forUser:(BOOL)forUser;
+            forUser:(BOOL)forUser
+           assetMap:(KCUiAssetMap *)assetMap;
 
 @end

@@ -10,10 +10,13 @@
 #import "Kamcord.h"
 #import "KCViewController.h"
 #import "SHKSharer.h"
+#import "KCUiAssetMap.h"
 
 @interface KCSettingsView : UITableViewController <KCShareDelegate, UIAlertViewDelegate, UIActionSheetDelegate, KCSHKSharerDelegate>
 
 @property (nonatomic, retain) NSMutableArray * networkInfo;
+
+-(id) initWithAssetMap:(KCUiAssetMap *)assetMap;
 
 @end
 
