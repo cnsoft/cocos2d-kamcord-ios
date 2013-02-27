@@ -153,9 +153,13 @@ static NSString * const DEVICE_TYPE_IPHONE_4    = @"DEVICE_TYPE_IPHONE_4";
 // Kamcord UI
 //
 
-// Displays the Kamcord view inside the previously set parentViewController;
+// Displays the Kamcord view inside the previously set parentViewController.
 + (void)showView;
 + (void)showViewInViewController:(UIViewController *)parentViewController;
+
+// Displays the a Kamcord watch-only view inside the previously set parentViewController.
++ (void)showWatchView;
++ (void)showWatchViewInViewController:(UIViewController *)parentViewController;
 
 // Returns a UIView with a thumbnail of the last video with a play button overlayed.
 // When the play button is pressed, the Kamcord share view will appear.

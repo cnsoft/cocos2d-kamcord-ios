@@ -179,15 +179,16 @@ Class restartAction()
 		[CCMenuItemFont setFontSize:16];
 		CCMenuItem *item1 = [CCMenuItemFont itemFromString:@"Start Recording" target:self selector:@selector(startRecording:)];
 		CCMenuItem *item2 = [CCMenuItemFont itemFromString:@"Stop Recording" target:self selector:@selector(stopRecordingAndShowDialog:)];
-		CCMenuItem *item3 = [CCMenuItemFont itemFromString:@"Play Sound #1" target:self selector:@selector(playSound1:)];
-        CCMenuItem *item4 = [CCMenuItemFont itemFromString:@"Play Sound #2" target:self selector:@selector(playSound2:)];
-        CCMenuItem *item5 = [CCMenuItemFont itemFromString:@"Stop Sound #1" target:self selector:@selector(stopSound1:)];
-        CCMenuItem *item6 = [CCMenuItemFont itemFromString:@"Stop Sound #2" target:self selector:@selector(stopSound2:)];
-		CCMenuItem *item7 = [CCMenuItemFont itemFromString:@"Stop All Sounds" target:self selector:@selector(stopAllSounds:)];
-		CCMenu *menu = [CCMenu menuWithItems:item1, item2, item3, item4, item5, item6, item7, nil];
+        CCMenuItem *item3 = [CCMenuItemFont itemFromString:@"Show Watch View" target:self selector:@selector(showWatchView:)];
+		CCMenuItem *item4 = [CCMenuItemFont itemFromString:@"Play Sound #1" target:self selector:@selector(playSound1:)];
+        CCMenuItem *item5 = [CCMenuItemFont itemFromString:@"Play Sound #2" target:self selector:@selector(playSound2:)];
+        CCMenuItem *item6 = [CCMenuItemFont itemFromString:@"Stop Sound #1" target:self selector:@selector(stopSound1:)];
+        CCMenuItem *item7 = [CCMenuItemFont itemFromString:@"Stop Sound #2" target:self selector:@selector(stopSound2:)];
+		CCMenuItem *item8 = [CCMenuItemFont itemFromString:@"Stop All Sounds" target:self selector:@selector(stopAllSounds:)];
+		CCMenu *menu = [CCMenu menuWithItems:item1, item2, item3, item4, item5, item6, item7, item8, nil];
 		[self addChild:menu];
 		[menu alignItemsVertically];
-		[menu setPosition:ccp(s.width-80, s.height-90)];
+		[menu setPosition:ccp(s.width-100, s.height-90)];
         
         self.sound1 = [[SimpleAudioEngine sharedEngine] soundSourceForFile:@"test1.caf"];
         self.sound2 = [[SimpleAudioEngine sharedEngine] soundSourceForFile:@"test2.m4a"];
@@ -208,6 +209,11 @@ Class restartAction()
 - (void)startRecording:(id)sender
 {
     [Kamcord startRecording];
+}
+
+- (void)showWatchView:(id)sender
+{
+    [Kamcord showWatchView];
 }
 
 - (void)stopRecordingAndShowDialog:(id)sender
@@ -644,7 +650,6 @@ Class restartAction()
     // [Kamcord playSound:@"background.wav" loop:YES];
     
     [Kamcord setVideoResolution:MEDIUM_VIDEO_RESOLUTION];
-    [Kamcord setEnableSynchronousConversionUI:YES alwaysShowProgressBar:YES];
     
     // 2D projection
     //  [director setProjection:kCCDirectorProjection2D];
