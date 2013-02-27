@@ -24,8 +24,8 @@
 - (void)conversionFinished;
 - (void)updateConversionProgress:(float)progress;
 
-+ (void)roundCornersAndAddShadow:(UIView*)viewComponent;
-+ (void)addShadowAbove:(UIView*)viewComponent;
++ (void)roundCornersAndAddShadow:(UIView *)viewComponent;
++ (void)addShadowAbove:(UIView *)viewComponent;
 + (void)addShadow:(UIView *)viewComponent;
 + (void)fitLatestImage:(UIImage *)image toView:(UIImageView *)imageView;
 

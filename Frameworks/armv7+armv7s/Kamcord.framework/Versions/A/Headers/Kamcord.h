@@ -26,10 +26,11 @@
 #import "Common/Core/KCAnalytics.h"
 
 // --------------------------------------------------------
-// Current verion is 1.0.1 (2/15/2013)
+// Current verion is 1.0.3 2/26/2013)
 FOUNDATION_EXPORT NSString * const KamcordVersion;
 
-static NSString * const DEVICE_TYPE_IPOD        = @"DEVICE_TYPE_IPOD";
+static NSString * const DEVICE_TYPE_IPOD_4G     = @"DEVICE_TYPE_IPOD_4G";   // iPod 4G and older
+static NSString * const DEVICE_TYPE_IPOD_5G     = @"DEVICE_TYPE_IPOD_5G";
 static NSString * const DEVICE_TYPE_IPAD_1      = @"DEVICE_TYPE_IPAD_1";
 static NSString * const DEVICE_TYPE_IPAD_2      = @"DEVICE_TYPE_IPAD_2";
 static NSString * const DEVICE_TYPE_IPAD_MINI   = @"DEVICE_TYPE_IPAD_MINI";

@@ -91,11 +91,15 @@
 @property (nonatomic, retain) KCShareDelegateIntermediary * intermediary;
 @property (nonatomic, retain) KCVideo * currentVideo;
 @property (nonatomic, assign) KCUiAssetMap * assetMap;
+@property (nonatomic, retain) NSString * source;
 
 - (void)addPullToRefreshHeader;
 - (void)startLoading;
 - (void)stopLoading;
-- (id)initWithVideo:(KCVideo *)video assetMap:(KCUiAssetMap *)assetMap;
+- (void)dismissView;
+- (id)initWithVideo:(KCVideo *)video
+           assetMap:(KCUiAssetMap *)assetMap
+             source:(NSString *)source;
 
 - (void)setupProgressUIView;
 - (void)s3UploadDidStart:(NSNotification *)notification;

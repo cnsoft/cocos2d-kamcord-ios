@@ -18,7 +18,7 @@
 @property (nonatomic, retain) UITabBarController * tabBarController;
 
 - (id)initWithVideo:(KCVideo *)video
-         useOldView:(BOOL)oldView;
+      watchOnlyMode:(BOOL)watchOnlyMode;
 
 - (void)doneTapped;
 - (void)setSelectedTab:(NSUInteger)index;

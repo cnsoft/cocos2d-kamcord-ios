@@ -50,10 +50,9 @@
 
 - (id)init;
 
+- (void)showWatchViewInViewController:(UIViewController *)parentViewController;
+- (void)showViewInViewController:(UIViewController *)parentViewController;
 - (void)showViewInViewController:(UIViewController *)parentViewController
-                      useOldView:(BOOL)oldView;
-- (void)showViewInViewController:(UIViewController *)parentViewController
-                      useOldView:(BOOL)oldView
                         forVideo:(KCVideo *)video;
 - (UIView *)getThumbnailView:(NSUInteger)width
                     height:(NSUInteger)height

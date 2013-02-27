@@ -643,7 +643,7 @@ Class restartAction()
     // Play this looping background audio over the recorded video
     // [Kamcord playSound:@"background.wav" loop:YES];
     
-    [Kamcord setVideoResolution:SMART_VIDEO_RESOLUTION];
+    [Kamcord setVideoResolution:MEDIUM_VIDEO_RESOLUTION];
     [Kamcord setEnableSynchronousConversionUI:YES alwaysShowProgressBar:YES];
     
     // 2D projection

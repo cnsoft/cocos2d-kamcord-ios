@@ -18,6 +18,11 @@
 - (void)mainViewWillDisappear;
 - (void)mainViewDidDisappear;
 
+// Called when the Watch view appears and disappears
+- (void)watchViewDidAppear;
+- (void)watchViewWillDisappear;
+- (void)watchViewDidDisappear;
+
 // Called when the movie player appears and disappears
 - (void)moviePlayerDidAppear;
 - (void)moviePlayerDidDisappear;

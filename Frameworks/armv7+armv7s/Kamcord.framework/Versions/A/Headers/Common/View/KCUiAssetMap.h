@@ -20,5 +20,6 @@
 
 -(id) initForDebug;
 -(id) initWithDefaults;
+-(id) initForAutoPop;
 
 @end

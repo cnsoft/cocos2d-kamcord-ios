@@ -51,8 +51,6 @@
                          kamcord:(BOOL)useKamcord;
 - (float)backgroundMusicVolume:(BOOL)useKamcord;
 
-- (BOOL)willPlayBackgroundMusic:(BOOL)useKamcord;
-
 - (void)setEffectsVolume:(float)effectsVolume
                  kamcord:(BOOL)useKamcord;
 - (float)effectsVolume:(BOOL)useKamcord;

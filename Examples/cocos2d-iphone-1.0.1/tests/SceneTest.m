@@ -253,6 +253,7 @@
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
 
+    [Kamcord setVideoResolution:MEDIUM_VIDEO_RESOLUTION];
 	
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
 	if( ! [director enableRetinaDisplay:YES] )

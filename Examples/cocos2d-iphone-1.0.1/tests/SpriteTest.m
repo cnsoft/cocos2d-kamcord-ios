@@ -4050,6 +4050,7 @@ Class restartAction()
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
 	
+    [Kamcord setVideoResolution:MEDIUM_VIDEO_RESOLUTION];
 
 	// 2D projection
 //	[director setProjection:kCCDirectorProjection2D];

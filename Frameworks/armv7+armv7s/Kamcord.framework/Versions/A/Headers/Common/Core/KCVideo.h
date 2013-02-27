@@ -68,7 +68,7 @@ typedef enum
 
 @interface KCVideoShareRequest : NSObject
 
-@property (readonly, nonatomic, assign) KCVideo * video;
+@property (readonly, nonatomic, retain) KCVideo * video;
 @property (readonly, nonatomic, copy)   NSString * message;
 
 @property (nonatomic, assign) KC_SHARE_REQUEST_STATE shareState;
