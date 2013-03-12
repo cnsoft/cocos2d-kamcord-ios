@@ -66,50 +66,50 @@
 		0AEC08BE159FE4E800A1C835 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC08BB159FE49D00A1C835 /* CoreData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AEC08BF159FE4F200A1C835 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC08BB159FE49D00A1C835 /* CoreData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0AEC08C0159FE4FF00A1C835 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC08BB159FE49D00A1C835 /* CoreData.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		4020BD9616EE5A1D00BD903F /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8C16EE5A1D00BD903F /* FBDialog.bundle */; };
-		4020BD9716EE5A1D00BD903F /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8C16EE5A1D00BD903F /* FBDialog.bundle */; };
-		4020BD9816EE5A1D00BD903F /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8C16EE5A1D00BD903F /* FBDialog.bundle */; };
-		4020BD9916EE5A1D00BD903F /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8C16EE5A1D00BD903F /* FBDialog.bundle */; };
-		4020BD9A16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8D16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib */; };
-		4020BD9B16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8D16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib */; };
-		4020BD9C16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8D16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib */; };
-		4020BD9D16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8D16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib */; };
-		4020BD9E16EE5A1D00BD903F /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8E16EE5A1D00BD903F /* Kamcord.bundle */; };
-		4020BD9F16EE5A1D00BD903F /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8E16EE5A1D00BD903F /* Kamcord.bundle */; };
-		4020BDA016EE5A1D00BD903F /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8E16EE5A1D00BD903F /* Kamcord.bundle */; };
-		4020BDA116EE5A1D00BD903F /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8E16EE5A1D00BD903F /* Kamcord.bundle */; };
-		4020BDA216EE5A1D00BD903F /* KCShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8F16EE5A1D00BD903F /* KCShareKit.bundle */; };
-		4020BDA316EE5A1D00BD903F /* KCShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8F16EE5A1D00BD903F /* KCShareKit.bundle */; };
-		4020BDA416EE5A1D00BD903F /* KCShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8F16EE5A1D00BD903F /* KCShareKit.bundle */; };
-		4020BDA516EE5A1D00BD903F /* KCShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD8F16EE5A1D00BD903F /* KCShareKit.bundle */; };
-		4020BDA616EE5A1D00BD903F /* KCVideoTracker 2.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9116EE5A1D00BD903F /* KCVideoTracker 2.mom */; };
-		4020BDA716EE5A1D00BD903F /* KCVideoTracker 2.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9116EE5A1D00BD903F /* KCVideoTracker 2.mom */; };
-		4020BDA816EE5A1D00BD903F /* KCVideoTracker 2.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9116EE5A1D00BD903F /* KCVideoTracker 2.mom */; };
-		4020BDA916EE5A1D00BD903F /* KCVideoTracker 2.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9116EE5A1D00BD903F /* KCVideoTracker 2.mom */; };
-		4020BDAA16EE5A1D00BD903F /* KCVideoTracker 3.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9216EE5A1D00BD903F /* KCVideoTracker 3.mom */; };
-		4020BDAB16EE5A1D00BD903F /* KCVideoTracker 3.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9216EE5A1D00BD903F /* KCVideoTracker 3.mom */; };
-		4020BDAC16EE5A1D00BD903F /* KCVideoTracker 3.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9216EE5A1D00BD903F /* KCVideoTracker 3.mom */; };
-		4020BDAD16EE5A1D00BD903F /* KCVideoTracker 3.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9216EE5A1D00BD903F /* KCVideoTracker 3.mom */; };
-		4020BDAE16EE5A1D00BD903F /* KCVideoTracker 3.omo in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9316EE5A1D00BD903F /* KCVideoTracker 3.omo */; };
-		4020BDAF16EE5A1D00BD903F /* KCVideoTracker 3.omo in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9316EE5A1D00BD903F /* KCVideoTracker 3.omo */; };
-		4020BDB016EE5A1D00BD903F /* KCVideoTracker 3.omo in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9316EE5A1D00BD903F /* KCVideoTracker 3.omo */; };
-		4020BDB116EE5A1D00BD903F /* KCVideoTracker 3.omo in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9316EE5A1D00BD903F /* KCVideoTracker 3.omo */; };
-		4020BDB216EE5A1D00BD903F /* KCVideoTracker.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9416EE5A1D00BD903F /* KCVideoTracker.mom */; };
-		4020BDB316EE5A1D00BD903F /* KCVideoTracker.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9416EE5A1D00BD903F /* KCVideoTracker.mom */; };
-		4020BDB416EE5A1D00BD903F /* KCVideoTracker.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9416EE5A1D00BD903F /* KCVideoTracker.mom */; };
-		4020BDB516EE5A1D00BD903F /* KCVideoTracker.mom in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9416EE5A1D00BD903F /* KCVideoTracker.mom */; };
-		4020BDB616EE5A1D00BD903F /* VersionInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9516EE5A1D00BD903F /* VersionInfo.plist */; };
-		4020BDB716EE5A1D00BD903F /* VersionInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9516EE5A1D00BD903F /* VersionInfo.plist */; };
-		4020BDB816EE5A1D00BD903F /* VersionInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9516EE5A1D00BD903F /* VersionInfo.plist */; };
-		4020BDB916EE5A1D00BD903F /* VersionInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4020BD9516EE5A1D00BD903F /* VersionInfo.plist */; };
-		4020BDBB16EE5A7800BD903F /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4020BDBA16EE5A7800BD903F /* Kamcord.framework */; };
-		4020BDBC16EE5A7800BD903F /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4020BDBA16EE5A7800BD903F /* Kamcord.framework */; };
-		4020BDBD16EE5A7800BD903F /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4020BDBA16EE5A7800BD903F /* Kamcord.framework */; };
-		4020BDBE16EE5A7800BD903F /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4020BDBA16EE5A7800BD903F /* Kamcord.framework */; };
 		40B3C86E16A5236E0088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40B3C87016A5252E0088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40B3C87216A5263E0088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40B3C87416A526B60088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		40C56EC916EEEE4200B039CC /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EBF16EEEE4200B039CC /* FBDialog.bundle */; };
+		40C56ECA16EEEE4200B039CC /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EBF16EEEE4200B039CC /* FBDialog.bundle */; };
+		40C56ECB16EEEE4200B039CC /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EBF16EEEE4200B039CC /* FBDialog.bundle */; };
+		40C56ECC16EEEE4200B039CC /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EBF16EEEE4200B039CC /* FBDialog.bundle */; };
+		40C56ECD16EEEE4200B039CC /* GTMOAuth2ViewTouch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC016EEEE4200B039CC /* GTMOAuth2ViewTouch.nib */; };
+		40C56ECE16EEEE4200B039CC /* GTMOAuth2ViewTouch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC016EEEE4200B039CC /* GTMOAuth2ViewTouch.nib */; };
+		40C56ECF16EEEE4200B039CC /* GTMOAuth2ViewTouch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC016EEEE4200B039CC /* GTMOAuth2ViewTouch.nib */; };
+		40C56ED016EEEE4200B039CC /* GTMOAuth2ViewTouch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC016EEEE4200B039CC /* GTMOAuth2ViewTouch.nib */; };
+		40C56ED116EEEE4200B039CC /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC116EEEE4200B039CC /* Kamcord.bundle */; };
+		40C56ED216EEEE4200B039CC /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC116EEEE4200B039CC /* Kamcord.bundle */; };
+		40C56ED316EEEE4200B039CC /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC116EEEE4200B039CC /* Kamcord.bundle */; };
+		40C56ED416EEEE4200B039CC /* Kamcord.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC116EEEE4200B039CC /* Kamcord.bundle */; };
+		40C56ED516EEEE4200B039CC /* KCShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC216EEEE4200B039CC /* KCShareKit.bundle */; };
+		40C56ED616EEEE4200B039CC /* KCShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC216EEEE4200B039CC /* KCShareKit.bundle */; };
+		40C56ED716EEEE4200B039CC /* KCShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC216EEEE4200B039CC /* KCShareKit.bundle */; };
+		40C56ED816EEEE4200B039CC /* KCShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC216EEEE4200B039CC /* KCShareKit.bundle */; };
+		40C56ED916EEEE4200B039CC /* KCVideoTracker 2.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC416EEEE4200B039CC /* KCVideoTracker 2.mom */; };
+		40C56EDA16EEEE4200B039CC /* KCVideoTracker 2.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC416EEEE4200B039CC /* KCVideoTracker 2.mom */; };
+		40C56EDB16EEEE4200B039CC /* KCVideoTracker 2.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC416EEEE4200B039CC /* KCVideoTracker 2.mom */; };
+		40C56EDC16EEEE4200B039CC /* KCVideoTracker 2.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC416EEEE4200B039CC /* KCVideoTracker 2.mom */; };
+		40C56EDD16EEEE4200B039CC /* KCVideoTracker 3.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC516EEEE4200B039CC /* KCVideoTracker 3.mom */; };
+		40C56EDE16EEEE4200B039CC /* KCVideoTracker 3.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC516EEEE4200B039CC /* KCVideoTracker 3.mom */; };
+		40C56EDF16EEEE4200B039CC /* KCVideoTracker 3.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC516EEEE4200B039CC /* KCVideoTracker 3.mom */; };
+		40C56EE016EEEE4200B039CC /* KCVideoTracker 3.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC516EEEE4200B039CC /* KCVideoTracker 3.mom */; };
+		40C56EE116EEEE4200B039CC /* KCVideoTracker 3.omo in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC616EEEE4200B039CC /* KCVideoTracker 3.omo */; };
+		40C56EE216EEEE4200B039CC /* KCVideoTracker 3.omo in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC616EEEE4200B039CC /* KCVideoTracker 3.omo */; };
+		40C56EE316EEEE4200B039CC /* KCVideoTracker 3.omo in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC616EEEE4200B039CC /* KCVideoTracker 3.omo */; };
+		40C56EE416EEEE4200B039CC /* KCVideoTracker 3.omo in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC616EEEE4200B039CC /* KCVideoTracker 3.omo */; };
+		40C56EE516EEEE4200B039CC /* KCVideoTracker.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC716EEEE4200B039CC /* KCVideoTracker.mom */; };
+		40C56EE616EEEE4200B039CC /* KCVideoTracker.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC716EEEE4200B039CC /* KCVideoTracker.mom */; };
+		40C56EE716EEEE4200B039CC /* KCVideoTracker.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC716EEEE4200B039CC /* KCVideoTracker.mom */; };
+		40C56EE816EEEE4200B039CC /* KCVideoTracker.mom in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC716EEEE4200B039CC /* KCVideoTracker.mom */; };
+		40C56EE916EEEE4200B039CC /* VersionInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC816EEEE4200B039CC /* VersionInfo.plist */; };
+		40C56EEA16EEEE4200B039CC /* VersionInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC816EEEE4200B039CC /* VersionInfo.plist */; };
+		40C56EEB16EEEE4200B039CC /* VersionInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC816EEEE4200B039CC /* VersionInfo.plist */; };
+		40C56EEC16EEEE4200B039CC /* VersionInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40C56EC816EEEE4200B039CC /* VersionInfo.plist */; };
+		40C56EEE16EEEE4F00B039CC /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C56EED16EEEE4F00B039CC /* Kamcord.framework */; };
+		40C56EEF16EEEE4F00B039CC /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C56EED16EEEE4F00B039CC /* Kamcord.framework */; };
+		40C56EF016EEEE4F00B039CC /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C56EED16EEEE4F00B039CC /* Kamcord.framework */; };
+		40C56EF116EEEE4F00B039CC /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C56EED16EEEE4F00B039CC /* Kamcord.framework */; };
 		40D81CCE162B7B67005C7039 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D81CCC162B784A005C7039 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40D81CCF162B7EF9005C7039 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D81CCC162B784A005C7039 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40D81CD0162B812B005C7039 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D81CCC162B784A005C7039 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -757,17 +757,17 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2D500B920D5A79C200DBA0E3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		4020BD8C16EE5A1D00BD903F /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = ../../Frameworks/Resources/FBDialog.bundle; sourceTree = "<group>"; };
-		4020BD8D16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib */ = {isa = PBXFileReference; lastKnownFileType = file; name = GTMOAuth2ViewTouch.nib; path = ../../Frameworks/Resources/GTMOAuth2ViewTouch.nib; sourceTree = "<group>"; };
-		4020BD8E16EE5A1D00BD903F /* Kamcord.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kamcord.bundle; path = ../../Frameworks/Resources/Kamcord.bundle; sourceTree = "<group>"; };
-		4020BD8F16EE5A1D00BD903F /* KCShareKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = KCShareKit.bundle; path = ../../Frameworks/Resources/KCShareKit.bundle; sourceTree = "<group>"; };
-		4020BD9116EE5A1D00BD903F /* KCVideoTracker 2.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "KCVideoTracker 2.mom"; sourceTree = "<group>"; };
-		4020BD9216EE5A1D00BD903F /* KCVideoTracker 3.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "KCVideoTracker 3.mom"; sourceTree = "<group>"; };
-		4020BD9316EE5A1D00BD903F /* KCVideoTracker 3.omo */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KCVideoTracker 3.omo"; sourceTree = "<group>"; };
-		4020BD9416EE5A1D00BD903F /* KCVideoTracker.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = KCVideoTracker.mom; sourceTree = "<group>"; };
-		4020BD9516EE5A1D00BD903F /* VersionInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = VersionInfo.plist; sourceTree = "<group>"; };
-		4020BDBA16EE5A7800BD903F /* Kamcord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamcord.framework; path = ../../Frameworks/Kamcord.framework; sourceTree = "<group>"; };
 		40B3C86A16A522A00088D21D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		40C56EBF16EEEE4200B039CC /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = ../../Frameworks/Resources/FBDialog.bundle; sourceTree = "<group>"; };
+		40C56EC016EEEE4200B039CC /* GTMOAuth2ViewTouch.nib */ = {isa = PBXFileReference; lastKnownFileType = file; name = GTMOAuth2ViewTouch.nib; path = ../../Frameworks/Resources/GTMOAuth2ViewTouch.nib; sourceTree = "<group>"; };
+		40C56EC116EEEE4200B039CC /* Kamcord.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kamcord.bundle; path = ../../Frameworks/Resources/Kamcord.bundle; sourceTree = "<group>"; };
+		40C56EC216EEEE4200B039CC /* KCShareKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = KCShareKit.bundle; path = ../../Frameworks/Resources/KCShareKit.bundle; sourceTree = "<group>"; };
+		40C56EC416EEEE4200B039CC /* KCVideoTracker 2.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "KCVideoTracker 2.mom"; sourceTree = "<group>"; };
+		40C56EC516EEEE4200B039CC /* KCVideoTracker 3.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "KCVideoTracker 3.mom"; sourceTree = "<group>"; };
+		40C56EC616EEEE4200B039CC /* KCVideoTracker 3.omo */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KCVideoTracker 3.omo"; sourceTree = "<group>"; };
+		40C56EC716EEEE4200B039CC /* KCVideoTracker.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = KCVideoTracker.mom; sourceTree = "<group>"; };
+		40C56EC816EEEE4200B039CC /* VersionInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = VersionInfo.plist; sourceTree = "<group>"; };
+		40C56EED16EEEE4F00B039CC /* Kamcord.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamcord.framework; path = ../../Frameworks/Kamcord.framework; sourceTree = "<group>"; };
 		40D81CCC162B784A005C7039 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		495E73F7104B74E20012BB52 /* RenderTextureTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenderTextureTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		495E74F6104B756D0012BB52 /* RenderTextureTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderTextureTest.h; path = tests/RenderTextureTest.h; sourceTree = "<group>"; };
@@ -1603,6 +1603,7 @@
 				495E74F0104B752C0012BB52 /* CoreGraphics.framework in Frameworks */,
 				0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA6239C156B75F8006D25E1 /* CoreVideo.framework in Frameworks */,
+				40C56EEE16EEEE4F00B039CC /* Kamcord.framework in Frameworks */,
 				495E74F1104B752C0012BB52 /* OpenGLES.framework in Frameworks */,
 				495E74F2104B752C0012BB52 /* QuartzCore.framework in Frameworks */,
 				495E74F3104B752C0012BB52 /* libcocos2d.a in Frameworks */,
@@ -1619,7 +1620,6 @@
 				0AA623A0156B75F8006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA623A1156B75F8006D25E1 /* Twitter.framework in Frameworks */,
 				495E74EF104B752C0012BB52 /* UIKit.framework in Frameworks */,
-				4020BDBB16EE5A7800BD903F /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1647,6 +1647,7 @@
 				501C7C8A0F91EFFF0024A296 /* CoreGraphics.framework in Frameworks */,
 				0AA6272D156C9868006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA6272E156C9868006D25E1 /* CoreVideo.framework in Frameworks */,
+				40C56EF116EEEE4F00B039CC /* Kamcord.framework in Frameworks */,
 				501C7C8B0F91EFFF0024A296 /* OpenGLES.framework in Frameworks */,
 				501C7C8C0F91EFFF0024A296 /* QuartzCore.framework in Frameworks */,
 				501C7C8D0F91EFFF0024A296 /* libcocos2d.a in Frameworks */,
@@ -1663,7 +1664,6 @@
 				0AA62732156C9868006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA62733156C9868006D25E1 /* Twitter.framework in Frameworks */,
 				501C7C890F91EFFF0024A296 /* UIKit.framework in Frameworks */,
-				4020BDBE16EE5A7800BD903F /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1684,6 +1684,7 @@
 				502C67040DFEFE1000E4107D /* CoreGraphics.framework in Frameworks */,
 				0AA626E0156C9161006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA626E1156C9161006D25E1 /* CoreVideo.framework in Frameworks */,
+				40C56EEF16EEEE4F00B039CC /* Kamcord.framework in Frameworks */,
 				502C67050DFEFE1000E4107D /* OpenGLES.framework in Frameworks */,
 				502C67060DFEFE1000E4107D /* QuartzCore.framework in Frameworks */,
 				502C67070DFEFE1000E4107D /* libcocos2d.a in Frameworks */,
@@ -1700,7 +1701,6 @@
 				0AA626E5156C9162006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA626E6156C9162006D25E1 /* Twitter.framework in Frameworks */,
 				502C67030DFEFE1000E4107D /* UIKit.framework in Frameworks */,
-				4020BDBC16EE5A7800BD903F /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1735,6 +1735,7 @@
 				506C80070E041C9300B48100 /* CoreGraphics.framework in Frameworks */,
 				0AA62724156C954F006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA62725156C954F006D25E1 /* CoreVideo.framework in Frameworks */,
+				40C56EF016EEEE4F00B039CC /* Kamcord.framework in Frameworks */,
 				506C80080E041C9300B48100 /* OpenGLES.framework in Frameworks */,
 				506C80090E041C9300B48100 /* QuartzCore.framework in Frameworks */,
 				506C800A0E041C9300B48100 /* libcocos2d.a in Frameworks */,
@@ -1751,7 +1752,6 @@
 				0AA62729156C954F006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA6272A156C9550006D25E1 /* Twitter.framework in Frameworks */,
 				506C80060E041C9300B48100 /* UIKit.framework in Frameworks */,
-				4020BDBD16EE5A7800BD903F /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1866,11 +1866,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4020BD8C16EE5A1D00BD903F /* FBDialog.bundle */,
-				4020BD8D16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib */,
-				4020BD8E16EE5A1D00BD903F /* Kamcord.bundle */,
-				4020BD8F16EE5A1D00BD903F /* KCShareKit.bundle */,
-				4020BD9016EE5A1D00BD903F /* KCVideoTracker.momd */,
+				40C56EBF16EEEE4200B039CC /* FBDialog.bundle */,
+				40C56EC016EEEE4200B039CC /* GTMOAuth2ViewTouch.nib */,
+				40C56EC116EEEE4200B039CC /* Kamcord.bundle */,
+				40C56EC216EEEE4200B039CC /* KCShareKit.bundle */,
+				40C56EC316EEEE4200B039CC /* KCVideoTracker.momd */,
 				E0C5588E11FE4CF100B9E4CB /* zwoptex */,
 				50CBA4A711CBD7FB007B009D /* bugs */,
 				50B77511119AF58100F567F4 /* Particles */,
@@ -1911,7 +1911,7 @@
 				0AA62394156B75F8006D25E1 /* CoreVideo.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				40B3C86A16A522A00088D21D /* ImageIO.framework */,
-				4020BDBA16EE5A7800BD903F /* Kamcord.framework */,
+				40C56EED16EEEE4F00B039CC /* Kamcord.framework */,
 				503092B210447296005F7AFC /* libz.dylib */,
 				0AA62395156B75F8006D25E1 /* MediaPlayer.framework */,
 				0AA62396156B75F8006D25E1 /* MessageUI.framework */,
@@ -1926,14 +1926,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4020BD9016EE5A1D00BD903F /* KCVideoTracker.momd */ = {
+		40C56EC316EEEE4200B039CC /* KCVideoTracker.momd */ = {
 			isa = PBXGroup;
 			children = (
-				4020BD9116EE5A1D00BD903F /* KCVideoTracker 2.mom */,
-				4020BD9216EE5A1D00BD903F /* KCVideoTracker 3.mom */,
-				4020BD9316EE5A1D00BD903F /* KCVideoTracker 3.omo */,
-				4020BD9416EE5A1D00BD903F /* KCVideoTracker.mom */,
-				4020BD9516EE5A1D00BD903F /* VersionInfo.plist */,
+				40C56EC416EEEE4200B039CC /* KCVideoTracker 2.mom */,
+				40C56EC516EEEE4200B039CC /* KCVideoTracker 3.mom */,
+				40C56EC616EEEE4200B039CC /* KCVideoTracker 3.omo */,
+				40C56EC716EEEE4200B039CC /* KCVideoTracker.mom */,
+				40C56EC816EEEE4200B039CC /* VersionInfo.plist */,
 			);
 			name = KCVideoTracker.momd;
 			path = ../../Frameworks/Resources/KCVideoTracker.momd;
@@ -3940,15 +3940,15 @@
 				0A1D64C31570BA8D00627EBE /* background.wav in Resources */,
 				0AB2C2F315C366D90015E4AD /* test2.m4a in Resources */,
 				0AB2C2F415C366D90015E4AD /* test1.caf in Resources */,
-				4020BD9616EE5A1D00BD903F /* FBDialog.bundle in Resources */,
-				4020BD9A16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib in Resources */,
-				4020BD9E16EE5A1D00BD903F /* Kamcord.bundle in Resources */,
-				4020BDA216EE5A1D00BD903F /* KCShareKit.bundle in Resources */,
-				4020BDA616EE5A1D00BD903F /* KCVideoTracker 2.mom in Resources */,
-				4020BDAA16EE5A1D00BD903F /* KCVideoTracker 3.mom in Resources */,
-				4020BDAE16EE5A1D00BD903F /* KCVideoTracker 3.omo in Resources */,
-				4020BDB216EE5A1D00BD903F /* KCVideoTracker.mom in Resources */,
-				4020BDB616EE5A1D00BD903F /* VersionInfo.plist in Resources */,
+				40C56EC916EEEE4200B039CC /* FBDialog.bundle in Resources */,
+				40C56ECD16EEEE4200B039CC /* GTMOAuth2ViewTouch.nib in Resources */,
+				40C56ED116EEEE4200B039CC /* Kamcord.bundle in Resources */,
+				40C56ED516EEEE4200B039CC /* KCShareKit.bundle in Resources */,
+				40C56ED916EEEE4200B039CC /* KCVideoTracker 2.mom in Resources */,
+				40C56EDD16EEEE4200B039CC /* KCVideoTracker 3.mom in Resources */,
+				40C56EE116EEEE4200B039CC /* KCVideoTracker 3.omo in Resources */,
+				40C56EE516EEEE4200B039CC /* KCVideoTracker.mom in Resources */,
+				40C56EE916EEEE4200B039CC /* VersionInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3991,15 +3991,15 @@
 				E02BB605126CA73F006E46A2 /* Icon-Small-50.png in Resources */,
 				E02BB606126CA73F006E46A2 /* Icon-72.png in Resources */,
 				E0D2D4F3128CA9E300F78C63 /* piece.png in Resources */,
-				4020BD9916EE5A1D00BD903F /* FBDialog.bundle in Resources */,
-				4020BD9D16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib in Resources */,
-				4020BDA116EE5A1D00BD903F /* Kamcord.bundle in Resources */,
-				4020BDA516EE5A1D00BD903F /* KCShareKit.bundle in Resources */,
-				4020BDA916EE5A1D00BD903F /* KCVideoTracker 2.mom in Resources */,
-				4020BDAD16EE5A1D00BD903F /* KCVideoTracker 3.mom in Resources */,
-				4020BDB116EE5A1D00BD903F /* KCVideoTracker 3.omo in Resources */,
-				4020BDB516EE5A1D00BD903F /* KCVideoTracker.mom in Resources */,
-				4020BDB916EE5A1D00BD903F /* VersionInfo.plist in Resources */,
+				40C56ECC16EEEE4200B039CC /* FBDialog.bundle in Resources */,
+				40C56ED016EEEE4200B039CC /* GTMOAuth2ViewTouch.nib in Resources */,
+				40C56ED416EEEE4200B039CC /* Kamcord.bundle in Resources */,
+				40C56ED816EEEE4200B039CC /* KCShareKit.bundle in Resources */,
+				40C56EDC16EEEE4200B039CC /* KCVideoTracker 2.mom in Resources */,
+				40C56EE016EEEE4200B039CC /* KCVideoTracker 3.mom in Resources */,
+				40C56EE416EEEE4200B039CC /* KCVideoTracker 3.omo in Resources */,
+				40C56EE816EEEE4200B039CC /* KCVideoTracker.mom in Resources */,
+				40C56EEC16EEEE4200B039CC /* VersionInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4029,15 +4029,15 @@
 				E02BB616126CA73F006E46A2 /* Icon-Small.png in Resources */,
 				E02BB617126CA73F006E46A2 /* Icon-Small-50.png in Resources */,
 				E02BB618126CA73F006E46A2 /* Icon-72.png in Resources */,
-				4020BD9716EE5A1D00BD903F /* FBDialog.bundle in Resources */,
-				4020BD9B16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib in Resources */,
-				4020BD9F16EE5A1D00BD903F /* Kamcord.bundle in Resources */,
-				4020BDA316EE5A1D00BD903F /* KCShareKit.bundle in Resources */,
-				4020BDA716EE5A1D00BD903F /* KCVideoTracker 2.mom in Resources */,
-				4020BDAB16EE5A1D00BD903F /* KCVideoTracker 3.mom in Resources */,
-				4020BDAF16EE5A1D00BD903F /* KCVideoTracker 3.omo in Resources */,
-				4020BDB316EE5A1D00BD903F /* KCVideoTracker.mom in Resources */,
-				4020BDB716EE5A1D00BD903F /* VersionInfo.plist in Resources */,
+				40C56ECA16EEEE4200B039CC /* FBDialog.bundle in Resources */,
+				40C56ECE16EEEE4200B039CC /* GTMOAuth2ViewTouch.nib in Resources */,
+				40C56ED216EEEE4200B039CC /* Kamcord.bundle in Resources */,
+				40C56ED616EEEE4200B039CC /* KCShareKit.bundle in Resources */,
+				40C56EDA16EEEE4200B039CC /* KCVideoTracker 2.mom in Resources */,
+				40C56EDE16EEEE4200B039CC /* KCVideoTracker 3.mom in Resources */,
+				40C56EE216EEEE4200B039CC /* KCVideoTracker 3.omo in Resources */,
+				40C56EE616EEEE4200B039CC /* KCVideoTracker.mom in Resources */,
+				40C56EEA16EEEE4200B039CC /* VersionInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4068,15 +4068,15 @@
 				E02BB610126CA73F006E46A2 /* Icon-Small.png in Resources */,
 				E02BB611126CA73F006E46A2 /* Icon-Small-50.png in Resources */,
 				E02BB612126CA73F006E46A2 /* Icon-72.png in Resources */,
-				4020BD9816EE5A1D00BD903F /* FBDialog.bundle in Resources */,
-				4020BD9C16EE5A1D00BD903F /* GTMOAuth2ViewTouch.nib in Resources */,
-				4020BDA016EE5A1D00BD903F /* Kamcord.bundle in Resources */,
-				4020BDA416EE5A1D00BD903F /* KCShareKit.bundle in Resources */,
-				4020BDA816EE5A1D00BD903F /* KCVideoTracker 2.mom in Resources */,
-				4020BDAC16EE5A1D00BD903F /* KCVideoTracker 3.mom in Resources */,
-				4020BDB016EE5A1D00BD903F /* KCVideoTracker 3.omo in Resources */,
-				4020BDB416EE5A1D00BD903F /* KCVideoTracker.mom in Resources */,
-				4020BDB816EE5A1D00BD903F /* VersionInfo.plist in Resources */,
+				40C56ECB16EEEE4200B039CC /* FBDialog.bundle in Resources */,
+				40C56ECF16EEEE4200B039CC /* GTMOAuth2ViewTouch.nib in Resources */,
+				40C56ED316EEEE4200B039CC /* Kamcord.bundle in Resources */,
+				40C56ED716EEEE4200B039CC /* KCShareKit.bundle in Resources */,
+				40C56EDB16EEEE4200B039CC /* KCVideoTracker 2.mom in Resources */,
+				40C56EDF16EEEE4200B039CC /* KCVideoTracker 3.mom in Resources */,
+				40C56EE316EEEE4200B039CC /* KCVideoTracker 3.omo in Resources */,
+				40C56EE716EEEE4200B039CC /* KCVideoTracker.mom in Resources */,
+				40C56EEB16EEEE4200B039CC /* VersionInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
