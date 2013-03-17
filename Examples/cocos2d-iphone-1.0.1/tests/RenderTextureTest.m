@@ -629,9 +629,7 @@ Class restartAction()
     [Kamcord setOpenGLView:glView];
     
     // Set the device orientation. Must use Kamcord, not CCDirector!
-    [Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeRight];
-    // [Kamcord setDeviceOrientation:KCDeviceOrientationPortrait];
-    // [Kamcord setSupportPortraitAndPortraitUpsideDown:YES];
+    [Kamcord setDeviceOrientation:KCDeviceOrientationPortrait];
     
     // Developer settings
     [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"

@@ -166,9 +166,6 @@
 	
 	// Obtain the shared director in order to...
 	CCDirector *director = [CCDirector sharedDirector];
-	
-	// Sets landscape mode (make sure to use Kamcord, not CCDirector!!)
-	[Kamcord setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
 
     // Kamcord setup
     [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
@@ -210,54 +207,15 @@
 	
 	[scene runAction: [CCRotateBy actionWithDuration: 4 angle:-360]];
     
-    // [self spawnTonsOfWork];
-    [Kamcord prepareNextVideo];
-    
-    [self performSelector:@selector(startRecording) withObject:nil afterDelay:3];
+    [Kamcord startRecording];
+    double delayInSeconds = 10.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [Kamcord stopRecording];
+        [Kamcord showView];
+    });
 	
     [director runWithScene: scene];
-}
-
-- (void)spawnTonsOfWork
-{
-    int MAX = 30000000;
-    int benchmark = 500000;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        for (int i = 0; i < MAX; ++i) {
-            if (i % benchmark == 0) {
-                NSLog(@"A: %d", i);
-            }
-        }
-    });
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        for (int i = 0; i < MAX; ++i) {
-            if (i % benchmark == 0) {
-                NSLog(@"BB: %d", i);
-            }
-        }
-    });
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        for (int i = 0; i < MAX; ++i) {
-            if (i % benchmark == 0) {
-                NSLog(@"CCC: %d", i);
-            }
-        }
-    });
-}
-
--(void) startRecording
-{
-    NSLog(@"Is main thread: %d", [NSThread isMainThread]);
-    [Kamcord startRecording];
-    [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
-}
-
--(void) stopRecordingAndShowKamcordView:(id)sender
-{
-	[Kamcord stopRecording];
-    [Kamcord showView];
 }
 
 // getting a call, pause the game

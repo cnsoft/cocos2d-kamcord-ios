@@ -4034,9 +4034,6 @@ Class restartAction()
     [Kamcord setParentViewController:window.rootViewController];
 	[Kamcord setOpenGLView:glView];
     
-    // Landscape orientation
-	[Kamcord setDeviceOrientation:KCDeviceOrientationLandscapeLeft];
-    
     // Developer settings
     [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
              developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"
@@ -4079,21 +4076,15 @@ Class restartAction()
 	
 	[director runWithScene: scene];
     
-    // Give the layer time to resize for retina displays
-    [self performSelector:@selector(startRecording) withObject:nil afterDelay:0.5];
+    [Kamcord startRecording];
+    double delayInSeconds = 10.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [Kamcord stopRecording];
+        [Kamcord showView];
+    });
     
     return YES;
-}
-
--(void) startRecording
-{
-    [Kamcord startRecording];
-    [self performSelector:@selector(stopRecordingAndShowKamcordView:) withObject:nil afterDelay:10.0];
-}
--(void) stopRecordingAndShowKamcordView:(id)sender
-{
-	[Kamcord stopRecording];
-    [Kamcord showView];
 }
 
 // getting a call, pause the game
