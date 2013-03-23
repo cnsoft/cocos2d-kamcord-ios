@@ -11,6 +11,7 @@
 #import "KCVideoProcessingAndShareManager.h"
 #import "VideoTableViewController.h"
 #import "KCUiAssetMap.h"
+#import "KCWatchView.h"
 
 @class KCVideo;
 
@@ -18,8 +19,7 @@
 
 @property (nonatomic, retain) KCVideo * latestVideo;
 @property (nonatomic, retain) UITabBarController * tabBarController;
-// TODO: This exposure makes for confusing code elsewhere. Should fix!
-@property (nonatomic, retain) VideoTableViewController * watchView;
+@property (nonatomic, retain) KCWatchView * watchView;
 
 - (id)initWithVideo:(KCVideo *)video
            viewMode:(KC_VIEW_MODE)viewMode

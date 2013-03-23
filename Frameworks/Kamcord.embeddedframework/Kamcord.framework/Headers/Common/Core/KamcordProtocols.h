@@ -36,7 +36,7 @@
 // Called when the video has finished converting
 - (void)videoFinishedConverting:(BOOL)success;
 
-#if KCUNITY
+#if KCUNITY_VERSION
 // Called when the thumbnail image for the video is ready
 - (void)thumbnailReadyAtFilePath:(NSString *)thumbnailFilePath;
 #endif
@@ -79,6 +79,7 @@ typedef enum
 {
     NO_ERROR,
     FACEBOOK_NOT_AUTHENTICATED,
+    FACEBOOK_NO_ACCOUNTS,
     FACEBOOK_LOGIN_CANCELLED,
     FACEBOOK_DAILY_SHARE_EXCEEDED,
     FACEBOOK_SERVER_ERROR,
@@ -114,6 +115,12 @@ typedef enum
     ACCESS_NOT_GRANTED,
 } KCTwitterAuthStatus;
 
+typedef enum
+{
+    FBSUCCESS,
+    FBNO_ACCOUNT,
+    FBACCESS_NOT_GRANTED,
+} KCFacebookAuthStatus;
 
 @protocol KCShareDelegate <NSObject>
 
@@ -138,7 +145,7 @@ typedef enum
 - (void)videoConversionFinishedWithSuccess:(BOOL)success error:(NSError *)error;
 
 // Auth requests
-- (void)facebookAuthFinishedWithSuccess:(BOOL)success;
+- (void)facebookAuthFinishedWithSuccess:(BOOL)success status:(KCFacebookAuthStatus)status;
 - (void)twitterAuthFinishedWithSuccess:(BOOL)success status:(KCTwitterAuthStatus)status;
 - (void)youTubeAuthFinishedWithSuccess:(BOOL)success;
 

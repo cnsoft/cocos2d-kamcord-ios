@@ -42,9 +42,9 @@
 #import "KCVideo.h"
 #import "../Core/KCShareDelegateIntermediary.h"
 #import "KCProgressUIView.h"
-#import "KCMoviePlayerViewController.h"
 #import "KCUiAssetMap.h"
 
+@class KCWatchView;
 @interface VideoEntity : NSObject
 
 @property (nonatomic, copy) NSString * title;
@@ -59,19 +59,6 @@
 
 @end
 
-@interface KCMPMoviePlayerViewController : KCMoviePlayerViewController
-
-@property (nonatomic, assign) int appId;
-@property (nonatomic, copy) NSString * videoId;
-@property (nonatomic, assign) int feedPosition;
-
-- (id)initWithContentURL:(NSURL *)contentUrl
-                   appId:(int)appId
-                 videoId:(NSString *)videoId
-            feedPosition:(int)feedPosition;
-
-@end
-
 @interface VideoTableViewController : UITableViewController<SKStoreProductViewControllerDelegate, NSURLConnectionDelegate, KCShareDelegate>
 
 @property (nonatomic, retain) UIView * refreshHeaderView;
@@ -80,9 +67,7 @@
 @property (nonatomic, retain) UIActivityIndicatorView * refreshSpinner;
 
 @property (nonatomic, retain) NSMutableArray * videoEntities;
-@property (nonatomic, retain) VideoEntity * userVideo;
 @property (nonatomic, retain) NSMutableData * httpResponseData;
-@property (nonatomic, retain) KCMPMoviePlayerViewController * player;
 @property (nonatomic, retain) NSDateFormatter * dateFormatter;
 @property (nonatomic, retain) NSDate * lastUpdatedAt;
 @property (nonatomic, retain) UILabel * noInternetLabel;
@@ -90,21 +75,27 @@
 @property (nonatomic, retain) KCProgressUIView * progressUIView;
 @property (nonatomic, retain) KCShareDelegateIntermediary * intermediary;
 @property (nonatomic, retain) KCVideo * currentVideo;
-@property (nonatomic, assign) KCUiAssetMap * assetMap;
+@property (nonatomic, retain) KCUiAssetMap * assetMap;
 @property (nonatomic, assign) KC_VIEW_MODE viewMode;
 
-@property (nonatomic, assign) UIBarButtonItem * doneButtonItem;
+@property (nonatomic, assign) BOOL myVideosMode;
 
+@property (nonatomic, assign) KCWatchView * parentViewController;
+@property (nonatomic, retain) NSDictionary * moviePlayingData;
+@property (nonatomic, assign) BOOL localVideoReady;
+
+- (void)switchMyVideosMode:(BOOL)mode;
 - (void)addPullToRefreshHeader;
 - (void)startLoading;
 - (void)stopLoading;
 - (void)dismissView;
 - (id)initWithVideo:(KCVideo *)video
            assetMap:(KCUiAssetMap *)assetMap
-           viewMode:(KC_VIEW_MODE)viewMode;
-
+             source:(NSString *)source
+       myVideosMode:(BOOL)myVideosMode
+           viewMode:(KC_VIEW_MODE)viewMode
+parentViewController:(KCWatchView *)parentViewController;
 - (void)setupProgressUIView;
 - (void)s3UploadDidStart:(NSNotification *)notification;
-- (void)setToolbarProperty:(UIBarButtonItem *)doneButtonItem;
 
 @end

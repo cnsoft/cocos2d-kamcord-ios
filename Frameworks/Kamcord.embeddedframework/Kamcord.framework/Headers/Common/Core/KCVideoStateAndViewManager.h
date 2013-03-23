@@ -26,7 +26,7 @@
 
 @property (nonatomic, assign) UIViewController * parentViewController;
 
-#if (COCOS2D_1_0_1 || COCOS2D_2_0 || COCOS2D_2_1)
+#if COCOS2D
 // Audio background
 @property (nonatomic, retain) KCAudio * audioBackground;
 #endif
@@ -97,13 +97,16 @@
 // Video push notifications
 - (void)retrieveMetadataForVideoWithID:(NSString *)videoID
                  withCompletionHandler:(void (^)(NSMutableDictionary *, NSError *))completionHandler;
+
+#if KCZYNGA
 - (void)showVideoPushNotificationReceiverViewInParentViewController:(UIViewController *)parentViewController
                                                          withParams:(NSDictionary *)params;
+#endif
 
 - (void)setValue:(NSObject *)value
   forUiComponent:(KC_UI_COMPONENT)uiComponent;
 
-#if (COCOS2D_1_0_1 || COCOS2D_2_0 || COCOS2D_2_1)
+#if COCOS2D
 // Sound
 - (KCAudio *)playAudioAtURL:(NSURL *)url
                      volume:(float)volume
@@ -115,11 +118,11 @@
 - (void)stopAllSounds:(KC_SOUND_TYPE)soundType;
 #endif
 
-#if (COCOS2D_1_0_1 || COCOS2D_2_0 || COCOS2D_2_1)
+#if COCOS2D
 - (id <KCAudioListener>)audioListener;
 #endif
 
-#if KCUNITY
+#if KCUNITY_VERSION
 - (void)writeAudioData:(float [])data
                 length:(size_t)nbytes
            numChannels:(int)numChannels;

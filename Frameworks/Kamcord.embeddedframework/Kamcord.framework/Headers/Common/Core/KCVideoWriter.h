@@ -1,5 +1,5 @@
 //
-//  KKVideoWriter.h
+//  KCVideoWriter.h
 //  cocos2d-ios
 //
 //  Created by Kevin Wang on 5/2/12.
@@ -36,8 +36,9 @@
 - (BOOL)addFrameToVideo:(CVPixelBufferRef)pixelBuffer
                  atTime:(CFAbsoluteTime)time;
 
-#if KCUNITY
+#if KCUNITY_VERSION
 - (void)setAudioFormatDescription:(CMFormatDescriptionRef)desc;
+- (void)audioBytesReady:(Float32 [])data numSamples:(UInt32)nsamples;
 #endif
 
 // Useful to know if we're currently writing frames or not

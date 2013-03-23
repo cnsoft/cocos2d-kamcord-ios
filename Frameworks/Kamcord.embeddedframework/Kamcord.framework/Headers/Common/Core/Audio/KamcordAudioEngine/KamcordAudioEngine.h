@@ -6,11 +6,14 @@
 //
 //
 
+#if COCOS2D
+
 #import <AudioToolbox/AudioToolbox.h>
 #import "../KCAudioListener.h"
 
 #import "SimpleAudioEngine.h"
 #import "CocosDenshion.h"
+
 
 // ----------------------------------------------------------------
 // Properties of the Kamcord Audio Engine
@@ -119,3 +122,5 @@
                               kamcord:(BOOL)useKamcord;
 
 @end
+
+#endif

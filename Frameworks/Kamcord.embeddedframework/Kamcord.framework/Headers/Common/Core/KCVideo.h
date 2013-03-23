@@ -110,7 +110,7 @@ alreadySharedWithEmail:(BOOL)alreadySharedWithEmail
 
 //////////////////////////////////////////////////////
 // Begin KCVideo
-#if (COCOS2D_1_0_1 || COCOS2D_2_0 || COCOS2D_2_1)
+#if COCOS2D
 @class KCAudioCollection;
 #endif
 
@@ -223,6 +223,7 @@ typedef enum
 @property (nonatomic, copy) NSString * onlineVideoApplicationId;
 @property (nonatomic, copy) NSString * onlineVideoApplicationName;
 @property (nonatomic, copy) NSString * onlineVideoAddedAt;
+@property (nonatomic, copy) NSString * onlineAppStoreURL;
 
 @property (nonatomic, retain) NSURL * onlineKamcordWatchPageURL;
 @property (nonatomic, retain) NSURL * onlineKamcordThumbnailURL;
@@ -234,7 +235,7 @@ typedef enum
 @property (nonatomic, assign) BOOL uploadedToKamcord;
 @property (nonatomic, assign) float uploadProgress;
 
-#if (COCOS2D_1_0_1 || COCOS2D_2_0 || COCOS2D_2_1)
+#if COCOS2D
 // Audio
 @property (nonatomic, retain) KCAudioCollection * audioCollection;
 #endif
@@ -291,7 +292,7 @@ persistentStoreCoordinator:(NSPersistentStoreCoordinator *)persistentStoreCoordi
 // has finished recording.
 - (void)compressMarkedTimes;
 
-#if (COCOS2D_1_0_1 || COCOS2D_2_0 || COCOS2D_2_1)
+#if COCOS2D
 - (void)stopAllSounds:(KC_SOUND_TYPE)soundType;
 #endif
 

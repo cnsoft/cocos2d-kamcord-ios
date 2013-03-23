@@ -39,4 +39,6 @@
 + (BOOL)beforePresentRenderbuffer:(GLuint)framebuffer;
 + (BOOL)afterPresentRenderBuffer:(GLuint)framebuffer;
 
++ (GLuint)kamcordFramebuffer;
+
 @end

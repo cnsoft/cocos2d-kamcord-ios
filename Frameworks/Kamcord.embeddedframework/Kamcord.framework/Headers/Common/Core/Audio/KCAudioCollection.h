@@ -1,3 +1,5 @@
+#if COCOS2D
+
 //
 //  KCAudioCollection.h
 //  cocos2d-ios
@@ -7,7 +9,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreMedia/CMTime.h>
 
 #import "Kamcord.h"
 #import "KCAudio.h"
@@ -37,3 +38,5 @@
 - (void)stopAllSounds:(KC_SOUND_TYPE)soundType;
 
 @end
+
+#endif
