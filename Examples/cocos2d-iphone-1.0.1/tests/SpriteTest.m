@@ -4008,14 +4008,14 @@ Class restartAction()
 	// Init the window
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-	// must be called before any othe call to the director
+	// Must be called before any other call to the director
 	[CCDirector setDirectorType:kCCDirectorTypeDisplayLink];
-//	[CCDirector setDirectorType:kCCDirectorTypeThreadMainLoop];
+    // [CCDirector setDirectorType:kCCDirectorTypeThreadMainLoop];
 	
-	// before creating any layer, set the landscape mode
+	// Before creating any layer, set the landscape mode
 	CCDirector *director = [CCDirector sharedDirector];
 	
-	// set FPS at 60
+	// Set FPS at 60
 	[director setAnimationInterval:1.0/60];
 	
 	// Display FPS: yes
@@ -4030,7 +4030,7 @@ Class restartAction()
     window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
     window.rootViewController.view = glView;
 	
-	// attach the openglView to the director
+	// Attach the openglView to the director
     [Kamcord setParentViewController:window.rootViewController];
 	[Kamcord setOpenGLView:glView];
     
@@ -4050,7 +4050,7 @@ Class restartAction()
     [Kamcord setVideoResolution:MEDIUM_VIDEO_RESOLUTION];
 
 	// 2D projection
-//	[director setProjection:kCCDirectorProjection2D];
+    // [director setProjection:kCCDirectorProjection2D];
 
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
 	if( ! [director enableRetinaDisplay:YES] )
@@ -4076,6 +4076,7 @@ Class restartAction()
 	
 	[director runWithScene: scene];
     
+    // TODO: Why doesn't this show up on the iPhone 5.1 simulator?
     [Kamcord startRecording];
     double delayInSeconds = 10.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));

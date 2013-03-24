@@ -149,29 +149,43 @@
 
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
-	// CC_DIRECTOR_INIT()
-	//
-	// 1. Initializes an EAGLView with 0-bit depth format, and RGB565 render buffer
-	// 2. EAGLView multiple touches: disabled
-	// 3. creates a UIWindow, and assign it to the "window" var (it must already be declared)
-	// 4. Parents EAGLView to the newly created window
-	// 5. Creates Display Link Director
-	// 5a. If it fails, it will use an NSTimer director
-	// 6. It will try to run at 60 FPS
-	// 7. Display FPS: NO
-	// 8. Device orientation: Portrait
-	// 9. Connects the director to the EAGLView
-	//
-	CC_DIRECTOR_INIT_KAMCORD();
-	
-	// Obtain the shared director in order to...
-	CCDirector *director = [CCDirector sharedDirector];
-
+    // Init the window
+    window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Must be called before any other call to the director
+    [CCDirector setDirectorType:kCCDirectorTypeDisplayLink];
+    
+    // Before creating any layer, set the landscape mode
+    CCDirector *director = [CCDirector sharedDirector];
+    
+    // Set FPS at 60k
+    [director setAnimationInterval:1.0/60];
+    
+    // Display FPS: yes
+    [director setDisplayFPS:YES];
+    
+    // Instantiate a KCGLView, which is a subclass with EAGLView with
+    // special recording functionality.
+    KCGLView * glView = [KCGLView viewWithFrame:[window bounds]
+                                    pixelFormat:kEAGLColorFormatRGB565
+                                    depthFormat:0];
+    
+    // Kamcord uses UIKit for autorotation, which requires special logic to handle rotations.
+    window.rootViewController = [[KCViewController alloc] initWithNibName:nil bundle:nil];
+    window.rootViewController.view = glView;
+    
+    // Tell Kamcord about the root view controller and the KCGLView
+    [Kamcord setParentViewController:window.rootViewController];
+    [Kamcord setOpenGLView:glView];
+    
+    // Set the device orientation. Must use Kamcord, not CCDirector!
+    [Kamcord setDeviceOrientation:KCDeviceOrientationPortrait];
+    
     // Kamcord setup
     [Kamcord setDeveloperKey:@"f9014ff0b3d5a44db2468a0e16bfcf8c"
              developerSecret:@"SDqGQY8I2JtmXmk4rJZhS5qtr5witt7YmRhVODhu8Yw"
                      appName:@"RotateWorldTest"];
-
+    
     // Social media settings
     [Kamcord setYouTubeDescription:@"This is a Cocos2D test app that was recorded with Kamcord."
                               tags:@"Cocos2D RotateWorldTest"];
@@ -179,7 +193,6 @@
     [Kamcord setFacebookTitle:@"RotateWorldTest"
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
-
 	
 	// Turn on display FPS
 	[director setDisplayFPS:YES];
