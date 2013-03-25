@@ -70,7 +70,6 @@
 		40B3C87016A5252E0088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40B3C87216A5263E0088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		40B3C87416A526B60088D21D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40B3C86A16A522A00088D21D /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		40C56EEE16EEEE4F00B039CC /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C56EED16EEEE4F00B039CC /* Kamcord.framework */; };
 		40C56EEF16EEEE4F00B039CC /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C56EED16EEEE4F00B039CC /* Kamcord.framework */; };
 		40C56EF016EEEE4F00B039CC /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C56EED16EEEE4F00B039CC /* Kamcord.framework */; };
 		40C56EF116EEEE4F00B039CC /* Kamcord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C56EED16EEEE4F00B039CC /* Kamcord.framework */; };
@@ -1620,7 +1619,7 @@
 				495E74F0104B752C0012BB52 /* CoreGraphics.framework in Frameworks */,
 				0AA6239B156B75F8006D25E1 /* CoreMedia.framework in Frameworks */,
 				0AA6239C156B75F8006D25E1 /* CoreVideo.framework in Frameworks */,
-				40C56EEE16EEEE4F00B039CC /* Kamcord.framework in Frameworks */,
+				40D8A3DE16FE600400562F9A /* Kamcord.framework in Frameworks */,
 				0A4AD6E716DB37EA004B9401 /* OpenAL.framework in Frameworks */,
 				495E74F1104B752C0012BB52 /* OpenGLES.framework in Frameworks */,
 				495E74F2104B752C0012BB52 /* QuartzCore.framework in Frameworks */,
@@ -1640,7 +1639,6 @@
 				0AA623A0156B75F8006D25E1 /* SystemConfiguration.framework in Frameworks */,
 				0AA623A1156B75F8006D25E1 /* Twitter.framework in Frameworks */,
 				495E74EF104B752C0012BB52 /* UIKit.framework in Frameworks */,
-				40D8A3DE16FE600400562F9A /* Kamcord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

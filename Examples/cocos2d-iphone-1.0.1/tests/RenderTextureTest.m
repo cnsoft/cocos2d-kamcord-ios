@@ -640,17 +640,23 @@ Class restartAction()
     [Kamcord setYouTubeDescription:@"This is a Cocos2D test app that was recorded with Kamcord."
                               tags:@"Cocos2D RenderTextureTest"];
     
+    // An example of how you can use your own Facebook App for iOS 6 native Facebook support.
+    // [Kamcord setFacebookAppID:@"262447670536215"];
+    
     [Kamcord setFacebookTitle:@"RenderTextureTest"
                       caption:@"Kamcord recording"
                   description:@"This is a Cocos2D test app that was recorded with Kamcord."];
-
+    
+    // An example of how to set the twitter description for twitter cards.
+    // [Kamcord setTwitterDescription:@"Download Line Runner 2 from the Apple App Store: https://itunes.apple.com/nl/app/line-runner-2/id591745483"];
+    
     // Play this looping background audio over the recorded video
     // [Kamcord playSound:@"background.wav" loop:YES];
     
     [Kamcord setVideoResolution:MEDIUM_VIDEO_RESOLUTION];
     
     // 2D projection
-    //  [director setProjection:kCCDirectorProjection2D];
+    // [director setProjection:kCCDirectorProjection2D];
     
     // Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
     if( ! [director enableRetinaDisplay:YES] )
